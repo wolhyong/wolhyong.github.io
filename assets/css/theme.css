@@ -1,0 +1,136 @@
+/* header */
+.header_inner {
+    height: 70px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.header_logo {
+    width: 20%;
+    flex-basis: 20%;
+}
+
+.header_menu {
+    width: 80%;
+    /* Adjust the width to fit the menu items properly */
+    padding: 0 20px;
+    /* Add padding to create space between menu items */
+}
+
+.header_menu li {
+    display: inline-block;
+}
+
+.header_menu li a {
+    padding: 13px 30px;
+    margin: 0 5px;
+    transition: background-color 0.33s;
+    background-color: white;
+    border-bottom: 2px solid transparent;
+    line-height: 50px;
+    /* Vertically center the menu text */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+.header_menu li a:hover {
+    border-bottom: 2px solid #007bff;
+}
+
+/* Dropdown menu style */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 220px;
+    /* Adjust the width to fit the longest menu item */
+    z-index: 1;
+    text-align: left;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 본문 */
+/* 블로그 카드들을 가운데로 정렬하기 위한 스타일 */
+#blog-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.blog-card {
+    /* 블로그 카드 모양을 위한 스타일 추가 */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    /* 블로그 카드의 원하는 너비 설정 */
+    max-width: 100%;
+    /* 카드가 컨테이너 너비를 초과하지 않도록 설정 */
+}
+
+.blog-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.blog-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.blog-card a {
+    display: block;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+/* footer */
+.footer_inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #242424;
+    transform: skewX(0deg);
+    height: 200px;
+    color: #fff;
+}
+
+.footer_address {
+    text-align: center;
+    transform: skewX(0deg);
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.footer_address .copyright {
+    margin-top: 10px;
+}
