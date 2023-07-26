@@ -95,3 +95,19 @@
             <!-- 블로그 게시물은 여기에 동적으로 추가됩니다. -->
         </article>
     </section>
+
+    <footer id="footer_wrap">
+        <h2 class="blind">Bottom area</h2>
+        <div class="footer_inner">
+            <address class="footer_address">
+                <p class="copyright">© 2023 wolhyong. All rights reserved.</p>
+            </address>
+        </div>
+    </footer>
+
+    ```html
+    <script src="js/blogData.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
