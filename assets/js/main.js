@@ -28,13 +28,21 @@ function createBlogCards() {
     });
 }
 
-// Call the function to generate the blog cards when the page loads
-window.onload = createBlogCards;
+//
 
-const menuIcon = document.querySelector('.menu_icon');
+const dropdowns = document.querySelectorAll('.dropdown');
+const mobileMenuIcon = document.querySelector('.menu_icon');
 const mobileNav = document.querySelector('.mobile_nav');
 
-menuIcon.addEventListener('click', () => {
+// Handle dropdowns
+dropdowns.forEach((dropdown) => {
+  dropdown.addEventListener('click', () => {
+    dropdown.querySelector('.dropdown-content').classList.toggle('active');
+  });
+});
+
+// Handle mobile menu
+mobileMenuIcon.addEventListener('click', () => {
   mobileNav.classList.toggle('active');
 });
 
@@ -43,3 +51,4 @@ window.addEventListener('resize', () => {
     mobileNav.classList.remove('active');
   }
 });
+
