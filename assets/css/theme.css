@@ -73,6 +73,19 @@
     display: block;
 }
 
+/* 햄버거 메뉴  */
+.hamburger_menu {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: #000;
+    margin: 6px 0;
+}
+
 /* 본문 */
 /* 블로그 카드들을 가운데로 정렬하기 위한 스타일 */
 #blog-section {
@@ -145,22 +158,19 @@
 
 /* 모바일 */
 
-@media (max-width: 768px) {
-  .header_menu {
-    display: none;
-  }
+@media screen and (max-width: 768px) {
+    /* Show hamburger menu icon on mobile view */
+    .hamburger_menu {
+        display: block;
+    }
 
-  .mobile_menu {
-    display: flex;
-    align-items: center;
-  }
+    /* Hide the desktop menu on mobile view */
+    .header_menu ul {
+        display: none;
+    }
 
-  .mobile_nav.active {
-    display: block;
-  }
-
-  /* Center the h1 tag on mobile */
-  .header_logo h1 {
-    text-align: center;
-  }
+    /* Show the desktop menu when the hamburger menu icon is clicked */
+    .header_menu ul.active {
+        display: block;
+    }
 }
