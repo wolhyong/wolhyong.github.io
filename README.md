@@ -1,3 +1,4 @@
 # wolhyong.github.io
 
-<p>Jekyll 테마 사용할걸.. ㅠㅠ</p>
+<!-- BLOG-POST-LIST:START -->
+<!-- BLOG-POST-LIST:END -->
