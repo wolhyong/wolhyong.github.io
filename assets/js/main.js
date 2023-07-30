@@ -30,25 +30,7 @@ function createBlogCards() {
 
 // 드롭다운 메뉴
 
-const dropdowns = document.querySelectorAll('.dropdown');
-const mobileMenuIcon = document.querySelector('.menu_icon');
-const mobileNav = document.querySelector('.mobile_nav');
-
-// Handle dropdowns
-dropdowns.forEach((dropdown) => {
-  dropdown.addEventListener('click', () => {
-    dropdown.querySelector('.dropdown-content').classList.toggle('active');
-  });
+// Toggle the visibility of the desktop menu when the hamburger menu icon is clicked
+document.querySelector('.hamburger_menu').addEventListener('click', function () {
+    document.querySelector('.header_menu ul').classList.toggle('active');
 });
-
-// Handle mobile menu
-mobileMenuIcon.addEventListener('click', () => {
-  mobileNav.classList.toggle('active');
-});
-
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 768) {
-    mobileNav.classList.remove('active');
-  }
-});
-
