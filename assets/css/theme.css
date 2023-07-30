@@ -168,18 +168,14 @@
     .hamburger_menu {
         display: block;
         cursor: pointer;
+        position: absolute;
+        top: 10px;
+        left: 10px;
     }
 
-    /* 햄버거 메뉴와 h1 태그의 내용을 수직으로 배치합니다. */
+    /* 햄버거 메뉴와 h1 태그의 내용을 수평으로 배치합니다. */
     .header_inner {
-        flex-direction: column;
+        display: flex;
+        justify-content: center;
         align-items: center;
-    }
-
-    .header_left {
-        margin-bottom: 10px;
-    }
-
-    .header_center {
-        margin-top: 10px;
     }
