@@ -134,3 +134,28 @@
 .footer_address .copyright {
     margin-top: 10px;
 }
+
+.mobile_menu {
+  display: none;
+}
+
+.menu_icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.bar {
+  width: 30px;
+  height: 2px;
+  background-color: #000;
+}
+
+.mobile_nav {
+  display: none;
+  /* Add styling for your mobile menu links */
+}
+
