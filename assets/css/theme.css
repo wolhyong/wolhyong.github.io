@@ -41,28 +41,12 @@
     border-bottom: 2px solid #007bff;
 }
 
-.mobile_menu {
+.dropdown-content {
   display: none;
 }
 
-.menu_icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 24px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.bar {
-  width: 30px;
-  height: 2px;
-  background-color: #000;
-}
-
-.mobile_nav {
-  display: none;
-  /* Add styling for your mobile menu links */
+.dropdown.active .dropdown-content {
+  display: block;
 }
 
 /* 드롭다운 메뉴 */
@@ -165,11 +149,18 @@
   .header_menu {
     display: none;
   }
+
   .mobile_menu {
     display: flex;
     align-items: center;
   }
+
   .mobile_nav.active {
     display: block;
+  }
+
+  /* Center the h1 tag on mobile */
+  .header_logo h1 {
+    text-align: center;
   }
 }
