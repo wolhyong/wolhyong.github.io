@@ -175,7 +175,5 @@
 
     /* 햄버거 메뉴와 h1 태그의 내용을 수평으로 배치합니다. */
     .header_logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        text-align: center;
     }
