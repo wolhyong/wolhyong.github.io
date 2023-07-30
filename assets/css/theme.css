@@ -175,7 +175,13 @@
 
     /* 햄버거 메뉴와 h1 태그의 내용을 수평으로 배치합니다. */
     .header_logo {
-    top: 20px; /* Adjust the top position as needed for mobile */
-    left: 50%;
-    transform: translateX(-50%);
-  }
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .header_logo a {
+        margin-right: 40px;
+    }
+}
