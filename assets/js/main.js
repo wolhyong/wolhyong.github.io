@@ -28,7 +28,7 @@ function createBlogCards() {
     });
 }
 
-//
+// 드롭다운 메뉴
 
 const dropdowns = document.querySelectorAll('.dropdown');
 const mobileMenuIcon = document.querySelector('.menu_icon');
