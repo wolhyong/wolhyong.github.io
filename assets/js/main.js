@@ -30,3 +30,16 @@ function createBlogCards() {
 
 // Call the function to generate the blog cards when the page loads
 window.onload = createBlogCards;
+
+const menuIcon = document.querySelector('.menu_icon');
+const mobileNav = document.querySelector('.mobile_nav');
+
+menuIcon.addEventListener('click', () => {
+  mobileNav.classList.toggle('active');
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    mobileNav.classList.remove('active');
+  }
+});
