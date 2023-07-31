@@ -173,8 +173,8 @@
 
     .header_logo {
         position: absolute;
-        top: 50%;
+        top: 10px;
         left: 50%;
-        transform: translate(-70%, -50%); /* Adjust the translate value as needed */
+        transform: translateX(-50%); /* Adjust the translate value as needed */
     }
 }
