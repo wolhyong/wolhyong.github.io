@@ -28,13 +28,11 @@ function createBlogCards() {
     });
 }
 
-// 드롭다운 메뉴
-
-// dropdown menu
+// Call the function to create blog cards when the DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    createBlogCards();
     // Toggle the visibility of the desktop menu when the hamburger menu icon is clicked
     document.querySelector('.hamburger_menu').addEventListener('click', function () {
         document.querySelector('.header_menu ul').classList.toggle('active');
     });
 });
-
