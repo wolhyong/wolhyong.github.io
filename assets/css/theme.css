@@ -54,7 +54,8 @@
     /* 가장 긴 메뉴 항목에 맞게 너비 조정 */
     z-index: 1;
     text-align: left;
-    left: 0; /* Adjust the left position to display from left to right */
+    left: -220px; /* Adjust the left position to display from left to right */
+    /* Initially hide the menu box by setting the left position to -220px */
 }
 
 .dropdown-content a {
@@ -62,8 +63,8 @@
     padding: 10px 20px;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+.dropdown.active .dropdown-content {
+    left: 0; /* Adjust the left position to show the menu from left to right */
 }
 
 /* 햄버거 메뉴  */
@@ -155,7 +156,6 @@
 }
 
 /* 모바일 */
-
 /* 햄버거 메뉴  */
 .hamburger_menu {
     display: block; /* 햄버거 메뉴를 항상 보여주기 위해 display 속성 변경 */
@@ -169,7 +169,6 @@
     margin: 6px 0;
 }
 
-/* 모바일 */
 @media screen and (max-width: 768px) {
     .header_menu ul {
         display: none;
@@ -180,6 +179,34 @@
         top: 10px;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    .hamburger_menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    .header_menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+        /* 메뉴 항목을 세로로 나열하기 위해 display 속성과 기타 스타일 추가 */
+    }
+
+    .header_menu ul {
+        display: block;
+    }
+
+    .header_menu li {
+        display: block;
+    }
+
+    #blog-section {
+        margin-top: 70px;
     }
 
     #footer_wrap {
@@ -198,4 +225,3 @@
         color: #fff;
     }
 }
-
