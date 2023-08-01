@@ -16,9 +16,9 @@
 
 .header_menu {
     width: 80%;
-    /* Adjust the width to fit the menu items properly */
+    /* 메뉴 항목을 적절하게 배치하기 위해 너비 조정 */
     padding: 0 20px;
-    /* Add padding to create space between menu items */
+    /* 메뉴 항목 사이에 간격을 주기 위해 padding 추가 */
 }
 
 .header_menu li {
@@ -32,9 +32,9 @@
     background-color: white;
     border-bottom: 2px solid transparent;
     line-height: 50px;
-    /* Vertically center the menu text */
+     /* 메뉴 텍스트를 수직으로 중앙 정렬하기 위해 line-height 속성 추가 */
     white-space: nowrap;
-    /* Prevent text wrapping */
+    /* 텍스트가 한 줄로 표시되도록 하기 위해 white-space 속성 추가 */
 }
 
 .header_menu li a:hover {
@@ -163,17 +163,23 @@
 
 /* 모바일 */
 
+/* 햄버거 메뉴  */
+.hamburger_menu {
+    display: block; /* 햄버거 메뉴를 항상 보여주기 위해 display 속성 변경 */
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: #000;
+    margin: 6px 0;
+}
+
+/* 모바일 */
 @media screen and (max-width: 768px) {
     .header_menu ul {
         display: none;
-    }
-
-    .hamburger_menu {
-        display: block;
-    }
-
-    .header_menu ul.active {
-        display: block;
     }
 
     .header_logo {
@@ -195,7 +201,7 @@
         justify-content: center;
         align-items: center;
         background-color: #242424;
-        height: 150px; /* Adjust the height as needed */
+        height: 150px; /* 높이를 조정하거나 필요에 맞게 조절 */
         color: #fff;
     }
 }
