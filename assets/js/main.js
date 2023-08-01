@@ -32,11 +32,6 @@ function createBlogCards() {
 
 // dropdown menu
 document.addEventListener('DOMContentLoaded', function() {
-    // Toggle the visibility of the desktop menu when the hamburger menu icon is clicked
-    document.querySelector('.hamburger_menu').addEventListener('click', function () {
-        document.querySelector('.header_menu ul').classList.toggle('active');
-    });
-
     // Close the dropdown menu when clicking outside of it
     window.addEventListener('click', function(event) {
         const headerMenu = document.querySelector('.header_menu ul');
