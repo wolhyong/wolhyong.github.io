@@ -17,7 +17,7 @@ function createBlogCards() {
 
         const viewMoreLink = document.createElement("a");
         viewMoreLink.textContent = "View More";
-        viewMoreLink.href = "#"; // Set the link URL for the full blog post
+        viewMoreLink.href = "#"; // 전체 블로그 게시물 링크를 설정할 URL로 변경
 
         blogCard.appendChild(titleElement);
         blogCard.appendChild(dateElement);
@@ -28,10 +28,11 @@ function createBlogCards() {
     });
 }
 
-// Call the function to create blog cards when the DOM is loaded
+// 드롭다운 메뉴
+
+// dropdown menu
 document.addEventListener('DOMContentLoaded', function() {
-    createBlogCards();
-    // Toggle the visibility of the desktop menu when the hamburger menu icon is clicked
+    // 햄버거 메뉴 아이콘을 클릭하면 데스크톱 메뉴 아이콘의 가시성을 전환
     document.querySelector('.hamburger_menu').addEventListener('click', function () {
         document.querySelector('.header_menu ul').classList.toggle('active');
     });
