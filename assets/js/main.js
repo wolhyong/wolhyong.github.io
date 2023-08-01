@@ -30,7 +30,11 @@ function createBlogCards() {
 
 // 드롭다운 메뉴
 
-// Toggle the visibility of the desktop menu when the hamburger menu icon is clicked
-document.querySelector('.hamburger_menu').addEventListener('click', function () {
-    document.querySelector('.header_menu ul').classList.toggle('active');
+// dropdown menu
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle the visibility of the desktop menu when the hamburger menu icon is clicked
+    document.querySelector('.hamburger_menu').addEventListener('click', function () {
+        document.querySelector('.header_menu ul').classList.toggle('active');
+    });
 });
+
