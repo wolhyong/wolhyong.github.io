@@ -41,14 +41,6 @@
     border-bottom: 2px solid #007bff;
 }
 
-.dropdown-content {
-  display: none;
-}
-
-.dropdown.active .dropdown-content {
-  display: block;
-}
-
 /* 드롭다운 메뉴 */
 .dropdown {
     position: relative;
@@ -59,9 +51,10 @@
     position: absolute;
     background-color: #f9f9f9;
     min-width: 220px;
-    /* Adjust the width to fit the longest menu item */
+    /* 가장 긴 메뉴 항목에 맞게 너비 조정 */
     z-index: 1;
     text-align: left;
+    left: 0; /* Adjust the left position to display from left to right */
 }
 
 .dropdown-content a {
