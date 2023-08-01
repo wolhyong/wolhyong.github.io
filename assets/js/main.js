@@ -32,8 +32,16 @@ function createBlogCards() {
 
 // dropdown menu
 document.addEventListener('DOMContentLoaded', function() {
-    // 햄버거 메뉴 아이콘을 클릭하면 데스크톱 메뉴 아이콘의 가시성을 전환
+    // Toggle the visibility of the desktop menu when the hamburger menu icon is clicked
     document.querySelector('.hamburger_menu').addEventListener('click', function () {
         document.querySelector('.header_menu ul').classList.toggle('active');
+    });
+
+    // Close the dropdown menu when clicking outside of it
+    window.addEventListener('click', function(event) {
+        const headerMenu = document.querySelector('.header_menu ul');
+        if (!event.target.matches('.hamburger_menu') && !event.target.matches('.header_menu ul') && headerMenu.classList.contains('active')) {
+            headerMenu.classList.remove('active');
+        }
     });
 });
