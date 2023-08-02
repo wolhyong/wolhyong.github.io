@@ -1,25 +1,26 @@
-# Welcome to Jekyll!
+# 지킬에 오신 걸 환영합니다!
 #
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
+# 이 구성 파일은 전체 블로그, 값에 영향을 미치는 설정을 위한 것입니다
+# 한 번 설정하고 그 이후에는 거의 편집하지 않을 것으로 예상됩니다. 만약 찾는다면
+# 당신 자신이 이 파일을 매우 자주 편집하고 지킬의 데이터 파일을 사용하는 것을 고려해 보십시오
+# 자주 업데이트해야 하는 데이터에 대한 기능입니다.
 #
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# 기술적인 이유로 인해 이 파일은 사용 시 *NOT*가 자동으로 다시 로드됩니다
+# 번들 exec 지킬 serve입니다. 이 파일을 변경하면 서버 프로세스를 다시 시작하십시오.
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: "Hello. I'm Jami Gibbs."
-email: 'jami0821@gmail.com'
-description: "I'm a software developer and designer from Chicago creating useful things for the web."
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://jamigibbs.github.io/phantom" # the base hostname & protocol for your site, e.g. https://example.com
+# 사이트 설정
+# 이것들은 당신의 새로운 사이트를 개인화하기 위해 사용됩니다. HTML 파일을 보면,
+# 다음을 통해 액세스하는 것을 볼 수 있습니다
+# {{ site.title }}, {{ site.email }} 등을 통해 액세스되는 것을 볼 수 있습니다.
+# 원하는 사용자 지정 변수를 생성할 수 있으며 이러한 변수에 액세스할 수 있습니다
+# {{ site.myvariable }} 을(를) 통해 템플릿에 포함됩니다.
+title: "월횽(Wolhyong) 블로그"
+email: 'pjw7558@naver.com'
+description: "다양한 분야를 경험하는 것을 좋아하는 그레이해커(Gray Hacker) 월횽입니다."
+baseurl: "" # 사이트의 하위 경로(예: /https)
+url: "https://wolhyong.github.io/" # 사이트의 기본 호스트 이름과 프로토콜(예: https://example.com )
 twitter_username: 'jamigibbs'
-github_username: 'jamigibbs'
+github_username: 'wolhyong'
 medium_username: 'blog.jamigibbs.com'
 
 # Build settings
@@ -89,8 +90,8 @@ pagination:
 ############################################################
 
 ### Phantom settings
-footer_text: '© 2018 Jami Gibbs'
-admin_name: 'Jami Gibbs'
+footer_text: '© 2023 wolhyong'
+admin_name: 'wolhyong'
 google_analytics: "UA-9999999-99" # Update with your own tracking ID
 enable_contact: false
 
