@@ -2,6 +2,8 @@
 console.log("JavaScript file loaded");
 
 document.addEventListener('DOMContentLoaded', () => {
+    updateCopyrightYear();
+
     if (document.getElementById('post-list')) {
         fetchPosts();
     }
@@ -11,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function updateCopyrightYear() {
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+}
+
 async function fetchPosts() {
     try {
         const response = await fetch('posts/posts.json');
@@ -19,23 +28,33 @@ async function fetchPosts() {
         }
         const posts = await response.json();
         const postList = document.getElementById('post-list');
-        
-        // Clear existing placeholder content except the first item (template)
-        // Or, if there's no template, just clear everything.
-        // For now, let's assume we clear it and repopulate.
+
         postList.innerHTML = ''; // Clear any static placeholders
+
+        if (posts.length === 0) {
+            postList.innerHTML = '<li>No posts available yet. Check back soon!</li>';
+            return;
+        }
 
         posts.forEach(post => {
             const listItem = document.createElement('li');
-            // Link to post.html, passing the filename as a query parameter
-            listItem.innerHTML = `<a href="post.html?post=${post.file}">${post.title}</a> - <small>${post.date}</small>`;
+            const link = document.createElement('a');
+            link.href = `post.html?post=${post.file}`;
+            link.textContent = post.title;
+
+            const dateSmall = document.createElement('small');
+            dateSmall.textContent = `Published on: ${post.date}`;
+
+            listItem.appendChild(link);
+            listItem.appendChild(document.createElement('br')); // For better spacing
+            listItem.appendChild(dateSmall);
             postList.appendChild(listItem);
         });
     } catch (error) {
         console.error('Error fetching posts:', error);
         const postList = document.getElementById('post-list');
         if (postList) {
-            postList.innerHTML = '<li>Error loading posts.</li>';
+            postList.innerHTML = '<li>Error loading posts. Please try again later.</li>';
         }
     }
 }
@@ -44,83 +63,135 @@ async function loadPost() {
     try {
         const urlParams = new URLSearchParams(window.location.search);
         const postFile = urlParams.get('post');
+        const postContentElement = document.getElementById('post-content');
 
         if (!postFile) {
-            document.getElementById('post-content').innerHTML = '<p>No post specified.</p>';
+            postContentElement.innerHTML = '<h2>Post Not Found</h2><p>The requested post could not be found. Please select a post from the <a href="index.html">homepage</a>.</p>';
+            document.title = "Post Not Found - Wolhyong Development Blog";
             return;
-        }
-
-        // Basic security check: Ensure postFile is a relative path and doesn't contain '..'
-        if (postFile.includes('..') || postFile.startsWith('/')) {
-             document.getElementById('post-content').innerHTML = '<p>Invalid post path.</p>';
-             return;
         }
 
         const response = await fetch(`posts/${postFile}`);
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP error! status: ${response.status} for file ${postFile}`);
         }
         const markdown = await response.text();
-        
-        // Check if marked.js is loaded
-        if (typeof marked === 'undefined') {
+
+        if (typeof marked === 'function') {
+            postContentElement.innerHTML = marked.parse(markdown);
+        } else {
             console.error('marked.js library is not loaded.');
-            document.getElementById('post-content').innerHTML = '<p>Error: Markdown parser not loaded.</p>';
-            return;
+            postContentElement.innerHTML = '<p>Error rendering post: Markdown library not found. Please ensure marked.min.js is correctly linked.</p>';
+            return; // Stop further processing if marked is not available
         }
 
-        const htmlContent = marked.parse(markdown); // Use marked.parse (or marked() in older versions)
-        const postContentElement = document.getElementById('post-content');
-        
-        // Sanitize HTML content before inserting (important for security)
-        // For this example, we'll directly insert, but a real app needs sanitization.
-        postContentElement.innerHTML = htmlContent;
+        // SEO and Social Media Meta Tag Updates
+        const postTitleElement = postContentElement.querySelector('h1, h2'); // Get the first H1 or H2 as title
+        const postTitle = postTitleElement ? postTitleElement.textContent : "Wolhyong Development Blog Post";
+        document.title = `${postTitle} - Wolhyong Development Blog`;
 
-        // Try to set the title of the page based on the first H1 in the markdown
-        const firstH1 = postContentElement.querySelector('h1');
-        if (firstH1 && firstH1.textContent) {
-            document.title = firstH1.textContent + " - My Blog";
+        // Create or update meta description
+        let description = `Read '${postTitle}' on Wolhyong's Development Blog.`;
+        const firstParagraph = postContentElement.querySelector('p');
+        if (firstParagraph) {
+            description = firstParagraph.textContent.substring(0, 155) + "..."; // SEO-friendly length
         }
+        updateMetaTag('description', description);
+        updateMetaTag('og:title', postTitle);
+        updateMetaTag('twitter:title', postTitle);
+        updateMetaTag('og:description', description);
+        updateMetaTag('twitter:description', description);
+        updateMetaTag('og:url', window.location.href);
+        updateMetaTag('twitter:url', window.location.href);
+        updateMetaTag('canonical', window.location.href, 'link');
 
-        // Update social sharing links
-        updateSocialShareLinks();
+        // Update social share links
+        updateSocialShareLinks(window.location.href, postTitle);
+
+        // Update Disqus configuration if it's already loaded (for SPA-like navigation if implemented later)
+        if (window.DISQUS) {
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.url = window.location.href;
+                    this.page.identifier = postFile;
+                    this.page.title = postTitle;
+                }
+            });
+        } else {
+            // Disqus script in post.html will handle initial load.
+            // We ensure disqus_config is set before embed.js runs.
+            window.disqus_config = function () {
+                this.page.url = window.location.href;
+                this.page.identifier = postFile;
+                this.page.title = postTitle;
+            };
+        }
 
     } catch (error) {
         console.error('Error loading post:', error);
-        const postContentElement = document.getElementById('post-content');
-        if (postContentElement) {
-            postContentElement.innerHTML = '<p>Error loading post content.</p>';
+        const postContent = document.getElementById('post-content');
+        if (postContent) {
+            postContent.innerHTML = '<h2>Error Loading Post</h2><p>Sorry, there was an issue loading this blog post. Please try again later or contact the site administrator.</p>';
+            document.title = "Error Loading Post - Wolhyong Development Blog";
         }
     }
 }
 
-function updateSocialShareLinks() {
-    const postUrl = window.location.href;
-    // Attempt to get the post title from the document title, removing the " - My Blog" suffix
-    let postTitle = document.title.replace(" - My Blog", ""); 
-    
-    // As a fallback, if the title is generic like "Blog Post - My Blog", try to get it from H1
-    if (document.title === "Blog Post - My Blog" || !postTitle) {
-        const h1 = document.querySelector('#post-content h1');
-        if (h1 && h1.textContent) {
-            postTitle = h1.textContent;
-        } else {
-            postTitle = "Check out this post!"; // Generic fallback
-        }
+function updateMetaTag(name, content, type = 'meta') {
+    let element;
+    if (type === 'link') {
+        element = document.querySelector(`link[rel='${name}']`);
+    } else {
+        element = document.querySelector(`meta[name='${name}']`) || document.querySelector(`meta[property='${name}']`);
     }
 
-    const twitterLink = document.querySelector('.share-btn.twitter');
-    if (twitterLink) {
-        twitterLink.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(postTitle)}`;
+    if (element) {
+        if (type === 'link') {
+            element.href = content;
+        } else {
+            element.content = content;
+        }
+    } else {
+        // Create and append if it doesn't exist
+        element = document.createElement(type);
+        if (type === 'link') {
+            element.rel = name;
+            element.href = content;
+        } else {
+            if (name.startsWith('og:') || name.startsWith('twitter:')) {
+                element.setAttribute('property', name);
+            } else {
+                element.setAttribute('name', name);
+            }
+            element.content = content;
+        }
+        document.head.appendChild(element);
+    }
+}
+
+function updateSocialShareLinks(url, title) {
+    const encodedUrl = encodeURIComponent(url);
+    const encodedTitle = encodeURIComponent(title);
+
+    const xLink = document.querySelector('.share-btn.X');
+    if (xLink) {
+        xLink.href = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
     }
 
     const facebookLink = document.querySelector('.share-btn.facebook');
     if (facebookLink) {
-        facebookLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`;
+        facebookLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
     }
 
-    const linkedinLink = document.querySelector('.share-btn.linkedin');
-    if (linkedinLink) {
-        linkedinLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`;
+    const instagramLink = document.querySelector('.share-btn.Instagram');
+    if (instagramLink) {
+        // Instagram sharing is primarily mobile app-based and doesn't support URL prefill for posts.
+        // This link can point to your Instagram profile or a page with sharing instructions.
+        instagramLink.href = "https://www.instagram.com/"; // Replace with your Instagram profile or relevant link
+        instagramLink.title = "Visit our Instagram (manual sharing recommended)";
     }
 }
+
+// Note: The DISQUS_SHORTNAME constant is removed as the shortname should be directly in post.html's script.
+// The user MUST replace 'YOUR_DISQUS_SHORTNAME_HERE' in post.html.
