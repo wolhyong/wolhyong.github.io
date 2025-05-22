@@ -63,9 +63,8 @@ wolhyong/
         {
             "title": "나의 멋진 새 게시물",
             "file": "my-new-post.md",
-            "date": "YYYY-MM-DD" // 실제 날짜 사용
+            "date": "YYYY-MM-DD"
         }
-        // 여기에 더 많은 게시물 추가
     ]
     ```
     -   `title`: 블로그 게시물의 제목 (홈페이지와 게시물 제목으로 표시됨).
