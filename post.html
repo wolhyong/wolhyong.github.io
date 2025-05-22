@@ -1,64 +1,95 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wolhyong Development Blog</title>
+    <!-- Title will be dynamically updated by script.js -->
+    <title>Post Title Placeholder - Greyhacker Wolhyong Development Blog</title>
+    <!-- Meta description and keywords will be dynamically updated by script.js if possible, or use generic ones -->
+    <meta name="description" content="Greyhacker Wolhyong의 개발 블로그 게시물입니다.">
+    <meta name="author" content="Greyhacker Wolhyong">
+
+    <!-- Open Graph / Facebook - These will be more effective if updated dynamically by JS -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content=""> <!-- Dynamically set by JS -->
+    <meta property="og:title" content="Post Title Placeholder">
+    <meta property="og:description" content="Greyhacker Wolhyong의 개발 블로그 게시물입니다.">
+    <meta property="og:image" content="YOUR_BLOG_PREVIEW_IMAGE_URL_HERE">
+    <!-- TODO: 블로그 미리보기 이미지 URL로 교체 또는 게시물별 이미지 -->
+
+    <!-- Twitter - These will be more effective if updated dynamically by JS -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content=""> <!-- Dynamically set by JS -->
+    <meta property="twitter:title" content="Post Title Placeholder">
+    <meta property="twitter:description" content="Greyhacker Wolhyong의 개발 블로그 게시물입니다.">
+    <meta property="twitter:image" content="YOUR_BLOG_PREVIEW_IMAGE_URL_HERE">
+    <!-- TODO: 블로그 미리보기 이미지 URL로 교체 또는 게시물별 이미지 -->
+
+    <link rel="canonical" href=""> <!-- Dynamically set by JS -->
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- TODO: favicon.ico 파일 추가 필요 -->
 </head>
+
 <body>
     <header>
-        <h1>Wolhyong Development Blog</h1>
-        <nav>
+        <h1><a href="index.html">Greyhacker Wolhyong Development Blog</a></h1>
+        <nav aria-label="Main navigation">
             <a href="index.html">Home</a>
         </nav>
     </header>
-    <main>
-        <article id="post-content">
+    <main id="main-content" aria-label="Main content">
+        <article id="post-content" aria-labelledby="post-title">
             <!-- Markdown content will be converted and displayed here -->
-            <h2>Post Title Placeholder</h2>
-            <p>This is where the content of the blog post will go. We will dynamically load and render Markdown content here.</p>
+            <h2 id="post-title">Post Title Placeholder</h2>
+            <p>This is where the content of the blog post will go. We will dynamically load and render Markdown content
+                here.</p>
         </article>
 
-        <section id="social-share">
-            <h3>Share this post:</h3>
-            <a href="#" class="share-btn X" target="_blank" title="Share on X">X</a>
+        <section id="social-share" aria-labelledby="social-share-heading">
+            <h3 id="social-share-heading">Share this post:</h3>
+            <a href="#" class="share-btn X" target="_blank" title="Share on X (formerly Twitter)">X</a>
             <a href="#" class="share-btn facebook" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="#" class="share-btn Instagram" target="_blank" title="Share on Instagram">instagram</a>
+            <!-- Instagram sharing is more complex, consider a different approach or remove -->
+            <a href="#" class="share-btn Instagram" target="_blank"
+                title="Share on Instagram (link may not prefill)">Instagram</a>
         </section>
 
-        <section id="comments">
-            <h2>Comments</h2>
-            <div id="disqus_thread"></div>
+        <section id="comments" aria-labelledby="comments-heading">
+            <h2 id="comments-heading">Comments</h2>
+            <div id="disqus_thread">
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                        powered by Disqus.</a></noscript>
+            </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2025 Wolhyong Development Blog</p>
+    <footer aria-label="Footer">
+        <p>&copy; <span id="current-year">2025</span> Greyhacker Wolhyong Development Blog. All rights reserved.</p>
+        <p><a href="#main-content">Back to top</a></p>
     </footer>
     <script src="js/script.js"></script>
     <script>
         /**
         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: `https://disqus.com/admin/universalcode/#configuration-variables`
+        */
         var disqus_config = function () {
-            // Ensure this.page.url is the full URL to the page
-            // For local development, you might need to hardcode a base URL if window.location.href is not suitable
-            // e.g. this.page.url = 'https://your-domain.com/post.html?post=' + new URLSearchParams(window.location.search).get('post');
-            this.page.url = window.location.href;  
-            // Use the post filename as a unique identifier
-            this.page.identifier = new URLSearchParams(window.location.search).get('post'); 
+            this.page.url = window.location.href;  // Specifies the canonical URL of the page
+            this.page.identifier = new URLSearchParams(window.location.search).get('post'); // Specifies a unique identifier for the page
+            // this.page.title = document.title; // Optional: Specifies the title of the page
         };
-        
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        // IMPORTANT: Replace 'YOUR_DISQUS_SHORTNAME_HERE' with your site's actual Disqus shortname
-        s.src = 'https://YOUR_DISQUS_SHORTNAME_HERE.disqus.com/embed.js'; 
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
+
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            // IMPORTANT: Replace 'YOUR_DISQUS_SHORTNAME_HERE' with your site's actual Disqus shortname.
+            // This is crucial for Disqus to work correctly.
+            s.src = 'https://YOUR_DISQUS_SHORTNAME_HERE.disqus.com/embed.js'; // TODO: REPLACE 'YOUR_DISQUS_SHORTNAME_HERE'
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
         })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <!-- No noscript tag for Disqus here, it's inside #disqus_thread now -->
 </body>
+
 </html>
