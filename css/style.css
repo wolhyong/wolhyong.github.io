@@ -1,0 +1,72 @@
+/* Basic styling for the blog */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+main {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Styling for Social Share Buttons */
+#social-share {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px; /* Ensure space before comments if they are close */
+    border-bottom: 1px solid #eee; /* Optional: to separate from comments */
+}
+
+#social-share h3 {
+    margin-bottom: 10px;
+}
+
+.share-btn {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.share-btn.twitter {
+    background-color: #1DA1F2; /* Twitter Blue */
+}
+
+.share-btn.facebook {
+    background-color: #1877F2; /* Facebook Blue */
+}
+
+.share-btn.linkedin {
+    background-color: #0A66C2; /* LinkedIn Blue */
+}
+
+.share-btn:hover {
+    opacity: 0.9;
+}
