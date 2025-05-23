@@ -2,6 +2,9 @@
     {
         "title": "Sample Blog Post",
         "file": "sample-post.md",
-        "date": "2023-10-27"
+        "date": "2023-10-27",
+        "description": "A brief overview of Markdown, its syntax, and how it can be used to create formatted content for the web.",
+        "datePublished": "2023-10-27",
+        "lastModified": "2023-10-28" 
     }
 ]
