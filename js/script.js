@@ -1,6 +1,10 @@
 // Main JavaScript for the blog
 console.log("JavaScript file loaded");
 
+// SVG Icons for Theme Toggle
+const sunIconSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="theme-icon"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM12 17.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM5.26 5.26a.75.75 0 011.06-1.06l1.591 1.591a.75.75 0 11-1.06 1.06L5.26 5.26zm11.98 11.98a.75.75 0 011.06-1.06l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.591zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM4.25 12a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5H3.5a.75.75 0 01.75.75zM17.24 6.7a.75.75 0 01-1.06-1.06l-1.591 1.591a.75.75 0 11-1.06-1.061l1.591-1.591a.75.75 0 011.06 1.061zM6.7 17.24a.75.75 0 01-1.06-1.06l-1.591 1.591a.75.75 0 01-1.06-1.06l1.591-1.591a.75.75 0 011.06 1.06z"/></svg>';
+const moonIconSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="theme-icon"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6.75a8.969 8.969 0 008.968 8.968 8.97 8.97 0 005.231-.69a.75.75 0 01.82.162.75.75 0 01.161.819A10.47 10.47 0 0118 18.75a10.473 10.473 0 01-10.473-10.473A10.47 10.47 0 015.23 7.522a.75.75 0 01.162-.82z" clip-rule="evenodd"/></svg>';
+
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('post-list')) { // This implies we are on index.html
         fetchPostsAndEnableSearch();
@@ -10,10 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         loadPost();
     }
 
-    // Add event listener for scroll to update progress bar, only if the bar exists on the page
     if (document.getElementById('progress-bar')) {
         window.addEventListener('scroll', updateReadingProgressBar);
-        // Initial call to set progress bar if page is already scrolled (e.g. on refresh)
         updateReadingProgressBar();
     }
 });
@@ -24,15 +26,15 @@ const themeToggleButton = document.getElementById('theme-toggle');
 function applyTheme(theme) {
     if (theme === 'dark') {
         document.body.classList.add('dark-mode');
-        if(themeToggleButton) themeToggleButton.textContent = '☀️';
+        if(themeToggleButton) themeToggleButton.innerHTML = sunIconSVG;
     } else {
         document.body.classList.remove('dark-mode');
-        if(themeToggleButton) themeToggleButton.textContent = '🌙';
+        if(themeToggleButton) themeToggleButton.innerHTML = moonIconSVG;
     }
 }
 
 const currentTheme = localStorage.getItem('theme');
-applyTheme(currentTheme || 'light'); // Apply saved theme or default to light
+applyTheme(currentTheme || 'light');
 
 if (themeToggleButton) {
     themeToggleButton.addEventListener('click', () => {
@@ -159,9 +161,7 @@ async function loadPost() {
         const textContent = postContentElement.innerText || postContentElement.textContent;
         displayEstimatedReadingTime(textContent);
 
-        // Call the modified function to insert ad placeholder
         insertMidArticleAd(postContentElement);
-
         updateSocialShareLinks();
 
     } catch (error) {
@@ -221,44 +221,30 @@ function displayEstimatedReadingTime(text) {
     }
 }
 
-/**
- * Inserts an ad placeholder into the middle of the post content.
- * It tries to insert after the first H2 element. If no H2 is found,
- * it tries to insert after the third P element.
- * @param {HTMLElement} postContentElement - The main content element of the post.
- */
 function insertMidArticleAd(postContentElement) {
     if (!postContentElement) return;
-
     let insertionPoint = null;
     const children = Array.from(postContentElement.children);
-
-    // Try to find the first H2 element
     const firstH2 = children.find(el => el.tagName === 'H2');
     if (firstH2) {
         insertionPoint = firstH2;
     } else {
-        // If no H2, try to find the third P element
         const paragraphs = children.filter(el => el.tagName === 'P');
         if (paragraphs.length >= 3) {
-            insertionPoint = paragraphs[2]; // The third paragraph (0-indexed)
+            insertionPoint = paragraphs[2];
         }
     }
-
     if (insertionPoint) {
         const adDiv = document.createElement('div');
         adDiv.id = 'ad-placeholder-in-article-1';
-        adDiv.className = 'ad-placeholder ad-adsense-in-article'; // Matches CSS
-        adDiv.dataset.comment = 'Google AdSense In-article Ad'; // For CSS ::before pseudo-element
-
-        // Insert adDiv after the insertionPoint element
+        adDiv.className = 'ad-placeholder ad-adsense-in-article';
+        adDiv.dataset.comment = 'Google AdSense In-article Ad';
         insertionPoint.insertAdjacentElement('afterend', adDiv);
-        console.log('In-article ad placeholder inserted after:', insertionPoint.tagName, insertionPoint.textContent.substring(0,30)+"...");
+        console.log('In-article ad placeholder inserted after:', insertionPoint.tagName);
     } else {
         console.log('Suitable insertion point for in-article ad not found.');
     }
 }
-
 
 function addBlogPostingSchema(postData) {
     if (!postData) return;
@@ -286,11 +272,9 @@ function generateTableOfContents(contentElement) {
     const tocList = document.getElementById('toc-list');
     const tocContainer = document.getElementById('toc-container');
     if (!tocList || !contentElement || !tocContainer) return;
-
     tocList.innerHTML = '';
     const headings = contentElement.querySelectorAll('h2, h3');
     let hasHeadings = false;
-
     headings.forEach(heading => {
         hasHeadings = true;
         const listItem = document.createElement('li');
@@ -311,27 +295,20 @@ function generateTableOfContents(contentElement) {
 function updateReadingProgressBar() {
     const progressBar = document.getElementById('progress-bar');
     if (!progressBar) return;
-
-    const contentElement = document.getElementById('post-content'); // Target post content for accuracy
+    const contentElement = document.getElementById('post-content');
     let scrollableHeight, currentScroll;
-
     if (contentElement) {
         const elementRect = contentElement.getBoundingClientRect();
         const contentHeight = elementRect.height;
         const viewportHeight = window.innerHeight;
-        // Calculate scrollable height based on how much of the content is below the viewport bottom
-        // and how much is above the viewport top.
         scrollableHeight = contentHeight - viewportHeight;
-        // currentScroll is how much the top of the content has scrolled past the top of the viewport.
         currentScroll = -elementRect.top;
     } else {
-        // Fallback to document scroll if #post-content is not available
         scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
         currentScroll = window.pageYOffset;
     }
-
     if (scrollableHeight <= 0) {
-        progressBar.style.width = (window.pageYOffset > 0) ? '100%' : '0%'; // Full if scrolled at all on short page
+        progressBar.style.width = (window.pageYOffset > 0) ? '100%' : '0%';
         return;
     }
     const scrollPercentage = (currentScroll / scrollableHeight) * 100;
@@ -372,9 +349,74 @@ async function generateSitemap() {
     console.log(sitemapXml);
     alert("Sitemap XML generated! Check browser console (F12) for XML and copy to sitemap.xml.");
 }
+
+async function generateRssFeed() {
+    console.log("Attempting to generate RSS feed...");
+    const YOUR_BLOG_BASE_URL = prompt("Please enter your blog's full base URL (e.g., https://yourusername.github.io/your-repo-name):", "YOUR_BLOG_BASE_URL_HERE");
+
+    if (!YOUR_BLOG_BASE_URL || YOUR_BLOG_BASE_URL === "YOUR_BLOG_BASE_URL_HERE") {
+        console.error("RSS feed generation cancelled: Base URL not provided.");
+        alert("RSS feed generation cancelled. Please provide your blog's base URL.");
+        return;
+    }
+
+    const blogTitle = "My Coding Blog"; // Or fetch dynamically if stored elsewhere
+    const blogDescription = "A blog about software development, coding tips, programming tutorials, and technology insights."; // Or fetch dynamically
+
+    let rssXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    rssXml += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
+    rssXml += `  <channel>\n`;
+    rssXml += `    <title><![CDATA[${blogTitle}]]></title>\n`;
+    rssXml += `    <link>${YOUR_BLOG_BASE_URL}</link>\n`;
+    rssXml += `    <description><![CDATA[${blogDescription}]]></description>\n`;
+    rssXml += `    <language>en-us</language>\n`; // Assuming English, change if needed
+    rssXml += `    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n`;
+    rssXml += `    <atom:link href="${YOUR_BLOG_BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />\n`;
+
+    try {
+        const response = await fetch('posts/posts.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const posts = await response.json();
+
+        posts.forEach(post => {
+            const postUrl = `${YOUR_BLOG_BASE_URL}/post.html?post=${post.file}`;
+            // Ensure datePublished exists, otherwise use 'date' or skip pubDate
+            let pubDate = '';
+            if (post.datePublished) {
+                pubDate = `<pubDate>${new Date(post.datePublished).toUTCString()}</pubDate>\n`;
+            } else if (post.date) {
+                 pubDate = `<pubDate>${new Date(post.date).toUTCString()}</pubDate>\n`; // Fallback to 'date'
+            }
+
+            rssXml += `    <item>\n`;
+            rssXml += `      <title><![CDATA[${post.title}]]></title>\n`;
+            rssXml += `      <link>${postUrl}</link>\n`;
+            rssXml += `      <guid isPermaLink="true">${postUrl}</guid>\n`;
+            if (post.description) {
+                rssXml += `      <description><![CDATA[${post.description}]]></description>\n`;
+            }
+            if (pubDate) {
+                rssXml += `      ${pubDate}`;
+            }
+            rssXml += `    </item>\n`;
+        });
+
+    } catch (error) {
+        console.error("Error fetching posts for RSS feed:", error);
+    }
+
+    rssXml += `  </channel>\n`;
+    rssXml += `</rss>`;
+
+    console.log("\n--- Generated rss.xml ---\n");
+    console.log(rssXml);
+    alert("RSS feed XML generated! Check the browser console (F12) for the XML content. Copy this content and paste it into a new file named 'rss.xml' in the root of your project.");
+}
+
 /*
    General Notes & Todos:
    - Consider HTML sanitization for markdown-rendered content if user-generated MD is ever a possibility.
    - Reading progress bar calculation could be further refined for edge cases or complex layouts.
-   - Sitemap generation is manual; for automation, a build script or server-side logic would be needed.
+   - Sitemap and RSS generation are manual; for automation, a build script or server-side logic would be needed.
+   - Blog title and description for RSS feed are currently hardcoded in generateRssFeed function.
 */

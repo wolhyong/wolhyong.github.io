@@ -9,10 +9,11 @@
     /* Sticky ToC styles */
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    top: 20px; /* Adjust based on any fixed header height */
-    max-height: calc(100vh - 60px); /* Ensures it doesn't go off-screen, adjust 60px as needed for header/footer and top offset */
-    overflow-y: auto; /* Allows scrolling within ToC if content is too long */
-    align-self: flex-start; /* Important for sticky positioning if main is a flex container and post content is long */
+    top: 20px;
+    width: 280px; /* Give a default width for sticky */
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    align-self: flex-start;
 }
 
 #toc-container h4 { /* ToC title styling */
@@ -41,8 +42,8 @@
 
 #toc-list .toc-item a:hover {
     color: var(--secondary-text-color);
-    text-decoration: none; /* Override general link hover if needed */
-    padding-left: 3px; /* Visual feedback on hover */
+    text-decoration: none;
+    padding-left: 3px;
 }
 
 /* Active class would be added by JS if implementing scroll-spy, currently not implemented in JS */
@@ -50,16 +51,16 @@
     color: var(--secondary-text-color);
     font-weight: bold;
     border-left-color: var(--primary-accent-color);
-    padding-left: 3px; /* Match hover indent */
+    padding-left: 3px;
 }
 
-#toc-list .toc-level-h2 a { /* Base style for H2, can be same as general .toc-item a */
-    /* font-weight: bold; /* Optional: if H2s should be bolder than H3s by default */
+#toc-list .toc-level-h2 a {
+    /* font-weight: bold; */
 }
 
-#toc-list .toc-level-h3 a { /* Specific style for H3 links in ToC */
-    padding-left: 20px; /* Indentation for H3 */
-    font-size: 0.9em; /* Slightly smaller font for H3 */
+#toc-list .toc-level-h3 a {
+    padding-left: 20px;
+    font-size: 0.9em;
 }
 
 #toc-list .toc-level-h3 a:hover {
@@ -72,7 +73,7 @@
 
 /* Dark Mode for ToC */
 body.dark-mode #toc-container {
-    background-color: var(--dm-content-background-color); /* Darker ToC box */
+    background-color: var(--dm-content-background-color);
     border-color: var(--dm-border-color);
 }
 
@@ -92,4 +93,62 @@ body.dark-mode #toc-list .toc-item a:hover {
 body.dark-mode #toc-list .toc-item a.active {
    color: var(--dm-secondary-text-color);
    border-left-color: var(--dm-primary-accent-color);
+}
+
+/* Responsive ToC Styles */
+@media (max-width: var(--breakpoint-tablet)) { /* Tablet: 768px */
+    #toc-container {
+        padding: 12px 15px; /* Reduced padding */
+        font-size: 0.95em; /* Slightly reduce base font for ToC items */
+        max-height: calc(100vh - 80px); /* Adjust max height */
+        width: 240px; /* Slightly reduce width */
+    }
+
+    #toc-container h4 {
+        font-size: 1em; /* Slightly smaller ToC title */
+    }
+
+    #toc-list .toc-item a {
+        font-size: 0.9em; /* Smaller ToC links */
+        padding: 5px 0;
+    }
+    #toc-list .toc-level-h3 a {
+        font-size: 0.85em; /* Smaller H3 links */
+        padding-left: 15px; /* Reduce H3 indent */
+    }
+    #toc-list .toc-level-h3 a:hover,
+    #toc-list .toc-level-h3 a.active {
+        padding-left: 18px;
+    }
+}
+
+@media (max-width: var(--breakpoint-mobile)) { /* Mobile: 480px */
+    #toc-container {
+        position: relative; /* Make ToC static in content flow */
+        top: auto; /* Remove sticky positioning */
+        width: 100%; /* Full width */
+        max-height: none; /* No restricted height, scrolls with page */
+        overflow-y: visible; /* Not needed if not fixed height */
+        align-self: auto; /* Reset from flex-start */
+        margin-top: 1.5em; /* Add some space above if it was after post-meta */
+        margin-bottom: 1.5em;
+        padding: 10px 12px;
+    }
+
+    #toc-container h4 {
+        font-size: 0.95em;
+    }
+
+    #toc-list .toc-item a {
+        font-size: 0.85em;
+        padding: 4px 0;
+    }
+     #toc-list .toc-level-h3 a {
+        font-size: 0.8em;
+        padding-left: 10px;
+    }
+    #toc-list .toc-level-h3 a:hover,
+    #toc-list .toc-level-h3 a.active {
+        padding-left: 13px;
+    }
 }

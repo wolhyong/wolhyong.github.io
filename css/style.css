@@ -26,7 +26,6 @@
     --dm-light-gray-background: #4b5563; /* Darker gray for code blocks etc. */
     --dm-selection-text-color: #ffffff; /* White text on dark accent selection */
 
-
     --heading-font: 'Montserrat', sans-serif;
     --body-font: 'Roboto', sans-serif;
     --container-width: 960px;
@@ -49,7 +48,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease; /* For dark mode transition */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px; /* Base font size for rem calculations */
 }
 body.dark-mode {
     background-color: var(--dm-body-background-color);
@@ -67,9 +67,11 @@ body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body
     color: var(--dm-secondary-text-color);
 }
 
-h1 { font-size: 2.5em; }
-h2 { font-size: 2em; }
-h3 { font-size: 1.5em; }
+h1 { font-size: 2.5rem; } /* Changed em to rem for better global scaling control if needed */
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
 
 p {
     margin-bottom: 1em;
@@ -91,15 +93,20 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+    border-radius: 4px; /* Slightly rounded images */
 }
 
 /* Header */
 header {
     background-color: var(--secondary-text-color);
     color: var(--content-background-color);
-    padding: 1.5em 0;
+    padding: 1em 15px; /* Reduced padding, added side padding */
     text-align: center;
     width: 100%;
+    display: flex; /* Added for flex layout on mobile */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: space-between; /* Space out title and toggle/search */
+    align-items: center; /* Align items vertically */
 }
 body.dark-mode header {
     background-color: var(--dm-content-background-color);
@@ -108,19 +115,23 @@ body.dark-mode header {
 
 header h1 {
     color: var(--content-background-color);
-    margin: 0;
+    margin: 0; /* Removed default margin */
+    font-size: 1.8rem; /* Adjusted for header context */
+    flex-grow: 1; /* Allow title to take space */
+    text-align: left; /* Align title to left for flex layout */
 }
 body.dark-mode header h1 {
     color: var(--dm-secondary-text-color);
 }
 
 header nav {
-    margin-top: 0.5em;
+    margin: 0.5em 0 0.5em 1em; /* Adjust margin for flex layout */
 }
 header nav a {
     color: var(--content-background-color);
-    margin: 0 10px;
+    margin: 0 8px; /* Slightly reduced margin */
     font-weight: bold;
+    font-size: 0.9rem;
 }
 body.dark-mode header nav a {
     color: var(--dm-text-color-muted);
@@ -133,31 +144,31 @@ body.dark-mode header nav a:hover {
     color: var(--dm-primary-accent-color);
 }
 
-
 /* Main Content Area */
 main {
     width: 100%;
     max-width: var(--container-width);
-    margin: 30px auto;
+    margin: 20px auto; /* Reduced top/bottom margin */
     padding: 20px;
     background-color: var(--content-background-color);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
-    flex-grow: 1; /* Ensures main content takes available space, pushing footer down */
+    flex-grow: 1;
 }
 body.dark-mode main {
     background-color: var(--dm-content-background-color);
-    box-shadow: 0 2px 15px rgba(0,0,0,0.2); /* Darker shadow for dark mode */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 15px; /* Reduced padding */
     background-color: var(--secondary-text-color);
     color: var(--light-gray-background);
     width: 100%;
-    margin-top: auto; /* Pushes footer to the bottom */
+    margin-top: auto;
+    font-size: 0.9rem;
 }
 body.dark-mode footer {
     background-color: var(--dm-content-background-color);
@@ -166,16 +177,29 @@ body.dark-mode footer {
 
 /* Search Container & Input */
 #search-container {
-    margin: 10px auto; /* Center it in the header, adjust as needed */
-    max-width: 400px; /* Max width for the search bar */
-    padding: 0 15px; /* Padding if header becomes too narrow */
+    margin: 0.5em 0; /* Adjusted margin for flex layout */
+    width: 100%; /* Default to full width for wrapping */
+    max-width: 320px; /* Max width for larger screens */
+    padding: 0; /* Removed side padding, handled by header */
+    order: 3; /* Ensure it comes after title and nav if wrapped */
 }
+@media (min-width: 500px) { /* Adjust breakpoint as needed */
+    #search-container {
+        order: initial; /* Reset order on larger screens */
+        width: auto; /* Allow shrinking */
+        margin-left: auto; /* Push to right if space allows */
+    }
+    header h1 {
+        text-align: center; /* Re-center title if search isn't full width */
+    }
+}
+
 
 #search-input {
     width: 100%;
-    padding: 10px 15px;
-    font-size: 1rem;
-    border-radius: 20px; /* Pill shape */
+    padding: 8px 12px; /* Reduced padding */
+    font-size: 0.9rem; /* Reduced font size */
+    border-radius: 20px;
     border: 1px solid var(--border-color);
     background-color: var(--content-background-color);
     color: var(--text-color-main);
@@ -184,7 +208,7 @@ body.dark-mode footer {
 #search-input:focus {
     outline: none;
     border-color: var(--primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2); /* Updated */
+    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2);
 }
 body.dark-mode #search-input {
     background-color: var(--dm-content-background-color);
@@ -193,7 +217,7 @@ body.dark-mode #search-input {
 }
 body.dark-mode #search-input:focus {
     border-color: var(--dm-primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color-rgb), 0.2); /* Updated */
+    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color-rgb), 0.2);
 }
 
 /* No Results Message for Search */
@@ -206,33 +230,39 @@ body.dark-mode .no-results {
     color: var(--dm-text-color-muted);
 }
 
-
 /* Theme Toggle Button */
 #theme-toggle {
     background: none;
-    border: 1px solid transparent; /* Transparent border initially */
-    color: var(--content-background-color); /* Light icon on dark header */
-    font-size: 1.5rem; /* Adjust size as needed */
+    border: 1px solid transparent;
+    color: var(--content-background-color);
+    font-size: 1.25rem; /* Slightly reduced to better fit SVGs if they are sized with em */
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 5px 8px;
     border-radius: 5px;
-    position: absolute; /* Position within header */
-    top: 15px; /* Adjust as needed */
-    right: 20px; /* Adjust as needed */
-    transition: color 0.3s ease, border-color 0.3s ease;
+    margin-left: 10px;
+    display: inline-flex; /* Helps align SVG inside */
+    align-items: center; /* Helps align SVG inside */
+    justify-content: center; /* Helps align SVG inside */
 }
 body.dark-mode #theme-toggle {
-    color: var(--dm-secondary-text-color); /* Darker icon on light header (in dark mode) */
+    color: var(--dm-secondary-text-color);
 }
 #theme-toggle:hover {
-    border-color: var(--primary-accent-color); /* Accent color border on hover */
+    border-color: var(--primary-accent-color);
 }
 body.dark-mode #theme-toggle:hover {
     border-color: var(--dm-primary-accent-color);
 }
 
+.theme-icon { /* Style for the SVG icons */
+  width: 1em; /* Scaled with button's font-size */
+  height: 1em; /* Scaled with button's font-size */
+  vertical-align: middle; /* Or use flex alignment on parent */
+  /* fill="currentColor" is set in SVG, so it inherits button's color */
+}
 
-/* Reading Progress Bar (Mostly for post.html) */
+
+/* Reading Progress Bar */
 #progress-bar-container {
     position: fixed;
     top: 0;
@@ -240,50 +270,46 @@ body.dark-mode #theme-toggle:hover {
     width: 100%;
     height: var(--progress-bar-height);
     background-color: transparent;
-    z-index: 1000; /* Ensure it's above other content */
+    z-index: 1000;
 }
-
 #progress-bar {
     height: 100%;
     background-color: var(--primary-accent-color);
-    width: 0%; /* Initial width */
-    transition: width 0.1s ease-out; /* Smooth transition for width changes */
+    width: 0%;
+    transition: width 0.1s ease-out;
 }
 body.dark-mode #progress-bar {
     background-color: var(--dm-primary-accent-color);
 }
 
-/* Blog Post List (index.html) - TechGrid Modern Styling */
-#blog-posts h2 { /* Style for "Blog Posts" heading */
+/* Blog Post List (index.html) */
+#blog-posts h2 {
     text-align: center;
     margin-bottom: 1.5em;
-    font-size: 2em; /* Make it a bit more prominent */
+    font-size: 1.8rem; /* Adjusted */
 }
-
 .post-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 25px; /* Space between cards */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Min card width reduced slightly */
+    gap: 20px; /* Reduced gap */
     padding: 0;
-    list-style: none; /* Remove default list styling if ul/ol was used as container */
+    list-style: none;
 }
-
 .post-card {
     background-color: var(--content-background-color);
     border: 1px solid var(--border-color);
-    border-radius: 8px; /* Slightly more rounded cards */
+    border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* Allow link to fill card */
+    display: flex;
     flex-direction: column;
-    overflow: hidden; /* Ensure content respects border radius */
+    overflow: hidden;
 }
 body.dark-mode .post-card {
     background-color: var(--dm-content-background-color);
     border-color: var(--dm-border-color);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Slightly more pronounced shadow for dark cards */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-
 .post-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
@@ -291,19 +317,17 @@ body.dark-mode .post-card {
 body.dark-mode .post-card:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
-
 .post-card-link {
     text-decoration: none;
-    color: inherit; /* Inherit text color from .post-card */
-    padding: 20px;
+    color: inherit;
+    padding: 15px; /* Reduced padding */
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Make link fill the card */
+    flex-grow: 1;
 }
-
 .post-card-title {
     font-family: var(--heading-font);
-    font-size: 1.4em;
+    font-size: 1.25rem; /* Adjusted */
     color: var(--secondary-text-color);
     margin-bottom: 0.5em;
 }
@@ -316,92 +340,79 @@ body.dark-mode .post-card-title {
 body.dark-mode .post-card-link:hover .post-card-title {
     color: var(--dm-primary-accent-color);
 }
-
 .post-card-description {
-    font-size: 0.95em;
+    font-size: 0.9rem; /* Adjusted */
     color: var(--text-color-muted);
     margin-bottom: 1em;
-    flex-grow: 1; /* Pushes date to bottom */
+    flex-grow: 1;
 }
 body.dark-mode .post-card-description {
     color: var(--dm-text-color-muted);
 }
-
 .post-card-date {
-    font-size: 0.85em;
+    font-size: 0.8rem; /* Adjusted */
     color: var(--text-color-muted);
-    margin-top: auto; /* Pushes date to the bottom of the card content */
-    align-self: flex-start; /* Keep it at the start of its line */
+    margin-top: auto;
+    align-self: flex-start;
 }
 body.dark-mode .post-card-date {
     color: var(--dm-text-color-muted);
 }
 
-
-/* Individual Post Content (post.html) - DevRead Minimalist Focus */
+/* Individual Post Content (post.html) */
 #post-meta-placeholder {
-    margin-bottom: 1.5em; /* Space below meta, before content */
-    font-size: 0.9em;
+    margin-bottom: 1.5em;
+    font-size: 0.85rem; /* Adjusted */
     color: var(--text-color-muted);
 }
 body.dark-mode #post-meta-placeholder {
     color: var(--dm-text-color-muted);
 }
-
-.reading-time {
-    margin: 0; /* Remove default p margin if it's inside a div */
-}
-
-#post-content {
-    line-height: 1.7;
-}
-
+.reading-time { margin: 0; }
+#post-content { line-height: 1.7; }
 #post-content h1, #post-content h2, #post-content h3 {
     margin-top: 1.5em;
     margin-bottom: 0.5em;
 }
-
-#post-content p {
-    margin-bottom: 1.2em;
-}
-
+#post-content p { margin-bottom: 1.2em; }
 #post-content ul, #post-content ol {
     margin-left: 20px;
     margin-bottom: 1em;
+    padding-left: 1em; /* Ensure padding for bullets/numbers */
 }
-
 #post-content code {
     background-color: var(--light-gray-background);
-    padding: 2px 5px;
+    padding: 0.2em 0.4em; /* Adjusted padding */
     border-radius: 4px;
-    font-family: 'Fira Code', monospace; /* Consistent monospace font */
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85em; /* Slightly smaller for code */
 }
 body.dark-mode #post-content code {
     background-color: var(--dm-light-gray-background);
-    color: var(--dm-text-color-main); /* Ensure code text is also light in dark mode */
+    color: var(--dm-text-color-main);
 }
-
 #post-content pre {
     background-color: var(--light-gray-background);
-    padding: 15px;
+    padding: 1em; /* Adjusted padding */
     border-radius: 5px;
-    overflow-x: auto; /* For horizontal scroll on long code blocks */
+    overflow-x: auto;
     margin-bottom: 1em;
-    font-family: 'Fira Code', monospace; /* Consistent monospace font */
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85em; /* Slightly smaller for code blocks */
+    line-height: 1.5; /* Improved line height for code */
 }
 body.dark-mode #post-content pre {
     background-color: var(--dm-light-gray-background);
 }
-
 #post-content pre code {
     background-color: transparent;
     padding: 0;
-    font-family: 'Fira Code', monospace; /* Ensure pre code also uses Fira Code */
+    font-size: inherit; /* Inherit from pre */
+    font-family: inherit; /* Inherit from pre */
 }
-body.dark-mode #post-content pre code { /* Ensure pre code text is also light in dark mode */
+body.dark-mode #post-content pre code {
     color: var(--dm-text-color-main);
 }
-
 #post-content blockquote {
     border-left: 4px solid var(--primary-accent-color);
     padding-left: 15px;
@@ -414,195 +425,176 @@ body.dark-mode #post-content blockquote {
     color: var(--dm-text-color-muted);
 }
 
-/* Social Share Buttons (Mostly for post.html) */
+/* Social Share Buttons */
 #social-share {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin: 2em 0; /* Adjusted margin */
+    padding: 1.5em 0; /* Adjusted padding */
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
-    text-align: center; /* Center the buttons */
+    text-align: center;
 }
 body.dark-mode #social-share {
     border-top-color: var(--dm-border-color);
     border-bottom-color: var(--dm-border-color);
 }
-
 #social-share h3 {
-    margin-bottom: 15px;
-    font-size: 1.2em;
+    margin-bottom: 1em; /* Adjusted */
+    font-size: 1.1rem; /* Adjusted */
 }
-
 .share-btn {
     display: inline-block;
-    margin: 8px;
-    padding: 12px 20px;
+    margin: 5px; /* Reduced margin */
+    padding: 10px 15px; /* Reduced padding */
     border-radius: 5px;
-    color: #fff !important; /* Ensure text is white */
+    color: #fff !important;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1em;
+    font-size: 0.9rem; /* Adjusted */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .share-btn:hover {
     opacity: 0.9;
-    text-decoration: none; /* Remove underline on hover for buttons */
+    text-decoration: none;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
-
-/* Using primary accent for all social buttons for consistency, or define specific colors */
 .share-btn.twitter { background-color: var(--primary-accent-color); }
 .share-btn.facebook { background-color: var(--primary-accent-color); opacity: 0.9; }
 .share-btn.linkedin { background-color: var(--primary-accent-color); opacity: 0.8; }
-body.dark-mode .share-btn {
-    background-color: var(--dm-primary-accent-color);
-}
-body.dark-mode .share-btn.facebook { opacity: 0.9; } /* Keep opacity variations if desired */
+body.dark-mode .share-btn { background-color: var(--dm-primary-accent-color); }
+body.dark-mode .share-btn.facebook { opacity: 0.9; }
 body.dark-mode .share-btn.linkedin { opacity: 0.8; }
 
-
-/* Comments Section (Mostly for post.html) */
-#comments {
-    margin-top: 30px;
-}
-#comments h2 {
-    margin-bottom: 20px;
-}
-
+/* Comments Section */
+#comments { margin-top: 2em; } /* Adjusted */
+#comments h2 { margin-bottom: 1em; /* Adjusted */ }
 
 /* Responsive Design - Media Queries */
-
 /* Tablet */
 @media (max-width: var(--breakpoint-tablet)) {
-    main {
-        width: 90%;
-        margin: 20px auto;
-        padding: 15px;
-    }
+    body { font-size: 15px; line-height: 1.55; } /* Adjust base font and line height for tablet */
 
-    h1 { font-size: 2.2em; }
-    h2 { font-size: 1.8em; }
+    header { padding: 0.8em 10px; }
+    header h1 { font-size: 1.6rem; }
+    header nav { margin-left: 0.5em; }
+    header nav a { font-size: 0.85rem; margin: 0 5px; }
+    #search-container { max-width: 280px; }
+    #search-input { font-size: 0.85rem; padding: 6px 10px; }
+    #theme-toggle { font-size: 1.15rem; padding: 4px 6px; }
 
-    .post-card-grid { /* Adjust grid for tablets if needed */
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
-    }
-    .post-card-title { font-size: 1.3em; }
-    .post-card-description { font-size: 0.9em; }
+    main { width: 95%; margin: 15px auto; padding: 15px; }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.4rem; }
+    #blog-posts h2 { font-size: 1.6rem; }
 
+    .post-card-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
+    .post-card-link { padding: 12px; }
+    .post-card-title { font-size: 1.15rem; }
+    .post-card-description { font-size: 0.85rem; }
+    .post-card-date { font-size: 0.75rem; }
 
-    .share-btn {
-        padding: 10px 15px;
-        font-size: 0.9em;
-    }
+    #post-content code, #post-content pre { font-size: 0.8em; }
+
+    .share-btn { padding: 8px 12px; font-size: 0.85rem; }
 }
 
 /* Mobile */
 @media (max-width: var(--breakpoint-mobile)) {
+    body { font-size: 14px; line-height: 1.5; } /* Further adjust for mobile */
+
     header {
-        padding: 1em 0;
+        padding: 0.75em 10px;
+        flex-direction: column; /* Stack header items */
+        align-items: flex-start; /* Align to left */
     }
     header h1 {
-        font-size: 1.8em;
+        font-size: 1.5rem;
+        text-align: left; /* Ensure it stays left when stacked */
+        margin-bottom: 0.5em; /* Space below title */
     }
-    header nav a {
-        margin: 0 5px;
-        font-size: 0.9em;
+    header nav {
+        margin-left: 0;
+        margin-bottom: 0.5em; /* Space below nav */
+        width: 100%; /* Full width for nav */
+        text-align: left;
+    }
+    header nav a { margin: 0 8px 0 0; } /* Adjust nav link margin */
+
+    #search-container {
+        max-width: 100%; /* Full width */
+        margin-bottom: 0.5em; /* Space below search */
+        order: initial; /* Let it flow naturally */
+    }
+     #theme-toggle {
+        position: absolute; /* Keep it top right for consistency */
+        top: 10px; /* Adjust positioning */
+        right: 10px;
     }
 
     main {
-        width: 100%; /* Full width on mobile */
-        margin: 15px 0;
-        padding: 10px; /* Adjust padding for screen edges */
+        width: 100%;
+        margin: 10px 0; /* Further reduce margin */
+        padding: 10px;
         border-radius: 0;
-        box-shadow: none; /* Remove shadow for a flatter mobile look */
+        box-shadow: none;
     }
-    #blog-posts h2 {
-        font-size: 1.8em; /* Adjust heading for mobile */
-    }
+    #blog-posts h2 { font-size: 1.5rem; }
 
-    .post-card-grid { /* Single column on mobile */
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    .post-card {
-        border-radius: 5px; /* Can keep some rounding or remove if preferred */
-    }
-    .post-card-title { font-size: 1.2em; }
-    .post-card-description { font-size: 0.85em; }
+    .post-card-grid { grid-template-columns: 1fr; gap: 12px; } /* Single column */
+    .post-card { border-radius: 5px; }
+    .post-card-title { font-size: 1.1rem; }
+    .post-card-description { font-size: 0.8rem; }
 
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+    #post-content code, #post-content pre { font-size: 0.75em; }
 
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.6em; }
-    h3 { font-size: 1.3em; }
-
-    .share-btn {
-        display: block; /* Stack buttons on mobile */
-        width: 80%;
-        margin: 10px auto; /* Center block buttons */
-    }
+    .share-btn { display: block; width: 100%; margin: 8px 0; } /* Full width, vertical stack */
+    #social-share h3 { font-size: 1rem; }
 }
-
-/*
-   Page Load Speed & Optimization Notes:
-   - For larger projects, consider minifying CSS to reduce its size. Tools like cssnano can automate this.
-   - Ensure images used in posts are optimized (compressed) without significant quality loss.
-   - Leverage browser caching. GitHub Pages (a common static hosting solution) sets appropriate
-     Cache-Control headers by default.
-   - Modern web servers (including GitHub Pages) often handle Gzip compression automatically for text-based
-     assets like HTML, CSS, and JS, which significantly reduces their transfer size.
-   - For this small project, these manual steps might be overkill, but they are crucial for larger applications.
-*/
 
 /* Ad Placeholder Styles - Modern & Clean */
 .ad-placeholder {
-  display: flex; /* For centering text and future content */
+  display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100px; /* Default minimum height */
-  margin: 30px auto; /* More vertical spacing */
+  min-height: 100px;
+  margin: 20px auto; /* Reduced margin */
   padding: 15px;
-  font-size: 0.95em;
-  color: #6c757d; /* Subtler text color */
+  font-size: 0.9em; /* Adjusted */
+  color: #6c757d;
   width: 100%;
   box-sizing: border-box;
-  background-color: #f8f9fa; /* Light, clean background */
-  border: 1px solid #dee2e6;    /* Clear but not harsh border */
-  border-radius: 4px; /* Slightly rounded corners for modern feel */
-  text-align: center; /* Ensure text is centered if flex properties are overridden */
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  text-align: center;
 }
-
 body.dark-mode .ad-placeholder {
-  background-color: #343a40; /* Darker, clean background */
+  background-color: #343a40;
   border-color: #495057;
   color: #adb5bd;
 }
-
-.ad-placeholder::before { /* Placeholder text content styling */
-  content: attr(data-comment); /* Display the comment as placeholder text */
+.ad-placeholder::before {
+  content: attr(data-comment);
   font-style: italic;
 }
-
-/* Specific types - can customize min-height or other properties here if needed */
-.ad-banner-top {
-  min-height: 90px; /* Standard banner height */
-}
-
-.ad-adsense-bottom {
-  min-height: 200px; /* Common for larger display ads */
-}
-
-.ad-adsense-in-article {
-  min-height: 150px; /* Flexible for in-article */
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-/* End of Ad Placeholder Styles */
+.ad-banner-top { min-height: 90px; }
+.ad-adsense-bottom { min-height: 200px; }
+.ad-adsense-in-article { min-height: 150px; margin-top: 15px; margin-bottom: 15px; }
 
 /* Dark Mode Text Selection Styles */
 body.dark-mode ::selection {
   background-color: var(--dm-primary-accent-color);
-  color: var(--dm-selection-text-color); /* Using a specific variable for selection text for clarity */
+  color: var(--dm-selection-text-color);
+}
+
+/* SVG Icon Styles for Theme Toggle Button */
+.theme-icon {
+  width: 1em; /* Scaled with button's font-size (which is 1.25rem) */
+  height: 1em; /* Scaled with button's font-size */
+  /* vertical-align: middle; /* Not strictly needed if button uses flex align */
+  /* fill="currentColor" is set in SVG, so it inherits button's color */
 }
