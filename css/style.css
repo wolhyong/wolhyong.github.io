@@ -3,17 +3,32 @@
 
 /* Basic Reset & Root Variables */
 :root {
-    --primary-color: #3498db; /* A modern blue */
-    --secondary-color: #2c3e50; /* Dark blue/charcoal for text */
-    --accent-color: #e74c3c; /* An accent color, e.g., for buttons or highlights */
-    --light-gray: #ecf0f1;
-    --background-color: #f7f9fa;
-    --text-color: #333;
+    /* Light Mode (Default) */
+    --primary-accent-color: #008080;  /* Teal - Chosen Accent */
+    --secondary-text-color: #2c3e50; /* Dark blue/charcoal for headings/strong text */
+    --body-background-color: #f7f9fa; /* Very light gray for page background */
+    --content-background-color: #ffffff; /* White for content boxes, cards */
+    --text-color-main: #333333;       /* Main body text */
+    --text-color-muted: #555555;      /* Muted text (e.g., meta, descriptions) */
+    --border-color: #dddddd;          /* Borders, dividers */
+    --light-gray-background: #ecf0f1; /* Background for code blocks, etc. */
+
+    /* Dark Mode Variables (will be applied via .dark-mode class) */
+    --dm-primary-accent-color: #14b8a6; /* Brighter Teal for dark mode */
+    --dm-secondary-text-color: #e5e7eb; /* Light gray for headings */
+    --dm-body-background-color: #1f2937; /* Dark blue-gray */
+    --dm-content-background-color: #374151; /* Medium blue-gray for content boxes */
+    --dm-text-color-main: #d1d5db;       /* Lighter gray for main text */
+    --dm-text-color-muted: #9ca3af;      /* Medium gray for muted text */
+    --dm-border-color: #4b5563;          /* Gray for borders */
+    --dm-light-gray-background: #4b5563; /* Darker gray for code blocks etc. */
+
     --heading-font: 'Montserrat', sans-serif;
     --body-font: 'Roboto', sans-serif;
     --container-width: 960px;
     --breakpoint-tablet: 768px;
     --breakpoint-mobile: 480px;
+    --progress-bar-height: 5px;
 }
 
 * {
@@ -25,19 +40,27 @@
 body {
     font-family: var(--body-font);
     line-height: 1.6;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--body-background-color);
+    color: var(--text-color-main);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease; /* For dark mode transition */
+}
+body.dark-mode {
+    background-color: var(--dm-body-background-color);
+    color: var(--dm-text-color-main);
 }
 
 /* Typography & General Styles */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
-    color: var(--secondary-color);
+    color: var(--secondary-text-color);
     margin-bottom: 0.75em;
     line-height: 1.2;
+}
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+    color: var(--dm-secondary-text-color);
 }
 
 h1 { font-size: 2.5em; }
@@ -49,8 +72,11 @@ p {
 }
 
 a {
-    color: var(--primary-color);
+    color: var(--primary-accent-color);
     text-decoration: none;
+}
+body.dark-mode a {
+    color: var(--dm-primary-accent-color);
 }
 
 a:hover {
@@ -65,29 +91,42 @@ img {
 
 /* Header */
 header {
-    background-color: var(--secondary-color);
-    color: #fff;
+    background-color: var(--secondary-text-color);
+    color: var(--content-background-color);
     padding: 1.5em 0;
     text-align: center;
     width: 100%;
 }
+body.dark-mode header {
+    background-color: var(--dm-content-background-color);
+    color: var(--dm-text-color-main);
+}
 
 header h1 {
-    color: #fff;
+    color: var(--content-background-color);
     margin: 0;
+}
+body.dark-mode header h1 {
+    color: var(--dm-secondary-text-color);
 }
 
 header nav {
     margin-top: 0.5em;
 }
 header nav a {
-    color: #fff;
+    color: var(--content-background-color);
     margin: 0 10px;
     font-weight: bold;
 }
+body.dark-mode header nav a {
+    color: var(--dm-text-color-muted);
+}
 header nav a:hover {
-    color: var(--primary-color);
+    color: var(--primary-accent-color);
     text-decoration: none;
+}
+body.dark-mode header nav a:hover {
+    color: var(--dm-primary-accent-color);
 }
 
 
@@ -97,59 +136,218 @@ main {
     max-width: var(--container-width);
     margin: 30px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--content-background-color);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     flex-grow: 1; /* Ensures main content takes available space, pushing footer down */
+}
+body.dark-mode main {
+    background-color: var(--dm-content-background-color);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2); /* Darker shadow for dark mode */
 }
 
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: var(--secondary-color);
-    color: var(--light-gray);
+    background-color: var(--secondary-text-color);
+    color: var(--light-gray-background);
     width: 100%;
     margin-top: auto; /* Pushes footer to the bottom */
 }
-
-/* Blog Post List (index.html) */
-#blog-posts #post-list {
-    list-style: none;
-    padding: 0;
+body.dark-mode footer {
+    background-color: var(--dm-content-background-color);
+    color: var(--dm-text-color-muted);
 }
 
-#blog-posts #post-list li {
-    background-color: #fff;
-    border: 1px solid var(--light-gray);
+/* Search Container & Input */
+#search-container {
+    margin: 10px auto; /* Center it in the header, adjust as needed */
+    max-width: 400px; /* Max width for the search bar */
+    padding: 0 15px; /* Padding if header becomes too narrow */
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 20px; /* Pill shape */
+    border: 1px solid var(--border-color);
+    background-color: var(--content-background-color);
+    color: var(--text-color-main);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#search-input:focus {
+    outline: none;
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color), 0.2); /* Using primary accent with alpha */
+}
+body.dark-mode #search-input {
+    background-color: var(--dm-content-background-color);
+    color: var(--dm-text-color-main);
+    border-color: var(--dm-border-color);
+}
+body.dark-mode #search-input:focus {
+    border-color: var(--dm-primary-accent-color);
+    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color), 0.2); /* Need to define dm-primary-accent-color with RGB for alpha */
+}
+
+/* No Results Message for Search */
+.no-results {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-color-muted);
+}
+body.dark-mode .no-results {
+    color: var(--dm-text-color-muted);
+}
+
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
+    border: 1px solid transparent; /* Transparent border initially */
+    color: var(--content-background-color); /* Light icon on dark header */
+    font-size: 1.5rem; /* Adjust size as needed */
+    cursor: pointer;
+    padding: 5px 10px;
     border-radius: 5px;
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    transition: box-shadow 0.3s ease;
+    position: absolute; /* Position within header */
+    top: 15px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+body.dark-mode #theme-toggle {
+    color: var(--dm-secondary-text-color); /* Darker icon on light header (in dark mode) */
+}
+#theme-toggle:hover {
+    border-color: var(--primary-accent-color); /* Accent color border on hover */
+}
+body.dark-mode #theme-toggle:hover {
+    border-color: var(--dm-primary-accent-color);
 }
 
-#blog-posts #post-list li:hover {
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+/* Reading Progress Bar (Mostly for post.html) */
+#progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--progress-bar-height);
+    background-color: transparent;
+    z-index: 1000; /* Ensure it's above other content */
 }
 
-#blog-posts #post-list li a {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--secondary-color);
+#progress-bar {
+    height: 100%;
+    background-color: var(--primary-accent-color);
+    width: 0%; /* Initial width */
+    transition: width 0.1s ease-out; /* Smooth transition for width changes */
+}
+body.dark-mode #progress-bar {
+    background-color: var(--dm-primary-accent-color);
+}
+
+/* Blog Post List (index.html) - TechGrid Modern Styling */
+#blog-posts h2 { /* Style for "Blog Posts" heading */
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 2em; /* Make it a bit more prominent */
+}
+
+.post-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 25px; /* Space between cards */
+    padding: 0;
+    list-style: none; /* Remove default list styling if ul/ol was used as container */
+}
+
+.post-card {
+    background-color: var(--content-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Slightly more rounded cards */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Allow link to fill card */
+    flex-direction: column;
+    overflow: hidden; /* Ensure content respects border radius */
+}
+body.dark-mode .post-card {
+    background-color: var(--dm-content-background-color);
+    border-color: var(--dm-border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Slightly more pronounced shadow for dark cards */
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+body.dark-mode .post-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.post-card-link {
     text-decoration: none;
-}
-#blog-posts #post-list li a:hover {
-    color: var(--primary-color);
-}
-
-#blog-posts #post-list li small {
-    display: block;
-    margin-top: 5px;
-    color: #777;
+    color: inherit; /* Inherit text color from .post-card */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Make link fill the card */
 }
 
+.post-card-title {
+    font-family: var(--heading-font);
+    font-size: 1.4em;
+    color: var(--secondary-text-color);
+    margin-bottom: 0.5em;
+}
+body.dark-mode .post-card-title {
+    color: var(--dm-secondary-text-color);
+}
+.post-card-link:hover .post-card-title {
+    color: var(--primary-accent-color);
+}
+body.dark-mode .post-card-link:hover .post-card-title {
+    color: var(--dm-primary-accent-color);
+}
 
-/* Individual Post Content (post.html) */
+.post-card-description {
+    font-size: 0.95em;
+    color: var(--text-color-muted);
+    margin-bottom: 1em;
+    flex-grow: 1; /* Pushes date to bottom */
+}
+body.dark-mode .post-card-description {
+    color: var(--dm-text-color-muted);
+}
+
+.post-card-date {
+    font-size: 0.85em;
+    color: var(--text-color-muted);
+    margin-top: auto; /* Pushes date to the bottom of the card content */
+    align-self: flex-start; /* Keep it at the start of its line */
+}
+body.dark-mode .post-card-date {
+    color: var(--dm-text-color-muted);
+}
+
+
+/* Individual Post Content (post.html) - DevRead Minimalist Focus */
+#post-meta-placeholder {
+    margin-bottom: 1.5em; /* Space below meta, before content */
+    font-size: 0.9em;
+    color: var(--text-color-muted);
+}
+body.dark-mode #post-meta-placeholder {
+    color: var(--dm-text-color-muted);
+}
+
+.reading-time {
+    margin: 0; /* Remove default p margin if it's inside a div */
+}
+
 #post-content {
     line-height: 1.7;
 }
@@ -169,42 +367,62 @@ footer {
 }
 
 #post-content code {
-    background-color: var(--light-gray);
+    background-color: var(--light-gray-background);
     padding: 2px 5px;
     border-radius: 4px;
-    font-family: monospace;
+    font-family: 'Fira Code', monospace; /* Consistent monospace font */
+}
+body.dark-mode #post-content code {
+    background-color: var(--dm-light-gray-background);
+    color: var(--dm-text-color-main); /* Ensure code text is also light in dark mode */
 }
 
 #post-content pre {
-    background-color: var(--light-gray);
+    background-color: var(--light-gray-background);
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto; /* For horizontal scroll on long code blocks */
     margin-bottom: 1em;
+    font-family: 'Fira Code', monospace; /* Consistent monospace font */
+}
+body.dark-mode #post-content pre {
+    background-color: var(--dm-light-gray-background);
 }
 
 #post-content pre code {
     background-color: transparent;
     padding: 0;
+    font-family: 'Fira Code', monospace; /* Ensure pre code also uses Fira Code */
+}
+body.dark-mode #post-content pre code { /* Ensure pre code text is also light in dark mode */
+    color: var(--dm-text-color-main);
 }
 
 #post-content blockquote {
-    border-left: 4px solid var(--primary-color);
+    border-left: 4px solid var(--primary-accent-color);
     padding-left: 15px;
     margin: 1em 0;
     font-style: italic;
-    color: #555;
+    color: var(--text-color-muted);
+}
+body.dark-mode #post-content blockquote {
+    border-left-color: var(--dm-primary-accent-color);
+    color: var(--dm-text-color-muted);
 }
 
-/* Social Share Buttons */
+/* Social Share Buttons (Mostly for post.html) */
 #social-share {
     margin-top: 30px;
     margin-bottom: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
-    border-top: 1px solid var(--light-gray);
-    border-bottom: 1px solid var(--light-gray);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     text-align: center; /* Center the buttons */
+}
+body.dark-mode #social-share {
+    border-top-color: var(--dm-border-color);
+    border-bottom-color: var(--dm-border-color);
 }
 
 #social-share h3 {
@@ -230,11 +448,18 @@ footer {
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.share-btn.twitter { background-color: #1DA1F2; }
-.share-btn.facebook { background-color: #1877F2; }
-.share-btn.linkedin { background-color: #0A66C2; }
+/* Using primary accent for all social buttons for consistency, or define specific colors */
+.share-btn.twitter { background-color: var(--primary-accent-color); }
+.share-btn.facebook { background-color: var(--primary-accent-color); opacity: 0.9; }
+.share-btn.linkedin { background-color: var(--primary-accent-color); opacity: 0.8; }
+body.dark-mode .share-btn {
+    background-color: var(--dm-primary-accent-color);
+}
+body.dark-mode .share-btn.facebook { opacity: 0.9; } /* Keep opacity variations if desired */
+body.dark-mode .share-btn.linkedin { opacity: 0.8; }
 
-/* Comments Section */
+
+/* Comments Section (Mostly for post.html) */
 #comments {
     margin-top: 30px;
 }
@@ -256,6 +481,14 @@ footer {
     h1 { font-size: 2.2em; }
     h2 { font-size: 1.8em; }
 
+    .post-card-grid { /* Adjust grid for tablets if needed */
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .post-card-title { font-size: 1.3em; }
+    .post-card-description { font-size: 0.9em; }
+
+
     .share-btn {
         padding: 10px 15px;
         font-size: 0.9em;
@@ -276,22 +509,30 @@ footer {
     }
 
     main {
-        width: 95%;
-        margin: 15px auto;
-        padding: 10px;
-        border-radius: 0; /* Full width feel on small screens */
+        width: 100%; /* Full width on mobile */
+        margin: 15px 0;
+        padding: 10px; /* Adjust padding for screen edges */
+        border-radius: 0;
+        box-shadow: none; /* Remove shadow for a flatter mobile look */
     }
+    #blog-posts h2 {
+        font-size: 1.8em; /* Adjust heading for mobile */
+    }
+
+    .post-card-grid { /* Single column on mobile */
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .post-card {
+        border-radius: 5px; /* Can keep some rounding or remove if preferred */
+    }
+    .post-card-title { font-size: 1.2em; }
+    .post-card-description { font-size: 0.85em; }
+
 
     h1 { font-size: 2em; }
     h2 { font-size: 1.6em; }
     h3 { font-size: 1.3em; }
-
-    #blog-posts #post-list li {
-        padding: 10px 15px;
-    }
-    #blog-posts #post-list li a {
-        font-size: 1.1em;
-    }
 
     .share-btn {
         display: block; /* Stack buttons on mobile */
@@ -300,13 +541,58 @@ footer {
     }
 }
 
-/* 
+/*
    Page Load Speed & Optimization Notes:
    - For larger projects, consider minifying CSS to reduce its size. Tools like cssnano can automate this.
    - Ensure images used in posts are optimized (compressed) without significant quality loss.
-   - Leverage browser caching. GitHub Pages (a common static hosting solution) sets appropriate 
+   - Leverage browser caching. GitHub Pages (a common static hosting solution) sets appropriate
      Cache-Control headers by default.
-   - Modern web servers (including GitHub Pages) often handle Gzip compression automatically for text-based 
+   - Modern web servers (including GitHub Pages) often handle Gzip compression automatically for text-based
      assets like HTML, CSS, and JS, which significantly reduces their transfer size.
    - For this small project, these manual steps might be overkill, but they are crucial for larger applications.
 */
+
+/* Ad Placeholder Styles - Modern & Clean */
+.ad-placeholder {
+  display: flex; /* For centering text and future content */
+  align-items: center;
+  justify-content: center;
+  min-height: 100px; /* Default minimum height */
+  margin: 30px auto; /* More vertical spacing */
+  padding: 15px;
+  font-size: 0.95em;
+  color: #6c757d; /* Subtler text color */
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f8f9fa; /* Light, clean background */
+  border: 1px solid #dee2e6;    /* Clear but not harsh border */
+  border-radius: 4px; /* Slightly rounded corners for modern feel */
+  text-align: center; /* Ensure text is centered if flex properties are overridden */
+}
+
+body.dark-mode .ad-placeholder {
+  background-color: #343a40; /* Darker, clean background */
+  border-color: #495057;
+  color: #adb5bd;
+}
+
+.ad-placeholder::before { /* Placeholder text content styling */
+  content: attr(data-comment); /* Display the comment as placeholder text */
+  font-style: italic;
+}
+
+/* Specific types - can customize min-height or other properties here if needed */
+.ad-banner-top {
+  min-height: 90px; /* Standard banner height */
+}
+
+.ad-adsense-bottom {
+  min-height: 200px; /* Common for larger display ads */
+}
+
+.ad-adsense-in-article {
+  min-height: 150px; /* Flexible for in-article */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/* End of Ad Placeholder Styles */
