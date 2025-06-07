@@ -57,7 +57,7 @@ async function fetchPostsAndEnableSearch() {
             searchInput.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 const filteredPosts = allPostsData.filter(post =>
-                    post.title.toLowerCase().includes(searchTerm) ||
+                    (post.title && post.title.toLowerCase().includes(searchTerm)) ||
                     (post.description && post.description.toLowerCase().includes(searchTerm))
                 );
                 renderPosts(filteredPosts, searchTerm);

@@ -5,6 +5,7 @@
 :root {
     /* Light Mode (Default) */
     --primary-accent-color: #008080;  /* Teal - Chosen Accent */
+    --primary-accent-color-rgb: 0, 128, 128; /* RGB for Teal */
     --secondary-text-color: #2c3e50; /* Dark blue/charcoal for headings/strong text */
     --body-background-color: #f7f9fa; /* Very light gray for page background */
     --content-background-color: #ffffff; /* White for content boxes, cards */
@@ -15,6 +16,7 @@
 
     /* Dark Mode Variables (will be applied via .dark-mode class) */
     --dm-primary-accent-color: #14b8a6; /* Brighter Teal for dark mode */
+    --dm-primary-accent-color-rgb: 20, 184, 166; /* RGB for Brighter Teal */
     --dm-secondary-text-color: #e5e7eb; /* Light gray for headings */
     --dm-body-background-color: #1f2937; /* Dark blue-gray */
     --dm-content-background-color: #374151; /* Medium blue-gray for content boxes */
@@ -22,6 +24,8 @@
     --dm-text-color-muted: #9ca3af;      /* Medium gray for muted text */
     --dm-border-color: #4b5563;          /* Gray for borders */
     --dm-light-gray-background: #4b5563; /* Darker gray for code blocks etc. */
+    --dm-selection-text-color: #ffffff; /* White text on dark accent selection */
+
 
     --heading-font: 'Montserrat', sans-serif;
     --body-font: 'Roboto', sans-serif;
@@ -180,7 +184,7 @@ body.dark-mode footer {
 #search-input:focus {
     outline: none;
     border-color: var(--primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color), 0.2); /* Using primary accent with alpha */
+    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2); /* Updated */
 }
 body.dark-mode #search-input {
     background-color: var(--dm-content-background-color);
@@ -189,7 +193,7 @@ body.dark-mode #search-input {
 }
 body.dark-mode #search-input:focus {
     border-color: var(--dm-primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color), 0.2); /* Need to define dm-primary-accent-color with RGB for alpha */
+    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color-rgb), 0.2); /* Updated */
 }
 
 /* No Results Message for Search */
@@ -596,3 +600,9 @@ body.dark-mode .ad-placeholder {
   margin-bottom: 20px;
 }
 /* End of Ad Placeholder Styles */
+
+/* Dark Mode Text Selection Styles */
+body.dark-mode ::selection {
+  background-color: var(--dm-primary-accent-color);
+  color: var(--dm-selection-text-color); /* Using a specific variable for selection text for clarity */
+}
