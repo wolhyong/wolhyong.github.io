@@ -255,10 +255,10 @@ body.dark-mode #theme-toggle:hover {
 }
 
 .theme-icon { /* Style for the SVG icons */
-  width: 1em; /* Scaled with button's font-size */
-  height: 1em; /* Scaled with button's font-size */
-  vertical-align: middle; /* Or use flex alignment on parent */
-  /* fill="currentColor" is set in SVG, so it inherits button's color */
+  width: 1.2em; /* Slightly larger, scaled with button's font-size */
+  height: 1.2em; /* Slightly larger, scaled with button's font-size */
+  /* vertical-align: middle; /* Not strictly needed if button uses flex align */
+  /* fill attribute is now hardcoded in the SVG strings in js/script.js */
 }
 
 

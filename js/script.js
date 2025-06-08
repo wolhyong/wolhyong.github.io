@@ -1,9 +1,9 @@
 // Main JavaScript for the blog
 console.log("JavaScript file loaded");
 
-// SVG Icons for Theme Toggle
-const sunIconSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="theme-icon"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM12 17.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM5.26 5.26a.75.75 0 011.06-1.06l1.591 1.591a.75.75 0 11-1.06 1.06L5.26 5.26zm11.98 11.98a.75.75 0 011.06-1.06l1.591 1.591a.75.75 0 11-1.06 1.06l-1.591-1.591zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM4.25 12a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5H3.5a.75.75 0 01.75.75zM17.24 6.7a.75.75 0 01-1.06-1.06l-1.591 1.591a.75.75 0 11-1.06-1.061l1.591-1.591a.75.75 0 011.06 1.061zM6.7 17.24a.75.75 0 01-1.06-1.06l-1.591 1.591a.75.75 0 01-1.06-1.06l1.591-1.591a.75.75 0 011.06 1.06z"/></svg>';
-const moonIconSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="theme-icon"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6.75a8.969 8.969 0 008.968 8.968 8.97 8.97 0 005.231-.69a.75.75 0 01.82.162.75.75 0 01.161.819A10.47 10.47 0 0118 18.75a10.473 10.473 0 01-10.473-10.473A10.47 10.47 0 015.23 7.522a.75.75 0 01.162-.82z" clip-rule="evenodd"/></svg>';
+// SVG Icons for Theme Toggle with hardcoded colors
+const sunIconSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon" fill="#FFD700"><path d="M12 17.25a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3a.75.75 0 01.75-.75zM12 3.75a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3A.75.75 0 0112 3.75zM5.096 6.562a.75.75 0 011.061 0l2.121 2.121a.75.75 0 01-1.06 1.061L5.096 7.622a.75.75 0 010-1.06zm11.787 9.799a.75.75 0 011.06 0l2.122 2.121a.75.75 0 01-1.06 1.06l-2.121-2.12a.75.75 0 010-1.061zM20.25 12a.75.75 0 01-.75.75h-3a.75.75 0 010-1.5h3a.75.75 0 01.75.75zM3.75 12a.75.75 0 01.75-.75h3a.75.75 0 010 1.5h-3A.75.75 0 013.75 12zM6.157 17.843a.75.75 0 010-1.06l2.121-2.122a.75.75 0 011.06 1.06l-2.121 2.122a.75.75 0 01-1.06 0zm10.626-11.787a.75.75 0 010-1.06l2.121-2.121a.75.75 0 011.061 1.06l-2.121 2.121a.75.75 0 01-1.06 0zM12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z"/></svg>';
+const moonIconSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon" fill="#8A2BE2"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6.75a8.969 8.969 0 008.968 8.968 8.97 8.97 0 005.231-.69a.75.75 0 01.82.162.75.75 0 01.161.819A10.473 10.473 0 0118 18.75a10.473 10.473 0 01-10.473-10.473A10.47 10.47 0 015.231 7.522a.75.75 0 01.162-.82zM16.5 9.75a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0V10.5a.75.75 0 01.75-.75z" clip-rule="evenodd"/></svg>';
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('post-list')) { // This implies we are on index.html
@@ -380,12 +380,11 @@ async function generateRssFeed() {
 
         posts.forEach(post => {
             const postUrl = `${YOUR_BLOG_BASE_URL}/post.html?post=${post.file}`;
-            // Ensure datePublished exists, otherwise use 'date' or skip pubDate
             let pubDate = '';
             if (post.datePublished) {
                 pubDate = `<pubDate>${new Date(post.datePublished).toUTCString()}</pubDate>\n`;
             } else if (post.date) {
-                 pubDate = `<pubDate>${new Date(post.date).toUTCString()}</pubDate>\n`; // Fallback to 'date'
+                 pubDate = `<pubDate>${new Date(post.date).toUTCString()}</pubDate>\n`;
             }
 
             rssXml += `    <item>\n`;
