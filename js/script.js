@@ -1,7 +1,7 @@
 // Main JavaScript for the blog
 console.log("JavaScript file loaded");
 
-// SVG Icon definitions are removed as icons will be handled by CSS classes
+// SVG Icon definitions are removed as icons will be handled by CSS classes or <use> tags.
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('post-list')) { // This implies we are on index.html
@@ -23,20 +23,22 @@ const themeToggleButton = document.getElementById('theme-toggle');
 
 function applyTheme(theme) {
     if (themeToggleButton) { // Ensure button exists
+        let newIconHTML = '';
         if (theme === 'dark') {
             document.body.classList.add('dark-mode');
-            themeToggleButton.classList.add('show-sun-icon');
-            themeToggleButton.classList.remove('show-moon-icon');
+            // Button shows sun icon, allowing switch to light mode
+            newIconHTML = '<svg class="theme-icon theme-icon-sun" viewBox="0 0 16 16"><use xlink:href="#sun-fill"></use></svg>';
             themeToggleButton.setAttribute('aria-label', 'Switch to light mode');
         } else {
             document.body.classList.remove('dark-mode');
-            themeToggleButton.classList.add('show-moon-icon');
-            themeToggleButton.classList.remove('show-sun-icon');
+            // Button shows moon icon, allowing switch to dark mode
+            newIconHTML = '<svg class="theme-icon theme-icon-moon" viewBox="0 0 16 16"><use xlink:href="#moon-fill"></use></svg>';
             themeToggleButton.setAttribute('aria-label', 'Switch to dark mode');
         }
+        themeToggleButton.innerHTML = newIconHTML;
     } else if (theme === 'dark') { // Fallback if button not found on a page but theme is dark
         document.body.classList.add('dark-mode');
-    } else {
+    } else { // Fallback for light theme if button not found
         document.body.classList.remove('dark-mode');
     }
 }
@@ -418,6 +420,44 @@ async function generateRssFeed() {
     console.log(rssXml);
     alert("RSS feed XML generated! Check the browser console (F12) for the XML content. Copy this content and paste it into a new file named 'rss.xml' in the root of your project.");
 }
+
+// --- Bootstrap Icons SVG Sprite Loader ---
+function loadBootstrapIconsSprite() {
+  const spriteUrl = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/bootstrap-icons.svg';
+  if (document.getElementById('bootstrap-icons-sprite-container')) {
+    return; // Sprite already loaded or loading
+  }
+
+  const spriteContainer = document.createElement('div');
+  spriteContainer.id = 'bootstrap-icons-sprite-container';
+  spriteContainer.style.display = 'none'; // Make it invisible
+
+  document.body.insertBefore(spriteContainer, document.body.firstChild);
+
+  fetch(spriteUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok for Bootstrap Icons sprite.');
+      }
+      return response.text();
+    })
+    .then(svgData => {
+      spriteContainer.innerHTML = svgData;
+    })
+    .catch(error => {
+      console.error('Error loading Bootstrap Icons sprite:', error);
+      if (spriteContainer.parentNode) {
+        spriteContainer.parentNode.removeChild(spriteContainer);
+      }
+    });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadBootstrapIconsSprite);
+} else {
+  loadBootstrapIconsSprite();
+}
+
 /*
    General Notes & Todos:
    - Reading progress bar calculation could be further refined for edge cases or complex layouts.
