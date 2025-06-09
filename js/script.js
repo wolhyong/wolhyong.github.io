@@ -1,9 +1,7 @@
 // Main JavaScript for the blog
 console.log("JavaScript file loaded");
 
-// SVG Icons for Theme Toggle with hardcoded colors
-const sunIconSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon" fill="#FFD700"><path d="M12 17.25a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3a.75.75 0 01.75-.75zM12 3.75a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3A.75.75 0 0112 3.75zM5.096 6.562a.75.75 0 011.061 0l2.121 2.121a.75.75 0 01-1.06 1.061L5.096 7.622a.75.75 0 010-1.06zm11.787 9.799a.75.75 0 011.06 0l2.122 2.121a.75.75 0 01-1.06 1.06l-2.121-2.12a.75.75 0 010-1.061zM20.25 12a.75.75 0 01-.75.75h-3a.75.75 0 010-1.5h3a.75.75 0 01.75.75zM3.75 12a.75.75 0 01.75-.75h3a.75.75 0 010 1.5h-3A.75.75 0 013.75 12zM6.157 17.843a.75.75 0 010-1.06l2.121-2.122a.75.75 0 011.06 1.06l-2.121 2.122a.75.75 0 01-1.06 0zm10.626-11.787a.75.75 0 010-1.06l2.121-2.121a.75.75 0 011.061 1.06l-2.121 2.121a.75.75 0 01-1.06 0zM12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z"/></svg>';
-const moonIconSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon" fill="#8A2BE2"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6.75a8.969 8.969 0 008.968 8.968 8.97 8.97 0 005.231-.69a.75.75 0 01.82.162.75.75 0 01.161.819A10.473 10.473 0 0118 18.75a10.473 10.473 0 01-10.473-10.473A10.47 10.47 0 015.231 7.522a.75.75 0 01.162-.82zM16.5 9.75a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0V10.5a.75.75 0 01.75-.75z" clip-rule="evenodd"/></svg>';
+// SVG Icon definitions are removed as icons will be handled by CSS classes
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('post-list')) { // This implies we are on index.html
@@ -24,12 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
 const themeToggleButton = document.getElementById('theme-toggle');
 
 function applyTheme(theme) {
-    if (theme === 'dark') {
+    if (themeToggleButton) { // Ensure button exists
+        if (theme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggleButton.classList.add('show-sun-icon');
+            themeToggleButton.classList.remove('show-moon-icon');
+            themeToggleButton.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+            themeToggleButton.classList.add('show-moon-icon');
+            themeToggleButton.classList.remove('show-sun-icon');
+            themeToggleButton.setAttribute('aria-label', 'Switch to dark mode');
+        }
+    } else if (theme === 'dark') { // Fallback if button not found on a page but theme is dark
         document.body.classList.add('dark-mode');
-        if(themeToggleButton) themeToggleButton.innerHTML = sunIconSVG;
     } else {
         document.body.classList.remove('dark-mode');
-        if(themeToggleButton) themeToggleButton.innerHTML = moonIconSVG;
     }
 }
 
@@ -257,7 +265,7 @@ function addBlogPostingSchema(postData) {
         "datePublished": postData.datePublished,
         "dateModified": postData.lastModified || postData.datePublished,
         "mainEntityOfPage": {"@type": "WebPage", "@id": postUrl},
-        "author": {"@type": "Person", "name": "The Blog Author"}, // Replace or make dynamic
+        "author": {"@type": "Person", "name": "The Blog Author"},
     };
     let scriptTag = document.querySelector('script[type="application/ld+json"]');
     if (!scriptTag) {
@@ -315,7 +323,6 @@ function updateReadingProgressBar() {
     progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercentage))}%`;
 }
 
-// Function to generate sitemap.xml content (intended for manual use via console)
 async function generateSitemap() {
     console.log("Attempting to generate sitemap...");
     const YOUR_BLOG_BASE_URL = prompt("Please enter your blog's base URL (e.g., https://yourusername.github.io/your-repo-name):", "YOUR_BLOG_BASE_URL_HERE");
@@ -360,8 +367,8 @@ async function generateRssFeed() {
         return;
     }
 
-    const blogTitle = "My Coding Blog"; // Or fetch dynamically if stored elsewhere
-    const blogDescription = "A blog about software development, coding tips, programming tutorials, and technology insights."; // Or fetch dynamically
+    const blogTitle = "My Coding Blog";
+    const blogDescription = "A blog about software development, coding tips, programming tutorials, and technology insights.";
 
     let rssXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
     rssXml += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
@@ -369,7 +376,7 @@ async function generateRssFeed() {
     rssXml += `    <title><![CDATA[${blogTitle}]]></title>\n`;
     rssXml += `    <link>${YOUR_BLOG_BASE_URL}</link>\n`;
     rssXml += `    <description><![CDATA[${blogDescription}]]></description>\n`;
-    rssXml += `    <language>en-us</language>\n`; // Assuming English, change if needed
+    rssXml += `    <language>en-us</language>\n`;
     rssXml += `    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n`;
     rssXml += `    <atom:link href="${YOUR_BLOG_BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />\n`;
 
@@ -411,10 +418,8 @@ async function generateRssFeed() {
     console.log(rssXml);
     alert("RSS feed XML generated! Check the browser console (F12) for the XML content. Copy this content and paste it into a new file named 'rss.xml' in the root of your project.");
 }
-
 /*
    General Notes & Todos:
-   - Consider HTML sanitization for markdown-rendered content if user-generated MD is ever a possibility.
    - Reading progress bar calculation could be further refined for edge cases or complex layouts.
    - Sitemap and RSS generation are manual; for automation, a build script or server-side logic would be needed.
    - Blog title and description for RSS feed are currently hardcoded in generateRssFeed function.
