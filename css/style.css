@@ -118,7 +118,7 @@ body.dark-mode footer {
 
 /* Toggleable Search UI */
 #search-container {
-    position: relative; /* For positioning the input field absolutely */
+    position: relative;
     width: auto;
 }
 
@@ -131,41 +131,36 @@ body.dark-mode footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem; /* Base for em sizing of SVG if needed, though SVG has fixed viewBox */
+    font-size: 1.25rem; /* Updated to match #theme-toggle */
 }
 body.dark-mode #search-toggle-btn {
     color: var(--dm-header-text-color);
 }
-/* SVG icon within search toggle button uses .theme-icon for sizing, fill="currentColor" in SVG */
-#search-toggle-btn .theme-icon {
-    /* Size is controlled by .theme-icon, color by button's color via currentColor in SVG */
-}
-
 
 .search-input-field {
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--border-color);
-    border-radius: 20px; /* Match original #search-input */
+    border-radius: 20px;
     position: absolute;
     right: 0;
-    top: calc(100% + 0.5rem); /* Position below the button with a small gap */
-    width: 250px; /* Default width, can be adjusted */
+    top: calc(100% + 0.5rem);
+    width: 250px;
     background-color: var(--card-background-color);
     color: var(--text-color-main);
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
-    transform: translateY(-10px); /* Start slightly up for transition */
+    transform: translateY(-10px);
     visibility: hidden;
     opacity: 0;
 }
-.search-input-field:not(.search-input-hidden) { /* Styles when input is visible */
+.search-input-field:not(.search-input-hidden) {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
 }
-.search-input-hidden { /* Explicitly hide (JS will toggle this class) */
-    display: none !important; /* Use display:none if not transitioning, otherwise handled by opacity/visibility */
+.search-input-hidden {
+    display: none !important;
 }
 
 body.dark-mode .search-input-field {
@@ -175,20 +170,16 @@ body.dark-mode .search-input-field {
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
-
-/* Original #search-input is now .search-input-field */
-#search-input:focus { /* This will apply to .search-input-field#search-input:focus */
+#search-input:focus {
     outline: none;
     border-color: var(--primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2); /* Keep existing focus style */
+    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2);
 }
 body.dark-mode #search-input:focus {
     border-color: var(--dm-primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color-rgb), 0.2); /* Keep existing focus style */
+    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color-rgb), 0.2);
 }
 
-
-/* No Results Message for Search */
 .no-results { text-align: center; padding: 20px; color: var(--text-color-muted); }
 body.dark-mode .no-results { color: var(--dm-text-color-muted); }
 
@@ -202,9 +193,18 @@ body.dark-mode .no-results { color: var(--dm-text-color-muted); }
 #theme-toggle:hover { border-color: var(--primary-accent-color); }
 body.dark-mode #theme-toggle:hover { border-color: var(--dm-primary-accent-color); }
 
-.theme-icon { width: 1.2em; height: 1.2em; }
+/* General style for icons used in buttons (theme toggle, search toggle) */
+.theme-icon {
+    width: 1.2em;
+    height: 1.2em;
+    fill: currentColor; /* Default fill strategy, overridden by specific color classes if needed */
+}
+/* Specific colors for theme toggle icons (sun/moon) */
 .theme-icon-sun { fill: #FFD700; }
 .theme-icon-moon { fill: #8A2BE2; }
+/* The search icon SVG in HTML has class="theme-icon" and no specific color class,
+   so it will use fill: currentColor from .theme-icon, inheriting color from #search-toggle-btn */
+
 
 /* Reading Progress Bar */
 #progress-bar-container {
@@ -332,21 +332,18 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
     .header-controls { flex-basis: 100%; order: 2; justify-content: space-around; }
     .header-controls nav { margin: 0; }
     .header-controls nav a { font-size: 0.85rem; margin: 0 0.5rem; }
-    /* #search-container { max-width: 220px; margin:0; } Adjusted below */
-    #theme-toggle { font-size: 1.15rem; padding: 4px 6px; margin-left: 0.5rem; }
+    #search-toggle-btn { font-size: 1.15rem; /* Adjust if needed for tablet */ }
+    #theme-toggle { font-size: 1.15rem; padding: 4px 6px; /* margin-left: 0.5rem; /* Adjusted by gap */ }
 
     .search-input-field {
-        /* On tablet, might want it wider or positioned differently, e.g. below header */
-        width: 100%; /* Full width of header-controls */
-        top: calc(100% + 0.5rem); /* Below the entire header controls area */
+        width: 100%;
+        top: calc(100% + 0.5rem);
         left:0; right:0; margin-left:auto; margin-right:auto;
-        max-width: 300px; /* Limit max width */
+        max-width: 300px;
     }
-     #search-container { /* Ensure it allows input to be wider */
+     #search-container {
         max-width: none;
-        /* flex-grow: 1; /* If it should take more space in header-controls */
     }
-
 
     main { width: 95%; margin: 15px auto; padding: 15px; }
     h1 { font-size: 2.2rem; } h2 { font-size: 1.8rem; } h3 { font-size: 1.4rem; }
@@ -362,26 +359,19 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
 
 @media (max-width: var(--breakpoint-mobile)) { /* 500px */
     body { font-size: 14px; line-height: 1.5; }
-    .main-header { padding: 0.75em 10px; flex-direction: column; align-items: center; }
+    .main-header { padding: 0.75em 10px; flex-direction: column; align-items: center; position: relative; }
     .site-title-container { order: 1; text-align: center; width: auto; margin-bottom: 0.5em; }
     .site-title-link h1 { font-size: 1.5rem; }
-    .header-controls { order: 2; flex-direction: row; /* Keep controls in a row */ align-items: center; width: 100%; justify-content: space-between; }
-    .header-controls nav { margin-bottom: 0; /* Removed bottom margin if in row */ }
-    #search-container { max-width: initial; margin-bottom: 0; flex-grow:1; /* Allow search container to grow */ }
-    #search-toggle-btn { padding: 0.3rem; }
-    #theme-toggle { position: static; /* No longer absolute */ font-size: 1.2rem; }
+    .header-controls { order: 2; flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
+    .header-controls nav { margin-bottom: 0; }
+    #search-container { max-width: initial; margin-bottom: 0; flex-grow:1; }
+    #search-toggle-btn { padding: 0.3rem; font-size: 1.25rem; /* Keep consistent with theme-toggle for mobile */ }
+    #theme-toggle { position: static; font-size: 1.25rem; /* Match search toggle for consistency */ }
 
     .search-input-field {
-        /* Full width just below header, centered */
-        width: 90%;
-        left: 5%;
-        right: 5%;
-        top: calc(100% + 5px); /* Below the entire .main-header */
-        /* Ensure it's relative to .main-header if .main-header is not static */
-        /* If .main-header is static, this top might need to be relative to viewport or a wrapper */
+        width: 90%; left: 5%; right: 5%;
+        top: calc(100% + 5px);
     }
-    .main-header { position: relative; /* For absolute positioning of search input on mobile */ }
-
 
     main { width: 100%; margin: 10px 0; padding: 10px; border-radius: 0; box-shadow: none; }
     #blog-posts h2 { font-size: 1.5rem; }
