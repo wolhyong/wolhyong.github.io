@@ -14,6 +14,7 @@
     --border-color: #dddddd;          /* Borders, dividers */
     --light-gray-background: #ecf0f1; /* Background for code blocks, etc. */
     --header-text-color: #ffffff; /* Text color for header elements */
+    --card-background-color: var(--content-background-color); /* For search input bg */
 
 
     /* Dark Mode Variables (will be applied via .dark-mode class) */
@@ -28,29 +29,25 @@
     --dm-light-gray-background: #4b5563; /* Darker gray for code blocks etc. */
     --dm-selection-text-color: #ffffff; /* White text on dark accent selection */
     --dm-header-text-color: var(--dm-secondary-text-color);
+    --dm-card-background-color: var(--dm-content-background-color); /* For search input bg in dark */
 
 
     --heading-font: 'Montserrat', sans-serif;
     --body-font: 'Roboto', sans-serif;
     --container-width: 960px;
     --breakpoint-tablet: 768px;
-    --breakpoint-mobile: 500px; /* Adjusted for header flex behavior */
+    --breakpoint-mobile: 500px;
     --progress-bar-height: 5px;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: var(--body-font);
     line-height: 1.6;
     background-color: var(--body-background-color);
     color: var(--text-color-main);
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
     min-height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
     font-size: 16px;
@@ -64,17 +61,13 @@ body.dark-mode {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
     color: var(--secondary-text-color);
-    margin-bottom: 0.75em;
-    line-height: 1.2;
+    margin-bottom: 0.75em; line-height: 1.2;
 }
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
     color: var(--dm-secondary-text-color);
 }
-
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+h1 { font-size: 2.5rem; } h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; } h4 { font-size: 1.25rem; }
 
 p { margin-bottom: 1em; }
 a { color: var(--primary-accent-color); text-decoration: none; }
@@ -83,178 +76,133 @@ a:hover { text-decoration: underline; }
 img { max-width: 100%; height: auto; display: block; border-radius: 4px; }
 
 /* Header */
-.main-header { /* Changed from 'header' to '.main-header' */
+.main-header {
     background-color: var(--secondary-text-color);
-    padding: 0.75rem 1rem; /* Adjusted padding */
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 60px; /* Ensure a minimum height */
+    padding: 0.75rem 1rem;
+    width: 100%; display: flex;
+    justify-content: space-between; align-items: center;
+    min-height: 60px;
 }
-body.dark-mode .main-header {
-    background-color: var(--dm-content-background-color);
-}
-
-.header-left-placeholder {
-  flex: 1;
-  /* background-color: rgba(255,0,0,0.1); /* For debugging layout */
-}
-
-.site-title-container {
-  flex: 2; /* Adjust as needed, might not need to be this large if placeholder and controls have content */
-  text-align: center;
-  /* background-color: rgba(0,255,0,0.1); /* For debugging layout */
-}
-
-.site-title-link {
-  text-decoration: none;
-  color: var(--header-text-color); /* Use specific header text color */
-}
-body.dark-mode .site-title-link {
-  color: var(--dm-header-text-color);
-}
-
-.site-title-link h1 { /* If h1 is child of link */
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: inherit; /* Inherit color from .site-title-link */
-}
-/* Fallback if <h1> is the link itself (not current structure but good practice) */
-h1.site-title-link {
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: var(--header-text-color);
-}
-body.dark-mode h1.site-title-link {
-  color: var(--dm-header-text-color);
-}
-
-
-.header-controls {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.5rem; /* Space between items in controls block */
-  /* background-color: rgba(0,0,255,0.1); /* For debugging layout */
-}
-
-.header-controls nav {
-    /* margin: 0.5em 0 0.5em 1em; Removed, handled by gap in .header-controls */
-}
-.header-controls nav a {
-    color: var(--header-text-color);
-    margin: 0 0.5rem; /* Adjusted margin */
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-body.dark-mode .header-controls nav a {
-    color: var(--dm-header-text-color); /* Use main dark header text color */
-}
-.header-controls nav a:hover {
-    color: var(--primary-accent-color); /* Or a lighter variant of header text */
-    text-decoration: none;
-}
-body.dark-mode .header-controls nav a:hover {
-    color: var(--dm-primary-accent-color);
-}
-
+body.dark-mode .main-header { background-color: var(--dm-content-background-color); }
+.header-left-placeholder { flex: 1; }
+.site-title-container { flex: 2; text-align: center; }
+.site-title-link { text-decoration: none; color: var(--header-text-color); }
+body.dark-mode .site-title-link { color: var(--dm-header-text-color); }
+.site-title-link h1 { margin: 0; font-size: 1.8rem; font-weight: bold; color: inherit; }
+h1.site-title-link { margin: 0; font-size: 1.8rem; font-weight: bold; text-decoration: none; color: var(--header-text-color); }
+body.dark-mode h1.site-title-link { color: var(--dm-header-text-color); }
+.header-controls { flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; }
+.header-controls nav a { color: var(--header-text-color); margin: 0 0.5rem; font-weight: bold; font-size: 0.9rem; }
+body.dark-mode .header-controls nav a { color: var(--dm-header-text-color); }
+.header-controls nav a:hover { color: var(--primary-accent-color); text-decoration: none; }
+body.dark-mode .header-controls nav a:hover { color: var(--dm-primary-accent-color); }
 
 /* Main Content Area */
 main {
-    width: 100%;
-    max-width: var(--container-width);
-    margin: 20px auto;
-    padding: 20px;
+    width: 100%; max-width: var(--container-width); margin: 20px auto; padding: 20px;
     background-color: var(--content-background-color);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    flex-grow: 1;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); border-radius: 8px; flex-grow: 1;
 }
 body.dark-mode main {
-    background-color: var(--dm-content-background-color);
-    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    background-color: var(--dm-content-background-color); box-shadow: 0 2px 15px rgba(0,0,0,0.2);
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 15px;
-    background-color: var(--secondary-text-color);
-    color: var(--light-gray-background);
-    width: 100%;
-    margin-top: auto;
-    font-size: 0.9rem;
+    text-align: center; padding: 15px; background-color: var(--secondary-text-color);
+    color: var(--light-gray-background); width: 100%; margin-top: auto; font-size: 0.9rem;
 }
 body.dark-mode footer {
-    background-color: var(--dm-content-background-color);
-    color: var(--dm-text-color-muted);
+    background-color: var(--dm-content-background-color); color: var(--dm-text-color-muted);
 }
 
-/* Search Container & Input (now within .header-controls) */
+/* Toggleable Search UI */
 #search-container {
-    /* margin: 0.5em 0; Removed, spacing handled by .header-controls gap */
-    width: auto; /* Allow it to size based on input */
-    max-width: 200px; /* Adjust max-width as needed */
-    /* padding: 0; Removed */
-    /* order: 3; Removed, natural order in .header-controls */
+    position: relative; /* For positioning the input field absolutely */
+    width: auto;
 }
-/* @media (min-width: 500px) - This specific rule for search might be less relevant now */
 
-#search-input {
-    width: 100%;
-    padding: 6px 10px; /* Slightly smaller padding */
-    font-size: 0.85rem;
-    border-radius: 15px; /* Slightly smaller radius */
+#search-toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--header-text-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem; /* Base for em sizing of SVG if needed, though SVG has fixed viewBox */
+}
+body.dark-mode #search-toggle-btn {
+    color: var(--dm-header-text-color);
+}
+/* SVG icon within search toggle button uses .theme-icon for sizing, fill="currentColor" in SVG */
+#search-toggle-btn .theme-icon {
+    /* Size is controlled by .theme-icon, color by button's color via currentColor in SVG */
+}
+
+
+.search-input-field {
+    padding: 0.5rem 0.75rem;
     border: 1px solid var(--border-color);
-    background-color: var(--content-background-color);
+    border-radius: 20px; /* Match original #search-input */
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem); /* Position below the button with a small gap */
+    width: 250px; /* Default width, can be adjusted */
+    background-color: var(--card-background-color);
     color: var(--text-color-main);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transform: translateY(-10px); /* Start slightly up for transition */
+    visibility: hidden;
+    opacity: 0;
 }
-body.dark-mode #search-input { /* Ensure search input in dark header is styled for dark mode */
-    background-color: var(--dm-body-background-color); /* Darker background */
-    color: var(--dm-text-color-main);
+.search-input-field:not(.search-input-hidden) { /* Styles when input is visible */
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+.search-input-hidden { /* Explicitly hide (JS will toggle this class) */
+    display: none !important; /* Use display:none if not transitioning, otherwise handled by opacity/visibility */
+}
+
+body.dark-mode .search-input-field {
+    background-color: var(--dm-card-background-color);
     border-color: var(--dm-border-color);
+    color: var(--dm-text-color-main);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
-#search-input:focus {
+
+
+/* Original #search-input is now .search-input-field */
+#search-input:focus { /* This will apply to .search-input-field#search-input:focus */
     outline: none;
     border-color: var(--primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2);
+    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2); /* Keep existing focus style */
 }
 body.dark-mode #search-input:focus {
     border-color: var(--dm-primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color-rgb), 0.2);
+    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color-rgb), 0.2); /* Keep existing focus style */
 }
+
 
 /* No Results Message for Search */
 .no-results { text-align: center; padding: 20px; color: var(--text-color-muted); }
 body.dark-mode .no-results { color: var(--dm-text-color-muted); }
 
-/* Theme Toggle Button (now within .header-controls) */
+/* Theme Toggle Button */
 #theme-toggle {
-    background: none;
-    border: 1px solid transparent;
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 5px; /* Simplified padding */
-    border-radius: 5px;
-    /* margin-left: 10px; Removed, spacing handled by .header-controls gap */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    background: none; border: 1px solid transparent;
+    font-size: 1.25rem; cursor: pointer; padding: 5px;
+    border-radius: 5px; display: inline-flex;
+    align-items: center; justify-content: center;
 }
-/* Color for the SVG is set by .theme-icon-sun/moon fill property */
 #theme-toggle:hover { border-color: var(--primary-accent-color); }
 body.dark-mode #theme-toggle:hover { border-color: var(--dm-primary-accent-color); }
 
-.theme-icon {
-  width: 1.2em;
-  height: 1.2em;
-}
+.theme-icon { width: 1.2em; height: 1.2em; }
 .theme-icon-sun { fill: #FFD700; }
 .theme-icon-moon { fill: #8A2BE2; }
 
@@ -377,15 +325,28 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
 /* Responsive Design - Media Queries */
 @media (max-width: var(--breakpoint-tablet)) { /* 768px */
     body { font-size: 15px; line-height: 1.55; }
-    .main-header { padding: 0.8em 10px; flex-wrap: wrap; } /* Allow wrapping for controls */
-    .site-title-container { flex-grow: 1; text-align: center; order: 1; width: 100%; margin-bottom: 0.5em;} /* Title takes full width and is centered */
+    .main-header { padding: 0.8em 10px; flex-wrap: wrap; }
+    .site-title-container { flex-grow: 1; text-align: center; order: 1; width: 100%; margin-bottom: 0.5em;}
     .site-title-link h1 { font-size: 1.6rem; }
-    .header-left-placeholder { display: none; } /* Hide placeholder */
-    .header-controls { flex-basis: 100%; order: 2; justify-content: space-around; } /* Controls take full width */
+    .header-left-placeholder { display: none; }
+    .header-controls { flex-basis: 100%; order: 2; justify-content: space-around; }
     .header-controls nav { margin: 0; }
     .header-controls nav a { font-size: 0.85rem; margin: 0 0.5rem; }
-    #search-container { max-width: 220px; margin:0; } /* Search takes available space in controls */
+    /* #search-container { max-width: 220px; margin:0; } Adjusted below */
     #theme-toggle { font-size: 1.15rem; padding: 4px 6px; margin-left: 0.5rem; }
+
+    .search-input-field {
+        /* On tablet, might want it wider or positioned differently, e.g. below header */
+        width: 100%; /* Full width of header-controls */
+        top: calc(100% + 0.5rem); /* Below the entire header controls area */
+        left:0; right:0; margin-left:auto; margin-right:auto;
+        max-width: 300px; /* Limit max width */
+    }
+     #search-container { /* Ensure it allows input to be wider */
+        max-width: none;
+        /* flex-grow: 1; /* If it should take more space in header-controls */
+    }
+
 
     main { width: 95%; margin: 15px auto; padding: 15px; }
     h1 { font-size: 2.2rem; } h2 { font-size: 1.8rem; } h3 { font-size: 1.4rem; }
@@ -404,10 +365,23 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
     .main-header { padding: 0.75em 10px; flex-direction: column; align-items: center; }
     .site-title-container { order: 1; text-align: center; width: auto; margin-bottom: 0.5em; }
     .site-title-link h1 { font-size: 1.5rem; }
-    .header-controls { order: 2; flex-direction: column; align-items: center; width: 100%;}
-    .header-controls nav { margin-bottom: 0.5em; }
-    #search-container { max-width: 100%; margin-bottom: 0.5em; }
-    #theme-toggle { position: absolute; top: 10px; right: 10px; font-size: 1.2rem; } /* Keep toggle accessible */
+    .header-controls { order: 2; flex-direction: row; /* Keep controls in a row */ align-items: center; width: 100%; justify-content: space-between; }
+    .header-controls nav { margin-bottom: 0; /* Removed bottom margin if in row */ }
+    #search-container { max-width: initial; margin-bottom: 0; flex-grow:1; /* Allow search container to grow */ }
+    #search-toggle-btn { padding: 0.3rem; }
+    #theme-toggle { position: static; /* No longer absolute */ font-size: 1.2rem; }
+
+    .search-input-field {
+        /* Full width just below header, centered */
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        top: calc(100% + 5px); /* Below the entire .main-header */
+        /* Ensure it's relative to .main-header if .main-header is not static */
+        /* If .main-header is static, this top might need to be relative to viewport or a wrapper */
+    }
+    .main-header { position: relative; /* For absolute positioning of search input on mobile */ }
+
 
     main { width: 100%; margin: 10px 0; padding: 10px; border-radius: 0; box-shadow: none; }
     #blog-posts h2 { font-size: 1.5rem; }

@@ -1,44 +1,65 @@
 // Main JavaScript for the blog
 console.log("JavaScript file loaded");
 
-// SVG Icon definitions are removed as icons will be handled by CSS classes or <use> tags.
-
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('post-list')) { // This implies we are on index.html
-        fetchPostsAndEnableSearch();
-    }
-
-    if (document.getElementById('post-content')) { // This implies we are on post.html
-        loadPost();
-    }
-
+    // Common initializations
     if (document.getElementById('progress-bar')) {
         window.addEventListener('scroll', updateReadingProgressBar);
         updateReadingProgressBar();
     }
+
+    // Initialize search toggle if elements are present (works for index.html and post.html)
+    const searchToggleButton = document.getElementById('search-toggle-btn');
+    const searchInputField = document.getElementById('search-input'); // This is the actual input field
+    const searchContainer = document.getElementById('search-container');
+
+    if (searchToggleButton && searchInputField && searchContainer) {
+      initializeSearchToggle(searchToggleButton, searchInputField, searchContainer);
+    }
+
+    // Page-specific initializations
+    if (document.getElementById('post-list')) { // Index page specific
+        // Pass searchInputField and searchToggleButton for potential pre-filling from URL
+        fetchPostsAndEnableSearch(searchInputField, searchToggleButton);
+    } else if (document.getElementById('post-content')) { // Post page specific
+        loadPost();
+        // Add specific search handling for post.html if search input exists
+        if (searchInputField) {
+            searchInputField.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                  event.preventDefault();
+                  const searchTerm = searchInputField.value.trim();
+                  if (searchTerm) {
+                    window.location.href = `index.html?search=${encodeURIComponent(searchTerm)}`;
+                  }
+                }
+            });
+        }
+    }
+
+    // Global initializations like sprite loader
+    loadBootstrapIconsSprite();
 });
 
 // --- Theme Toggle Logic ---
-const themeToggleButton = document.getElementById('theme-toggle');
+const themeToggleButtonGlobal = document.getElementById('theme-toggle'); // Use a different var name
 
 function applyTheme(theme) {
-    if (themeToggleButton) { // Ensure button exists
+    if (themeToggleButtonGlobal) {
         let newIconHTML = '';
         if (theme === 'dark') {
             document.body.classList.add('dark-mode');
-            // Button shows sun icon, allowing switch to light mode
             newIconHTML = '<svg class="theme-icon theme-icon-sun" viewBox="0 0 16 16"><use xlink:href="#sun-fill"></use></svg>';
-            themeToggleButton.setAttribute('aria-label', 'Switch to light mode');
+            themeToggleButtonGlobal.setAttribute('aria-label', 'Switch to light mode');
         } else {
             document.body.classList.remove('dark-mode');
-            // Button shows moon icon, allowing switch to dark mode
             newIconHTML = '<svg class="theme-icon theme-icon-moon" viewBox="0 0 16 16"><use xlink:href="#moon-fill"></use></svg>';
-            themeToggleButton.setAttribute('aria-label', 'Switch to dark mode');
+            themeToggleButtonGlobal.setAttribute('aria-label', 'Switch to dark mode');
         }
-        themeToggleButton.innerHTML = newIconHTML;
-    } else if (theme === 'dark') { // Fallback if button not found on a page but theme is dark
+        themeToggleButtonGlobal.innerHTML = newIconHTML;
+    } else if (theme === 'dark') {
         document.body.classList.add('dark-mode');
-    } else { // Fallback for light theme if button not found
+    } else {
         document.body.classList.remove('dark-mode');
     }
 }
@@ -46,27 +67,66 @@ function applyTheme(theme) {
 const currentTheme = localStorage.getItem('theme');
 applyTheme(currentTheme || 'light');
 
-if (themeToggleButton) {
-    themeToggleButton.addEventListener('click', () => {
+if (themeToggleButtonGlobal) {
+    themeToggleButtonGlobal.addEventListener('click', () => {
         let newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
         applyTheme(newTheme);
         localStorage.setItem('theme', newTheme);
     });
 }
 
+// --- Toggleable Search UI Logic ---
+// Parameters for searchToggleButton, searchInputField, searchContainer are now passed
+function initializeSearchToggle(stb, sif, sc) {
+    // Initial state: input hidden, button says "Open search"
+    sif.classList.add('search-input-hidden');
+    stb.setAttribute('aria-expanded', 'false');
+    stb.setAttribute('aria-label', 'Open search');
+
+    stb.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isHidden = sif.classList.toggle('search-input-hidden');
+        if (isHidden) {
+            stb.setAttribute('aria-expanded', 'false');
+            stb.setAttribute('aria-label', 'Open search');
+        } else {
+            stb.setAttribute('aria-expanded', 'true');
+            stb.setAttribute('aria-label', 'Close search');
+            sif.focus();
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!sif.classList.contains('search-input-hidden') &&
+            !sc.contains(event.target) &&
+            event.target !== stb &&
+            !stb.contains(event.target) ) {
+
+            sif.classList.add('search-input-hidden');
+            stb.setAttribute('aria-expanded', 'false');
+            stb.setAttribute('aria-label', 'Open search');
+        }
+    });
+
+    sif.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+}
+
+
 // --- Client-Side Search Logic (for index.html) ---
 let allPostsData = [];
 
-async function fetchPostsAndEnableSearch() {
+// Accept searchInputField and searchToggleButton as parameters
+async function fetchPostsAndEnableSearch(searchInputField, searchToggleButton) {
     try {
         const response = await fetch('posts/posts.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         allPostsData = await response.json();
-        renderPosts(allPostsData);
+        renderPosts(allPostsData); // Initial render of all posts
 
-        const searchInput = document.getElementById('search-input');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
+        if (searchInputField) { // searchInputField is the actual input element
+            searchInputField.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 const filteredPosts = allPostsData.filter(post =>
                     (post.title && post.title.toLowerCase().includes(searchTerm)) ||
@@ -74,6 +134,24 @@ async function fetchPostsAndEnableSearch() {
                 );
                 renderPosts(filteredPosts, searchTerm);
             });
+
+            // Handle search query parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchParam = urlParams.get('search');
+            if (searchParam) {
+                searchInputField.value = decodeURIComponent(searchParam);
+                if (searchInputField.classList.contains('search-input-hidden')) {
+                    searchInputField.classList.remove('search-input-hidden');
+                    if(searchToggleButton) { // Check if searchToggleButton exists
+                        searchToggleButton.setAttribute('aria-expanded', 'true');
+                        searchToggleButton.setAttribute('aria-label', 'Close search');
+                    }
+                }
+                // Trigger the filtering
+                const event = new Event('input', { bubbles: true, cancelable: true });
+                searchInputField.dispatchEvent(event);
+                searchInputField.focus();
+            }
         }
     } catch (error) {
         console.error('Error fetching posts for search:', error);
@@ -425,12 +503,12 @@ async function generateRssFeed() {
 function loadBootstrapIconsSprite() {
   const spriteUrl = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/bootstrap-icons.svg';
   if (document.getElementById('bootstrap-icons-sprite-container')) {
-    return; // Sprite already loaded or loading
+    return;
   }
 
   const spriteContainer = document.createElement('div');
   spriteContainer.id = 'bootstrap-icons-sprite-container';
-  spriteContainer.style.display = 'none'; // Make it invisible
+  spriteContainer.style.display = 'none';
 
   document.body.insertBefore(spriteContainer, document.body.firstChild);
 
@@ -457,10 +535,3 @@ if (document.readyState === 'loading') {
 } else {
   loadBootstrapIconsSprite();
 }
-
-/*
-   General Notes & Todos:
-   - Reading progress bar calculation could be further refined for edge cases or complex layouts.
-   - Sitemap and RSS generation are manual; for automation, a build script or server-side logic would be needed.
-   - Blog title and description for RSS feed are currently hardcoded in generateRssFeed function.
-*/

@@ -20,10 +20,16 @@
             <h1><a href="index.html" class="site-title-link">My Blog</a></h1>
         </div>
         <div class="header-controls">
-            <nav>
-                <a href="index.html">Home</a>
-            </nav>
-            <button type="button" id="theme-toggle" aria-label="Toggle theme"></button>
+          <div id="search-container">
+            <button type="button" id="search-toggle-btn" aria-label="Open search" aria-expanded="false">
+              <svg class="theme-icon" viewBox="0 0 16 16" style="width:1em; height:1em; fill:currentColor;"><use xlink:href="#search"></use></svg>
+            </button>
+            <input type="search" id="search-input" placeholder="Search posts..." class="search-input-field search-input-hidden">
+          </div>
+          <nav>
+            <a href="index.html" aria-label="Back to Home">Home</a>
+          </nav>
+          <button type="button" id="theme-toggle" aria-label="Toggle theme"></button>
         </div>
     </header>
     <main>
