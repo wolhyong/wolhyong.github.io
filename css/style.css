@@ -13,6 +13,8 @@
     --text-color-muted: #555555;      /* Muted text (e.g., meta, descriptions) */
     --border-color: #dddddd;          /* Borders, dividers */
     --light-gray-background: #ecf0f1; /* Background for code blocks, etc. */
+    --header-text-color: #ffffff; /* Text color for header elements */
+
 
     /* Dark Mode Variables (will be applied via .dark-mode class) */
     --dm-primary-accent-color: #14b8a6; /* Brighter Teal for dark mode */
@@ -25,12 +27,14 @@
     --dm-border-color: #4b5563;          /* Gray for borders */
     --dm-light-gray-background: #4b5563; /* Darker gray for code blocks etc. */
     --dm-selection-text-color: #ffffff; /* White text on dark accent selection */
+    --dm-header-text-color: var(--dm-secondary-text-color);
+
 
     --heading-font: 'Montserrat', sans-serif;
     --body-font: 'Roboto', sans-serif;
     --container-width: 960px;
     --breakpoint-tablet: 768px;
-    --breakpoint-mobile: 480px;
+    --breakpoint-mobile: 500px; /* Adjusted for header flex behavior */
     --progress-bar-height: 5px;
 }
 
@@ -79,39 +83,86 @@ a:hover { text-decoration: underline; }
 img { max-width: 100%; height: auto; display: block; border-radius: 4px; }
 
 /* Header */
-header {
+.main-header { /* Changed from 'header' to '.main-header' */
     background-color: var(--secondary-text-color);
-    color: var(--content-background-color);
-    padding: 1em 15px;
-    text-align: center;
+    padding: 0.75rem 1rem; /* Adjusted padding */
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    min-height: 60px; /* Ensure a minimum height */
 }
-body.dark-mode header {
+body.dark-mode .main-header {
     background-color: var(--dm-content-background-color);
-    color: var(--dm-text-color-main);
 }
-header h1 {
-    color: var(--content-background-color);
-    margin: 0;
-    font-size: 1.8rem;
-    flex-grow: 1;
-    text-align: left;
+
+.header-left-placeholder {
+  flex: 1;
+  /* background-color: rgba(255,0,0,0.1); /* For debugging layout */
 }
-body.dark-mode header h1 { color: var(--dm-secondary-text-color); }
-header nav { margin: 0.5em 0 0.5em 1em; }
-header nav a {
-    color: var(--content-background-color);
-    margin: 0 8px;
+
+.site-title-container {
+  flex: 2; /* Adjust as needed, might not need to be this large if placeholder and controls have content */
+  text-align: center;
+  /* background-color: rgba(0,255,0,0.1); /* For debugging layout */
+}
+
+.site-title-link {
+  text-decoration: none;
+  color: var(--header-text-color); /* Use specific header text color */
+}
+body.dark-mode .site-title-link {
+  color: var(--dm-header-text-color);
+}
+
+.site-title-link h1 { /* If h1 is child of link */
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: inherit; /* Inherit color from .site-title-link */
+}
+/* Fallback if <h1> is the link itself (not current structure but good practice) */
+h1.site-title-link {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--header-text-color);
+}
+body.dark-mode h1.site-title-link {
+  color: var(--dm-header-text-color);
+}
+
+
+.header-controls {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem; /* Space between items in controls block */
+  /* background-color: rgba(0,0,255,0.1); /* For debugging layout */
+}
+
+.header-controls nav {
+    /* margin: 0.5em 0 0.5em 1em; Removed, handled by gap in .header-controls */
+}
+.header-controls nav a {
+    color: var(--header-text-color);
+    margin: 0 0.5rem; /* Adjusted margin */
     font-weight: bold;
     font-size: 0.9rem;
 }
-body.dark-mode header nav a { color: var(--dm-text-color-muted); }
-header nav a:hover { color: var(--primary-accent-color); text-decoration: none; }
-body.dark-mode header nav a:hover { color: var(--dm-primary-accent-color); }
+body.dark-mode .header-controls nav a {
+    color: var(--dm-header-text-color); /* Use main dark header text color */
+}
+.header-controls nav a:hover {
+    color: var(--primary-accent-color); /* Or a lighter variant of header text */
+    text-decoration: none;
+}
+body.dark-mode .header-controls nav a:hover {
+    color: var(--dm-primary-accent-color);
+}
+
 
 /* Main Content Area */
 main {
@@ -144,37 +195,35 @@ body.dark-mode footer {
     color: var(--dm-text-color-muted);
 }
 
-/* Search Container & Input */
+/* Search Container & Input (now within .header-controls) */
 #search-container {
-    margin: 0.5em 0;
-    width: 100%;
-    max-width: 320px;
-    padding: 0;
-    order: 3;
+    /* margin: 0.5em 0; Removed, spacing handled by .header-controls gap */
+    width: auto; /* Allow it to size based on input */
+    max-width: 200px; /* Adjust max-width as needed */
+    /* padding: 0; Removed */
+    /* order: 3; Removed, natural order in .header-controls */
 }
-@media (min-width: 500px) {
-    #search-container { order: initial; width: auto; margin-left: auto; }
-    header h1 { text-align: center; }
-}
+/* @media (min-width: 500px) - This specific rule for search might be less relevant now */
+
 #search-input {
     width: 100%;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    border-radius: 20px;
+    padding: 6px 10px; /* Slightly smaller padding */
+    font-size: 0.85rem;
+    border-radius: 15px; /* Slightly smaller radius */
     border: 1px solid var(--border-color);
     background-color: var(--content-background-color);
     color: var(--text-color-main);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+body.dark-mode #search-input { /* Ensure search input in dark header is styled for dark mode */
+    background-color: var(--dm-body-background-color); /* Darker background */
+    color: var(--dm-text-color-main);
+    border-color: var(--dm-border-color);
+}
 #search-input:focus {
     outline: none;
     border-color: var(--primary-accent-color);
     box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2);
-}
-body.dark-mode #search-input {
-    background-color: var(--dm-content-background-color);
-    color: var(--dm-text-color-main);
-    border-color: var(--dm-border-color);
 }
 body.dark-mode #search-input:focus {
     border-color: var(--dm-primary-accent-color);
@@ -185,40 +234,29 @@ body.dark-mode #search-input:focus {
 .no-results { text-align: center; padding: 20px; color: var(--text-color-muted); }
 body.dark-mode .no-results { color: var(--dm-text-color-muted); }
 
-/* Theme Toggle Button */
+/* Theme Toggle Button (now within .header-controls) */
 #theme-toggle {
     background: none;
     border: 1px solid transparent;
-    /* color: var(--content-background-color); Removed as SVG color is set by fill */
     font-size: 1.25rem;
     cursor: pointer;
-    padding: 5px 8px;
+    padding: 5px; /* Simplified padding */
     border-radius: 5px;
-    margin-left: 10px;
+    /* margin-left: 10px; Removed, spacing handled by .header-controls gap */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    /* text-indent and overflow are removed as not needed for inline SVG */
 }
-body.dark-mode #theme-toggle {
-    /* color: var(--dm-secondary-text-color); Removed */
-}
+/* Color for the SVG is set by .theme-icon-sun/moon fill property */
 #theme-toggle:hover { border-color: var(--primary-accent-color); }
 body.dark-mode #theme-toggle:hover { border-color: var(--dm-primary-accent-color); }
 
-/* Styles for SVG icons within the theme toggle button */
 .theme-icon {
-  width: 1.2em;  /* Relative to #theme-toggle's font-size (1.25rem * 1.2 = 1.5rem) */
-  height: 1.2em; /* Relative to #theme-toggle's font-size */
-  /* No vertical-align needed due to flex centering on parent button */
+  width: 1.2em;
+  height: 1.2em;
 }
-
-.theme-icon-sun {
-  fill: #FFD700; /* Yellow */
-}
-.theme-icon-moon {
-  fill: #8A2BE2; /* Purple */
-}
+.theme-icon-sun { fill: #FFD700; }
+.theme-icon-moon { fill: #8A2BE2; }
 
 /* Reading Progress Bar */
 #progress-bar-container {
@@ -337,16 +375,18 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
 #comments h2 { margin-bottom: 1em; }
 
 /* Responsive Design - Media Queries */
-/* Tablet */
-@media (max-width: var(--breakpoint-tablet)) {
+@media (max-width: var(--breakpoint-tablet)) { /* 768px */
     body { font-size: 15px; line-height: 1.55; }
-    header { padding: 0.8em 10px; }
-    header h1 { font-size: 1.6rem; }
-    header nav { margin-left: 0.5em; }
-    header nav a { font-size: 0.85rem; margin: 0 5px; }
-    #search-container { max-width: 280px; }
-    #search-input { font-size: 0.85rem; padding: 6px 10px; }
-    #theme-toggle { font-size: 1.15rem; padding: 4px 6px; }
+    .main-header { padding: 0.8em 10px; flex-wrap: wrap; } /* Allow wrapping for controls */
+    .site-title-container { flex-grow: 1; text-align: center; order: 1; width: 100%; margin-bottom: 0.5em;} /* Title takes full width and is centered */
+    .site-title-link h1 { font-size: 1.6rem; }
+    .header-left-placeholder { display: none; } /* Hide placeholder */
+    .header-controls { flex-basis: 100%; order: 2; justify-content: space-around; } /* Controls take full width */
+    .header-controls nav { margin: 0; }
+    .header-controls nav a { font-size: 0.85rem; margin: 0 0.5rem; }
+    #search-container { max-width: 220px; margin:0; } /* Search takes available space in controls */
+    #theme-toggle { font-size: 1.15rem; padding: 4px 6px; margin-left: 0.5rem; }
+
     main { width: 95%; margin: 15px auto; padding: 15px; }
     h1 { font-size: 2.2rem; } h2 { font-size: 1.8rem; } h3 { font-size: 1.4rem; }
     #blog-posts h2 { font-size: 1.6rem; }
@@ -359,15 +399,16 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
     .share-btn { padding: 8px 12px; font-size: 0.85rem; }
 }
 
-/* Mobile */
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: var(--breakpoint-mobile)) { /* 500px */
     body { font-size: 14px; line-height: 1.5; }
-    header { padding: 0.75em 10px; flex-direction: column; align-items: flex-start; }
-    header h1 { font-size: 1.5rem; text-align: left; margin-bottom: 0.5em; }
-    header nav { margin-left: 0; margin-bottom: 0.5em; width: 100%; text-align: left; }
-    header nav a { margin: 0 8px 0 0; }
-    #search-container { max-width: 100%; margin-bottom: 0.5em; order: initial; }
-    #theme-toggle { position: absolute; top: 10px; right: 10px; }
+    .main-header { padding: 0.75em 10px; flex-direction: column; align-items: center; }
+    .site-title-container { order: 1; text-align: center; width: auto; margin-bottom: 0.5em; }
+    .site-title-link h1 { font-size: 1.5rem; }
+    .header-controls { order: 2; flex-direction: column; align-items: center; width: 100%;}
+    .header-controls nav { margin-bottom: 0.5em; }
+    #search-container { max-width: 100%; margin-bottom: 0.5em; }
+    #theme-toggle { position: absolute; top: 10px; right: 10px; font-size: 1.2rem; } /* Keep toggle accessible */
+
     main { width: 100%; margin: 10px 0; padding: 10px; border-radius: 0; box-shadow: none; }
     #blog-posts h2 { font-size: 1.5rem; }
     .post-card-grid { grid-template-columns: 1fr; gap: 12px; }

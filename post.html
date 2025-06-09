@@ -5,49 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Post</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/toc.css"> <!-- Link to new ToC stylesheet -->
+    <link rel="stylesheet" href="css/toc.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <div id="progress-bar-container">
         <div id="progress-bar"></div>
     </div>
-    <header>
-        <h1>My Blog</h1>
-        <nav>
-            <a href="index.html">Home</a>
-        </nav>
-        <button id="theme-toggle" aria-label="Toggle dark mode"></button>
+    <header class="main-header">
+        <div class="header-left-placeholder">
+            <!-- Empty for now, can be used for logo or spacing -->
+        </div>
+        <div class="site-title-container">
+            <h1><a href="index.html" class="site-title-link">My Blog</a></h1>
+        </div>
+        <div class="header-controls">
+            <nav>
+                <a href="index.html">Home</a>
+            </nav>
+            <button type="button" id="theme-toggle" aria-label="Toggle theme"></button>
+        </div>
     </header>
     <main>
         <article id="post-content">
-            <!--
-                SEO & Accessibility Tip:
-                If you include images in your Markdown posts, ensure they are rendered with descriptive alt attributes.
-                For example, in Markdown: ![A descriptive caption for the image](image.jpg)
-                The "descriptive caption for the image" will become the alt text.
-                This is crucial for screen readers and search engine understanding of the image content.
-            -->
             <nav id="toc-container">
                 <h4>Table of Contents</h4>
                 <ul id="toc-list"></ul>
             </nav>
             <div id="post-meta-placeholder">
-                <!-- Estimated reading time will be injected here by JS -->
             </div>
-            <!-- TODO: Replace this placeholder div with your actual image banner ad code. -->
             <div class="ad-placeholder ad-banner-top" data-comment="Image Banner Ad (e.g., 728x90)">Placeholder: Top Banner Ad</div>
 
-            <!-- Markdown content will be converted and displayed here -->
-            <!-- The actual H1 of the post will be generated from markdown -->
-            <!-- <h2>Post Title Placeholder</h2> --> <!-- This will be removed or replaced by markdown -->
             <p>This is where the content of the blog post will go. We will dynamically load and render Markdown content here.</p>
         </article>
 
-        <!-- TODO: Google AdSense in-article ad will be inserted here by script if suitable conditions are met. -->
-        <!-- Alternatively, configure AdSense auto-ads or manually place ad code within your Markdown if preferred and AdSense policies allow. -->
-
-        <!-- TODO: Replace this placeholder div with your actual Google AdSense ad unit code. Remember to comply with AdSense policies. -->
         <div class="ad-placeholder ad-adsense-bottom" data-comment="Google AdSense Display Ad (responsive)">Placeholder: Bottom AdSense Ad</div>
 
         <section id="social-share">
@@ -67,22 +58,12 @@
     </footer>
     <script src="js/script.js"></script>
     <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-
         var disqus_config = function () {
-            // Ensure this.page.url is the full URL to the page
-            // For local development, you might need to hardcode a base URL if window.location.href is not suitable
-            // e.g. this.page.url = 'https://your-domain.com/post.html?post=' + new URLSearchParams(window.location.search).get('post');
             this.page.url = window.location.href;
-            // Use the post filename as a unique identifier
             this.page.identifier = new URLSearchParams(window.location.search).get('post');
         };
-
-        (function() { // DON'T EDIT BELOW THIS LINE
+        (function() {
         var d = document, s = d.createElement('script');
-        // IMPORTANT: Replace 'YOUR_DISQUS_SHORTNAME_HERE' with your site's actual Disqus shortname
         s.src = 'https://YOUR_DISQUS_SHORTNAME_HERE.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
