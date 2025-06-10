@@ -1,45 +1,29 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>그레이해커 월횽 | 개발 팁과 인사이트</title>
-    <meta name="description" content="소프트웨어 개발, 코딩 팁, 프로그래밍 튜토리얼, 기술적 인사이트에 대한 블로그입니다.">
+    <meta name="description" content="코딩 배우기, 프로그래밍 기초부터 실전까지 자세히 알려주는 그레이해커 월횽 블로그입니다.">
+    <title>My Blog</title>
     <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header class="main-header">
-      <div class="header-left-placeholder">
-        <!-- Empty for now, can be used for logo or spacing -->
-      </div>
-      <div class="site-title-container">
-        <h1><a href="index.html" class="site-title-link">GHW</a></h1>
-      </div>
-      <div class="header-controls">
-        <div id="search-container">
-          <button type="button" id="search-toggle-btn" aria-label="검색 열기" aria-expanded="false">
-            <svg class="theme-icon" viewBox="0 0 16 16"><use xlink:href="#search"></use></svg>
-          </button>
-          <input type="search" id="search-input" placeholder="게시물 검색..." class="search-input-field search-input-hidden">
-        </div>
-        <button type="button" id="theme-toggle" aria-label="테마 변경"></button>
-      </div>
+</head><body>
+    <header>
+        <h1>My Blog</h1>
+        <button id="theme-toggle">Toggle Theme</button>
     </header>
-    <main>
-          <div class="image-banner-placeholder" data-comment="상단 페이지 이미지 배너 영역 (예: 728x90, 970x250 등 반응형)">
-            이미지 배너 영역
-          </div>
-        <section id="blog-posts">
-            <h2 id="blog-posts-heading">커리큘럼</h2>
-            <ul id="post-list">
-                <!-- Blog posts will be dynamically listed here by js/script.js -->
-                <li>게시물을 불러오는 중...</li>
-            </ul>
-        </section>
+
+    <div class="search-container" style="text-align: center; padding: 10px;">
+        <input type="text" id="search-input" placeholder="Search posts..." style="padding: 8px; width: 60%;">
+    </div>
+
+    <main id="posts-container">
+        <!-- Blog posts will be dynamically loaded here -->
     </main>
+
     <footer>
-        <p>© 2013 Greyhacker Wolhyong Development Blog. All rights reserved.</p>
+        <p>&copy; 2023 My Blog</p>
     </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>

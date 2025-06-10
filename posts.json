@@ -1,0 +1,12 @@
+[
+    {
+        "title": "My First Blog Post",
+        "date": "2023-10-27",
+        "description": "A short summary of my first blog post, demonstrating the blog functionality.",
+        "slug": "first-post",
+        "markdownFile": "posts/first-post.md",
+        "wordCount": 50,
+        "author": "The Blogger",
+        "image": "images/default-post-image.jpg"
+    }
+]

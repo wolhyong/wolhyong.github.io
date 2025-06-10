@@ -1,523 +1,366 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap');
-
-/* Basic Reset & Root Variables */
 :root {
-    /* Light Mode (Default) */
-    --primary-accent-color: #008080;  /* Teal - Chosen Accent */
-    --primary-accent-color-rgb: 0, 128, 128; /* RGB for Teal */
-    --secondary-text-color: #2c3e50; /* Dark blue/charcoal for headings/strong text */
-    --body-background-color: #f7f9fa; /* Very light gray for page background */
-    --content-background-color: #ffffff; /* White for content boxes, cards */
-    --text-color-main: #333333;       /* Main body text */
-    --text-color-muted: #555555;      /* Muted text (e.g., meta, descriptions) */
-    --border-color: #dddddd;          /* Borders, dividers */
-    --light-gray-background: #ecf0f1; /* Background for code blocks, etc. */
-    --header-text-color: #ffffff; /* Text color for header elements */
-    --card-background-color: var(--content-background-color); /* For search input bg */
-    --placeholder-bg-color: #e9ecef;
-    --placeholder-text-color: #6c757d;
-    --tag-bg-color: #e0e0e0;
-    --tag-text-color: #333333;
-    --border-radius-sm: 4px;
-
-
-    /* Dark Mode Variables (will be applied via .dark-mode class) */
-    --dm-primary-accent-color: #14b8a6; /* Brighter Teal for dark mode */
-    --dm-primary-accent-color-rgb: 20, 184, 166; /* RGB for Brighter Teal */
-    --dm-secondary-text-color: #e5e7eb; /* Light gray for headings */
-    --dm-body-background-color: #1f2937; /* Dark blue-gray */
-    --dm-content-background-color: #374151; /* Medium blue-gray for content boxes */
-    --dm-text-color-main: #d1d5db;       /* Lighter gray for main text */
-    --dm-text-color-muted: #9ca3af;      /* Medium gray for muted text */
-    --dm-border-color: #4b5563;          /* Gray for borders */
-    --dm-light-gray-background: #4b5563; /* Darker gray for code blocks etc. */
-    --dm-selection-text-color: #ffffff; /* White text on dark accent selection */
-    --dm-header-text-color: var(--dm-secondary-text-color);
-    --dm-card-background-color: var(--dm-content-background-color);
-    --dm-placeholder-bg-color: #343a40;
-    --dm-placeholder-text-color: #adb5bd;
-    --dm-tag-bg-color: #555555;
-    --dm-tag-text-color: #dddddd;
-
-
-    --heading-font: 'Montserrat', sans-serif;
-    --body-font: 'Roboto', sans-serif;
-    --container-width: 960px;
-    --breakpoint-tablet: 768px;
-    --breakpoint-mobile: 500px;
-    --progress-bar-height: 5px;
+    --breakpoint-mobile: 768px;
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: var(--body-font);
-    line-height: 1.6;
-    background-color: var(--body-background-color);
-    color: var(--text-color-main);
-    display: flex; flex-direction: column;
-    min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 16px;
-}
-body.dark-mode {
-    background-color: var(--dm-body-background-color);
-    color: var(--dm-text-color-main);
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Typography & General Styles */
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--heading-font);
-    color: var(--secondary-text-color);
-    margin-bottom: 0.75em; line-height: 1.2;
-}
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
-    color: var(--dm-secondary-text-color);
-}
-h1 { font-size: 2.5rem; } h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; } h4 { font-size: 1.25rem; }
-
-p { margin-bottom: 1em; }
-a { color: var(--primary-accent-color); text-decoration: none; }
-body.dark-mode a { color: var(--dm-primary-accent-color); }
-a:hover { text-decoration: underline; }
-img { max-width: 100%; height: auto; display: block; border-radius: 4px; }
-
-/* Header */
-.main-header {
-    background-color: var(--secondary-text-color);
-    padding: 0.75rem 1rem;
-    width: 100%; display: flex;
-    justify-content: space-between; align-items: center;
-    min-height: 60px;
-}
-body.dark-mode .main-header { background-color: var(--dm-content-background-color); }
-
-.header-left-placeholder { flex: 1; }
-
-.site-title-container { flex: 2; text-align: center; }
-
-.site-title-container h1 {
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: bold;
-  line-height: 1.2;
-  padding-top: 0.1em;
-  padding-bottom: 0.1em;
-}
-
-.site-title-container h1 a.site-title-link {
-  text-decoration: none;
-  color: var(--header-text-color);
-}
-body.dark-mode .site-title-container h1 a.site-title-link {
-  color: var(--dm-header-text-color);
-}
-
-.header-controls { flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; }
-.header-controls nav a { color: var(--header-text-color); margin: 0 0.5rem; font-weight: bold; font-size: 0.9rem; }
-body.dark-mode .header-controls nav a { color: var(--dm-header-text-color); }
-.header-controls nav a:hover { color: var(--primary-accent-color); text-decoration: none; }
-body.dark-mode .header-controls nav a:hover { color: var(--dm-primary-accent-color); }
-
-/* Main Content Area */
-main {
-    width: 100%; max-width: var(--container-width); margin: 20px auto; padding: 20px;
-    background-color: var(--content-background-color);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); border-radius: 8px; flex-grow: 1;
-}
-body.dark-mode main {
-    background-color: var(--dm-content-background-color); box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-}
-
-/* Image Banner Placeholder */
-.image-banner-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 150px;
-    width: 100%;
-    max-width: 970px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: var(--placeholder-bg-color);
-    border: 1px dashed var(--border-color);
-    color: var(--placeholder-text-color);
-    font-size: 0.9em;
-    box-sizing: border-box;
-    border-radius: var(--border-radius-sm);
-}
-body.dark-mode .image-banner-placeholder {
-    background-color: var(--dm-placeholder-bg-color);
-    border-color: var(--dm-border-color);
-    color: var(--dm-placeholder-text-color);
-}
-
-
-/* Footer */
-footer {
-    text-align: center; padding: 15px; background-color: var(--secondary-text-color);
-    color: var(--light-gray-background); width: 100%; margin-top: auto; font-size: 0.9rem;
-}
-body.dark-mode footer {
-    background-color: var(--dm-content-background-color); color: var(--dm-text-color-muted);
-}
-
-/* Toggleable Search UI */
-#search-container {
-    position: relative;
-    width: auto;
-}
-
-#search-toggle-btn {
-    background: transparent;
-    border: none;
-    padding: 0.4rem 0.25rem;
-    cursor: pointer;
-    color: var(--header-text-color);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-}
-body.dark-mode #search-toggle-btn {
-    color: var(--dm-header-text-color);
-}
-
-.search-input-field {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    position: absolute;
-    right: 0;
-    top: calc(100% + 0.5rem);
-    width: 250px;
-    background-color: var(--card-background-color);
-    color: var(--text-color-main);
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
-    transform: translateY(-10px);
-    visibility: hidden;
-    opacity: 0;
-}
-.search-input-field:not(.search-input-hidden) {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-}
-.search-input-hidden {
-    display: none !important;
-}
-
-body.dark-mode .search-input-field {
-    background-color: var(--dm-card-background-color);
-    border-color: var(--dm-border-color);
-    color: var(--dm-text-color-main);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-
-#search-input:focus {
-    outline: none;
-    border-color: var(--primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--primary-accent-color-rgb), 0.2);
-}
-body.dark-mode #search-input:focus {
-    border-color: var(--dm-primary-accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--dm-primary-accent-color-rgb), 0.2);
-}
-
-.no-results { text-align: center; padding: 20px; color: var(--text-color-muted); }
-body.dark-mode .no-results { color: var(--dm-text-color-muted); }
-
-/* Theme Toggle Button */
-#theme-toggle {
-    background: none; border: 1px solid transparent;
-    font-size: 1.25rem; cursor: pointer;
-    padding: 0.4rem 5px;
-    border-radius: 5px; display: inline-flex;
-    align-items: center; justify-content: center;
-}
-#theme-toggle:hover { border-color: var(--primary-accent-color); }
-body.dark-mode #theme-toggle:hover { border-color: var(--dm-primary-accent-color); }
-
-.theme-icon {
-    width: 1.2em;
-    height: 1.2em;
-    fill: currentColor;
-}
-.theme-icon-sun { fill: #FFD700; }
-.theme-icon-moon { fill: #8A2BE2; }
-
-/* Reading Progress Bar */
-#progress-bar-container {
-    position: fixed; top: 0; left: 0; width: 100%;
-    height: var(--progress-bar-height); background-color: transparent; z-index: 1000;
-}
-#progress-bar {
-    height: 100%; background-color: var(--primary-accent-color);
-    width: 0%; transition: width 0.1s ease-out;
-}
-body.dark-mode #progress-bar { background-color: var(--dm-primary-accent-color); }
-
-/* Blog Post List (index.html) */
-#blog-posts h2 { text-align: center; margin-bottom: 1.5em; font-size: 1.8rem; }
-.post-card-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px; padding: 0; list-style: none;
-}
-.post-card {
-    background-color: var(--content-background-color); border: 1px solid var(--border-color);
-    border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; flex-direction: column; overflow: hidden;
-}
-body.dark-mode .post-card {
-    background-color: var(--dm-content-background-color); border-color: var(--dm-border-color);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-.post-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
-body.dark-mode .post-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
-
-.card-thumbnail-image,
-.card-thumbnail-placeholder {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-.card-thumbnail-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--placeholder-bg-color);
-  color: var(--placeholder-text-color);
-  font-size: 0.9em;
-}
-body.dark-mode .card-thumbnail-placeholder {
-  background-color: var(--dm-placeholder-bg-color);
-  color: var(--dm-placeholder-text-color);
-}
-
-.post-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    /* Padding removed from here */
-}
-
-.card-content {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.post-card-date {
-    font-size: 0.8rem;
-    color: var(--text-color-muted);
-    margin-bottom: 0.25rem;
-    align-self: flex-start;
-}
-body.dark-mode .post-card-date { color: var(--dm-text-color-muted); }
-
-.post-card-title {
-    font-family: var(--heading-font); font-size: 1.25rem;
-    color: var(--secondary-text-color);
-    margin-top: 0;
-    margin-bottom: 0.5em;
-}
-.post-card-link:hover .post-card-title {
-    color: var(--primary-accent-color);
-}
-body.dark-mode .post-card-title { color: var(--dm-secondary-text-color); }
-body.dark-mode .post-card-link:hover .post-card-title {
-    color: var(--dm-primary-accent-color);
-}
-
-.post-card-description {
-    font-size: 0.9rem;
-    color: var(--text-color-muted);
-    margin-bottom: 0.75rem;
-    flex-grow: 1;
-}
-body.dark-mode .post-card-description { color: var(--dm-text-color-muted); }
-
-.card-keywords {
-  margin-top: auto;
-  padding-top: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.keyword-tag {
-  display: inline-block;
-  padding: 0.25em 0.6em;
-  font-size: 0.8em;
-  line-height: 1.4;
-  background-color: var(--tag-bg-color);
-  color: var(--tag-text-color);
-  border-radius: var(--border-radius-sm, 4px);
-}
-body.dark-mode .keyword-tag {
-  background-color: var(--dm-tag-bg-color);
-  color: var(--dm-tag-text-color);
-}
-
-/* Individual Post Content (post.html) */
-#post-meta-placeholder { margin-bottom: 1.5em; font-size: 0.85rem; color: var(--text-color-muted); }
-body.dark-mode #post-meta-placeholder { color: var(--dm-text-color-muted); }
-.reading-time { margin: 0; }
-#post-content { line-height: 1.7; }
-#post-content h1, #post-content h2, #post-content h3 { margin-top: 1.5em; margin-bottom: 0.5em; }
-#post-content p { margin-bottom: 1.2em; }
-#post-content ul, #post-content ol { margin-left: 20px; margin-bottom: 1em; padding-left: 1em; }
-#post-content code {
-    background-color: var(--light-gray-background); padding: 0.2em 0.4em;
-    border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.85em;
-}
-body.dark-mode #post-content code {
-    background-color: var(--dm-light-gray-background); color: var(--dm-text-color-main);
-}
-#post-content pre {
-    background-color: var(--light-gray-background); padding: 1em;
-    border-radius: 5px; overflow-x: auto; margin-bottom: 1em;
-    font-family: 'Fira Code', monospace; font-size: 0.85em; line-height: 1.5;
-}
-body.dark-mode #post-content pre { background-color: var(--dm-light-gray-background); }
-#post-content pre code {
-    background-color: transparent; padding: 0;
-    font-size: inherit; font-family: inherit;
-}
-body.dark-mode #post-content pre code { color: var(--dm-text-color-main); }
-#post-content blockquote {
-    border-left: 4px solid var(--primary-accent-color); padding-left: 15px;
-    margin: 1em 0; font-style: italic; color: var(--text-color-muted);
-}
-body.dark-mode #post-content blockquote {
-    border-left-color: var(--dm-primary-accent-color); color: var(--dm-text-color-muted);
-}
-
-/* Social Share Buttons */
-#social-share {
-    margin: 2em 0; padding: 1.5em 0;
-    border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
     text-align: center;
+    display: flex; /* Added for layout */
+    justify-content: space-between; /* Added for layout */
+    align-items: center; /* Added for layout */
 }
-body.dark-mode #social-share {
-    border-top-color: var(--dm-border-color); border-bottom-color: var(--dm-border-color);
-}
-#social-share h3 { margin-bottom: 1em; font-size: 1.1rem; }
-.share-btn {
-    display: inline-block; margin: 5px; padding: 10px 15px;
-    border-radius: 5px; color: #fff !important; text-decoration: none;
-    font-weight: bold; font-size: 0.9rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.share-btn:hover {
-    opacity: 0.9; text-decoration: none;
-    transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-.share-btn.twitter { background-color: var(--primary-accent-color); }
-.share-btn.facebook { background-color: var(--primary-accent-color); opacity: 0.9; }
-.share-btn.linkedin { background-color: var(--primary-accent-color); opacity: 0.8; }
-body.dark-mode .share-btn { background-color: var(--dm-primary-accent-color); }
-body.dark-mode .share-btn.facebook { opacity: 0.9; }
-body.dark-mode .share-btn.linkedin { opacity: 0.8; }
 
-/* Comments Section */
-#comments { margin-top: 2em; }
-#comments h2 { margin-bottom: 1em; }
+header h1 {
+    margin: 0;
+    padding-left: 1em; /* Adjust as needed */
+    flex-grow: 1; /* Allow title to take space */
+    text-align: center; /* Center title */
+}
 
-/* Responsive Design - Media Queries */
-@media (max-width: var(--breakpoint-tablet)) { /* 768px */
-    body { font-size: 15px; line-height: 1.55; }
-    .main-header { padding: 0.8em 10px; flex-wrap: wrap; }
-    .site-title-container { flex-grow: 1; text-align: center; order: 1; width: 100%; margin-bottom: 0.5em;}
-    .site-title-container h1 { font-size: 1.6rem; }
-    .header-left-placeholder { display: none; }
-    .header-controls { flex-basis: 100%; order: 2; justify-content: space-around; }
-    .header-controls nav { margin: 0; }
-    .header-controls nav a { font-size: 0.85rem; margin: 0 0.5rem; }
-    #search-toggle-btn { font-size: 1.15rem; padding: 0.4rem 0.25rem; }
-    #theme-toggle { font-size: 1.15rem; padding: 0.4rem 4px; }
+#theme-toggle {
+    margin-right: 1em; /* Adjust as needed */
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border: 1px solid #fff;
+    background-color: #444;
+    color: #fff;
+}
 
-    .search-input-field {
-        width: 100%;
-        top: calc(100% + 0.5rem);
-        left:0; right:0; margin-left:auto; margin-right:auto;
-        max-width: 300px;
+main {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px; /* Existing padding */
+    padding-bottom: 70px; /* Added for fixed footer spacing on desktop/tablet */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%; /* This works with left:0 and right:0 effectively */
+    left: 0;
+    right: 0;
+}
+
+.post-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-item h2 a {
+    text-decoration: none;
+    color: #333;
+}
+
+.post-item p {
+    color: #666;
+}
+
+/* Dark Theme Styles */
+body.dark-theme {
+    background-color: #222;
+    color: #f4f4f4;
+}
+
+body.dark-theme header {
+    background-color: #111;
+    color: #f4f4f4;
+}
+
+body.dark-theme #theme-toggle {
+    border: 1px solid #555;
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+body.dark-theme main {
+    background-color: #333;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    /* padding-bottom for dark theme main should also be considered if needed, but it's already on main */
+}
+
+body.dark-theme .post-item {
+    border-bottom: 1px solid #444;
+}
+
+body.dark-theme .post-item h2 a {
+    color: #f4f4f4;
+}
+
+body.dark-theme .post-item p {
+    color: #ccc;
+}
+
+body.dark-theme footer {
+    background-color: #111;
+    color: #f4f4f4;
+}
+
+/* Styles for post content (ensure readability in dark mode) */
+/* Applied to article element with id post-content-container */
+#post-content-container h1,
+#post-content-container h2,
+#post-content-container h3,
+#post-content-container h4,
+#post-content-container h5,
+#post-content-container h6 {
+    color: #333; /* Default heading color */
+}
+
+body.dark-theme #post-content-container h1,
+body.dark-theme #post-content-container h2,
+body.dark-theme #post-content-container h3,
+body.dark-theme #post-content-container h4,
+body.dark-theme #post-content-container h5,
+body.dark-theme #post-content-container h6 {
+    color: #eee; /* Dark theme heading color */
+}
+
+body.dark-theme #post-content-container a {
+    color: #68a0ce; /* Link color for dark theme */
+}
+
+body.dark-theme #post-content-container code:not(pre code) { /* Updated selector */
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border: 1px solid #444;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+body.dark-theme #post-content-container pre {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border: 1px solid #444;
+    padding: 1em;
+    overflow-x: auto;
+    border-radius: 5px;
+}
+
+body.dark-theme #post-content-container pre code { /* Ensure pre code is also styled */
+    background-color: transparent; /* Pre already has background */
+    border: none;
+    padding: 0;
+}
+
+
+body.dark-theme #post-content-container blockquote {
+    border-left: 5px solid #555;
+    color: #bbb;
+    padding-left: 1em;
+    margin-left: 0;
+}
+
+body.dark-theme #post-content-container th,
+body.dark-theme #post-content-container td {
+    border: 1px solid #555;
+}
+
+body.dark-theme #post-content-container hr {
+    border-top: 1px solid #555;
+}
+
+/* TOC Styling */
+.toc-container {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.toc-container h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.toc-container ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.toc-container ul ul {
+    padding-left: 20px; /* Indent sub-levels */
+}
+
+.toc-container li a {
+    text-decoration: none;
+    color: #007bff;
+    display: block;
+    padding: 5px 0;
+}
+
+.toc-container li a:hover {
+    text-decoration: underline;
+}
+
+body.dark-theme .toc-container {
+    background-color: #2c2c2c;
+    border-color: #444;
+}
+
+body.dark-theme .toc-container h3 {
+    color: #eee;
+}
+
+body.dark-theme .toc-container li a {
+    color: #79b8ff;
+}
+
+/* Post Meta (Date, Reading Time) Styling */
+.post-meta-container {
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.post-meta-container p {
+    margin: 5px 0;
+    display: inline-block; /* Or flex for better alignment */
+    margin-right: 15px;
+}
+
+.reading-time {
+    /* Specific styling if needed */
+}
+
+body.dark-theme .post-meta-container {
+    color: #bbb;
+}
+
+/* Styling for post cards on index.html */
+.post-item .post-meta {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.post-item .post-meta .reading-time-list {
+    margin-left: 10px;
+}
+
+
+body.dark-theme .post-item .post-meta {
+    color: #aaa;
+}
+
+/* Social Share Styling */
+.social-share-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    /* Ensure this container is not part of the fixed footer */
+    /* It should be part of the scrollable main content */
+    /* This margin is important for when main doesn't have enough padding-bottom by itself */
+    /* However, with main now having padding-bottom: 70px, this might create excessive space */
+    /* Let's keep it for now, as it specifically applies to post.html where the social share is */
+    margin-bottom: 60px;
+}
+
+.social-share-container h4 {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.social-share-button {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.social-share-button:hover {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+/* Dark Theme for Social Share */
+body.dark-theme .social-share-container {
+    border-top-color: #444;
+    /* margin-bottom: 60px; /* Ensure consistency - already present above */
+}
+
+body.dark-theme .social-share-container h4 {
+    color: #eee;
+}
+
+body.dark-theme .social-share-button {
+    border-color: #555;
+    color: #f4f4f4;
+    background-color: #3a3a3a;
+}
+
+body.dark-theme .social-share-button:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+/* Mobile Specific Styles */
+@media (max-width: var(--breakpoint-mobile)) {
+    main {
+        width: 95%; /* Reduce margin on mobile */
+        padding: 15px; /* Base padding for mobile */
+        /* The 70px padding-bottom from main's base style is too much for mobile where body has 50px padding. */
+        /* Reset main's padding-bottom on mobile to a smaller value or its original mobile padding if needed */
+        padding-bottom: 20px; /* Or whatever the original mobile 'padding' value's bottom component was, e.g. 15px if symmetrical */
     }
-     #search-container {
-        max-width: none;
+
+    header h1 {
+        font-size: 1.5rem; /* Adjust header font size */
     }
 
-    main { width: 95%; margin: 15px auto; padding: 15px; }
-    h1 { font-size: 2.2rem; } h2 { font-size: 1.8rem; } h3 { font-size: 1.4rem; }
-    #blog-posts h2 { font-size: 1.6rem; }
-    .post-card-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
-    .card-content { padding: 0.8rem; }
-    .post-card-title { font-size: 1.15rem; }
-    .post-card-description { font-size: 0.85rem; }
-    .post-card-date { font-size: 0.75rem; }
-    .keyword-tag { font-size: 0.7em; padding: 0.2em 0.5em; }
-    #post-content code, #post-content pre { font-size: 0.8em; }
-    .share-btn { padding: 8px 12px; font-size: 0.85rem; }
-}
-
-@media (max-width: var(--breakpoint-mobile)) { /* 500px */
-    body { font-size: 14px; line-height: 1.5; }
-    .main-header { padding: 0.75em 10px; flex-direction: column; align-items: flex-start; position: relative; }
-    .site-title-container { order: 1; text-align: left; width: 100%; margin-bottom: 0.5em; }
-    .site-title-container h1 { font-size: 1.5rem; }
-    .header-controls { order: 2; flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
-    .header-controls nav { margin-bottom: 0; }
-    #search-container { max-width: initial; margin-bottom: 0; flex-grow:1; }
-    #search-toggle-btn { padding: 0.4rem 0.3rem; font-size: 1.25rem; }
-    #theme-toggle { position: static; font-size: 1.25rem; padding: 0.4rem 5px; }
-
-    .search-input-field {
-        width: 90%; left: 5%; right: 5%;
-        top: calc(100% + 5px);
+    #theme-toggle {
+        padding: 0.4em 0.8em; /* Slightly smaller button */
     }
 
-    main { width: 100%; margin: 10px 0; padding: 10px; border-radius: 0; box-shadow: none; }
-    #blog-posts h2 { font-size: 1.5rem; }
-    .post-card-grid { grid-template-columns: 1fr; gap: 12px; }
-    .post-card { border-radius: 5px; }
-    .card-content { padding: 0.75rem; }
-    .post-card-title { font-size: 1.1rem; }
-    .post-card-description { font-size: 0.8rem; }
-    .keyword-tag { font-size: 0.65em; padding: 0.15em 0.4em; }
-    h1 { font-size: 1.8rem; } h2 { font-size: 1.5rem; } h3 { font-size: 1.2rem; }
-    #post-content code, #post-content pre { font-size: 0.75em; }
-    .share-btn { display: block; width: 100%; margin: 8px 0; }
-    #social-share h3 { font-size: 1rem; }
-}
+    .post-item h2 a {
+        font-size: 1.2rem;
+    }
 
-/* Ad Placeholder Styles */
-.ad-placeholder {
-  display: flex; align-items: center; justify-content: center;
-  min-height: 100px; margin: 20px auto; padding: 15px;
-  font-size: 0.9em; color: #6c757d; width: 100%;
-  box-sizing: border-box; background-color: #f8f9fa;
-  border: 1px solid #dee2e6; border-radius: 4px; text-align: center;
-}
-body.dark-mode .ad-placeholder {
-  background-color: #343a40; border-color: #495057; color: #adb5bd;
-}
-.ad-placeholder::before { content: attr(data-comment); font-style: italic; }
-.ad-banner-top { min-height: 90px; }
-.ad-adsense-bottom { min-height: 200px; }
-.ad-adsense-in-article { min-height: 150px; margin-top: 15px; margin-bottom: 15px; }
+    .post-item p {
+        font-size: 0.9rem;
+    }
 
-/* Dark Mode Text Selection Styles */
-body.dark-mode ::selection {
-  background-color: var(--dm-primary-accent-color);
-  color: var(--dm-selection-text-color);
-}
+    footer p {
+        text-align: center; /* Reinforce centering */
+        margin-left: auto;   /* Center the paragraph block if it's narrower */
+        margin-right: auto;  /* Center the paragraph block if it's narrower */
+        font-size: 0.875rem; /* Slightly smaller font for mobile footer */
+        padding-left: 15px;  /* Prevent text touching screen edges */
+        padding-right: 15px; /* Prevent text touching screen edges */
+        /* word-break: keep-all; /* Uncomment if needed for Korean text */
+    }
 
-[end of css/style.css]
+    /* Ensure body has enough padding at the bottom if footer is fixed */
+    body {
+        padding-bottom: 50px; /* Adjust based on footer height */
+    }
+}

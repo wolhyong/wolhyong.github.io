@@ -1,80 +1,41 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>블로그 게시물</title>
+    <title>Blog Post</title> <!-- Title will be updated by JS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/toc.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div id="progress-bar-container">
-        <div id="progress-bar"></div>
-    </div>
-    <header class="main-header">
-        <div class="header-left-placeholder">
-            <!-- Empty for now, can be used for logo or spacing -->
-        </div>
-        <div class="site-title-container">
-            <h1><a href="index.html" class="site-title-link">GHW</a></h1>
-        </div>
-        <div class="header-controls">
-          <div id="search-container">
-            <button type="button" id="search-toggle-btn" aria-label="검색 열기" aria-expanded="false">
-              <svg class="theme-icon" viewBox="0 0 16 16"><use xlink:href="#search"></use></svg>
-            </button>
-            <input type="search" id="search-input" placeholder="게시물 검색..." class="search-input-field search-input-hidden">
-          </div>
-          <nav>
-            <a href="index.html" aria-label="홈으로 돌아가기">홈</a>
-          </nav>
-          <button type="button" id="theme-toggle" aria-label="테마 변경"></button>
-        </div>
+    <header>
+        <h1><a href="index.html" style="text-decoration: none; color: inherit;">My Blog</a></h1>
     </header>
+
     <main>
-        <article id="post-content">
-            <nav id="toc-container">
-                <h4>목차</h4>
-                <ul id="toc-list"></ul>
-            </nav>
-            <div id="post-meta-placeholder">
-            </div>
-            <div class="ad-placeholder ad-banner-top" data-comment="이미지 배너 광고 (예: 728x90)">상단 배너 광고 영역</div>
-
-            <p>이곳에 블로그 게시물 내용이 표시됩니다. 마크다운 콘텐츠를 동적으로 불러와 렌더링할 것입니다.</p>
+        <div class="post-meta-container">
+            <p id="post-date-display"></p> <!-- For dynamic date if needed, or just part of meta -->
+            <p id="reading-time-display" class="reading-time"></p>
+        </div>
+        <div id="toc-container" class="toc-container">
+            <!-- Table of Contents will be generated here -->
+        </div>
+        <article id="post-content-container">
+            <!-- Full blog post content will be loaded here -->
+            <p>Loading post...</p>
         </article>
-
-        <div class="ad-placeholder ad-adsense-bottom" data-comment="구글 애드센스 디스플레이 광고 (반응형)">하단 애드센스 광고 영역</div>
-
-        <section id="social-share">
-            <h3>이 게시물 공유하기:</h3>
-            <a href="#" class="share-btn twitter" target="_blank" title="트위터에 공유하기">트위터</a>
-            <a href="#" class="share-btn facebook" target="_blank" title="페이스북에 공유하기">페이스북</a>
-            <a href="#" class="share-btn linkedin" target="_blank" title="링크드인에 공유하기">링크드인</a>
-        </section>
-
-        <section id="comments">
-            <h2>댓글</h2>
-            <div id="disqus_thread"></div>
-        </section>
     </main>
+
     <footer>
-        <p>© 2013 Greyhacker Wolhyong Development Blog. All rights reserved.</p>
+        <p>&copy; 2023 My Blog</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Include marked.js library -->
     <script src="js/script.js"></script>
-    <script>
-        var disqus_config = function () {
-            this.page.url = window.location.href;
-            this.page.identifier = new URLSearchParams(window.location.search).get('post');
-        };
-        (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://YOUR_DISQUS_SHORTNAME_HERE.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <!-- Social Share buttons will be dynamically added by script or can be static if preferred -->
+    <!-- For now, let's add a placeholder that script can fill -->
+    <div id="social-share-container" class="social-share-container" style="text-align: center; padding: 20px;">
+        <!-- Share buttons will be populated here by script.js -->
+        <h4>Share this post:</h4>
+    </div>
 </body>
 </html>
