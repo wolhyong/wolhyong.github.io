@@ -165,11 +165,11 @@ function renderPosts(postsToRender, searchTerm = "") {
         }
     }
 
-    if (postsToRender.length === 0 && searchTerm) { // Keep existing no-results message for post list area
-        postList.innerHTML = `<p class="no-results">No posts found matching "${searchTerm}".</p>`; // To be translated later if this specific format is kept
+    if (postsToRender.length === 0 && searchTerm) {
+        postList.innerHTML = `<p class="no-results">검색어 '${searchTerm}'에 해당하는 게시물이 없습니다.</p>`;
         return;
     } else if (postsToRender.length === 0) {
-        postList.innerHTML = `<p class="no-results">게시물이 없습니다.</p>`; // No posts found (generic)
+        postList.innerHTML = `<p class="no-results">게시물이 없습니다.</p>`;
         return;
     }
 
