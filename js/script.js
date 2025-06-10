@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize search toggle if elements are present (works for index.html and post.html)
     const searchToggleButton = document.getElementById('search-toggle-btn');
-    const searchInputField = document.getElementById('search-input'); // This is the actual input field
+    const searchInputField = document.getElementById('search-input');
     const searchContainer = document.getElementById('search-container');
 
     if (searchToggleButton && searchInputField && searchContainer) {
@@ -19,11 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Page-specific initializations
     if (document.getElementById('post-list')) { // Index page specific
-        // Pass searchInputField and searchToggleButton for potential pre-filling from URL
         fetchPostsAndEnableSearch(searchInputField, searchToggleButton);
     } else if (document.getElementById('post-content')) { // Post page specific
         loadPost();
-        // Add specific search handling for post.html if search input exists
         if (searchInputField) {
             searchInputField.addEventListener('keypress', function(event) {
                 if (event.key === 'Enter') {
@@ -37,12 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Global initializations like sprite loader
     loadBootstrapIconsSprite();
 });
 
 // --- Theme Toggle Logic ---
-const themeToggleButtonGlobal = document.getElementById('theme-toggle'); // Use a different var name
+const themeToggleButtonGlobal = document.getElementById('theme-toggle');
 
 function applyTheme(theme) {
     if (themeToggleButtonGlobal) {
@@ -76,9 +73,7 @@ if (themeToggleButtonGlobal) {
 }
 
 // --- Toggleable Search UI Logic ---
-// Parameters for searchToggleButton, searchInputField, searchContainer are now passed
 function initializeSearchToggle(stb, sif, sc) {
-    // Initial state: input hidden, button says "Open search"
     sif.classList.add('search-input-hidden');
     stb.setAttribute('aria-expanded', 'false');
     stb.setAttribute('aria-label', 'Open search');
@@ -86,12 +81,9 @@ function initializeSearchToggle(stb, sif, sc) {
     stb.addEventListener('click', (event) => {
         event.stopPropagation();
         const isHidden = sif.classList.toggle('search-input-hidden');
-        if (isHidden) {
-            stb.setAttribute('aria-expanded', 'false');
-            stb.setAttribute('aria-label', 'Open search');
-        } else {
-            stb.setAttribute('aria-expanded', 'true');
-            stb.setAttribute('aria-label', 'Close search');
+        stb.setAttribute('aria-expanded', String(!isHidden));
+        stb.setAttribute('aria-label', isHidden ? 'Open search' : 'Close search');
+        if (!isHidden) {
             sif.focus();
         }
     });
@@ -113,41 +105,36 @@ function initializeSearchToggle(stb, sif, sc) {
     });
 }
 
-
 // --- Client-Side Search Logic (for index.html) ---
 let allPostsData = [];
 
-// Accept searchInputField and searchToggleButton as parameters
 async function fetchPostsAndEnableSearch(searchInputField, searchToggleButton) {
     try {
         const response = await fetch('posts/posts.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         allPostsData = await response.json();
-        renderPosts(allPostsData); // Initial render of all posts
+        renderPosts(allPostsData);
 
-        if (searchInputField) { // searchInputField is the actual input element
+        if (searchInputField) {
             searchInputField.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 const filteredPosts = allPostsData.filter(post =>
                     (post.title && post.title.toLowerCase().includes(searchTerm)) ||
-                    (post.description && post.description.toLowerCase().includes(searchTerm))
+                    (post.description && post.description.toLowerCase().includes(searchTerm)) ||
+                    (post.keywords && post.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm)))
                 );
                 renderPosts(filteredPosts, searchTerm);
             });
 
-            // Handle search query parameter from URL
             const urlParams = new URLSearchParams(window.location.search);
             const searchParam = urlParams.get('search');
-            if (searchParam) {
+            if (searchParam && searchToggleButton) { // Check searchToggleButton also
                 searchInputField.value = decodeURIComponent(searchParam);
                 if (searchInputField.classList.contains('search-input-hidden')) {
                     searchInputField.classList.remove('search-input-hidden');
-                    if(searchToggleButton) { // Check if searchToggleButton exists
-                        searchToggleButton.setAttribute('aria-expanded', 'true');
-                        searchToggleButton.setAttribute('aria-label', 'Close search');
-                    }
+                    searchToggleButton.setAttribute('aria-expanded', 'true');
+                    searchToggleButton.setAttribute('aria-label', 'Close search');
                 }
-                // Trigger the filtering
                 const event = new Event('input', { bubbles: true, cancelable: true });
                 searchInputField.dispatchEvent(event);
                 searchInputField.focus();
@@ -168,40 +155,86 @@ function renderPosts(postsToRender, searchTerm = "") {
     postList.innerHTML = '';
     postList.className = 'post-card-grid';
 
-    if (postsToRender.length === 0) {
-        postList.innerHTML = `<p class="no-results">No posts found${searchTerm ? ` matching "${searchTerm}"` : ''}.</p>`;
-        if (blogPostsHeading) blogPostsHeading.textContent = searchTerm ? "Search Results" : "Blog Posts";
-        return;
+    if (blogPostsHeading) {
+        if (postsToRender.length === 0 && searchTerm) {
+            blogPostsHeading.textContent = `'${searchTerm}'에 대한 검색 결과가 없습니다.`;
+        } else if (searchTerm) {
+            blogPostsHeading.textContent = `'${searchTerm}' 검색 결과 (커리큘럼)`;
+        } else {
+            blogPostsHeading.textContent = '커리큘럼';
+        }
     }
 
-    if (blogPostsHeading) {
-        blogPostsHeading.textContent = searchTerm ? `Search Results for "${searchTerm}"` : "Blog Posts";
+    if (postsToRender.length === 0) {
+        postList.innerHTML = `<p class="no-results">No posts found${searchTerm ? ` matching "${searchTerm}"` : ''}.</p>`;
+        return;
     }
 
     postsToRender.forEach(post => {
         const card = document.createElement('div');
         card.className = 'post-card';
+
         const cardLink = document.createElement('a');
         cardLink.href = `post.html?post=${post.file}`;
         cardLink.className = 'post-card-link';
+
+        // Create and prepend thumbnail image
+        if (post.thumbnailImageUrl) {
+            const thumbnailImage = document.createElement('img');
+            thumbnailImage.src = post.thumbnailImageUrl;
+            thumbnailImage.alt = `Thumbnail for ${post.title}`;
+            thumbnailImage.className = 'card-thumbnail-image';
+            cardLink.appendChild(thumbnailImage); // Prepend to link for structure
+        } else {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'card-thumbnail-placeholder';
+            // placeholder.textContent = 'No Image'; // Optional text
+            cardLink.appendChild(placeholder);
+        }
+
+        const cardContent = document.createElement('div');
+        cardContent.className = 'card-content';
+
+        const cardDate = document.createElement('small');
+        cardDate.className = 'post-card-date';
+        cardDate.textContent = `Published: ${post.datePublished || post.date}`;
+        cardContent.appendChild(cardDate);
+
         const cardTitle = document.createElement('h3');
         cardTitle.className = 'post-card-title';
         cardTitle.textContent = post.title;
-        cardLink.appendChild(cardTitle);
+        // Link is on cardLink, so title itself is not a link here.
+        // If title should be a link, this needs adjustment or wrap h3 in <a>.
+        // For now, assuming cardLink provides overall link.
+        cardContent.appendChild(cardTitle);
+
         if (post.description) {
             const cardDescription = document.createElement('p');
             cardDescription.className = 'post-card-description';
             cardDescription.textContent = post.description;
-            cardLink.appendChild(cardDescription);
+            cardContent.appendChild(cardDescription);
         }
-        const cardDate = document.createElement('small');
-        cardDate.className = 'post-card-date';
-        cardDate.textContent = `Published: ${post.datePublished || post.date}`;
-        cardLink.appendChild(cardDate);
+
+        // Create and append keywords
+        if (post.keywords && post.keywords.length > 0) {
+            const keywordsContainer = document.createElement('div');
+            keywordsContainer.className = 'card-keywords';
+            post.keywords.forEach(keywordText => {
+                const keywordTag = document.createElement('span');
+                keywordTag.className = 'keyword-tag';
+                keywordTag.textContent = keywordText;
+                keywordsContainer.appendChild(keywordTag);
+            });
+            cardContent.appendChild(keywordsContainer);
+        }
+
+        cardLink.appendChild(cardContent);
         card.appendChild(cardLink);
         postList.appendChild(card);
     });
 }
+
+// ... (rest of the script remains the same) ...
 
 // --- Single Post Page Logic (post.html) ---
 async function loadPost() {

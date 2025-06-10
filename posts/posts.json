@@ -1,10 +1,32 @@
 [
-    {
-        "title": "Sample Blog Post",
-        "file": "sample-post.md",
-        "date": "2023-10-27",
-        "description": "A brief overview of Markdown, its syntax, and how it can be used to create formatted content for the web.",
-        "datePublished": "2023-10-27",
-        "lastModified": "2023-10-28"
-    }
+  {
+    "file": "sample-post-1.md",
+    "title": "Understanding Markdown: A Quick Guide",
+    "date": "2023-10-27",
+    "description": "A brief overview of Markdown, its syntax, and how it can be used to create formatted content for the web and simple documents.",
+    "datePublished": "2023-10-27",
+    "lastModified": "2023-10-28",
+    "thumbnailImageUrl": "https://via.placeholder.com/300x200.png?text=Markdown+Guide",
+    "keywords": ["markdown", "syntax", "formatting", "web content", "documentation"]
+  },
+  {
+    "file": "sample-post-2.md",
+    "title": "Exploring JavaScript ES6 Features",
+    "date": "2023-11-05",
+    "description": "An introduction to some of the powerful features introduced in ECMAScript 2015 (ES6), such as arrow functions, classes, and template literals.",
+    "datePublished": "2023-11-05",
+    "lastModified": "2023-11-06",
+    "thumbnailImageUrl": "https://via.placeholder.com/300x200.png?text=JavaScript+ES6",
+    "keywords": ["javascript", "es6", "ecmascript", "web development", "programming"]
+  },
+  {
+    "file": "sample-post-3.md",
+    "title": "CSS Flexbox vs. Grid: A Comparison",
+    "date": "2023-11-12",
+    "description": "A look at CSS Flexbox and CSS Grid, discussing their strengths, use cases, and how they can be used together for complex layouts.",
+    "datePublished": "2023-11-12",
+    "lastModified": "2023-11-14",
+    "thumbnailImageUrl": "https://via.placeholder.com/300x200.png?text=CSS+Layouts",
+    "keywords": ["css", "flexbox", "grid", "layout", "web design", "responsive"]
+  }
 ]
