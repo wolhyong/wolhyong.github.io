@@ -1,5 +1,5 @@
 // Main JavaScript for the blog
-console.log("JavaScript file loaded");
+console.log("JavaScript 파일 로드됨"); // JavaScript file loaded
 
 document.addEventListener('DOMContentLoaded', () => {
     // Common initializations
@@ -47,11 +47,11 @@ function applyTheme(theme) {
         if (theme === 'dark') {
             document.body.classList.add('dark-mode');
             newIconHTML = '<svg class="theme-icon theme-icon-sun" viewBox="0 0 16 16"><use xlink:href="#sun-fill"></use></svg>';
-            themeToggleButtonGlobal.setAttribute('aria-label', 'Switch to light mode');
+            themeToggleButtonGlobal.setAttribute('aria-label', '라이트 모드로 변경'); // Switch to light mode
         } else {
             document.body.classList.remove('dark-mode');
             newIconHTML = '<svg class="theme-icon theme-icon-moon" viewBox="0 0 16 16"><use xlink:href="#moon-fill"></use></svg>';
-            themeToggleButtonGlobal.setAttribute('aria-label', 'Switch to dark mode');
+            themeToggleButtonGlobal.setAttribute('aria-label', '다크 모드로 변경'); // Switch to dark mode
         }
         themeToggleButtonGlobal.innerHTML = newIconHTML;
     } else if (theme === 'dark') {
@@ -76,13 +76,13 @@ if (themeToggleButtonGlobal) {
 function initializeSearchToggle(stb, sif, sc) {
     sif.classList.add('search-input-hidden');
     stb.setAttribute('aria-expanded', 'false');
-    stb.setAttribute('aria-label', 'Open search');
+    stb.setAttribute('aria-label', '검색 열기'); // Open search
 
     stb.addEventListener('click', (event) => {
         event.stopPropagation();
         const isHidden = sif.classList.toggle('search-input-hidden');
         stb.setAttribute('aria-expanded', String(!isHidden));
-        stb.setAttribute('aria-label', isHidden ? 'Open search' : 'Close search');
+        stb.setAttribute('aria-label', isHidden ? '검색 열기' : '검색 닫기'); // Open search : Close search
         if (!isHidden) {
             sif.focus();
         }
@@ -96,7 +96,7 @@ function initializeSearchToggle(stb, sif, sc) {
 
             sif.classList.add('search-input-hidden');
             stb.setAttribute('aria-expanded', 'false');
-            stb.setAttribute('aria-label', 'Open search');
+            stb.setAttribute('aria-label', '검색 열기'); // Open search
         }
     });
 
@@ -128,12 +128,12 @@ async function fetchPostsAndEnableSearch(searchInputField, searchToggleButton) {
 
             const urlParams = new URLSearchParams(window.location.search);
             const searchParam = urlParams.get('search');
-            if (searchParam && searchToggleButton) { // Check searchToggleButton also
+            if (searchParam && searchToggleButton) {
                 searchInputField.value = decodeURIComponent(searchParam);
                 if (searchInputField.classList.contains('search-input-hidden')) {
                     searchInputField.classList.remove('search-input-hidden');
                     searchToggleButton.setAttribute('aria-expanded', 'true');
-                    searchToggleButton.setAttribute('aria-label', 'Close search');
+                    searchToggleButton.setAttribute('aria-label', '검색 닫기'); // Close search
                 }
                 const event = new Event('input', { bubbles: true, cancelable: true });
                 searchInputField.dispatchEvent(event);
@@ -141,9 +141,9 @@ async function fetchPostsAndEnableSearch(searchInputField, searchToggleButton) {
             }
         }
     } catch (error) {
-        console.error('Error fetching posts for search:', error);
+        console.error('Error fetching posts for search:', error); // Dev-facing
         const postList = document.getElementById('post-list');
-        if (postList) postList.innerHTML = '<li>Error loading posts.</li>';
+        if (postList) postList.innerHTML = '<li>게시물을 불러오는 중 오류 발생.</li>'; // Error loading posts.
     }
 }
 
@@ -165,10 +165,14 @@ function renderPosts(postsToRender, searchTerm = "") {
         }
     }
 
-    if (postsToRender.length === 0) {
-        postList.innerHTML = `<p class="no-results">No posts found${searchTerm ? ` matching "${searchTerm}"` : ''}.</p>`;
+    if (postsToRender.length === 0 && searchTerm) { // Keep existing no-results message for post list area
+        postList.innerHTML = `<p class="no-results">No posts found matching "${searchTerm}".</p>`; // To be translated later if this specific format is kept
+        return;
+    } else if (postsToRender.length === 0) {
+        postList.innerHTML = `<p class="no-results">게시물이 없습니다.</p>`; // No posts found (generic)
         return;
     }
+
 
     postsToRender.forEach(post => {
         const card = document.createElement('div');
@@ -178,17 +182,16 @@ function renderPosts(postsToRender, searchTerm = "") {
         cardLink.href = `post.html?post=${post.file}`;
         cardLink.className = 'post-card-link';
 
-        // Create and prepend thumbnail image
         if (post.thumbnailImageUrl) {
             const thumbnailImage = document.createElement('img');
             thumbnailImage.src = post.thumbnailImageUrl;
-            thumbnailImage.alt = `Thumbnail for ${post.title}`;
+            thumbnailImage.alt = `썸네일: ${post.title}`; // Thumbnail for
             thumbnailImage.className = 'card-thumbnail-image';
-            cardLink.appendChild(thumbnailImage); // Prepend to link for structure
+            cardLink.appendChild(thumbnailImage);
         } else {
             const placeholder = document.createElement('div');
             placeholder.className = 'card-thumbnail-placeholder';
-            // placeholder.textContent = 'No Image'; // Optional text
+            // placeholder.textContent = 'No Image';
             cardLink.appendChild(placeholder);
         }
 
@@ -197,15 +200,12 @@ function renderPosts(postsToRender, searchTerm = "") {
 
         const cardDate = document.createElement('small');
         cardDate.className = 'post-card-date';
-        cardDate.textContent = `Published: ${post.datePublished || post.date}`;
+        cardDate.textContent = `게시일: ${post.datePublished || post.date}`; // Published:
         cardContent.appendChild(cardDate);
 
         const cardTitle = document.createElement('h3');
         cardTitle.className = 'post-card-title';
         cardTitle.textContent = post.title;
-        // Link is on cardLink, so title itself is not a link here.
-        // If title should be a link, this needs adjustment or wrap h3 in <a>.
-        // For now, assuming cardLink provides overall link.
         cardContent.appendChild(cardTitle);
 
         if (post.description) {
@@ -215,14 +215,13 @@ function renderPosts(postsToRender, searchTerm = "") {
             cardContent.appendChild(cardDescription);
         }
 
-        // Create and append keywords
         if (post.keywords && post.keywords.length > 0) {
             const keywordsContainer = document.createElement('div');
             keywordsContainer.className = 'card-keywords';
             post.keywords.forEach(keywordText => {
                 const keywordTag = document.createElement('span');
                 keywordTag.className = 'keyword-tag';
-                keywordTag.textContent = keywordText;
+                keywordTag.textContent = keywordText; // Keywords are already translated in posts.json
                 keywordsContainer.appendChild(keywordTag);
             });
             cardContent.appendChild(keywordsContainer);
@@ -234,9 +233,6 @@ function renderPosts(postsToRender, searchTerm = "") {
     });
 }
 
-// ... (rest of the script remains the same) ...
-
-// --- Single Post Page Logic (post.html) ---
 async function loadPost() {
     try {
         const urlParams = new URLSearchParams(window.location.search);
@@ -244,11 +240,11 @@ async function loadPost() {
         const postContentElement = document.getElementById('post-content');
 
         if (!postFile) {
-            postContentElement.innerHTML = '<p>No post specified.</p>';
+            postContentElement.innerHTML = '<p>게시물이 지정되지 않았습니다.</p>'; // No post specified.
             return;
         }
         if (postFile.includes('..') || postFile.startsWith('/')) {
-            postContentElement.innerHTML = '<p>Invalid post path.</p>';
+            postContentElement.innerHTML = '<p>잘못된 게시물 경로입니다.</p>'; // Invalid post path.
             return;
         }
 
@@ -257,8 +253,8 @@ async function loadPost() {
         const markdown = await response.text();
 
         if (typeof marked === 'undefined') {
-            console.error('marked.js library is not loaded.');
-            postContentElement.innerHTML = '<p>Error: Markdown parser not loaded.</p>';
+            console.error('marked.js library is not loaded.'); // Dev-facing
+            postContentElement.innerHTML = '<p>마크다운 파서를 로드할 수 없습니다.</p>'; // Error: Markdown parser not loaded.
             return;
         }
 
@@ -274,7 +270,7 @@ async function loadPost() {
 
         const postData = await getPostData(postFile);
 
-        document.title = (postData?.title || postContentElement.querySelector('h1')?.textContent || "Blog Post") + " | My Coding Blog";
+        document.title = (postData?.title || postContentElement.querySelector('h1')?.textContent || "블로그 게시물") + " | GHW 코딩 블로그"; // Blog Post | My Coding Blog
         updateMetaDescription(postData?.description || (postContentElement.textContent || postContentElement.innerText || "").substring(0, 150) + "...");
 
         if(postData) addBlogPostingSchema(postData);
@@ -286,9 +282,9 @@ async function loadPost() {
         updateSocialShareLinks();
 
     } catch (error) {
-        console.error('Error loading post:', error);
+        console.error('Error loading post:', error); // Dev-facing
         const postContentElement = document.getElementById('post-content');
-        if (postContentElement) postContentElement.innerHTML = '<p>Error loading post content.</p>';
+        if (postContentElement) postContentElement.innerHTML = '<p>게시물 내용을 불러오는 중 오류 발생.</p>'; // Error loading post content.
     }
 }
 
@@ -299,7 +295,7 @@ async function getPostData(postFilename) {
         const posts = await response.json();
         return posts.find(post => post.file === postFilename);
     } catch (error) {
-        console.error('Error fetching post data from posts.json:', error);
+        console.error('Error fetching post data from posts.json:', error); // Dev-facing
         return null;
     }
 }
@@ -316,10 +312,10 @@ function updateMetaDescription(description) {
 
 function updateSocialShareLinks() {
     const postUrl = window.location.href;
-    let postTitle = document.title.replace(" | My Coding Blog", "");
-    if (!postTitle || postTitle.trim() === "") {
+    let postTitle = document.title.replace(" | GHW 코딩 블로그", ""); // Updated blog name
+    if (!postTitle || postTitle.trim() === "" || postTitle === "블로그 게시물") { // Updated default title
         const h1 = document.querySelector('#post-content h1');
-        postTitle = h1?.textContent || "Check out this post!";
+        postTitle = h1?.textContent || "이 게시물을 확인해보세요!"; // Check out this post!
     }
 
     const twitterLink = document.querySelector('.share-btn.twitter');
@@ -337,8 +333,8 @@ function displayEstimatedReadingTime(text) {
     const readingTimeElement = document.getElementById('post-meta-placeholder');
     if (readingTimeElement) {
         const existingP = readingTimeElement.querySelector('.reading-time');
-        if (existingP) existingP.textContent = `Estimated reading time: ${minutes} min`;
-        else readingTimeElement.innerHTML = `<p class="reading-time">Estimated reading time: ${minutes} min</p>` + readingTimeElement.innerHTML;
+        if (existingP) existingP.textContent = `예상 읽기 시간: ${minutes}분`; // Estimated reading time: ... min
+        else readingTimeElement.innerHTML = `<p class="reading-time">예상 읽기 시간: ${minutes}분</p>` + readingTimeElement.innerHTML;
     }
 }
 
@@ -359,11 +355,11 @@ function insertMidArticleAd(postContentElement) {
         const adDiv = document.createElement('div');
         adDiv.id = 'ad-placeholder-in-article-1';
         adDiv.className = 'ad-placeholder ad-adsense-in-article';
-        adDiv.dataset.comment = 'Google AdSense In-article Ad';
+        adDiv.dataset.comment = '구글 애드센스 본문 내 광고'; // Google AdSense In-article Ad
         insertionPoint.insertAdjacentElement('afterend', adDiv);
-        console.log('In-article ad placeholder inserted after:', insertionPoint.tagName);
+        // console.log('In-article ad placeholder inserted after:', insertionPoint.tagName); // Dev-facing
     } else {
-        console.log('Suitable insertion point for in-article ad not found.');
+        // console.log('Suitable insertion point for in-article ad not found.'); // Dev-facing
     }
 }
 
@@ -378,7 +374,7 @@ function addBlogPostingSchema(postData) {
         "datePublished": postData.datePublished,
         "dateModified": postData.lastModified || postData.datePublished,
         "mainEntityOfPage": {"@type": "WebPage", "@id": postUrl},
-        "author": {"@type": "Person", "name": "The Blog Author"},
+        "author": {"@type": "Person", "name": "블로그 운영자"}, // The Blog Author
     };
     let scriptTag = document.querySelector('script[type="application/ld+json"]');
     if (!scriptTag) {
@@ -437,12 +433,12 @@ function updateReadingProgressBar() {
 }
 
 async function generateSitemap() {
-    console.log("Attempting to generate sitemap...");
-    const YOUR_BLOG_BASE_URL = prompt("Please enter your blog's base URL (e.g., https://yourusername.github.io/your-repo-name):", "YOUR_BLOG_BASE_URL_HERE");
+    console.log("사이트맵 생성 시도 중..."); // Attempting to generate sitemap...
+    const YOUR_BLOG_BASE_URL = prompt("블로그의 전체 기본 URL을 입력하세요 (예: https://yourusername.github.io/your-repo-name):", "YOUR_BLOG_BASE_URL_HERE"); // Please enter your blog's base URL...
 
     if (!YOUR_BLOG_BASE_URL || YOUR_BLOG_BASE_URL === "YOUR_BLOG_BASE_URL_HERE") {
-        console.error("Sitemap generation cancelled: Base URL not provided.");
-        alert("Sitemap generation cancelled. Please replace 'YOUR_BLOG_BASE_URL_HERE' in sitemap.xml manually or re-run with a valid URL.");
+        console.error("사이트맵 생성 취소: 기본 URL이 제공되지 않았습니다."); // Sitemap generation cancelled: Base URL not provided.
+        alert("사이트맵 생성이 취소되었습니다. sitemap.xml의 'YOUR_BLOG_BASE_URL_HERE'를 수동으로 교체하거나 유효한 URL로 다시 실행해주세요."); // Sitemap generation cancelled. Please replace...
         return;
     }
 
@@ -462,26 +458,26 @@ async function generateSitemap() {
             sitemapXml += `  </url>\n`;
         });
     } catch (error) {
-        console.error("Error fetching posts for sitemap:", error);
+        console.error("사이트맵용 게시물 가져오기 오류:", error); // Error fetching posts for sitemap
     }
     sitemapXml += `</urlset>`;
-    console.log("\n--- Generated sitemap.xml ---\n");
+    console.log("\n--- 생성된 sitemap.xml ---\n"); // --- Generated sitemap.xml ---
     console.log(sitemapXml);
-    alert("Sitemap XML generated! Check browser console (F12) for XML and copy to sitemap.xml.");
+    alert("사이트맵 XML 생성됨! 브라우저 콘솔(F12)에서 XML 내용을 확인하고 sitemap.xml 파일에 복사하세요."); // Sitemap XML generated! Check browser console...
 }
 
 async function generateRssFeed() {
-    console.log("Attempting to generate RSS feed...");
-    const YOUR_BLOG_BASE_URL = prompt("Please enter your blog's full base URL (e.g., https://yourusername.github.io/your-repo-name):", "YOUR_BLOG_BASE_URL_HERE");
+    console.log("RSS 피드 생성 시도 중..."); // Attempting to generate RSS feed...
+    const YOUR_BLOG_BASE_URL = prompt("블로그의 전체 기본 URL을 입력하세요 (예: https://yourusername.github.io/your-repo-name):", "YOUR_BLOG_BASE_URL_HERE"); // Please enter your blog's full base URL...
 
     if (!YOUR_BLOG_BASE_URL || YOUR_BLOG_BASE_URL === "YOUR_BLOG_BASE_URL_HERE") {
-        console.error("RSS feed generation cancelled: Base URL not provided.");
-        alert("RSS feed generation cancelled. Please provide your blog's base URL.");
+        console.error("RSS 피드 생성 취소: 기본 URL이 제공되지 않았습니다."); // RSS feed generation cancelled: Base URL not provided.
+        alert("RSS 피드 생성이 취소되었습니다. 블로그의 기본 URL을 제공해주세요."); // RSS feed generation cancelled. Please provide your blog's base URL.
         return;
     }
 
-    const blogTitle = "My Coding Blog";
-    const blogDescription = "A blog about software development, coding tips, programming tutorials, and technology insights.";
+    const blogTitle = "GHW 코딩 블로그"; // My Coding Blog -> GHW 코딩 블로그
+    const blogDescription = "소프트웨어 개발, 코딩 팁, 프로그래밍 튜토리얼, 기술적 인사이트에 대한 블로그입니다."; // A blog about software development...
 
     let rssXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
     rssXml += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
@@ -489,7 +485,7 @@ async function generateRssFeed() {
     rssXml += `    <title><![CDATA[${blogTitle}]]></title>\n`;
     rssXml += `    <link>${YOUR_BLOG_BASE_URL}</link>\n`;
     rssXml += `    <description><![CDATA[${blogDescription}]]></description>\n`;
-    rssXml += `    <language>en-us</language>\n`;
+    rssXml += `    <language>ko-KR</language>\n`; // en-us -> ko-KR
     rssXml += `    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n`;
     rssXml += `    <atom:link href="${YOUR_BLOG_BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />\n`;
 
@@ -508,10 +504,10 @@ async function generateRssFeed() {
             }
 
             rssXml += `    <item>\n`;
-            rssXml += `      <title><![CDATA[${post.title}]]></title>\n`;
+            rssXml += `      <title><![CDATA[${post.title}]]></title>\n`; // Titles in posts.json will be translated
             rssXml += `      <link>${postUrl}</link>\n`;
             rssXml += `      <guid isPermaLink="true">${postUrl}</guid>\n`;
-            if (post.description) {
+            if (post.description) { // Descriptions in posts.json will be translated
                 rssXml += `      <description><![CDATA[${post.description}]]></description>\n`;
             }
             if (pubDate) {
@@ -521,15 +517,15 @@ async function generateRssFeed() {
         });
 
     } catch (error) {
-        console.error("Error fetching posts for RSS feed:", error);
+        console.error("RSS 피드용 게시물 가져오기 오류:", error); // Error fetching posts for RSS feed:
     }
 
     rssXml += `  </channel>\n`;
     rssXml += `</rss>`;
 
-    console.log("\n--- Generated rss.xml ---\n");
+    console.log("\n--- 생성된 rss.xml ---\n"); // --- Generated rss.xml ---
     console.log(rssXml);
-    alert("RSS feed XML generated! Check the browser console (F12) for the XML content. Copy this content and paste it into a new file named 'rss.xml' in the root of your project.");
+    alert("RSS 피드 XML 생성됨! 브라우저 콘솔(F12)에서 XML 내용을 확인하고, 'rss.xml' 파일로 저장하세요."); // RSS feed XML generated! Check the browser console...
 }
 
 // --- Bootstrap Icons SVG Sprite Loader ---
@@ -548,7 +544,7 @@ function loadBootstrapIconsSprite() {
   fetch(spriteUrl)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok for Bootstrap Icons sprite.');
+        throw new Error('Network response was not ok for Bootstrap Icons sprite.'); // Dev-facing
       }
       return response.text();
     })
@@ -556,7 +552,7 @@ function loadBootstrapIconsSprite() {
       spriteContainer.innerHTML = svgData;
     })
     .catch(error => {
-      console.error('Error loading Bootstrap Icons sprite:', error);
+      console.error('Error loading Bootstrap Icons sprite:', error); // Dev-facing
       if (spriteContainer.parentNode) {
         spriteContainer.parentNode.removeChild(spriteContainer);
       }

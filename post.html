@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post</title>
+    <title>블로그 게시물</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/toc.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -21,46 +21,46 @@
         </div>
         <div class="header-controls">
           <div id="search-container">
-            <button type="button" id="search-toggle-btn" aria-label="Open search" aria-expanded="false">
+            <button type="button" id="search-toggle-btn" aria-label="검색 열기" aria-expanded="false">
               <svg class="theme-icon" viewBox="0 0 16 16"><use xlink:href="#search"></use></svg>
             </button>
-            <input type="search" id="search-input" placeholder="Search posts..." class="search-input-field search-input-hidden">
+            <input type="search" id="search-input" placeholder="게시물 검색..." class="search-input-field search-input-hidden">
           </div>
           <nav>
-            <a href="index.html" aria-label="Back to Home">Home</a>
+            <a href="index.html" aria-label="홈으로 돌아가기">홈</a>
           </nav>
-          <button type="button" id="theme-toggle" aria-label="Toggle theme"></button>
+          <button type="button" id="theme-toggle" aria-label="테마 변경"></button>
         </div>
     </header>
     <main>
         <article id="post-content">
             <nav id="toc-container">
-                <h4>Table of Contents</h4>
+                <h4>목차</h4>
                 <ul id="toc-list"></ul>
             </nav>
             <div id="post-meta-placeholder">
             </div>
-            <div class="ad-placeholder ad-banner-top" data-comment="Image Banner Ad (e.g., 728x90)">Placeholder: Top Banner Ad</div>
+            <div class="ad-placeholder ad-banner-top" data-comment="이미지 배너 광고 (예: 728x90)">상단 배너 광고 영역</div>
 
-            <p>This is where the content of the blog post will go. We will dynamically load and render Markdown content here.</p>
+            <p>이곳에 블로그 게시물 내용이 표시됩니다. 마크다운 콘텐츠를 동적으로 불러와 렌더링할 것입니다.</p>
         </article>
 
-        <div class="ad-placeholder ad-adsense-bottom" data-comment="Google AdSense Display Ad (responsive)">Placeholder: Bottom AdSense Ad</div>
+        <div class="ad-placeholder ad-adsense-bottom" data-comment="구글 애드센스 디스플레이 광고 (반응형)">하단 애드센스 광고 영역</div>
 
         <section id="social-share">
-            <h3>Share this post:</h3>
-            <a href="#" class="share-btn twitter" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="#" class="share-btn facebook" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="#" class="share-btn linkedin" target="_blank" title="Share on LinkedIn">LinkedIn</a>
+            <h3>이 게시물 공유하기:</h3>
+            <a href="#" class="share-btn twitter" target="_blank" title="트위터에 공유하기">트위터</a>
+            <a href="#" class="share-btn facebook" target="_blank" title="페이스북에 공유하기">페이스북</a>
+            <a href="#" class="share-btn linkedin" target="_blank" title="링크드인에 공유하기">링크드인</a>
         </section>
 
         <section id="comments">
-            <h2>Comments</h2>
+            <h2>댓글</h2>
             <div id="disqus_thread"></div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2023 My Blog</p>
+        <p>&copy; 2024 GHW</p>
     </footer>
     <script src="js/script.js"></script>
     <script>
