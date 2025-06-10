@@ -93,11 +93,12 @@ body.dark-mode .main-header { background-color: var(--dm-content-background-colo
   margin: 0;
   font-size: 1.8rem;
   font-weight: bold;
-  line-height: 1.2; /* Consistent with other h1 general styles */
-  padding-top: 0.1em; /* Nudge text slightly down for better visual alignment with icons */
+  line-height: 1.2;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
 }
 
-.site-title-container h1 a.site-title-link { /* Target the link itself */
+.site-title-container h1 a.site-title-link {
   text-decoration: none;
   color: var(--header-text-color);
 }
@@ -337,7 +338,7 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
     body { font-size: 15px; line-height: 1.55; }
     .main-header { padding: 0.8em 10px; flex-wrap: wrap; }
     .site-title-container { flex-grow: 1; text-align: center; order: 1; width: 100%; margin-bottom: 0.5em;}
-    .site-title-container h1 { font-size: 1.6rem; /* Adjusted from .site-title-link h1 */ }
+    .site-title-container h1 { font-size: 1.6rem; }
     .header-left-placeholder { display: none; }
     .header-controls { flex-basis: 100%; order: 2; justify-content: space-around; }
     .header-controls nav { margin: 0; }
@@ -369,14 +370,14 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
 
 @media (max-width: var(--breakpoint-mobile)) { /* 500px */
     body { font-size: 14px; line-height: 1.5; }
-    .main-header { padding: 0.75em 10px; flex-direction: column; align-items: center; position: relative; }
-    .site-title-container { order: 1; text-align: center; width: auto; margin-bottom: 0.5em; }
-    .site-title-container h1 { font-size: 1.5rem; /* Adjusted from .site-title-link h1 */ }
+    .main-header { padding: 0.75em 10px; flex-direction: column; align-items: flex-start; /* Changed from center to flex-start */ position: relative; }
+    .site-title-container { order: 1; text-align: left; width: 100%; margin-bottom: 0.5em; } /* Changed: text-align left, width 100% */
+    .site-title-container h1 { font-size: 1.5rem; }
     .header-controls { order: 2; flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
     .header-controls nav { margin-bottom: 0; }
     #search-container { max-width: initial; margin-bottom: 0; flex-grow:1; }
     #search-toggle-btn { padding: 0.3rem; font-size: 1.25rem; }
-    #theme-toggle { position: static; font-size: 1.25rem; }
+    #theme-toggle { position: static; font-size: 1.25rem; } /* Kept static as per last correct version */
 
     .search-input-field {
         width: 90%; left: 5%; right: 5%;
