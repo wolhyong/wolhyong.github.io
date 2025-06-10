@@ -84,13 +84,27 @@ img { max-width: 100%; height: auto; display: block; border-radius: 4px; }
     min-height: 60px;
 }
 body.dark-mode .main-header { background-color: var(--dm-content-background-color); }
+
 .header-left-placeholder { flex: 1; }
+
 .site-title-container { flex: 2; text-align: center; }
-.site-title-link { text-decoration: none; color: var(--header-text-color); }
-body.dark-mode .site-title-link { color: var(--dm-header-text-color); }
-.site-title-link h1 { margin: 0; font-size: 1.8rem; font-weight: bold; color: inherit; }
-h1.site-title-link { margin: 0; font-size: 1.8rem; font-weight: bold; text-decoration: none; color: var(--header-text-color); }
-body.dark-mode h1.site-title-link { color: var(--dm-header-text-color); }
+
+.site-title-container h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1.2; /* Consistent with other h1 general styles */
+  padding-top: 0.1em; /* Nudge text slightly down for better visual alignment with icons */
+}
+
+.site-title-container h1 a.site-title-link { /* Target the link itself */
+  text-decoration: none;
+  color: var(--header-text-color);
+}
+body.dark-mode .site-title-container h1 a.site-title-link {
+  color: var(--dm-header-text-color);
+}
+
 .header-controls { flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; }
 .header-controls nav a { color: var(--header-text-color); margin: 0 0.5rem; font-weight: bold; font-size: 0.9rem; }
 body.dark-mode .header-controls nav a { color: var(--dm-header-text-color); }
@@ -131,7 +145,7 @@ body.dark-mode footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem; /* Updated to match #theme-toggle */
+    font-size: 1.25rem;
 }
 body.dark-mode #search-toggle-btn {
     color: var(--dm-header-text-color);
@@ -193,17 +207,13 @@ body.dark-mode .no-results { color: var(--dm-text-color-muted); }
 #theme-toggle:hover { border-color: var(--primary-accent-color); }
 body.dark-mode #theme-toggle:hover { border-color: var(--dm-primary-accent-color); }
 
-/* General style for icons used in buttons (theme toggle, search toggle) */
 .theme-icon {
     width: 1.2em;
     height: 1.2em;
-    fill: currentColor; /* Default fill strategy, overridden by specific color classes if needed */
+    fill: currentColor;
 }
-/* Specific colors for theme toggle icons (sun/moon) */
 .theme-icon-sun { fill: #FFD700; }
 .theme-icon-moon { fill: #8A2BE2; }
-/* The search icon SVG in HTML has class="theme-icon" and no specific color class,
-   so it will use fill: currentColor from .theme-icon, inheriting color from #search-toggle-btn */
 
 
 /* Reading Progress Bar */
@@ -327,13 +337,13 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
     body { font-size: 15px; line-height: 1.55; }
     .main-header { padding: 0.8em 10px; flex-wrap: wrap; }
     .site-title-container { flex-grow: 1; text-align: center; order: 1; width: 100%; margin-bottom: 0.5em;}
-    .site-title-link h1 { font-size: 1.6rem; }
+    .site-title-container h1 { font-size: 1.6rem; /* Adjusted from .site-title-link h1 */ }
     .header-left-placeholder { display: none; }
     .header-controls { flex-basis: 100%; order: 2; justify-content: space-around; }
     .header-controls nav { margin: 0; }
     .header-controls nav a { font-size: 0.85rem; margin: 0 0.5rem; }
-    #search-toggle-btn { font-size: 1.15rem; /* Adjust if needed for tablet */ }
-    #theme-toggle { font-size: 1.15rem; padding: 4px 6px; /* margin-left: 0.5rem; /* Adjusted by gap */ }
+    #search-toggle-btn { font-size: 1.15rem; }
+    #theme-toggle { font-size: 1.15rem; padding: 4px 6px; }
 
     .search-input-field {
         width: 100%;
@@ -361,12 +371,12 @@ body.dark-mode .share-btn.linkedin { opacity: 0.8; }
     body { font-size: 14px; line-height: 1.5; }
     .main-header { padding: 0.75em 10px; flex-direction: column; align-items: center; position: relative; }
     .site-title-container { order: 1; text-align: center; width: auto; margin-bottom: 0.5em; }
-    .site-title-link h1 { font-size: 1.5rem; }
+    .site-title-container h1 { font-size: 1.5rem; /* Adjusted from .site-title-link h1 */ }
     .header-controls { order: 2; flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
     .header-controls nav { margin-bottom: 0; }
     #search-container { max-width: initial; margin-bottom: 0; flex-grow:1; }
-    #search-toggle-btn { padding: 0.3rem; font-size: 1.25rem; /* Keep consistent with theme-toggle for mobile */ }
-    #theme-toggle { position: static; font-size: 1.25rem; /* Match search toggle for consistency */ }
+    #search-toggle-btn { padding: 0.3rem; font-size: 1.25rem; }
+    #theme-toggle { position: static; font-size: 1.25rem; }
 
     .search-input-field {
         width: 90%; left: 5%; right: 5%;
