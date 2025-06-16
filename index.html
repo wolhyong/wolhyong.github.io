@@ -1,27 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"> <!-- Changed lang to ko -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="코딩 배우기, 프로그래밍 기초부터 실전까지 자세히 알려주는 그레이해커 월횽 블로그입니다.">
-    <title>My Blog</title>
+    <title>GHW 코딩 블로그</title> <!-- Changed title -->
     <link rel="stylesheet" href="css/style.css">
-</head><body>
-    <header>
-        <h1>My Blog</h1>
-        <button id="theme-toggle">Toggle Theme</button>
+    <link rel="stylesheet" href="css/toc.css"> <!-- Added ToC CSS -->
+</head>
+<body>
+    <header class="main-header">
+        <div class="site-branding">
+            <a href="index.html" class="site-title-link">
+                <span class="site-name-text">GHW</span>
+            </a>
+        </div>
+        <nav class="main-navigation">
+            <ul>
+                <li><a href="index.html">커리큘럼</a></li>
+                <!-- Add other navigation links here if needed -->
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <button type="button" id="search-toggle-btn" class="control-button" aria-label="검색 열기" aria-expanded="false" aria-controls="search-container">
+                <svg class="theme-icon" viewBox="0 0 16 16" fill="currentColor" style="width: 1.2em; height: 1.2em;"><use xlink:href="#search"></use></svg>
+            </button>
+            <div id="search-container" class="search-container search-input-hidden">
+                <input type="text" id="search-input" placeholder="검색..." aria-label="Search input">
+            </div>
+            <button type="button" id="theme-toggle" class="control-button" aria-label="테마 변경">
+                <!-- Icon will be set by JS -->
+            </button>
+            <button type="button" id="mobile-menu-toggle" class="control-button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu-panel">
+                <svg class="theme-icon" viewBox="0 0 16 16" fill="currentColor" style="width: 1.2em; height: 1.2em;"><use xlink:href="#list"></use></svg>
+            </button>
+        </div>
     </header>
 
-    <div class="search-container" style="text-align: center; padding: 10px;">
-        <input type="text" id="search-input" placeholder="Search posts..." style="padding: 8px; width: 60%;">
+    <div class="mobile-menu-panel" id="mobile-menu-panel" aria-hidden="true">
+        <nav class="mobile-navigation">
+            <ul>
+                <li><a href="index.html">커리큘럼</a></li>
+                <!-- Other links from main-navigation duplicated here -->
+            </ul>
+        </nav>
+        <!-- Optional: Mobile search can be placed here if not handled by toggling the one in header-controls -->
     </div>
 
-    <main id="posts-container">
+    <main id="posts-container" class="post-card-grid">
         <!-- Blog posts will be dynamically loaded here -->
     </main>
 
-    <footer>
-        <p>&copy; 2023 My Blog</p>
+    <footer class="main-footer">
+        <p>&copy; 2013 Greyhacker Wolhyong Development Blog. All rights reserved.</p>
     </footer>
 
     <script src="js/script.js"></script>
