@@ -3,6 +3,7 @@
     /* Breakpoints */
     --breakpoint-mobile: 480px;
     --breakpoint-tablet: 768px;
+    --breakpoint-large-tablet: 992px; /* For 2-column layout */
 
     /* Light Theme Colors */
     --light-background-color: #ffffff;
@@ -54,6 +55,7 @@
     --content-max-width: 720px; /* For single column content readability */
     --header-height: 60px;
     --footer-height: 50px;
+    --grid-gap: 1.5rem; /* Default gap for post card grid */
 }
 
 /* Apply base font size to html for rem calculation */
@@ -100,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: var(--heading-line-height);
     margin-top: 1.5em;
     margin-bottom: 0.8em;
-    color: var(--light-text-color); /* Headings inherit body color by default, but can be specific */
+    color: var(--light-text-color);
 }
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
     color: var(--dark-text-color);
@@ -118,7 +120,7 @@ p {
 img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px; /* Subtle rounding */
+    border-radius: 4px;
 }
 
 /* ===== Header Styles (`.main-header`) ===== */
@@ -150,7 +152,7 @@ body.dark-mode .main-header {
     text-decoration: none;
 }
 .site-name-text {
-    font-size: 1.5rem; /* GHW text size */
+    font-size: 1.5rem;
     font-weight: bold;
     color: var(--light-header-text-color);
 }
@@ -159,7 +161,7 @@ body.dark-mode .site-name-text {
 }
 
 .main-navigation {
-    display: none; /* Hidden by default, shown on desktop via media query */
+    display: none;
 }
 .main-navigation ul {
     list-style: none;
@@ -190,12 +192,12 @@ body.dark-mode .main-navigation a:hover {
     display: flex;
     align-items: center;
 }
-.control-button { /* Shared style for header buttons */
+.control-button {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0.5em;
-    margin-left: 0.5em; /* Spacing between buttons */
+    margin-left: 0.5em;
     color: var(--light-secondary-text-color);
 }
 .control-button:hover {
@@ -207,15 +209,15 @@ body.dark-mode .control-button {
 body.dark-mode .control-button:hover {
     color: var(--dark-link-color);
 }
-.control-button svg.theme-icon { /* Ensure SVGs inherit color and size */
-    width: 1.3em; /* Adjust icon size */
+.control-button svg.theme-icon {
+    width: 1.3em;
     height: 1.3em;
     fill: currentColor;
 }
 
-#search-container {
+#search-container, #search-container-post { /* Combined rules for search containers */
     position: absolute;
-    top: calc(var(--header-height) - 10px); /* Position below header */
+    top: calc(var(--header-height) - 10px);
     right: 1em;
     background-color: var(--light-background-color);
     padding: 1em;
@@ -224,18 +226,18 @@ body.dark-mode .control-button:hover {
     z-index: 999;
     border-radius: 4px;
 }
-body.dark-mode #search-container {
+body.dark-mode #search-container, body.dark-mode #search-container-post {
     background-color: var(--dark-card-background);
     border-color: var(--dark-border-color);
 }
-#search-container.search-input-hidden {
+#search-container.search-input-hidden, #search-container-post.search-input-hidden { /* Combined hidden state */
     display: none;
 }
 #search-input, #search-input-post {
     padding: 0.75em 1em;
     border: 1px solid var(--light-border-color);
     border-radius: 4px;
-    width: 250px; /* Adjust as needed */
+    width: 250px;
     font-size: 0.9rem;
 }
 body.dark-mode #search-input, body.dark-mode #search-input-post {
@@ -245,32 +247,32 @@ body.dark-mode #search-input, body.dark-mode #search-input-post {
 }
 
 #mobile-menu-toggle {
-    display: none; /* Hidden on desktop by default */
+    display: none;
 }
 
 /* ===== Mobile Menu Panel Styles ===== */
 .mobile-menu-panel {
     position: fixed;
-    top: var(--header-height); /* Position below header */
+    top: var(--header-height);
     left: 0;
-    width: 80%; /* Or a fixed width like 280px */
+    width: 80%;
     max-width: 300px;
     height: calc(100vh - var(--header-height));
     background-color: var(--light-background-color);
     border-right: 1px solid var(--light-border-color);
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     padding: 1.5em 1em;
-    transform: translateX(-105%); /* Off-screen */
+    transform: translateX(-105%);
     transition: transform 0.3s ease-in-out;
     z-index: 998;
     overflow-y: auto;
-    display: none; /* Initially hidden, JS toggles to block/flex then transform */
+    display: none;
 }
 body.dark-mode .mobile-menu-panel {
-    background-color: var(--dark-card-background); /* Slightly different from body for depth */
+    background-color: var(--dark-card-background);
     border-right-color: var(--dark-border-color);
 }
-.mobile-menu-panel.active { /* JS will add this class */
+.mobile-menu-panel.active {
     transform: translateX(0);
     display: block;
 }
@@ -303,23 +305,29 @@ body.dark-mode .mobile-navigation li a:hover {
 
 
 /* ===== Main Content & Post Cards (`.post-card-grid`, `.post-card`) ===== */
-main { /* General main, used for post list on index.html */
-    max-width: var(--content-max-width); /* Single column focus */
-    margin: 2em auto; /* Top/bottom margin + auto for centering */
-    padding: 0 1em; /* Side padding */
+main {
+    max-width: var(--content-max-width);
+    margin: 2em auto;
+    padding: 0 1em;
 }
-.post-card-grid { /* This class is on main#posts-container */
-    /* No grid specific styles yet, cards will stack by default */
+
+.post-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+    gap: var(--grid-gap);
+    /* Removed list-style, padding, margin as main#posts-container handles these */
 }
 
 .post-card {
     background-color: var(--light-card-background);
     border: 1px solid var(--light-border-color);
     border-radius: 6px;
-    margin-bottom: 2em;
+    /* margin-bottom removed, gap will handle spacing */
     padding: 1.5em;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     transition: box-shadow 0.2s ease-in-out;
+    display: flex; /* Added for better internal alignment if needed */
+    flex-direction: column; /* Ensure content stacks vertically */
 }
 .post-card:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -335,7 +343,7 @@ body.dark-mode .post-card:hover {
 
 .card-thumbnail-image, .card-thumbnail-placeholder {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Changed to square */
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1em;
@@ -345,7 +353,7 @@ body.dark-mode .post-card:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0; /* Placeholder bg */
+    background-color: #f0f0f0;
     color: #aaa;
     font-size: 0.9rem;
 }
@@ -389,6 +397,7 @@ body.dark-mode .post-card-title a:hover {
     color: var(--light-secondary-text-color);
     margin-top: 0.5em;
     margin-bottom: 1em;
+    flex-grow: 1; /* Allow description to take space if cards have varying content length */
 }
 body.dark-mode .post-card-description {
     color: var(--dark-secondary-text-color);
@@ -402,7 +411,7 @@ body.dark-mode .post-card-description {
     background-color: var(--light-tag-background);
     color: var(--light-tag-text-color);
     padding: 0.3em 0.7em;
-    border-radius: 15px; /* Pill shape */
+    border-radius: 15px;
     font-size: 0.75rem;
     margin-right: 0.5em;
     margin-bottom: 0.5em;
@@ -422,19 +431,19 @@ body.dark-mode .keyword-tag:hover {
 }
 
 /* ===== Single Post Content (`#post-content-container`) ===== */
-.post-page-main { /* Class on main for post.html */
+.post-page-main {
     max-width: var(--content-max-width);
     margin: 2em auto;
     padding: 0 1em;
-    display: flex; /* For sticky ToC layout */
+    display: flex;
     flex-direction: row;
-    align-items: flex-start; /* Align items to the top */
-    gap: 2em; /* Space between content and ToC */
+    align-items: flex-start;
+    gap: 2em;
 }
 
-#post-content-container { /* The article element */
-    flex-grow: 1; /* Content takes available space */
-    min-width: 0; /* Prevents flex item overflow */
+#post-content-container {
+    flex-grow: 1;
+    min-width: 0;
 }
 
 #post-content-container h1,
@@ -446,13 +455,13 @@ body.dark-mode .keyword-tag:hover {
     margin-top: 2em;
     margin-bottom: 1em;
 }
-#post-content-container h1 { /* Usually post title, might be styled by JS */
+#post-content-container h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5em;
 }
 
 #post-content-container p {
-    font-size: 1.05rem; /* Slightly larger for readability */
+    font-size: 1.05rem;
     margin-bottom: 1.5em;
 }
 
@@ -467,7 +476,7 @@ body.dark-mode .keyword-tag:hover {
     font-size: 0.9rem;
     line-height: 1.6;
 }
-#post-content-container code:not(pre code) { /* Inline code */
+#post-content-container code:not(pre code) {
     font-family: var(--font-code);
     background-color: var(--light-code-background);
     color: var(--light-code-text-color);
@@ -509,7 +518,7 @@ body.dark-mode #post-content-container blockquote {
     margin-bottom: 0.5em;
 }
 
-.post-meta-container { /* Date, Reading time on post page */
+.post-meta-container {
     font-size: 0.9rem;
     color: var(--light-secondary-text-color);
     margin-bottom: 1.5em;
@@ -567,8 +576,8 @@ body.dark-mode #disqus_thread {
 }
 
 /* ===== Footer Styles ===== */
-.main-footer { /* Was `footer` previously */
-    background-color: var(--light-card-background); /* Lighter footer */
+.main-footer {
+    background-color: var(--light-card-background);
     color: var(--light-secondary-text-color);
     padding: 1em 0;
     text-align: center;
@@ -589,10 +598,10 @@ body.dark-mode .main-footer {
 }
 
 /* ===== Ad Placeholders ===== */
-.ad-placeholder { /* Generic ad placeholder */
+.ad-placeholder {
     background-color: #e9e9e9;
     border: 1px dashed #ccc;
-    min-height: 90px; /* Common banner height */
+    min-height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -611,24 +620,60 @@ body.dark-mode .ad-placeholder {
     border-color: #555c65;
     color: #777c85;
 }
-.image-banner-placeholder { /* Specific for image banner */
+.image-banner-placeholder {
     width: 100%;
-    max-width: 728px; /* Example common banner width */
-    aspect-ratio: 728 / 90; /* Maintain aspect ratio */
+    max-width: 728px;
+    aspect-ratio: 728 / 90;
+    background-color: var(--light-background-color);
+    border: 1px dashed var(--light-border-color);
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5em auto;
+    color: var(--light-secondary-text-color);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+body.dark-mode .image-banner-placeholder {
+    background-color: var(--dark-background-color);
+    border-color: var(--dark-border-color);
+    color: var(--dark-secondary-text-color);
 }
 
 
 /* ===== Responsive Styles ===== */
 @media (min-width: calc(var(--breakpoint-tablet) + 1px)) { /* Desktop styles */
     .main-navigation {
-        display: flex; /* Show desktop navigation */
+        display: flex;
     }
     #mobile-menu-toggle {
-        display: none; /* Hide hamburger on desktop */
+        display: none;
+    }
+    /* Desktop main content width for post list, if different from single post */
+    main#posts-container.post-card-grid { /* Be more specific for post list main */
+        max-width: calc(var(--content-max-width) * 1.5 + var(--grid-gap) * 2); /* Example: Adjust for 3 columns */
+        /* If content-max-width is 720px, 3 columns might need more like 1200px or more */
+        /* Let's set a wider max-width for the grid itself */
+        /* max-width: 1100px; /* Or don't set max-width and let it be fluid */
     }
 }
 
-@media (max-width: var(--breakpoint-tablet)) { /* Tablet: up to 768px */
+@media (max-width: var(--breakpoint-large-tablet)) { /* Large Tablets: up to 992px */
+    .post-card-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 1.25rem;
+    }
+     main#posts-container.post-card-grid {
+        max-width: calc(var(--content-max-width) * 1.2 + var(--grid-gap)); /* Adjust for 2 columns */
+        /* max-width: 800px; */
+    }
+}
+
+@media (max-width: var(--breakpoint-tablet)) { /* Smaller Tablets & Mobile: up to 768px */
     .main-header {
         padding: 0 0.8em;
     }
@@ -636,23 +681,33 @@ body.dark-mode .ad-placeholder {
         font-size: 1.3rem;
     }
     .main-navigation {
-        display: none; /* Ensure it's hidden on tablet if not already */
+        display: none;
     }
     #mobile-menu-toggle {
-        display: block; /* Show hamburger */
+        display: block;
     }
-    #search-container, #search-container-post { /* Search input on tablet could be modal or full-width toggle */
-        /* Current CSS positions it absolute; may need width adjustments for tablet if shown */
-        /* Example: width: 90%; left: 5%; right: 5%; */
+    #search-container, #search-container-post {
+        /* Example: full width dropdown on tablet/mobile */
+        width: calc(100% - 2em); /* Full width minus some padding */
+        left: 1em;
+        right: 1em;
+        top: calc(var(--header-height) - 5px); /* Adjust to align nicely */
     }
-    main, .post-page-main {
+    main, .post-page-main { /* This includes main#posts-container */
         margin: 1.5em auto;
         padding: 0 0.8em;
+        max-width: 100%; /* Allow full width within body padding */
     }
-    .post-page-main { /* Tablet: ToC might become static or hidden */
-        flex-direction: column; /* Stack content and ToC */
+    .post-page-main {
+        flex-direction: column;
     }
-    /* #toc-container on tablet is handled in toc.css */
+    .post-card-grid {
+        grid-template-columns: 1fr; /* 1 column */
+        gap: 0; /* Remove gap, use card margin-bottom */
+    }
+    .post-card {
+        margin-bottom: 1.5em; /* Ensure spacing in single column */
+    }
 }
 
 @media (max-width: var(--breakpoint-mobile)) { /* Mobile: up to 480px */
@@ -671,11 +726,11 @@ body.dark-mode .ad-placeholder {
     }
     main, .post-page-main {
         margin: 1em auto;
-        padding: 0 0.5em; /* Reduce side padding further */
+        padding: 0 0.5em;
     }
     .post-card {
         padding: 1em;
-        margin-bottom: 1.5em;
+        /* margin-bottom: 1.5em; /* Already set in tablet query */
     }
     .post-card-title a {
         font-size: 1.3rem;
@@ -683,13 +738,17 @@ body.dark-mode .ad-placeholder {
      #post-content-container h1 {
         font-size: 2rem;
     }
-    /* #toc-container on mobile is handled in toc.css */
     .main-footer {
         font-size: 0.8rem;
     }
-    .main-footer p { /* For mobile footer text specifically */
+    .main-footer p {
         padding-left: 10px;
         padding-right: 10px;
+    }
+    #search-container, #search-container-post {
+         width: calc(100% - 1em); /* Full width minus some padding */
+        left: 0.5em;
+        right: 0.5em;
     }
 }
 
@@ -697,3 +756,5 @@ body.dark-mode .ad-placeholder {
 .hidden {
     display: none !important;
 }
+
+[end of css/style.css]
