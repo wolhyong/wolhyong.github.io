@@ -674,10 +674,11 @@ body.dark-mode .image-banner-placeholder {
 }
 
 @media (max-width: var(--breakpoint-tablet)) { /* Smaller Tablets & Mobile: up to 768px */
-    /* DIAGNOSTIC STYLES - MOBILE VIEW - REMOVED */
-    /* body {
+    /* ===== START DIAGNOSTIC STYLES - MOBILE VIEW (RE-APPLIED) ===== */
+    body {
       background-color: yellow !important;
-    } */
+    }
+    /* ===== END DIAGNOSTIC STYLES - MOBILE VIEW (RE-APPLIED) ===== */
     .main-header {
         padding: 0 0.8em;
     }
@@ -707,8 +708,8 @@ body.dark-mode .image-banner-placeholder {
     }
     .post-card-grid {
         grid-template-columns: 1fr !important;
-        /* background-color: red !important;    /* DIAGNOSTIC - REMOVED */
-        /* border: 5px solid lime !important;   /* DIAGNOSTIC - REMOVED */
+        background-color: red !important;    /* Diagnostic - RE-ADD */
+        border: 5px solid lime !important;   /* Diagnostic - RE-ADD */
         gap: 0; /* Remove gap, use card margin-bottom */
     }
     .post-card {
@@ -719,6 +720,7 @@ body.dark-mode .image-banner-placeholder {
 @media (max-width: var(--breakpoint-mobile)) { /* Mobile: up to 480px */
     body {
         /* padding-top and padding-bottom already set */
+        /* Diagnostic styles from above will also apply here if not overridden */
     }
     .main-header {
         padding: 0 0.5em;
