@@ -674,6 +674,10 @@ body.dark-mode .image-banner-placeholder {
 }
 
 @media (max-width: var(--breakpoint-tablet)) { /* Smaller Tablets & Mobile: up to 768px */
+    /* DIAGNOSTIC STYLES - MOBILE VIEW - REMOVED */
+    /* body {
+      background-color: yellow !important;
+    } */
     .main-header {
         padding: 0 0.8em;
     }
@@ -702,7 +706,9 @@ body.dark-mode .image-banner-placeholder {
         flex-direction: column;
     }
     .post-card-grid {
-        grid-template-columns: 1fr; /* 1 column */
+        grid-template-columns: 1fr !important;
+        /* background-color: red !important;    /* DIAGNOSTIC - REMOVED */
+        /* border: 5px solid lime !important;   /* DIAGNOSTIC - REMOVED */
         gap: 0; /* Remove gap, use card margin-bottom */
     }
     .post-card {
