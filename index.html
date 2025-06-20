@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko"> <!-- Changed lang to ko -->
+<html lang="ko"> <!-- lang="ko"로 변경됨 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="코딩 배우기, 프로그래밍 기초부터 실전까지 자세히 알려주는 그레이해커 월횽 블로그입니다.">
-    <title>GHW 코딩 블로그</title> <!-- Changed title -->
+    <title>GHW 코딩 블로그</title> <!-- 제목 변경됨 -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/toc.css"> <!-- Added ToC CSS -->
+    <link rel="stylesheet" href="/css/toc.css"> <!-- ToC CSS 추가됨 -->
 </head>
 <body>
     <header class="main-header">
@@ -18,7 +18,7 @@
         <nav class="main-navigation">
             <ul>
                 <li><a href="index.html">커리큘럼</a></li>
-                <!-- Add other navigation links here if needed -->
+                <!-- 필요시 여기에 다른 네비게이션 링크 추가 -->
             </ul>
         </nav>
         <div class="header-controls">
@@ -29,7 +29,7 @@
                 <input type="text" id="search-input" placeholder="검색..." aria-label="Search input">
             </div>
             <button type="button" id="theme-toggle" class="control-button" aria-label="테마 변경">
-                <!-- Icon will be set by JS -->
+                <!-- 아이콘은 JS에 의해 설정됨 -->
             </button>
             <button type="button" id="mobile-menu-toggle" class="control-button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu-panel">
                 <svg class="theme-icon" viewBox="0 0 16 16" fill="currentColor" style="width: 1.2em; height: 1.2em;"><use xlink:href="#list"></use></svg>
@@ -41,21 +41,21 @@
         <nav class="mobile-navigation">
             <ul>
                 <li><a href="index.html">커리큘럼</a></li>
-                <!-- Other links from main-navigation duplicated here -->
+                <!-- 주 네비게이션의 다른 링크들이 여기에 복제됨 -->
             </ul>
         </nav>
-        <!-- Optional: Mobile search can be placed here if not handled by toggling the one in header-controls -->
+        <!-- 선택 사항: 헤더 컨트롤의 토글로 처리되지 않는 경우 모바일 검색이 여기에 위치할 수 있음 -->
     </div>
 
-    <!-- Banner is now outside and above main -->
+    <!-- 배너는 이제 main 외부 및 상단에 위치함 -->
     <div class="image-banner-placeholder" data-comment="Placeholder for top page image banner (e.g., common banner sizes like 728x90, 970x250, or responsive)">
       Image Banner Placeholder (e.g., 728x90 or 970x250)
     </div>
 
     <main id="posts-container" class="post-card-grid">
-        <!-- Blog posts will be dynamically loaded here -->
-        <!-- The H2 heading for "커리큘럼" will be dynamically added by JS if needed, or could be static here -->
-        <!-- For now, assuming JS adds it if allPostsData is not empty -->
+        <!-- 블로그 게시물은 여기에 동적으로 로드됨 -->
+        <!-- "커리큘럼" H2 제목은 필요시 JS에 의해 동적으로 추가되거나 여기에 정적으로 위치할 수 있음 -->
+        <!-- 현재로서는 allPostsData가 비어있지 않은 경우 JS가 추가한다고 가정함 -->
     </main>
 
     <footer class="main-footer">

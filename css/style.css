@@ -1,15 +1,15 @@
-/* ===== Global Styles & Variables ===== */
+/* ===== 전역 스타일 및 변수 ===== */
 :root {
-    /* Breakpoints */
+    /* 중단점 */
     --breakpoint-mobile: 480px;
     --breakpoint-tablet: 768px;
-    --breakpoint-large-tablet: 992px; /* For 2-column layout */
+    --breakpoint-large-tablet: 992px; /* 2열 레이아웃용 */
 
-    /* Light Theme Colors */
+    /* 라이트 테마 색상 */
     --light-background-color: #ffffff;
     --light-text-color: #333333;
     --light-secondary-text-color: #555555;
-    --light-link-color: #007bff; /* Blue accent */
+    --light-link-color: #007bff; /* 파란색 강조 */
     --light-link-hover-color: #0056b3;
     --light-border-color: #eeeeee;
     --light-card-background: #ffffff;
@@ -21,14 +21,14 @@
     --light-tag-background: #efefef;
     --light-tag-text-color: #555555;
 
-    /* Dark Theme Colors */
-    --dark-background-color: #22272e; /* Darker background */
-    --dark-text-color: #c9d1d9; /* Lighter text */
+    /* 다크 테마 색상 */
+    --dark-background-color: #22272e; /* 더 어두운 배경 */
+    --dark-text-color: #c9d1d9; /* 더 밝은 텍스트 */
     --dark-secondary-text-color: #8b949e;
-    --dark-link-color: #58a6ff; /* Lighter blue accent */
+    --dark-link-color: #58a6ff; /* 더 밝은 파란색 강조 */
     --dark-link-hover-color: #79c0ff;
-    --dark-border-color: #444c56; /* Darker border */
-    --dark-card-background: #2d333b; /* Slightly lighter than body */
+    --dark-border-color: #444c56; /* 더 어두운 테두리 */
+    --dark-card-background: #2d333b; /* 본문보다 약간 밝음 */
     --dark-code-background: #1c2128;
     --dark-code-text-color: #c9d1d9;
     --dark-blockquote-border: #555555;
@@ -37,13 +37,13 @@
     --dark-tag-background: #3a3f47;
     --dark-tag-text-color: #a0a8b1;
 
-    /* Typography */
+    /* 타이포그래피 */
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-family-serif: "Georgia", "Times New Roman", serif; /* Example serif */
+    --font-family-serif: "Georgia", "Times New Roman", serif; /* 예시 세리프체 */
     --font-family-monospace: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 
     --font-body: var(--font-family-sans-serif);
-    --font-heading: var(--font-family-sans-serif); /* Chalk often uses sans-serif for headings too */
+    --font-heading: var(--font-family-sans-serif); /* Chalk 테마는 제목에도 산세리프를 자주 사용 */
     --font-code: var(--font-family-monospace);
 
     --base-font-size: 16px;
@@ -51,14 +51,14 @@
     --heading-line-height: 1.3;
     --paragraph-margin-bottom: 1.25em;
 
-    /* Layout */
-    --content-max-width: 720px; /* For single column content readability */
+    /* 레이아웃 */
+    --content-max-width: 720px; /* 단일 열 콘텐츠 가독성을 위함 */
     --header-height: 60px;
     --footer-height: 50px;
-    --grid-gap: 1.5rem; /* Default gap for post card grid */
+    --grid-gap: 1.5rem; /* 게시물 카드 그리드의 기본 간격 */
 }
 
-/* Apply base font size to html for rem calculation */
+/* rem 계산을 위해 html에 기본 글꼴 크기 적용 */
 html {
     font-size: var(--base-font-size);
 }
@@ -72,8 +72,8 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
-    padding-top: var(--header-height); /* Space for fixed header */
-    padding-bottom: var(--footer-height); /* Space for fixed footer */
+    padding-top: var(--header-height); /* 고정 헤더를 위한 공간 */
+    padding-bottom: var(--footer-height); /* 고정 푸터를 위한 공간 */
 }
 
 body.dark-mode {
@@ -120,10 +120,10 @@ p {
 img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: 4px; /* 미세한 둥근 모서리 */
 }
 
-/* ===== Header Styles (`.main-header`) ===== */
+/* ===== 헤더 스타일 (`.main-header`) ===== */
 .main-header {
     background-color: var(--light-header-background);
     border-bottom: 1px solid var(--light-border-color);
@@ -152,7 +152,7 @@ body.dark-mode .main-header {
     text-decoration: none;
 }
 .site-name-text {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* GHW 텍스트 크기 */
     font-weight: bold;
     color: var(--light-header-text-color);
 }
@@ -161,7 +161,7 @@ body.dark-mode .site-name-text {
 }
 
 .main-navigation {
-    display: none;
+    display: none; /* 기본적으로 숨김, 데스크톱에서는 미디어 쿼리로 표시 */
 }
 .main-navigation ul {
     list-style: none;
@@ -192,12 +192,12 @@ body.dark-mode .main-navigation a:hover {
     display: flex;
     align-items: center;
 }
-.control-button {
+.control-button { /* 헤더 버튼 공통 스타일 */
     background: none;
     border: none;
     cursor: pointer;
     padding: 0.5em;
-    margin-left: 0.5em;
+    margin-left: 0.5em; /* 버튼 간 간격 */
     color: var(--light-secondary-text-color);
 }
 .control-button:hover {
@@ -209,15 +209,15 @@ body.dark-mode .control-button {
 body.dark-mode .control-button:hover {
     color: var(--dark-link-color);
 }
-.control-button svg.theme-icon {
-    width: 1.3em;
+.control-button svg.theme-icon { /* SVG가 색상 및 크기 상속하도록 보장 */
+    width: 1.3em; /* 아이콘 크기 조정 */
     height: 1.3em;
     fill: currentColor;
 }
 
-#search-container, #search-container-post { /* Combined rules for search containers */
+#search-container, #search-container-post { /* 검색 컨테이너 공통 규칙 */
     position: absolute;
-    top: calc(var(--header-height) - 10px);
+    top: calc(var(--header-height) - 10px); /* 헤더 아래 위치 */
     right: 1em;
     background-color: var(--light-background-color);
     padding: 1em;
@@ -230,14 +230,14 @@ body.dark-mode #search-container, body.dark-mode #search-container-post {
     background-color: var(--dark-card-background);
     border-color: var(--dark-border-color);
 }
-#search-container.search-input-hidden, #search-container-post.search-input-hidden { /* Combined hidden state */
+#search-container.search-input-hidden, #search-container-post.search-input-hidden { /* 검색창 숨김 상태 공통 */
     display: none;
 }
 #search-input, #search-input-post {
     padding: 0.75em 1em;
     border: 1px solid var(--light-border-color);
     border-radius: 4px;
-    width: 250px;
+    width: 250px; /* 필요시 조정 */
     font-size: 0.9rem;
 }
 body.dark-mode #search-input, body.dark-mode #search-input-post {
@@ -247,32 +247,32 @@ body.dark-mode #search-input, body.dark-mode #search-input-post {
 }
 
 #mobile-menu-toggle {
-    display: none;
+    display: none; /* 데스크톱에서는 기본적으로 숨김 */
 }
 
-/* ===== Mobile Menu Panel Styles ===== */
+/* ===== 모바일 메뉴 패널 스타일 ===== */
 .mobile-menu-panel {
     position: fixed;
-    top: var(--header-height);
+    top: var(--header-height); /* 헤더 아래 위치 */
     left: 0;
-    width: 80%;
+    width: 80%; /* 또는 280px 같은 고정 너비 */
     max-width: 300px;
     height: calc(100vh - var(--header-height));
     background-color: var(--light-background-color);
     border-right: 1px solid var(--light-border-color);
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     padding: 1.5em 1em;
-    transform: translateX(-105%);
+    transform: translateX(-105%); /* 화면 밖 */
     transition: transform 0.3s ease-in-out;
     z-index: 998;
     overflow-y: auto;
-    display: none;
+    display: none; /* 초기에는 숨김, JS가 block/flex로 변경 후 transform으로 제어 */
 }
 body.dark-mode .mobile-menu-panel {
-    background-color: var(--dark-card-background);
+    background-color: var(--dark-card-background); /* 깊이감을 위해 본문과 약간 다름 */
     border-right-color: var(--dark-border-color);
 }
-.mobile-menu-panel.active {
+.mobile-menu-panel.active { /* JS가 이 클래스 추가 */
     transform: translateX(0);
     display: block;
 }
@@ -304,30 +304,30 @@ body.dark-mode .mobile-navigation li a:hover {
 }
 
 
-/* ===== Main Content & Post Cards (`.post-card-grid`, `.post-card`) ===== */
-main {
-    max-width: var(--content-max-width);
-    margin: 2em auto;
-    padding: 0 1em;
+/* ===== 메인 콘텐츠 및 게시물 카드 (`.post-card-grid`, `.post-card`) ===== */
+main { /* 일반 main, index.html의 게시물 목록에 사용 */
+    max-width: var(--content-max-width); /* 단일 열 집중 */
+    margin: 2em auto; /* 상하 마진 + 자동 중앙 정렬 */
+    padding: 0 1em; /* 좌우 패딩 */
 }
 
 .post-card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+    grid-template-columns: repeat(3, 1fr); /* 기본 3열 */
     gap: var(--grid-gap);
-    /* Removed list-style, padding, margin as main#posts-container handles these */
+    /* main#posts-container가 이미 처리하므로 list-style, padding, margin 제거됨 */
 }
 
 .post-card {
     background-color: var(--light-card-background);
     border: 1px solid var(--light-border-color);
     border-radius: 6px;
-    /* margin-bottom removed, gap will handle spacing */
+    /* margin-bottom 제거됨, gap이 간격 처리 */
     padding: 1.5em;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     transition: box-shadow 0.2s ease-in-out;
-    display: flex; /* Added for better internal alignment if needed */
-    flex-direction: column; /* Ensure content stacks vertically */
+    display: flex; /* 내부 정렬 개선을 위해 추가 */
+    flex-direction: column; /* 콘텐츠 수직 정렬 보장 */
 }
 .post-card:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -343,7 +343,7 @@ body.dark-mode .post-card:hover {
 
 .card-thumbnail-image, .card-thumbnail-placeholder {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1; /* 정사각형으로 변경됨 */
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1em;
@@ -353,7 +353,7 @@ body.dark-mode .post-card:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* 플레이스홀더 배경 */
     color: #aaa;
     font-size: 0.9rem;
 }
@@ -397,7 +397,7 @@ body.dark-mode .post-card-title a:hover {
     color: var(--light-secondary-text-color);
     margin-top: 0.5em;
     margin-bottom: 1em;
-    flex-grow: 1; /* Allow description to take space if cards have varying content length */
+    flex-grow: 1; /* 설명이 공간을 채우도록 허용 (카드 내용 길이가 다를 경우) */
 }
 body.dark-mode .post-card-description {
     color: var(--dark-secondary-text-color);
@@ -411,7 +411,7 @@ body.dark-mode .post-card-description {
     background-color: var(--light-tag-background);
     color: var(--light-tag-text-color);
     padding: 0.3em 0.7em;
-    border-radius: 15px;
+    border-radius: 15px; /* 알약 모양 */
     font-size: 0.75rem;
     margin-right: 0.5em;
     margin-bottom: 0.5em;
@@ -430,20 +430,20 @@ body.dark-mode .keyword-tag:hover {
     color: var(--dark-background-color);
 }
 
-/* ===== Single Post Content (`#post-content-container`) ===== */
-.post-page-main {
+/* ===== 단일 게시물 콘텐츠 (`#post-content-container`) ===== */
+.post-page-main { /* post.html의 main 요소 클래스 */
     max-width: var(--content-max-width);
     margin: 2em auto;
     padding: 0 1em;
-    display: flex;
+    display: flex; /* 고정 ToC 레이아웃용 */
     flex-direction: row;
-    align-items: flex-start;
-    gap: 2em;
+    align-items: flex-start; /* 아이템 상단 정렬 */
+    gap: 2em; /* 콘텐츠와 ToC 간 간격 */
 }
 
-#post-content-container {
-    flex-grow: 1;
-    min-width: 0;
+#post-content-container { /* article 요소 */
+    flex-grow: 1; /* 콘텐츠가 사용 가능한 공간 차지 */
+    min-width: 0; /* flex 아이템 오버플로우 방지 */
 }
 
 #post-content-container h1,
@@ -455,13 +455,13 @@ body.dark-mode .keyword-tag:hover {
     margin-top: 2em;
     margin-bottom: 1em;
 }
-#post-content-container h1 {
+#post-content-container h1 { /* 보통 게시물 제목, JS로 스타일링 될 수 있음 */
     font-size: 2.5rem;
     margin-bottom: 0.5em;
 }
 
 #post-content-container p {
-    font-size: 1.05rem;
+    font-size: 1.05rem; /* 가독성을 위해 약간 크게 */
     margin-bottom: 1.5em;
 }
 
@@ -476,7 +476,7 @@ body.dark-mode .keyword-tag:hover {
     font-size: 0.9rem;
     line-height: 1.6;
 }
-#post-content-container code:not(pre code) {
+#post-content-container code:not(pre code) { /* 인라인 코드 */
     font-family: var(--font-code);
     background-color: var(--light-code-background);
     color: var(--light-code-text-color);
@@ -518,7 +518,7 @@ body.dark-mode #post-content-container blockquote {
     margin-bottom: 0.5em;
 }
 
-.post-meta-container {
+.post-meta-container { /* 게시물 페이지의 날짜, 읽기 시간 */
     font-size: 0.9rem;
     color: var(--light-secondary-text-color);
     margin-bottom: 1.5em;
@@ -575,9 +575,9 @@ body.dark-mode #disqus_thread {
     border-top-color: var(--dark-border-color);
 }
 
-/* ===== Footer Styles ===== */
-.main-footer {
-    background-color: var(--light-card-background);
+/* ===== 푸터 스타일 ===== */
+.main-footer { /* 이전에 `footer`였음 */
+    background-color: var(--light-card-background); /* 더 밝은 푸터 */
     color: var(--light-secondary-text-color);
     padding: 1em 0;
     text-align: center;
@@ -597,11 +597,11 @@ body.dark-mode .main-footer {
     border-top-color: var(--dark-border-color);
 }
 
-/* ===== Ad Placeholders ===== */
-.ad-placeholder {
+/* ===== 광고 플레이스홀더 ===== */
+.ad-placeholder { /* 일반 광고 플레이스홀더 */
     background-color: #e9e9e9;
     border: 1px dashed #ccc;
-    min-height: 90px;
+    min-height: 90px; /* 일반적인 배너 높이 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -613,72 +613,72 @@ body.dark-mode .main-footer {
     border-radius: 4px;
 }
 .ad-placeholder::before {
-    content: attr(data-comment) " Ad Placeholder";
+    content: attr(data-comment) " 광고 플레이스홀더";
 }
 body.dark-mode .ad-placeholder {
     background-color: #3a3f47;
     border-color: #555c65;
     color: #777c85;
 }
-.image-banner-placeholder {
+.image-banner-placeholder { /* 이미지 배너 특정 */
     width: 100%;
-    max-width: 728px;
-    aspect-ratio: 728 / 90;
-    background-color: var(--light-background-color);
+    max-width: 728px; /* 예시 일반 배너 너비 */
+    aspect-ratio: 728 / 90; /* 가로세로비 유지 */
+    background-color: var(--light-background-color); /* 본문 또는 카드 배경과 일치 */
     border: 1px dashed var(--light-border-color);
     min-height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1.5em auto;
+    margin: 1.5em auto; /* 수직 및 수평 중앙 정렬/간격 */
     color: var(--light-secondary-text-color);
     font-size: 0.9rem;
     text-align: center;
     padding: 10px;
     border-radius: 4px;
 }
+/* 이미지 배너의 ::before 제거됨, 텍스트는 HTML에 직접 있지만 data-comment는 유용함 */
 
 body.dark-mode .image-banner-placeholder {
-    background-color: var(--dark-background-color);
+    background-color: var(--dark-background-color); /* 본문 또는 카드 배경과 일치 */
     border-color: var(--dark-border-color);
     color: var(--dark-secondary-text-color);
 }
 
 
-/* ===== Responsive Styles ===== */
-@media (min-width: calc(var(--breakpoint-tablet) + 1px)) { /* Desktop styles */
+/* ===== 반응형 스타일 ===== */
+@media (min-width: calc(var(--breakpoint-tablet) + 1px)) { /* 데스크톱 스타일 */
     .main-navigation {
-        display: flex;
+        display: flex; /* 데스크톱 네비게이션 표시 */
     }
     #mobile-menu-toggle {
-        display: none;
+        display: none; /* 데스크톱에서 햄버거 숨김 */
     }
-    /* Desktop main content width for post list, if different from single post */
-    main#posts-container.post-card-grid { /* Be more specific for post list main */
-        max-width: calc(var(--content-max-width) * 1.5 + var(--grid-gap) * 2); /* Example: Adjust for 3 columns */
-        /* If content-max-width is 720px, 3 columns might need more like 1200px or more */
-        /* Let's set a wider max-width for the grid itself */
-        /* max-width: 1100px; /* Or don't set max-width and let it be fluid */
+    /* 게시물 목록의 데스크톱 메인 콘텐츠 너비 (단일 게시물과 다를 경우) */
+    main#posts-container.post-card-grid { /* 게시물 목록 main에 더 구체적으로 적용 */
+        max-width: calc(var(--content-max-width) * 1.5 + var(--grid-gap) * 2); /* 예시: 3열에 맞게 조정 */
+        /* content-max-width가 720px인 경우, 3열은 1200px 이상 필요할 수 있음 */
+        /* 그리드 자체에 더 넓은 max-width 설정 */
+        /* max-width: 1100px; /* 또는 max-width를 설정하지 않고 유동적으로 */
     }
 }
 
-@media (max-width: var(--breakpoint-large-tablet)) { /* Large Tablets: up to 992px */
+@media (max-width: var(--breakpoint-large-tablet)) { /* 대형 태블릿: 최대 992px */
     .post-card-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        grid-template-columns: repeat(2, 1fr); /* 2열 */
         gap: 1.25rem;
     }
      main#posts-container.post-card-grid {
-        max-width: calc(var(--content-max-width) * 1.2 + var(--grid-gap)); /* Adjust for 2 columns */
+        max-width: calc(var(--content-max-width) * 1.2 + var(--grid-gap)); /* 2열에 맞게 조정 */
         /* max-width: 800px; */
     }
 }
 
-@media (max-width: var(--breakpoint-tablet)) { /* Smaller Tablets & Mobile: up to 768px */
-    /* ===== START DIAGNOSTIC STYLES - MOBILE VIEW (RE-APPLIED) ===== */
-    body {
+@media (max-width: var(--breakpoint-tablet)) { /* 소형 태블릿 및 모바일: 최대 768px */
+    /* 진단용 스타일 - 모바일 뷰 - 제거됨 */
+    /* body {
       background-color: yellow !important;
-    }
-    /* ===== END DIAGNOSTIC STYLES - MOBILE VIEW (RE-APPLIED) ===== */
+    } */
     .main-header {
         padding: 0 0.8em;
     }
@@ -692,35 +692,34 @@ body.dark-mode .image-banner-placeholder {
         display: block;
     }
     #search-container, #search-container-post {
-        /* Example: full width dropdown on tablet/mobile */
-        width: calc(100% - 2em); /* Full width minus some padding */
+        /* 예시: 태블릿/모바일에서 전체 너비 드롭다운 */
+        width: calc(100% - 2em); /* 약간의 패딩을 제외한 전체 너비 */
         left: 1em;
         right: 1em;
-        top: calc(var(--header-height) - 5px); /* Adjust to align nicely */
+        top: calc(var(--header-height) - 5px); /* 보기 좋게 정렬 */
     }
-    main, .post-page-main { /* This includes main#posts-container */
+    main, .post-page-main { /* main#posts-container 포함 */
         margin: 1.5em auto;
         padding: 0 0.8em;
-        max-width: 100%; /* Allow full width within body padding */
+        max-width: 100%; /* 본문 패딩 내에서 전체 너비 허용 */
     }
     .post-page-main {
-        flex-direction: column;
+        flex-direction: column; /* 콘텐츠와 ToC 수직 정렬 */
     }
     .post-card-grid {
-        grid-template-columns: 1fr !important;
-        background-color: red !important;    /* Diagnostic - RE-ADD */
-        border: 5px solid lime !important;   /* Diagnostic - RE-ADD */
-        gap: 0; /* Remove gap, use card margin-bottom */
+        grid-template-columns: 1fr !important; /* 1열, !important 유지 */
+        /* background-color: red !important;    /* 진단용 - 제거됨 */
+        /* border: 5px solid lime !important;   /* 진단용 - 제거됨 */
+        gap: 0; /* 간격 제거, 카드 margin-bottom 사용 */
     }
     .post-card {
-        margin-bottom: 1.5em; /* Ensure spacing in single column */
+        margin-bottom: 1.5em; /* 단일 열에서 간격 보장 */
     }
 }
 
-@media (max-width: var(--breakpoint-mobile)) { /* Mobile: up to 480px */
+@media (max-width: var(--breakpoint-mobile)) { /* 모바일: 최대 480px */
     body {
-        /* padding-top and padding-bottom already set */
-        /* Diagnostic styles from above will also apply here if not overridden */
+        /* padding-top 및 padding-bottom 이미 설정됨 */
     }
     .main-header {
         padding: 0 0.5em;
@@ -734,11 +733,11 @@ body.dark-mode .image-banner-placeholder {
     }
     main, .post-page-main {
         margin: 1em auto;
-        padding: 0 0.5em;
+        padding: 0 0.5em; /* 좌우 패딩 추가 축소 */
     }
     .post-card {
         padding: 1em;
-        /* margin-bottom: 1.5em; /* Already set in tablet query */
+        /* margin-bottom: 1.5em; /* 태블릿 쿼리에서 이미 설정됨 */
     }
     .post-card-title a {
         font-size: 1.3rem;
@@ -754,13 +753,13 @@ body.dark-mode .image-banner-placeholder {
         padding-right: 10px;
     }
     #search-container, #search-container-post {
-         width: calc(100% - 1em); /* Full width minus some padding */
+         width: calc(100% - 1em); /* 약간의 패딩을 제외한 전체 너비 */
         left: 0.5em;
         right: 0.5em;
     }
 }
 
-/* Utility for hidden elements (used by JS) */
+/* JS로 숨겨진 요소들을 위한 유틸리티 */
 .hidden {
     display: none !important;
 }
