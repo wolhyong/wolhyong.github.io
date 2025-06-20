@@ -675,10 +675,7 @@ body.dark-mode .image-banner-placeholder {
 }
 
 @media (max-width: var(--breakpoint-tablet)) { /* 소형 태블릿 및 모바일: 최대 768px */
-    /* 진단용 스타일 - 모바일 뷰 - 제거됨 */
-    /* body {
-      background-color: yellow !important;
-    } */
+    /* Removed diagnostic styles for body */
     .main-header {
         padding: 0 0.8em;
     }
@@ -707,13 +704,24 @@ body.dark-mode .image-banner-placeholder {
         flex-direction: column; /* 콘텐츠와 ToC 수직 정렬 */
     }
     .post-card-grid {
-        grid-template-columns: 1fr !important; /* 1열, !important 유지 */
-        /* background-color: red !important;    /* 진단용 - 제거됨 */
-        /* border: 5px solid lime !important;   /* 진단용 - 제거됨 */
-        gap: 0; /* 간격 제거, 카드 margin-bottom 사용 */
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* Force single column */
+        gap: 0 !important;                   /* Force no grid gap */
+        padding: 0 !important;                /* Force no padding on grid container */
+        margin: 0 !important;                 /* Force no margin on grid container */
+        /* Removed diagnostic background and border */
     }
     .post-card {
-        margin-bottom: 1.5em; /* 단일 열에서 간격 보장 */
+        width: 100% !important;             /* Force full width */
+        max-width: 100% !important;           /* Force full max-width */
+        margin-left: 0 !important;          /* Force no left margin */
+        margin-right: 0 !important;         /* Force no right margin */
+        margin-bottom: var(--grid-gap, 1.5rem) !important; /* Use existing variable for spacing */
+        padding: 1em !important;              /* Keep reasonable internal card padding */
+        box-sizing: border-box !important;    /* Ensure padding/border are within width */
+    }
+    .post-card:last-child {
+        margin-bottom: 0 !important;        /* No margin for the last card */
     }
 }
 
@@ -736,8 +744,8 @@ body.dark-mode .image-banner-placeholder {
         padding: 0 0.5em; /* 좌우 패딩 추가 축소 */
     }
     .post-card {
-        padding: 1em;
-        /* margin-bottom: 1.5em; /* 태블릿 쿼리에서 이미 설정됨 */
+        padding: 1em !important; /* Ensure mobile padding is also forced if needed, overriding the tablet one */
+        /* margin-bottom already handled by the more general .post-card rule in the 768px breakpoint */
     }
     .post-card-title a {
         font-size: 1.3rem;
