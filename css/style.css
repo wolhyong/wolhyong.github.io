@@ -29,14 +29,14 @@
     --dark-link-hover-color: #79c0ff;
     --dark-border-color: #444c56; /* 더 어두운 테두리 */
     --dark-card-background: #2d333b; /* 본문보다 약간 밝음 */
-    --dark-code-background: #1c2128;
+    --dark-code-background: #1c2128; 
     --dark-code-text-color: #c9d1d9;
     --dark-blockquote-border: #555555;
     --dark-header-background: #2d333b;
     --dark-header-text-color: #c9d1d9;
     --dark-tag-background: #3a3f47;
     --dark-tag-text-color: #a0a8b1;
-
+    
     /* 타이포그래피 */
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-family-serif: "Georgia", "Times New Roman", serif; /* 예시 세리프체 */
@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: var(--heading-line-height);
     margin-top: 1.5em;
     margin-bottom: 0.8em;
-    color: var(--light-text-color);
+    color: var(--light-text-color); 
 }
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
     color: var(--dark-text-color);
@@ -212,7 +212,7 @@ body.dark-mode .control-button:hover {
 .control-button svg.theme-icon { /* SVG가 색상 및 크기 상속하도록 보장 */
     width: 1.3em; /* 아이콘 크기 조정 */
     height: 1.3em;
-    fill: currentColor;
+    fill: currentColor; 
 }
 
 #search-container, #search-container-post { /* 검색 컨테이너 공통 규칙 */
@@ -311,10 +311,10 @@ main { /* 일반 main, index.html의 게시물 목록에 사용 */
     padding: 0 1em; /* 좌우 패딩 */
 }
 
-.post-card-grid {
+.post-card-grid { 
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 기본 3열 */
-    gap: var(--grid-gap);
+    gap: var(--grid-gap); 
     /* main#posts-container가 이미 처리하므로 list-style, padding, margin 제거됨 */
 }
 
@@ -446,11 +446,11 @@ body.dark-mode .keyword-tag:hover {
     min-width: 0; /* flex 아이템 오버플로우 방지 */
 }
 
-#post-content-container h1,
-#post-content-container h2,
-#post-content-container h3,
-#post-content-container h4,
-#post-content-container h5,
+#post-content-container h1, 
+#post-content-container h2, 
+#post-content-container h3, 
+#post-content-container h4, 
+#post-content-container h5, 
 #post-content-container h6 {
     margin-top: 2em;
     margin-bottom: 1em;
@@ -626,7 +626,7 @@ body.dark-mode .ad-placeholder {
     aspect-ratio: 728 / 90; /* 가로세로비 유지 */
     background-color: var(--light-background-color); /* 본문 또는 카드 배경과 일치 */
     border: 1px dashed var(--light-border-color);
-    min-height: 90px;
+    min-height: 90px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -666,7 +666,7 @@ body.dark-mode .image-banner-placeholder {
 @media (max-width: var(--breakpoint-large-tablet)) { /* 대형 태블릿: 최대 992px */
     .post-card-grid {
         grid-template-columns: repeat(2, 1fr); /* 2열 */
-        gap: 1.25rem;
+        gap: 1.25rem; 
     }
      main#posts-container.post-card-grid {
         max-width: calc(var(--content-max-width) * 1.2 + var(--grid-gap)); /* 2열에 맞게 조정 */
@@ -683,12 +683,12 @@ body.dark-mode .image-banner-placeholder {
         font-size: 1.3rem;
     }
     .main-navigation {
-        display: none;
+        display: none; 
     }
     #mobile-menu-toggle {
-        display: block;
+        display: block; 
     }
-    #search-container, #search-container-post {
+    #search-container, #search-container-post { 
         /* 예시: 태블릿/모바일에서 전체 너비 드롭다운 */
         width: calc(100% - 2em); /* 약간의 패딩을 제외한 전체 너비 */
         left: 1em;
@@ -700,7 +700,7 @@ body.dark-mode .image-banner-placeholder {
         padding: 0 0.8em;
         max-width: 100%; /* 본문 패딩 내에서 전체 너비 허용 */
     }
-    .post-page-main {
+    .post-page-main { 
         flex-direction: column; /* 콘텐츠와 ToC 수직 정렬 */
     }
     .post-card-grid {
@@ -756,7 +756,7 @@ body.dark-mode .image-banner-placeholder {
     .main-footer {
         font-size: 0.8rem;
     }
-    .main-footer p {
+    .main-footer p { 
         padding-left: 10px;
         padding-right: 10px;
     }
