@@ -1,0 +1,46 @@
+---
+layout: default
+title: "태그"
+description: "GHW 코딩 블로그의 모든 태그 목록입니다."
+permalink: /tags/
+---
+
+<div class="page-wrapper">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title">태그 목록</h1>
+      <p class="page-desc">태그별로 글을 탐색해보세요.</p>
+    </header>
+
+    {% assign all_tags = site.posts | map: 'tags' | flatten | uniq | sort %}
+
+    <!-- Tags Cloud -->
+    <div class="tags-cloud" style="margin-bottom: 3rem;" role="list" aria-label="전체 태그">
+      {% for tag in all_tags %}
+      {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
+      <a href="#{{ tag }}" class="tag-cloud-item" role="listitem">
+        # {{ tag }}
+        <span class="tag-count">{{ tag_posts.size }}</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Posts by Tag -->
+    <div class="tags-page">
+      {% for tag in all_tags %}
+      {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
+      <section class="tags-section" id="{{ tag }}" aria-labelledby="tag-{{ tag | slugify }}">
+        <h2 class="tag-section-title" id="tag-{{ tag | slugify }}">
+          <a href="#{{ tag }}" class="tag"># {{ tag }}</a>
+          <span class="tag-badge">{{ tag_posts.size }}개</span>
+        </h2>
+        <div class="post-grid">
+          {% for post in tag_posts %}
+          {% include post-card.html post=post %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+  </div>
+</div>

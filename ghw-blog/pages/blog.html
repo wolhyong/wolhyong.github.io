@@ -1,0 +1,77 @@
+---
+layout: default
+title: "글 목록"
+description: "GHW 코딩 블로그의 모든 글 목록입니다."
+permalink: /blog/
+---
+
+<div class="blog-header">
+  <div class="container">
+    <h1 class="blog-title">글 목록</h1>
+    <p class="blog-desc">{{ site.posts | size }}개의 글이 있습니다.</p>
+  </div>
+</div>
+
+<div class="blog-body">
+  <div class="container">
+
+    <!-- Tag Filters -->
+    {% assign all_tags = site.posts | map: 'tags' | flatten | uniq | sort %}
+    {% if all_tags.size > 0 %}
+    <div class="blog-filters" role="group" aria-label="태그 필터">
+      <button class="filter-btn active" data-tag="all">전체</button>
+      {% for tag in all_tags %}
+      <button class="filter-btn" data-tag="{{ tag }}">{{ tag }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Posts List -->
+    {% if site.posts.size > 0 %}
+    <div class="posts-list" role="list">
+      {% for post in site.posts %}
+      <div role="listitem" 
+           data-tags="{{ post.tags | join: ' ' }}"
+           class="post-card-wrapper">
+        {% include post-card.html post=post %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <p>아직 작성된 글이 없습니다.</p>
+    </div>
+    {% endif %}
+
+    <!-- Pagination (if paginate plugin enabled) -->
+    {% if paginator %}
+    <nav class="pagination" aria-label="페이지 탐색">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}" rel="prev" aria-label="이전 페이지">←</a>
+      {% endif %}
+
+      {% assign start_page = paginator.page | minus: 2 %}
+      {% if start_page < 1 %}{% assign start_page = 1 %}{% endif %}
+      {% assign end_page = start_page | plus: 4 %}
+      {% if end_page > paginator.total_pages %}{% assign end_page = paginator.total_pages %}{% endif %}
+
+      {% for i in (start_page..end_page) %}
+        {% if i == paginator.page %}
+          <span class="current" aria-current="page">{{ i }}</span>
+        {% else %}
+          {% if i == 1 %}
+            <a href="{{ '/blog/' | relative_url }}">{{ i }}</a>
+          {% else %}
+            <a href="{{ '/blog/page/' | append: i | append: '/' | relative_url }}">{{ i }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}" rel="next" aria-label="다음 페이지">→</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+
+  </div>
+</div>
