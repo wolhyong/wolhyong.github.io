@@ -1,0 +1,181 @@
+---
+layout: default
+---
+
+<article class="post" itemscope itemtype="https://schema.org/BlogPosting" aria-labelledby="post-title">
+  <!-- Post Header -->
+  <header class="post-header">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="경로">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList" role="list">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ '/' | relative_url }}" itemprop="item"><span itemprop="name">홈</span></a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li aria-hidden="true">/</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ '/blog/' | relative_url }}" itemprop="item"><span itemprop="name">블로그</span></a>
+            <meta itemprop="position" content="2">
+          </li>
+          <li aria-hidden="true">/</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+            <span itemprop="name">{{ page.title | truncate: 30 }}</span>
+            <meta itemprop="position" content="3">
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Category Only — 태그는 하단에만 표시 -->
+      <div class="post-header-meta">
+        {% if page.category %}
+        <span class="post-category">{{ page.category }}</span>
+        {% endif %}
+      </div>
+
+      <!-- Title -->
+      <h1 id="post-title" class="post-title" itemprop="headline">{{ page.title }}</h1>
+
+      {% if page.description %}
+      <p class="post-subtitle" itemprop="description">{{ page.description }}</p>
+      {% endif %}
+
+      <!-- Author & Date -->
+      <div class="post-meta" itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <div class="post-meta-author">
+          <!-- SVG 아바타 -->
+          <div class="author-avatar" aria-hidden="true">
+            <svg viewBox="0 0 40 40" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#58a6ff"/>
+                  <stop offset="100%" style="stop-color:#bc8cff"/>
+                </linearGradient>
+              </defs>
+              <circle cx="20" cy="20" r="20" fill="url(#avatarGrad)"/>
+              <circle cx="20" cy="15.5" r="5.5" fill="rgba(255,255,255,0.9)"/>
+              <path d="M9 36 Q9 27 20 27 Q31 27 31 36" fill="rgba(255,255,255,0.9)"/>
+            </svg>
+          </div>
+          <div>
+            <span class="author-name" itemprop="name">그레이해커 월횽 (Greyhacker Wolhyong)</span>
+            <div class="post-dates">
+              <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                {{ page.date | date: "%Y년 %m월 %d일" }}
+              </time>
+              {% if page.modified_date %}
+              <span class="post-updated">수정: <time datetime="{{ page.modified_date | date_to_xmlschema }}" itemprop="dateModified">{{ page.modified_date | date: "%Y.%m.%d" }}</time></span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% assign words = page.content | number_of_words %}
+        <span class="read-time" aria-label="읽기 소요 시간">
+          ⏱ {% if words < 360 %}1{% else %}{{ words | divided_by: 180 }}{% endif %}분 읽기
+        </span>
+      </div>
+
+      <!-- Featured Image -->
+      {% if page.image %}
+      <div class="post-hero-image">
+        <img src="{{ page.image | relative_url }}"
+             alt="{{ page.title }}"
+             width="900"
+             height="473"
+             itemprop="image"
+             fetchpriority="high">
+      </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Post Body -->
+  <div class="post-body">
+    <div class="container">
+      <div class="post-layout">
+        <aside class="post-toc" aria-label="목차" id="toc">
+          <div class="toc-inner">
+            <h2 class="toc-title">목차</h2>
+            <nav id="toc-nav" aria-label="문서 목차"></nav>
+          </div>
+        </aside>
+        <div class="post-content" itemprop="articleBody">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Footer -->
+  <footer class="post-footer">
+    <div class="container">
+      <!-- Share Buttons -->
+      <div class="post-share">
+        <span class="share-label">공유하기</span>
+        <div class="share-buttons">
+          <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ page.url | absolute_url | uri_escape }}"
+             target="_blank" rel="noopener noreferrer" class="share-btn share-twitter" aria-label="Twitter에 공유">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Twitter
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | uri_escape }}"
+             target="_blank" rel="noopener noreferrer" class="share-btn share-facebook" aria-label="Facebook에 공유">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <button class="share-btn share-copy" aria-label="링크 복사" onclick="copyLink()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            링크 복사
+          </button>
+        </div>
+      </div>
+
+      <!-- Tags — 하단에만 표시 -->
+      {% if page.tags.size > 0 %}
+      <div class="post-footer-tags">
+        <ul class="post-tags" role="list" aria-label="관련 태그">
+          {% for tag in page.tags %}
+          <li><a href="{{ '/tags/#' | append: tag | relative_url }}" class="tag"># {{ tag }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- Prev / Next -->
+      <nav class="post-navigation" aria-label="이전/다음 글">
+        <div class="post-nav-inner">
+          {% if page.previous.url %}
+          <a href="{{ page.previous.url | relative_url }}" class="post-nav-item post-nav-prev" rel="prev">
+            <span class="nav-dir">← 이전 글</span>
+            <span class="nav-title">{{ page.previous.title | truncate: 50 }}</span>
+          </a>
+          {% else %}
+          <div class="post-nav-item post-nav-prev empty"></div>
+          {% endif %}
+
+          {% if page.next.url %}
+          <a href="{{ page.next.url | relative_url }}" class="post-nav-item post-nav-next" rel="next">
+            <span class="nav-dir">다음 글 →</span>
+            <span class="nav-title">{{ page.next.title | truncate: 50 }}</span>
+          </a>
+          {% else %}
+          <div class="post-nav-item post-nav-next empty"></div>
+          {% endif %}
+        </div>
+      </nav>
+
+      <!-- Related Posts -->
+      {% assign related = site.posts | where_exp: "p", "p.url != page.url" | where_exp: "p", "p.tags contains page.tags[0]" | limit: 3 %}
+      {% if related.size > 0 %}
+      <section class="related-posts" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="section-title">관련 글</h2>
+        <div class="related-grid">
+          {% for post in related %}
+          {% include post-card.html post=post %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+  </footer>
+</article>

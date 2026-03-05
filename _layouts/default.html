@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ko' }}" itemscope itemtype="https://schema.org/WebPage">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include header.html %}
+
+  <main id="main-content" tabindex="-1">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  <!-- 맨 위로 버튼 -->
+  <button class="scroll-top" id="scrollTop" aria-label="맨 위로 이동" title="맨 위로">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="#ffffff" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+</body>
+</html>

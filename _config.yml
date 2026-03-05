@@ -1,0 +1,96 @@
+# ============================
+# Site Settings
+# ============================
+title: "그레이해커 Wolhyong | 개발 블로그"
+title_en: "Greyhacker Wolhyong Dev Blog"
+description: "그레이해커(Greyhacker) Wolhyong의 개발 블로그. 웹 개발, 백엔드, 알고리즘, 프로그래밍 지식을 공유합니다. greyhacker, greyhack, 그레이헷, wolhyong."
+author:
+  name: "그레이해커 Wolhyong (Greyhacker)"
+  nickname: "그레이해커"
+  nickname_en: "Greyhacker"
+  email: ""
+  bio: "그레이해커(Greyhacker) — 개발을 즐기는 개발자입니다."
+  github: "wolhyong"
+  tistory: "https://wolhyong.tistory.com/"
+  instagram: "https://www.instagram.com/wolhyong"
+
+url: "https://wolhyong.github.io"
+baseurl: ""
+lang: "ko"
+timezone: "Asia/Seoul"
+encoding: "utf-8"
+
+# ============================
+# SEO — 그레이해커 키워드 최적화
+# ============================
+# 핵심 키워드: 그레이해커, greyhacker, greyhack, 그레이헷, wolhyong
+keywords: "그레이해커, greyhacker, greyhack, 그레이헷, Wolhyong, wolhyong, 개발 블로그, 코딩 블로그, 프로그래밍, 웹 개발, 백엔드, 알고리즘, 깃허브 블로그"
+
+google_analytics: ""              # G-XXXXXXXXXX 입력
+google_site_verification: ""      # Google Search Console 인증 코드
+naver_site_verification: ""       # 네이버 서치어드바이저 인증 코드
+
+# Open Graph / Social
+og_image: "/assets/images/og-default.png"
+twitter_username: ""
+
+# ============================
+# Build Settings
+# ============================
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
+
+# ============================
+# Plugins
+# ============================
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# ============================
+# Pagination
+# ============================
+paginate: 6
+paginate_path: "/page/:num/"
+
+# ============================
+# Collections
+# ============================
+collections:
+  posts:
+    output: true
+
+# ============================
+# Defaults
+# ============================
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      author: "그레이해커 Wolhyong"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# ============================
+# Exclude from build
+# ============================
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - README.md
+  - .gitignore
