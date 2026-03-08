@@ -1,0 +1,79 @@
+---
+layout: page
+title: "English Posts"
+description: "Programming tutorials and guides in English. Web development, AI tools, databases, and coding tips for global readers."
+permalink: /english/
+lang: en
+---
+
+<div class="english-intro">
+  <p>Programming tutorials written in English — covering web development, AI tools, databases, and practical coding tips.</p>
+</div>
+
+<div class="english-sections">
+
+  <div class="english-section">
+    <h2><a href="/english/web-dev/">🌐 Web Development</a></h2>
+    <p>HTML, CSS, JavaScript, React, Vue, and modern frontend/backend tutorials from beginner to advanced.</p>
+    {% assign en_web = site.posts | where: "lang", "en" | where_exp: "p", "p.categories contains 'web'" %}
+    {% if en_web.size > 0 %}
+    <ul class="post-list-small">
+      {% for post in en_web limit:5 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <div class="english-section">
+    <h2><a href="/english/ai-tools/">🤖 AI Tools & APIs</a></h2>
+    <p>Guides on using ChatGPT API, Claude, Gemini, TensorFlow, PyTorch, LangChain, and other AI tools.</p>
+    {% assign en_ai = site.posts | where: "lang", "en" | where_exp: "p", "p.categories contains 'ai'" %}
+    {% if en_ai.size > 0 %}
+    <ul class="post-list-small">
+      {% for post in en_ai limit:5 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <div class="english-section">
+    <h2><a href="/english/database/">🗄️ Database</a></h2>
+    <p>SQL, NoSQL, database design, query optimization, and real-world database tutorials.</p>
+    {% assign en_db = site.posts | where: "lang", "en" | where_exp: "p", "p.categories contains 'database'" %}
+    {% if en_db.size > 0 %}
+    <ul class="post-list-small">
+      {% for post in en_db limit:5 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <div class="english-section">
+    <h2><a href="/english/tips/">💡 Tips &amp; Tricks</a></h2>
+    <p>Quick tips, error fixes, tool comparisons, and productivity hacks for developers.</p>
+    {% assign en_tips = site.posts | where: "lang", "en" | where_exp: "p", "p.categories contains 'tips'" %}
+    {% if en_tips.size > 0 %}
+    <ul class="post-list-small">
+      {% for post in en_tips limit:5 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+</div>
+
+{% assign all_en = site.posts | where: "lang", "en" %}
+{% if all_en.size > 0 %}
+<div class="english-all">
+  <h2>All English Posts</h2>
+  <div class="post-grid">
+    {% for post in all_en %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

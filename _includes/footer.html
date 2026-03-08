@@ -10,10 +10,31 @@
 
       <div class="footer-links">
         <div class="footer-col">
-          <h3>메뉴</h3>
+          <h3>시리즈</h3>
+          <ul role="list">
+            <li><a href="{{ '/series/html-css/' | relative_url }}">HTML/CSS</a></li>
+            <li><a href="{{ '/series/javascript/' | relative_url }}">JavaScript</a></li>
+            <li><a href="{{ '/series/python/' | relative_url }}">Python</a></li>
+            <li><a href="{{ '/series/react/' | relative_url }}">React</a></li>
+            <li><a href="{{ '/series/' | relative_url }}">전체 시리즈 →</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>언어별</h3>
+          <ul role="list">
+            <li><a href="{{ '/categories/javascript/' | relative_url }}">JavaScript</a></li>
+            <li><a href="{{ '/categories/python/' | relative_url }}">Python</a></li>
+            <li><a href="{{ '/categories/java/' | relative_url }}">Java</a></li>
+            <li><a href="{{ '/categories/react/' | relative_url }}">React</a></li>
+            <li><a href="{{ '/categories/nextjs/' | relative_url }}">Next.js</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>바로가기</h3>
           <ul role="list">
             <li><a href="{{ '/' | relative_url }}">홈</a></li>
             <li><a href="{{ '/blog/' | relative_url }}">글 목록</a></li>
+            <li><a href="{{ '/english/' | relative_url }}">English</a></li>
             <li><a href="{{ '/tags/' | relative_url }}">태그</a></li>
             <li><a href="{{ '/about/' | relative_url }}">소개</a></li>
           </ul>
@@ -31,7 +52,7 @@
 
     <div class="footer-bottom">
       <p>
-        <span>© {{ site.time | date: '%Y' }} {{ site.author.name }}</span>
+        <span>© 2015 {{ site.author.name }}</span>
         <span class="footer-sep" aria-hidden="true">·</span>
         <span>Built with <a href="https://jekyllrb.com" target="_blank" rel="noopener noreferrer">Jekyll</a></span>
         <span class="footer-sep" aria-hidden="true">·</span>

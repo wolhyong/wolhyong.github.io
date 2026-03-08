@@ -1,0 +1,76 @@
+---
+layout: default
+---
+
+<main id="main-content" class="category-page">
+  <div class="container">
+
+    <div class="category-hero">
+      <div class="category-icon">{{ page.icon }}</div>
+      <h1 class="category-title">{{ page.title }}</h1>
+      <p class="category-desc">{{ page.description }}</p>
+      <div class="category-levels">
+        <a href="#beginner" class="level-badge level-beginner">초급</a>
+        <a href="#intermediate" class="level-badge level-intermediate">중급</a>
+        <a href="#advanced" class="level-badge level-advanced">고급</a>
+      </div>
+    </div>
+
+    {% assign cat_posts = site.posts | where_exp: "post", "post.categories contains page.category_key" %}
+    {% assign beginner_posts = cat_posts | where: "level", "beginner" %}
+    {% assign intermediate_posts = cat_posts | where: "level", "intermediate" %}
+    {% assign advanced_posts = cat_posts | where: "level", "advanced" %}
+
+    {% if beginner_posts.size > 0 %}
+    <section class="level-section" id="beginner">
+      <div class="level-header">
+        <span class="level-dot dot-beginner"></span>
+        <h2>초급 <span class="level-en">Beginner</span></h2>
+        <span class="level-count">{{ beginner_posts.size }}개</span>
+      </div>
+      <div class="post-grid">
+        {% for post in beginner_posts %}
+          {% include post-card.html post=post %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if intermediate_posts.size > 0 %}
+    <section class="level-section" id="intermediate">
+      <div class="level-header">
+        <span class="level-dot dot-intermediate"></span>
+        <h2>중급 <span class="level-en">Intermediate</span></h2>
+        <span class="level-count">{{ intermediate_posts.size }}개</span>
+      </div>
+      <div class="post-grid">
+        {% for post in intermediate_posts %}
+          {% include post-card.html post=post %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if advanced_posts.size > 0 %}
+    <section class="level-section" id="advanced">
+      <div class="level-header">
+        <span class="level-dot dot-advanced"></span>
+        <h2>고급 <span class="level-en">Advanced</span></h2>
+        <span class="level-count">{{ advanced_posts.size }}개</span>
+      </div>
+      <div class="post-grid">
+        {% for post in advanced_posts %}
+          {% include post-card.html post=post %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if cat_posts.size == 0 %}
+    <div class="empty-category">
+      <p>{{ page.title }} 관련 포스트를 준비 중입니다.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</main>

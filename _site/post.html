@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko"> <!-- lang="ko"로 변경됨 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그 게시물</title> <!-- 제목 변경됨, JS에 의해 업데이트될 것임 -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/toc.css"> <!-- ToC CSS 추가됨 -->
+</head>
+<body>
+    <header class="main-header">
+        <div class="site-branding">
+            <a href="index.html" class="site-title-link">
+                <span class="site-name-text">GHW</span>
+            </a>
+        </div>
+        <nav class="main-navigation">
+            <ul>
+                <li><a href="index.html">커리큘럼</a></li>
+                <!-- 필요시 여기에 다른 네비게이션 링크 추가 -->
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <button type="button" id="search-toggle-btn" class="control-button" aria-label="검색 열기" aria-expanded="false" aria-controls="search-container-post">
+                 <svg class="theme-icon" viewBox="0 0 16 16" fill="currentColor" style="width: 1.2em; height: 1.2em;"><use xlink:href="#search"></use></svg>
+            </button>
+            <div id="search-container-post" class="search-container search-input-hidden">
+                <input type="text" id="search-input-post" placeholder="검색..." aria-label="Search input on post page">
+            </div>
+            <button type="button" id="theme-toggle" class="control-button" aria-label="테마 변경">
+                <!-- 아이콘은 JS에 의해 설정됨 -->
+            </button>
+            <button type="button" id="mobile-menu-toggle" class="control-button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu-panel">
+                <svg class="theme-icon" viewBox="0 0 16 16" fill="currentColor" style="width: 1.2em; height: 1.2em;"><use xlink:href="#list"></use></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu-panel" id="mobile-menu-panel" aria-hidden="true">
+        <nav class="mobile-navigation">
+            <ul>
+                <li><a href="index.html">커리큘럼</a></li>
+                <!-- 주 네비게이션의 다른 링크들이 여기에 복제됨 -->
+            </ul>
+        </nav>
+    </div>
+
+    <main class="post-page-main"> <!-- 특정 게시물 페이지 main 스타일링을 위한 클래스 추가됨 -->
+        <div class="post-meta-container">
+            <p id="post-date-display"></p>
+            <p id="reading-time-display" class="reading-time"></p>
+        </div>
+        <div id="toc-container" class="toc-container">
+            <!-- 목차는 여기에 생성됨 -->
+        </div>
+        <article id="post-content-container">
+            <!-- 전체 블로그 게시물 내용은 여기에 로드됨 -->
+            <p>Loading post...</p>
+        </article>
+    </main>
+
+    <div id="social-share-container" class="social-share-container" style="text-align: center; padding: 20px;">
+        <h4>Share this post:</h4>
+        <!-- 공유 버튼은 script.js에 의해 여기에 채워짐 -->
+    </div>
+
+    <div id="disqus_thread" style="margin: 20px auto; max-width: 800px;"></div> <!-- Disqus 컨테이너 -->
+
+
+    <footer class="main-footer">
+        <p>&copy; 2013 Greyhacker Wolhyong Development Blog. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/script.js"></script>
+    <script id="dsq-count-scr" src="//YOUR_DISQUS_SHORTNAME_HERE.disqus.com/count.js" async></script> <!-- Disqus 카운트 스크립트, shortname 교체 필요 -->
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</body>
+</html>

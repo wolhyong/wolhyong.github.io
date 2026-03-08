@@ -3,7 +3,7 @@
 # ============================
 title: "그레이해커 Wolhyong | 개발 블로그"
 title_en: "Greyhacker Wolhyong Dev Blog"
-description: "그레이해커(Greyhacker) Wolhyong의 개발 블로그. 웹 개발, 백엔드, 알고리즘, 프로그래밍 지식을 공유합니다. greyhacker, greyhack, 그레이헷, wolhyong."
+description: "그레이해커(Greyhacker) Wolhyong의 프로그래밍 튜토리얼 블로그. HTML, CSS, JavaScript, Python, Java, React, Vue, Spring Boot, Docker, AI 도구까지 초급/중급/고급 단계별 강의를 제공합니다."
 author:
   name: "그레이해커 Wolhyong (Greyhacker)"
   nickname: "그레이해커"
@@ -24,7 +24,7 @@ encoding: "utf-8"
 # SEO — 그레이해커 키워드 최적화
 # ============================
 # 핵심 키워드: 그레이해커, greyhacker, greyhack, 그레이헷, wolhyong
-keywords: "그레이해커, greyhacker, greyhack, 그레이헷, Wolhyong, wolhyong, 개발 블로그, 코딩 블로그, 프로그래밍, 웹 개발, 백엔드, 알고리즘, 깃허브 블로그"
+keywords: "그레이해커, greyhacker, wolhyong, 프로그래밍 튜토리얼, HTML 강의, CSS 강의, JavaScript 강의, Python 강의, Java 강의, React 강의, Vue.js, Spring Boot, Node.js, Docker, Kubernetes, MySQL, MongoDB, ChatGPT API, TensorFlow, 웹 개발 입문, 초급 프로그래밍, 코딩 배우기"
 
 google_analytics: ""              # G-XXXXXXXXXX 입력
 google_site_verification: ""      # Google Search Console 인증 코드
