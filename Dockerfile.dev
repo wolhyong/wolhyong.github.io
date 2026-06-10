@@ -1,0 +1,32 @@
+# ============================================
+# GHW 개발 블로그 — Jekyll 개발 환경 (LiveReload)
+# ============================================
+FROM ruby:3.2-slim
+
+LABEL description="GHW Dev Blog - Jekyll Development Server"
+
+WORKDIR /app
+
+# 시스템 패키지 설치
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Gem 설치
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# 포트 설정
+EXPOSE 4000
+EXPOSE 35729
+
+# Jekyll 개발 서버 실행 (--force_polling: Docker Desktop Windows 호환)
+# 소스 파일은 docker-compose.yml의 volume mount로 제공
+CMD ["bundle", "exec", "jekyll", "serve", \
+     "--host", "0.0.0.0", \
+     "--livereload", \
+     "--livereload-port", "35729", \
+     "--force_polling", \
+     "--future"]

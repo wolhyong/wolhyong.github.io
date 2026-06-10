@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+{% assign category_posts = site.posts | where: "category", page.category %}
+{% assign category_posts = category_posts | sort: "date" %}
+
+<div class="page-wrapper">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.description %}
+      <p class="page-desc">{{ page.description }}</p>
+      {% endif %}
+    </header>
+
+    {% if category_posts.size > 0 %}
+    <div class="posts-list" role="list">
+      {% for post in category_posts %}
+      <div role="listitem" class="post-card-wrapper">
+        {% include post-card.html post=post %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <p>아직 <strong>{{ page.title }}</strong> 카테고리에 작성된 글이 없습니다. (총 포스트 수: {{ site.posts | size }})</p>
+    </div>
+    {% endif %}
+  </div>
+</div>

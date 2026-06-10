@@ -1,0 +1,13 @@
+<div class="summary-box" role="complementary" aria-label="핵심 요약">
+  <div class="summary-icon" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="16" x2="12" y2="12"/>
+      <line x1="12" y1="8" x2="12.01" y2="8"/>
+    </svg>
+  </div>
+  <div class="summary-content">
+    <strong class="summary-title">이 글에서 배운 핵심</strong>
+    <p>이 글은 <strong>{{ page.category }}</strong> 커리큘럼의 일부입니다. {% if page.level %}{% if page.level == 'beginner' or page.level == 'basic' %}초급{% elsif page.level == 'intermediate' %}중급{% elsif page.level == 'advanced' %}고급{% endif %} 수준의 내용을 다룹니다. {% endif %}{% if include.tags and include.tags.size > 0 %}관련 주제에 관심이 있다면 아래 태그로 더 찾아보세요: {% for tag in include.tags %}<a href="{{ '/tags/#' | append: tag | relative_url }}" class="tag"># {{ tag }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}{% endif %}</p>
+  </div>
+</div>

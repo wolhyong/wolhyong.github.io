@@ -1,0 +1,269 @@
+---
+layout: post
+title: "HTML iframe 태그 — 유튜브 삽입, 보안 설정, 반응형 처리"
+description: "iframe으로 외부 콘텐츠를 안전하게 삽입하는 방법은? 유튜브·Codepen 임베드 방법, sandbox 보안 속성 설정, 16:9 비율 반응형 iframe 만들기, title 접근성 설정까지 다룹니다."
+date: 2015-06-08 00:00:00 +0900
+category: html
+level: intermediate
+series: "HTML/CSS 처음부터 끝까지"
+series_order: 23
+tags: [html, iframe, 유튜브삽입, sandbox, 반응형, 보안, 임베드]
+lang: ko
+---
+
+유튜브 동영상을 블로그에 넣거나, 구글 지도를 삽입하거나, Codepen 데모를 보여줄 때 iframe을 씁니다. 단순해 보이지만 보안과 반응형 처리를 제대로 알고 써야 합니다.
+
+---
+
+## iframe 기본 사용법
+
+```html
+<iframe
+  src="https://example.com"
+  width="600"
+  height="400"
+  title="예제 페이지">
+</iframe>
+```
+
+`title` 속성은 스크린 리더 사용자를 위해 반드시 작성해야 합니다. "iframe"처럼 의미 없는 값 대신 내용을 설명하는 텍스트를 씁니다.
+
+---
+
+## 유튜브 영상 삽입
+
+유튜브에서 공유 → 퍼가기(Embed)를 누르면 아래와 같은 코드를 복사할 수 있습니다.
+
+```html
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="강의 제목을 여기에 입력"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen>
+</iframe>
+```
+
+**URL 파라미터로 재생 옵션 제어**
+
+```html
+<!-- 자동 재생 -->
+src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1"
+
+<!-- 특정 시간부터 시작 (90초 = 1분 30초) -->
+src="https://www.youtube.com/embed/VIDEO_ID?start=90"
+
+<!-- 관련 동영상 비표시 -->
+src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
+
+<!-- 컨트롤 숨기기 -->
+src="https://www.youtube.com/embed/VIDEO_ID?controls=0"
+
+<!-- 재생목록 전체 -->
+src="https://www.youtube.com/embed/videoseries?list=PLAYLIST_ID"
+```
+
+---
+
+## 16:9 반응형 iframe
+
+고정 크기 iframe은 모바일에서 튀어나옵니다. CSS padding trick으로 비율을 유지하면서 너비에 맞게 확장됩니다.
+
+```html
+<div class="video-wrapper">
+  <iframe
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="강의 영상"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+```css
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 비율 (9 / 16 = 0.5625) */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+```
+
+4:3 비율은 `padding-bottom: 75%`, 21:9 비율은 `padding-bottom: 42.86%`로 계산합니다.
+
+---
+
+## sandbox — 보안 제한
+
+외부 콘텐츠를 삽입할 때 보안 위험이 있습니다. sandbox 속성으로 iframe의 권한을 제한합니다.
+
+```html
+<!-- 최대한 제한 (아무것도 허용 안 함) -->
+<iframe src="https://untrusted.com" sandbox></iframe>
+
+<!-- 필요한 권한만 선택적 허용 -->
+<iframe
+  src="https://example.com/widget"
+  sandbox="allow-scripts allow-same-origin">
+</iframe>
+```
+
+**sandbox 값 목록**
+
+| 값 | 허용하는 것 |
+|----|------------|
+| `allow-scripts` | JavaScript 실행 |
+| `allow-forms` | 폼 제출 |
+| `allow-same-origin` | 같은 출처로 처리 (쿠키 등 접근) |
+| `allow-popups` | 팝업 창 열기 |
+| `allow-top-navigation` | 최상위 페이지 이동 |
+| `allow-downloads` | 파일 다운로드 |
+| `allow-modals` | alert, confirm 다이얼로그 |
+
+신뢰할 수 없는 외부 콘텐츠에는 `sandbox`를 반드시 씁니다. 유튜브, 구글 지도처럼 신뢰할 수 있는 서비스는 보통 sandbox 없이도 괜찮지만, 써도 무방합니다.
+
+---
+
+## allow 속성 — 기능 정책
+
+카메라, 마이크 같은 브라우저 기능을 허용하거나 차단합니다.
+
+```html
+<iframe
+  src="https://meet.example.com"
+  allow="camera; microphone; fullscreen"
+  title="화상 회의">
+</iframe>
+
+<!-- 구글 지도 -->
+<iframe
+  src="https://www.google.com/maps/embed?pb=..."
+  width="600"
+  height="450"
+  style="border:0"
+  allow="geolocation"
+  loading="lazy"
+  title="GHW Dev Blog 위치">
+</iframe>
+```
+
+---
+
+## loading="lazy" — 지연 로딩
+
+화면 밖 iframe은 나중에 로드하도록 설정합니다. 유튜브 iframe이 많은 페이지에서 초기 로딩 속도가 크게 개선됩니다.
+
+```html
+<iframe
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  loading="lazy"
+  title="강의 영상">
+</iframe>
+```
+
+---
+
+## Codepen, JSFiddle 임베드
+
+코드 데모를 블로그에 인터랙티브하게 보여줄 수 있습니다.
+
+```html
+<!-- Codepen -->
+<iframe
+  height="400"
+  style="width: 100%;"
+  scrolling="no"
+  title="CSS Flexbox 데모"
+  src="https://codepen.io/username/embed/PEN_ID?default-tab=html%2Cresult"
+  loading="lazy"
+  allowtransparency="true"
+  allowfullscreen="true">
+</iframe>
+
+<!-- Codesandbox -->
+<iframe
+  src="https://codesandbox.io/embed/SANDBOX_ID"
+  style="width:100%; height:500px; border:0; overflow:hidden;"
+  title="React 예제"
+  allow="accelerometer; camera; encrypted-media; geolocation; microphone"
+  loading="lazy"
+  sandbox="allow-forms allow-modals allow-popups allow-same-origin allow-scripts">
+</iframe>
+```
+
+---
+
+## 실습: 기술 강의 페이지에 유튜브 삽입
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Git 브랜치 전략 강의 — GHW Dev Blog</title>
+  <style>
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <h1>Git 브랜치 전략 — GitHub Flow vs Git Flow</h1>
+
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
+        title="Git 브랜치 전략 비교 강의 — GitHub Flow vs Git Flow"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <h2>강의 내용 요약</h2>
+    <p>이 강의에서는 GitHub Flow와 Git Flow의 차이를 비교하고 어떤 상황에서 어떤 전략을 써야 하는지 설명합니다.</p>
+  </article>
+</body>
+</html>
+```
+
+## 실제로 실행해보기
+
+1. `loading="lazy"`가 없으면 유튜브 iframe이 하나여도 페이지 로딩 속도에 영향을 줍니다. 여러 개의 유튜브 영상이 있는 페이지에서 이 속성의 유무를 비교해보면 체감이 확실합니다.
+2. `sandbox` 속성을 빈 값으로만 줘도 iframe 안의 JavaScript가 실행되지 않는 걸 확인할 수 있습니다.
+3. CSS padding trick을 적용하지 않으면 모바일 화면에서 iframe이 잘려서 보이거나 좌우로 넘칩니다. 반드시 반응형 처리를 해야 합니다.
+
+---
+
+## 핵심
+
+- `title` 속성 — 접근성을 위해 스크린 리더가 읽을 설명을 반드시 작성
+- `sandbox` — 외부 콘텐츠의 JavaScript, 폼 제출 등 권한을 제한
+- `loading="lazy"` — iframe이 화면에 보일 때만 로드 (초기 속도 개선)
+- CSS padding trick (`padding-bottom: 56.25%`) — 16:9 비율 반응형 iframe
+- 유튜브 URL 파라미터 — `?autoplay=1&mute=1`, `?start=90` 등 재생 옵션 제어
+
+다음 글에서는 data-* 속성으로 HTML에 데이터를 저장하는 방법을 알아봅니다.

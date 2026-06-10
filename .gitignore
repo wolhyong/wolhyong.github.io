@@ -1,0 +1,32 @@
+# ============================
+# Jekyll Build Output
+# ============================
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# ============================
+# Dependencies
+# ============================
+node_modules/
+vendor/
+.bundle/
+
+# ============================
+# OS & Editor
+# ============================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# ============================
+# Temporary / Generated
+# ============================
+__pycache__/
+*.pyc
+nul

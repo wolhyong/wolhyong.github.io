@@ -1,0 +1,54 @@
+# ============================================
+# GHW 개발 블로그 — Docker Compose
+# ============================================
+# 사용법:
+#   docker compose up -d              # 프로덕션 모드 (Nginx)
+#   docker compose --profile dev up   # 개발 모드 (Jekyll LiveReload)
+#   docker compose logs -f            # 로그 확인
+#   docker compose down               # 종료
+#
+# 프로덕션 접속: http://localhost:8080
+# 개발 접속:     http://localhost:4000
+# ============================================
+
+services:
+  # ============================================
+  # 프로덕션: Nginx + 빌드된 정적 파일
+  # ============================================
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ghw-blog
+    ports:
+      - "8080:80"
+    environment:
+      - TZ=Asia/Seoul
+    restart: unless-stopped
+    profiles:
+      - production
+      - ""  # 기본 프로필
+
+  # ============================================
+  # 개발: Jekyll LiveReload 서버
+  # ============================================
+  jekyll-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ghw-blog-dev
+    ports:
+      - "4000:4000"       # Jekyll 서버
+      - "35729:35729"     # LiveReload 포트
+    volumes:
+      - .:/app            # 소스 코드 실시간 반영
+      - /app/_site        # _site는 컨테이너 내부 관리
+      - /app/node_modules
+      - /app/.jekyll-cache
+    environment:
+      - JEKYLL_ENV=development
+      - LANG=C.UTF-8
+      - TZ=Asia/Seoul
+    restart: unless-stopped
+    profiles:
+      - dev

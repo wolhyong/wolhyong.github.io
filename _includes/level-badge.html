@@ -1,0 +1,26 @@
+{% assign path = include.path %}
+{% assign level = include.level %}
+{% assign level_text = '' %}
+
+{% if level == 'beginner' or level == 'basic' %}
+  {% assign level_text = '초급' %}
+  {% assign level_class = 'level-basic' %}
+{% elsif level == 'intermediate' %}
+  {% assign level_text = '중급' %}
+  {% assign level_class = 'level-intermediate' %}
+{% elsif level == 'advanced' %}
+  {% assign level_text = '고급' %}
+  {% assign level_class = 'level-advanced' %}
+{% elsif path contains '-basic-' %}
+  {% assign level_text = '초급' %}
+  {% assign level_class = 'level-basic' %}
+{% elsif path contains '-intermediate-' %}
+  {% assign level_text = '중급' %}
+  {% assign level_class = 'level-intermediate' %}
+{% elsif path contains '-advanced-' %}
+  {% assign level_text = '고급' %}
+  {% assign level_class = 'level-advanced' %}
+{% endif %}
+{% if level_text != '' %}
+<span class="level-badge {{ level_class }}">{{ level_text }}</span>
+{% endif %}
