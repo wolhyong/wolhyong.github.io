@@ -170,7 +170,7 @@ layout: default
       <section class="related-posts" aria-labelledby="related-heading">
         <h2 id="related-heading" class="section-title">관련 글</h2>
         <div class="related-grid">
-          {% for post in related %}
+          {% for post in related limit: 3 %}
           {% include post-card.html post=post %}
           {% endfor %}
         </div>
