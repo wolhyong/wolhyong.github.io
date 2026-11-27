@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust unsafe Rust — 원시 포인터, FFI, 어셈블리 인라인, unsafe 함수, 안전하지 않은 트레이트"
-description: "Rust의 unsafe 코드를 시스템 레벨에서 학습합니다. unsafe 키워드는 Rust의 보장을 비활성화하며 다음 5가지 작업을 허용합니다: 원시 포인터 역참조, unsafe 함수 호출, FFI 호출, mutable static 접근, unsafe 트레이트 구현. *const T와 *mut T는 원시 포인터로 빌림 규칙이 없으며 포인터 연산이 가능합니다. extern "C"로 C 함수를 호출하며 FFI(Foreign Function Interface)로 다른 언어와 상호작용합니다. asm! 매크로로 인라인 어셈블리를 작성할 수 있습니다. unsafe 코드는 가능한 한 캡슐화하여 안전한 인터페이스를 제공해야 합니다."
+description: "Rust의 unsafe 코드를 시스템 레벨에서 학습합니다. unsafe 키워드는 Rust의 보장을 비활성화하며 다음 5가지 작업을 허용합니다: 원시 포인터 역참조, unsafe 함수 호출, FFI 호출, mutable static 접근, unsafe 트레이트 구현. *const T와 *mut T는 원시 포인터로 빌림 규칙이 없으며 포인터 연산이 가능합니다. extern \"C\"로 C 함수를 호출하며 FFI(Foreign Function Interface)로 다른 언어와 상호작용합니다. asm! 매크로로 인라인 어셈블리를 작성할 수 있습니다. unsafe 코드는 가능한 한 캡슐화하여 안전한 인터페이스를 제공해야 합니다."
 date: 2025-07-04 10:00:00 +0900
 category: rust
 tags: [rust, unsafe, raw-pointers, ffi, inline-assembly, extern]

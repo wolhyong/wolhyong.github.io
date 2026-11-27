@@ -12,7 +12,9 @@ permalink: /tags/
       <p class="page-desc">태그별로 글을 탐색해보세요.</p>
     </header>
 
-    {% assign all_tags = site.posts | map: 'tags' | flatten | uniq | sort %}
+    {% assign tag_values = "" | split: "" %}
+    {% for post in site.posts %}{% if post.tags %}{% assign tag_values = tag_values | concat: post.tags %}{% endif %}{% endfor %}
+    {% assign all_tags = tag_values | uniq | sort %}
 
     <!-- Tags Cloud -->
     <div class="tags-cloud" style="margin-bottom: 3rem;" role="list" aria-label="전체 태그">

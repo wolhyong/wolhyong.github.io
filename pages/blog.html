@@ -16,7 +16,9 @@ permalink: /blog/
   <div class="container">
 
     <!-- Tag Filters -->
-    {% assign all_tags = site.posts | map: 'tags' | flatten | uniq | sort %}
+    {% assign tag_values = "" | split: "" %}
+    {% for post in site.posts %}{% if post.tags %}{% assign tag_values = tag_values | concat: post.tags %}{% endif %}{% endfor %}
+    {% assign all_tags = tag_values | uniq | sort %}
     {% if all_tags.size > 0 %}
     <div class="blog-filters" role="group" aria-label="태그 필터">
       <button class="filter-btn active" data-tag="all">전체</button>
