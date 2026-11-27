@@ -26,9 +26,9 @@ encoding: "utf-8"
 # 핵심 키워드: 그레이해커, greyhacker, greyhack, 그레이헷, wolhyong
 keywords: "그레이해커, greyhacker, greyhack, 그레이헷, Wolhyong, wolhyong, 개발 블로그, 코딩 블로그, 프로그래밍, 웹 개발, 백엔드, 알고리즘, 깃허브 블로그"
 
-google_analytics: ""              # G-XXXXXXXXXX 입력
-google_site_verification: ""      # Google Search Console 인증 코드
-naver_site_verification: ""       # 네이버 서치어드바이저 인증 코드
+google_analytics: "G-FK4FJM06VR"           # G-XXXXXXXXXX 입력
+google_site_verification: "704QsIi5txKEO9z7lZPnNwvMVkU5WHbiEz4hsCv8i-Y"   # Google Search Console 인증 코드
+naver_site_verification: "abdeaacfa2bf4a40519e6a2137a325f726d6089c"       # 네이버 서치어드바이저 인증 코드
 
 # Open Graph / Social
 og_image: "/assets/images/og-default.png"
