@@ -96,7 +96,7 @@ table { border-collapse: collapse; width: 100%; }
    ======================== */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -4rem;   /* 포커스 전에는 완전히 숨김(높이 약 43px라 -40px이면 3px가 남았다) */
   left: 0;
   background: var(--accent);
   color: #000;
@@ -661,6 +661,7 @@ table { border-collapse: collapse; width: 100%; }
   font-weight: 600;
   line-height: 1.4;
   flex: 1;
+  overflow-wrap: anywhere;
 }
 
 .post-card-title a {
@@ -676,6 +677,7 @@ table { border-collapse: collapse; width: 100%; }
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.6;
+  overflow-wrap: anywhere;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -1378,7 +1380,14 @@ table { border-collapse: collapse; width: 100%; }
 
 .posts-list {
   display: grid;
+  /* minmax(0,1fr): 긴 제목·영문 토큰이 트랙 최소폭을 밀어내 가로 스크롤이 생기지 않게 */
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
+}
+
+.post-card-wrapper,
+.post-card {
+  min-width: 0;
 }
 
 /* Pagination */
@@ -1434,11 +1443,19 @@ table { border-collapse: collapse; width: 100%; }
 .tag-section-title {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   font-size: 1.1rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
+}
+
+/* 아주 긴 태그명은 가제트를 넘치게 두지 않고 줄바꿈 */
+.tag-section-title .tag {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .tag-badge {
@@ -1475,6 +1492,8 @@ table { border-collapse: collapse; width: 100%; }
   color: var(--text2);
   font-size: 0.95rem;
   line-height: 1.5;
+  min-width: 0;
+  overflow-wrap: anywhere;
   transition: color var(--transition);
 }
 
@@ -2093,7 +2112,8 @@ table { border-collapse: collapse; width: 100%; }
 }
 
 .mob-acc-panel[aria-hidden="false"] {
-  max-height: 800px;
+  /* 가장 긴 그룹(백엔드 / 서버 19개)이 390px 화면에서 약 800px이므로 여유를 둔다 */
+  max-height: 1200px;
 }
 
 .mob-acc-panel a {
@@ -2354,13 +2374,12 @@ table { border-collapse: collapse; width: 100%; }
 }
 
 /* ── Responsive ──────────────────────── */
+/* 태블릿(≤1024px): 메가메뉴는 4열 한 줄을 유지하고
+   여백·글자만 줄여 71개 항목이 화면 안에 한 번에 들어오게 한다.
+   (2열로 접으면 세로가 1,400px를 넘어 두 그룹이 화면 밖으로 밀린다) */
 @media (max-width: 1024px) {
-  .mega-inner { grid-template-columns: repeat(2, 1fr); }
-  .mega-col:nth-child(2) { border-right: none; }
-  .mega-col:nth-child(3) { padding-left: 0; border-right: 1px solid var(--border); }
-}
-
-@media (max-width: 768px) {
-  .nav-has-dropdown .nav-dropdown,
-  .nav-has-mega .nav-mega { display: none; }
+  .mega-inner { grid-template-columns: repeat(4, 1fr); padding: 1.2rem 1rem 1.1rem; }
+  .mega-col { padding: 0 0.8rem; }
+  .mega-col a { padding: 0.26rem 0.4rem; font-size: 0.82rem; }
+  .mega-heading { font-size: 0.7rem; margin-bottom: 0.45rem; padding-bottom: 0.3rem; }
 }
