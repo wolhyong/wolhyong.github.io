@@ -1290,6 +1290,71 @@ table { border-collapse: collapse; width: 100%; }
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-bottom: 2rem;
+  padding: 0 1.1rem 1.1rem;
+  max-height: 40vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* 태그 필터 접기 — 1,197개 버튼이 글 목록을 가리지 않도록 */
+.blog-filter-toggle {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg2);
+}
+
+.blog-filter-toggle > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text2);
+  list-style: none;
+}
+
+.blog-filter-toggle > summary::-webkit-details-marker {
+  display: none;
+}
+
+.blog-filter-toggle > summary::after {
+  content: '▾';
+  margin-left: auto;
+  color: var(--muted);
+  transition: transform var(--transition);
+}
+
+.blog-filter-toggle[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.blog-filter-toggle[open] > summary {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.9rem;
+}
+
+.blog-filter-toggle .blog-filters {
+  margin-bottom: 0;
+}
+
+.filter-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--bg3);
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+}
+
+.filter-more {
+  display: inline-flex;  align-items: center;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 20px;
 }
 
 .filter-btn {

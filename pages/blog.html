@@ -20,12 +20,16 @@ permalink: /blog/
     {% for post in site.posts %}{% if post.tags %}{% assign tag_values = tag_values | concat: post.tags %}{% endif %}{% endfor %}
     {% assign all_tags = tag_values | uniq | sort %}
     {% if all_tags.size > 0 %}
-    <div class="blog-filters" role="group" aria-label="태그 필터">
-      <button class="filter-btn active" data-tag="all">전체</button>
-      {% for tag in all_tags %}
-      <button class="filter-btn" data-tag="{{ tag }}">{{ tag }}</button>
-      {% endfor %}
-    </div>
+    <details class="blog-filter-toggle">
+      <summary>태그로 찾기 <span class="filter-count">{{ all_tags.size }}개</span></summary>
+      <div class="blog-filters" role="group" aria-label="태그 필터">
+        <button class="filter-btn active" data-tag="all">전체</button>
+        {% for tag in all_tags %}
+        <button class="filter-btn" data-tag="{{ tag }}">{{ tag }}</button>
+        {% endfor %}
+        <a href="{{ '/tags/' | relative_url }}" class="filter-more">전체 태그 페이지 →</a>
+      </div>
+    </details>
     {% endif %}
 
     <!-- Posts List -->
