@@ -36,11 +36,14 @@ permalink: /tags/
           <a href="#{{ tag }}" class="tag"># {{ tag }}</a>
           <span class="tag-badge">{{ tag_posts.size }}개</span>
         </h2>
-        <div class="post-grid">
+        <ul class="tag-post-list" role="list" aria-label="{{ tag }} 태그의 글 목록">
           {% for post in tag_posts %}
-          {% include post-card.html post=post %}
+          <li>
+            <a href="{{ post.url | relative_url }}" class="tag-post-link">{{ post.title }}</a>
+            <time class="tag-post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+          </li>
           {% endfor %}
-        </div>
+        </ul>
       </section>
       {% endfor %}
     </div>

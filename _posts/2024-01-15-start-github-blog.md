@@ -2,9 +2,9 @@
 layout: post
 title: "Start Github Blog"
 date: 2024-01-15 10:00:00 +0900
-category: unknown
+category: git
 level: beginner
-tags: [unknown, web]
+tags: [git, github-pages, web]
 ---
 
 

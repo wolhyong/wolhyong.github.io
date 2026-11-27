@@ -49,6 +49,35 @@
   }
 
   /* ==========================
+     Mobile Menu Accordion
+     드로어 안의 .mob-acc-trigger / .mob-acc-panel 토글
+     ========================== */
+  var mobAccTriggers = document.querySelectorAll('.mob-acc-trigger');
+
+  if (mobAccTriggers.length > 0) {
+    Array.prototype.forEach.call(mobAccTriggers, function (trigger, i) {
+      var panel = trigger.nextElementSibling;
+
+      // 패널에 id가 없으면 만들어 aria-controls로 연결 (스크린리더 지원)
+      if (panel && !panel.id) {
+        panel.id = 'mob-acc-panel-' + (i + 1);
+      }
+      if (panel) {
+        trigger.setAttribute('aria-controls', panel.id);
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!isOpen));
+        if (panel) {
+          panel.setAttribute('aria-hidden', String(isOpen));
+        }
+      });
+    });
+  }
+
+  /* ==========================
      Header Hide-on-Scroll
      모바일 메뉴가 열려있으면 헤더를 절대 숨기지 않음
      ========================== */

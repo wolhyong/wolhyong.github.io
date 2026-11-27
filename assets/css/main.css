@@ -1387,6 +1387,51 @@ table { border-collapse: collapse; width: 100%; }
   font-family: var(--font-mono);
 }
 
+/* 태그별 글 목록 — 카드 대신 경량 목록으로 페이지 용량 절감 */
+.tag-post-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 2rem;
+}
+
+.tag-post-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0.25rem;
+  border-bottom: 1px solid rgba(48, 54, 61, 0.6);
+}
+
+.tag-post-list li:last-child {
+  border-bottom: none;
+}
+
+.tag-post-link {
+  color: var(--text2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: color var(--transition);
+}
+
+.tag-post-link:hover {
+  color: var(--accent);
+}
+
+.tag-post-date {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+@media (min-width: 680px) {
+  .tag-post-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 /* ========================
    About / Page Content
    ======================== */
@@ -2004,7 +2049,12 @@ table { border-collapse: collapse; width: 100%; }
 }
 
 .mobile-menu.is-open {
-  max-height: 3000px !important;
+  /* 드로어가 화면보다 길어져도 안쪽에서 스크롤할 수 있게 (sticky 헤더 고정 문제 해결) */
+  max-height: calc(100vh - 61px) !important;
+  max-height: calc(100dvh - 61px) !important;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ── Category Page Styles ────────────── */

@@ -411,7 +411,7 @@ python main.py
 | **데브옵스** | Ansible, Fabric, AWS CDK | 인프라 자동화 | 전 업계 |
 | **테스트** | pytest, Selenium, Locust | 강력한 테스트 도구 | 모든 QA 팀 |
 
-> **내부 링크:** Python으로 웹 API를 만드는 방법은 [FastAPI 시작하기](/2023/02/20/python-advanced-16-web-framework/)에서 자세히 다룹니다. 데이터 분석의 기초는 [Python 데이터 구조와 알고리즘](/2023/01/23/python-basic-05-data-structures/)에서 학습할 수 있습니다.
+> **내부 링크:** Python으로 웹 API를 만드는 방법은 [FastAPI 시작하기](/2023/04/17/python-advanced-16-web-frameworks/)에서 자세히 다룹니다. 데이터 분석의 기초는 [Python 데이터 구조와 알고리즘](/2023/01/30/python-basic-05-data-structures/)에서 학습할 수 있습니다.
 
 ---
 
