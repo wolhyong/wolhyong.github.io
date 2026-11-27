@@ -14,19 +14,7 @@
         <ul class="nav-list" role="list">
           <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>홈</a></li>
 
-          <li class="nav-has-dropdown">
-            <a href="{{ '/protocols/' | relative_url }}" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" {% if page.url contains '/protocols/' %}aria-current="page"{% endif %}>통신 프로토콜 <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"></path></svg></a>
-            <div class="nav-dropdown">
-              <ul role="list">
-                <li><a href="{{ '/protocols/network-basics/' | relative_url }}"><span class="dm-icon">🌐</span>네트워크 기초 (OSI 7계층, TCP/IP)</a></li>
-                <li><a href="{{ '/protocols/http/' | relative_url }}"><span class="dm-icon">📡</span>HTTP 프로토콜</a></li>
-                <li><a href="{{ '/protocols/dns/' | relative_url }}"><span class="dm-icon">🔍</span>DNS / 인프라</a></li>
-                <li><a href="{{ '/protocols/api/' | relative_url }}"><span class="dm-icon">🔌</span>API 프로토콜 (REST, GraphQL, gRPC)</a></li>
-                <li><a href="{{ '/protocols/realtime/' | relative_url }}"><span class="dm-icon">💬</span>실시간 통신 (WebSocket, SSE)</a></li>
-                <li><a href="{{ '/protocols/security/' | relative_url }}"><span class="dm-icon">🔒</span>보안 프로토콜 (SSL/TLS, OAuth)</a></li>
-              </ul>
-            </div>
-          </li>
+          <li><a href="{{ '/protocols/' | relative_url }}" {% if page.url contains '/protocols' %}aria-current="page"{% endif %}>통신 프로토콜</a></li>
 
           <li class="nav-has-mega">
             <button class="nav-dropdown-trigger nav-mega-trigger" aria-haspopup="true" aria-expanded="false" aria-label="언어별 메뉴 열기">언어별 <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"></path></svg></button>
@@ -161,17 +149,7 @@
     <nav aria-label="모바일 메뉴">
       <ul role="list">
         <li><a href="{{ '/' | relative_url }}">홈</a></li>
-        <li class="mob-accordion">
-          <button class="mob-acc-trigger" aria-expanded="false">통신 프로토콜 <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
-          <ul class="mob-acc-panel" aria-hidden="true" role="list">
-            <li><a href="{{ '/protocols/network-basics/' | relative_url }}">네트워크 기초 (OSI 7계층, TCP/IP)</a></li>
-            <li><a href="{{ '/protocols/http/' | relative_url }}">HTTP 프로토콜</a></li>
-            <li><a href="{{ '/protocols/dns/' | relative_url }}">DNS / 인프라</a></li>
-            <li><a href="{{ '/protocols/api/' | relative_url }}">API 프로토콜 (REST, GraphQL, gRPC)</a></li>
-            <li><a href="{{ '/protocols/realtime/' | relative_url }}">실시간 통신 (WebSocket, SSE)</a></li>
-            <li><a href="{{ '/protocols/security/' | relative_url }}">보안 프로토콜 (SSL/TLS, OAuth)</a></li>
-          </ul>
-        </li>
+        <li><a href="{{ '/protocols/' | relative_url }}">통신 프로토콜</a></li>
         <li class="mob-accordion">
           <button class="mob-acc-trigger" aria-expanded="false">웹 프론트엔드 <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
           <ul class="mob-acc-panel" aria-hidden="true" role="list">

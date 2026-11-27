@@ -28,8 +28,7 @@ layout: default
           </div>
           <div class="stat-divider" aria-hidden="true"></div>
           <div class="stat">
-            {% assign all_tags = site.posts | map: 'tags' | flatten | uniq %}
-            <span class="stat-num">{{ all_tags | size }}</span>
+            <span class="stat-num">{{ site.tags.size }}</span>
             <span class="stat-label">태그</span>
           </div>
         </div>
@@ -89,25 +88,40 @@ layout: default
   </div>
 </section>
 
-<!-- Tags Section -->
-{% assign all_tags = site.posts | map: 'tags' | flatten | uniq %}
-{% if all_tags.size > 0 %}
+<!-- Tags Section: 자주 쓰인 태그 24개만 노출하고 전체 목록은 /tags/ 로 넘긴다 -->
+{%- capture home_tag_pool -%}
+{%- for tag_entry in site.tags -%}
+{%- assign tag_name = tag_entry[0] | strip -%}
+{%- assign tag_total = tag_entry[1].size -%}
+{%- if tag_name != "" and tag_total > 0 -%}
+{%- assign tag_rank_key = tag_total | prepend: "000000" | slice: -6, 6 -%}
+~|~{{ tag_rank_key }}|{{ tag_name }}
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- assign home_tag_rank = home_tag_pool | split: "~|~" | sort | reverse -%}
+
+{% if home_tag_rank.size > 1 %}
 <section class="section-tags" aria-labelledby="tags-heading">
   <div class="container">
     <div class="section-header">
       <h2 id="tags-heading" class="section-title">태그 탐색</h2>
-      <a href="{{ '/tags/' | relative_url }}" class="section-more">전체 보기 →</a>
+      <a href="{{ '/tags/' | relative_url }}" class="section-more">전체 태그 보기 →</a>
     </div>
-    <div class="tags-cloud" role="list" aria-label="태그 목록">
-      {% for tag in all_tags %}
-      {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
-      <a href="{{ '/tags/#' | append: tag | relative_url }}" 
+    <div class="tags-cloud" role="list" aria-label="자주 쓰인 태그">
+      {% for tag_rank_record in home_tag_rank limit: 24 %}
+      {% assign tag_rank_parts = tag_rank_record | split: "|" %}
+      {% assign tag_name = tag_rank_parts[1] | strip %}
+      {% assign tag_total = tag_rank_parts[0] | plus: 0 %}
+      {% if tag_name != "" %}
+      <a href="{{ '/tags/#' | append: tag_name | relative_url }}" 
          class="tag-cloud-item" 
          role="listitem"
-         aria-label="{{ tag }} ({{ tag_posts.size }}개 글)">
-        # {{ tag }}
-        <span class="tag-count">{{ tag_posts.size }}</span>
+         aria-label="{{ tag_name }} ({{ tag_total }}개 글)">
+        # {{ tag_name }}
+        <span class="tag-count">{{ tag_total }}</span>
       </a>
+      {% endif %}
       {% endfor %}
     </div>
   </div>

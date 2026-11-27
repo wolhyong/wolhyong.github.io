@@ -24,7 +24,8 @@ layout: default
     </div>
     {% else %}
     <div class="empty-state">
-      <p>아직 <strong>{{ page.title }}</strong> 카테고리에 작성된 글이 없습니다. (총 포스트 수: {{ site.posts | size }})</p>
+      <p>아직 <strong>{{ page.title }}</strong> 카테고리에는 글이 없습니다.</p>
+      <p style="margin-top: 1.25rem;"><a href="{{ '/blog/' | relative_url }}" class="btn btn-ghost">글 목록 보기</a></p>
     </div>
     {% endif %}
   </div>
