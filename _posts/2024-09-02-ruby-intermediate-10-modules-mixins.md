@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 모듈과 Mixin — include/extend/prepend와 네임스페이스, 상속 체인에서의 메서드 조회"
 
 
-description: "Ruby의 모듈 시스템과 메서드 조회 체인(Method Lookup Path)을 시스템 레벨에서 심층 학습합니다. module 키워드가 Module.new를 호출하여 Module 객체를 생성하고 include는 Module#include로 모듈을 클래스의 ancestors 체인에 삽입하여 메서드 호출 시 Ruby VM이 클래스 → include된 모듈 → superclass 순서로 선형 탐색하는 과정, extend가 객체의 singleton 클래스에 모듈을 include하여 해당 객체에만 모듈의 메서드를 추가하는 방식, prepend가 ancestors 체인에서 클래스보다 앞에 모듈을 삽입하여 메서드를 오버라이드하는 방식(메서드 래핑 패턴), Module#ancestors로 메서드 조회 체인을 확인하는 방법, module_function으로 모듈 메서드를 인스턴스 메서드와 모듈 함수로 동시에 제공하는 방식을 다룹니다."
+description: "Ruby 모듈을 Mixin과 네임스페이스로 나눠 쓰는 방법, include·extend·prepend가 메서드 조회 순서를 어떻게 바꾸는지 상속 체인과 함께 예제로 설명합니다."
 
 
 date: 2024-09-02 10:00:00 +0900

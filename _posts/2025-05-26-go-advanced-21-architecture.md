@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 아키텍처와 디자인 패턴 — 클린 아키텍처, 의존성 주입, 레이어드 아키텍처, 모듈화 전략"
-description: "Go 애플리케이션의 아키텍처 설계와 디자인 패턴을 실무 레벨에서 학습합니다. 클린 아키텍처(Clean Architecture)의 의존성 규칙(Dependency Rule) — 외부 계층(인프라)이 내부 계층(비즈니스 로직)에 의존하고 내부는 외부를 절대 알지 못하는 구조를 Go 인터페이스로 구현하는 방식, 레이어드 아키텍처(Layered Architecture)에서 핸들러(Handler) → 서비스(Service) → 리포지토리(Repository)의 3계층 분리와 각 계층의 책임, 의존성 주입(Dependency Injection)을 생성자 함수를 통해 명시적으로 구현하고 Wire와 같은 DI 도구를 사용하는 방법, 도메인 주도 설계(DDD)의 핵심 개념(Entity, Value Object, Repository, Use Case)을 Go 패키지 구조에 적용하는 방식, Go 1.18+의 제네릭을 활용한 리포지토리 패턴 구현, 표준 Go 프로젝트 레이아웃(golang-standards/project-layout)과 모듈화 전략(/internal 패키지로 외부 노출 차단), 마이크로서비스 아키텍처에서 Go의 HTTP/gRPC 통신 패턴을 다룹니다."
+description: "Go 프로젝트를 클린 아키텍처로 나누는 기준과 의존성 주입, 레이어드 구조, 모듈 분리 전략을 정리했습니다. 패키지 경계를 어디에 두면 테스트가 쉬워지는지도 함께 봅니다."
 date: 2025-05-26 10:00:00 +0900
 category: go
 tags: [go, golang, architecture, clean-architecture, dependency-injection, ddd, project-layout, microservices, design-patterns]

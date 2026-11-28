@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "WebAssembly 고급(18) — WASM의 미래: Component Model, GC, 스레드, 레퍼런스 타입"
-description: "WebAssembly의 미래 로드맵 — Component Model(모듈 간 직접 통신), GC(Garbage Collection) 통합, 멀티스레딩 표준화, 레퍼런스 타입(Reference Types), Tail Call 최적화, Exception Handling, 확장 가능한 WASM 생태계 전망"
+description: "WASM의 다음 단계인 Component Model과 GC, 레퍼런스 타입, 스레드 지원이 각각 무엇을 가능하게 하는지 로드맵 순서로 정리했습니다. 브라우저 지원 현황도 함께 봅니다."
 date: 2022-04-11 10:00:00 +0900
 category: webassembly
 tags: [webassembly, component-model, gc, reference-types, tail-call, exception-handling, wasm-roadmap, multi-value, interface-types, wasm-gc]

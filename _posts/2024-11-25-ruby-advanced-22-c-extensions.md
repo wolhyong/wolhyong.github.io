@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Ruby C 확장 — Ruby C API로 네이티브 확장 개발, MRI 내부 구조, GVL 제어"
-description: "Ruby의 C 확장(C extension) 개발을 시스템 레벨에서 심층 학습합니다. extconf.rb가 mkmf 라이브러리를 통해 Makefile을 생성하고 컴파일러 플래그와 라이브러리 의존성을 설정하는 과정, C 코드에서 VALUE 타입과 Ruby 객체를 다루는 Ruby C API(rb_define_class/rb_define_method/rb_iv_get/rb_yield)를 사용하여 Ruby 클래스와 메서드를 정의하는 방식, rb_scan_args로 Ruby 인자를 C 변수로 변환하는 과정, GVL(Global VM Lock)을 제어하는 rb_thread_call_without_gvl과 rb_thread_call_with_gvl로 블로킹 C 코드에서 GVL을 해제하여 Ruby 스레드가 계속 실행될 수 있게 하는 방식, Ruby 객체 참조를 보호하는 rb_gc_mark/rb_gc_register_address와 GC-safe한 C 코드 작성 방법을 다룹니다."
+description: "Ruby C API로 확장을 만들고 extconf.rb로 빌드하는 절차, MRI 내부 객체와 상호작용하는 방법, GVL을 해제해 병렬성을 얻는 지점을 다룹니다. 빌드 설정도 정리했습니다."
 date: 2024-11-25 10:00:00 +0900
 category: ruby
 tags: [ruby, c-extension, ruby-c-api, native-extension, ffi, gvl, mkmf]

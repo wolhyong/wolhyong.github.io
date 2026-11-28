@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 클래스와 객체지향 — 클래스, 객체, 생성자, 소멸자, this 키워드, 접근 제어자"
-description: "C#의 객체지향 프로그래밍을 시스템 레벨에서 학습합니다. class 키워드로 클래스를 정의하며 new 연산자로 객체를 생성합니다. 생성자는 객체 초기화를 담당하며 매개변수가 있는 생성자, 기본 생성자, 정적 생성자가 있습니다. 소멸자는 객체 해제 시 리소스 정리를 수행하며 ~ClassName 문법을 사용합니다. this 키워드는 현재 인스턴스를 참조하며 생성자 체이닝, 멤버 모호성 해결에 사용됩니다. 접근 제어자(public, private, protected, internal)로 멤버의 가시성을 제어합니다. 프로퍼티는 getter/setter를 캡슐화하며 자동 구현 프로퍼티로 간소화할 수 있습니다. C#은 캡슐화, 상속, 다형성, 추상화를 완벽하게 지원합니다."
+description: "C# 클래스와 객체를 만들고 생성자·소멸자로 생명 주기를 관리하는 방법, this 키워드와 접근 제어자, 캡슐화가 실제 코드에서 어떻게 드러나는지 정리했습니다. 객체 초기화 문법도 다룹니다."
 date: 2025-08-06 10:00:00 +0900
 category: csharp
 tags: [csharp, oop, class, constructor, destructor, this, access-modifiers, properties]

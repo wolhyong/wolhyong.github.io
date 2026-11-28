@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 비동기 프로그래밍 — async/await, Task, Task<T>, CancellationToken, 비동기 스트림"
-description: "C#의 비동기 프로그래밍 시스템을 시스템 레벨에서 학습합니다. async/await 문법은 비동기 코드를 동기 코드처럼 작성할 수 있게 하는 구문 설탕입니다. Task와 Task<T>는 비동기 작업을 나타내며 await로 완료를 기다립니다. CancellationToken은 비동기 작업 취소를 지원하며 CancellationTokenSource로 생성합니다. 비동기 스트림(IAsyncEnumerable)은 비동기 데이터 스트림을 제공하며 await foreach로 순회합니다. ConfigureAwait로 컨텍스트 캡처를 제어할 수 있습니다. C#의 비동기 모델은 상태 머신으로 컴파일되며 블로킹 없이 I/O 바운드 작업을 효율적으로 처리합니다."
+description: "async/await가 상태 머신으로 컴파일되는 과정, Task와 제네릭 Task의 차이, CancellationToken으로 취소를 전파하는 방법, 비동기 스트림 사용법을 정리했습니다."
 date: 2025-08-20 10:00:00 +0900
 category: csharp
 tags: [csharp, async, await, task, cancellation-token, async-streams, iasyncenumerable]

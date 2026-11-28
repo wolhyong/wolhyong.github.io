@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 파일 I/O — File/IO/Dir 클래스, 블록 기반 파일 처리, Marshal/YAML/JSON 직렬화"
 
 
-description: "Ruby의 파일 입출력 시스템을 시스템 레벨에서 심층 학습합니다. File.read/File.write가 C 레벨에서 fopen/fread/fwrite/fclose를 호출하여 파일을 열고 읽고 쓰는 과정, File.open 블록 형식이 ensure로 close를 자동 호출하는 편의 메서드의 내부 구현, IO#gets/IO#read/IO#readline이 파일 포인터를 이동시키며 EOF(End of File)를 검사하는 방식, Dir.glob이 Dir['**/*.rb']로 파일 시스템을 재귀적으로 탐색하는 패턴 매칭 과정, Marshal.dump가 객체 그래프를 순회하며 각 객체의 클래스와 인스턴스 변수를 바이트 스트림으로 직렬화하는 과정(단, Proc/Binding/Singleton은 직렬화 불가), YAML과 JSON 모듈이 각각 Psych/oj 라이브러리를 통해 사람이 읽을 수 있는 형식으로 직렬화하는 방식을 다룹니다."
+description: "Ruby의 File·IO·Dir 클래스로 파일을 읽고 쓰는 방법, 블록 기반 처리로 close를 자동화하는 이유, Marshal·YAML·JSON 직렬화의 차이를 다룹니다."
 
 
 date: 2024-09-16 10:00:00 +0900

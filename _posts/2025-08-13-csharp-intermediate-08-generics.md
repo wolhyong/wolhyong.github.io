@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 제네릭 — 제네릭 클래스, 제네릭 메서드, 제네릭 인터페이스, 제네릭 제약, 공변성/반공변성"
-description: "C#의 제네릭 시스템을 컴파일러 레벨에서 학습합니다. 제네릭은 타입 매개변수로 코드 재사용성과 타입 안전성을 동시에 제공합니다. 제네릭 클래스는 ClassName<T> 문법으로 정의하며 여러 타입 매개변수를 가질 수 있습니다. 제네릭 메서드는 메서드 수준에서 타입 매개변수를 정의합니다. 제네릭 제약(where 절)은 타입 매개변수에 제약을 추가하여 where T : class, where T : struct, where T : new() 등을 지정합니다. 공변성과 반공변성은 제네릭 타입의 할당 호환성을 제어하며 out과 in 키워드를 사용합니다. C# 제네릭은 컴파일 타임에 구체화되어 런타임 오버헤드가 없습니다."
+description: "C# 제네릭 클래스·메서드·인터페이스를 만들고 where 절로 제약을 거는 방법, 공변성·반공변성이 대리자와 인터페이스에서 어떻게 동작하는지 예제로 정리했습니다."
 date: 2025-08-13 10:00:00 +0900
 category: csharp
 tags: [csharp, generics, generic-constraints, covariance, contravariance, variance]

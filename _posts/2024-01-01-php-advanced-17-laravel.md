@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP Laravel — 아키텍처, Eloquent ORM, 서비스 컨테이너, 이벤트 시스템"
-description: "Laravel 프레임워크의 내부 아키텍처를 핵심 컴포넌트 레벨에서 심층 학습합니다. Laravel의 서비스 컨테이너(Illuminate Container)가 ReflectionClass로 생성자 파라미터를 분석하고 타입 힌트에 해당하는 바인딩을 해결하는 의존성 주입 과정, Eloquent ORM의 Active Record 패턴이 Model 클래스의 __call() 매직 메서드로 쿼리 빌더 메서드를 동적으로 호출하는 방식(매크로와 __callStatic), Eloquent 관계(Relationship)의 lazy loading과 eager loading(JOIN vs WHERE IN 쿼리), 이벤트 시스템이 Illuminate Events Dispatcher 구현으로 리스너를 등록하고 dispatch()하는 과정(파이프라인), 미들웨어 파이프라인(Pipe-and-Filter 패턴)의 요청/응답 처리 흐름을 다룹니다."
+description: "Laravel의 서비스 컨테이너와 파사드가 요청을 처리하는 구조, Eloquent ORM으로 관계를 정의하는 방법, 이벤트와 큐를 붙이는 지점을 정리했습니다. 라우팅 구조도 함께 봅니다."
 date: 2024-01-01 10:00:00 +0900
 category: php
 tags: [php, laravel, eloquent, service-container, events, middleware]

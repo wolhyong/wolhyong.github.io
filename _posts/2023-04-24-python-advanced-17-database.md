@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 데이터베이스 — SQLAlchemy, ORM, 트랜잭션, 마이그레이션"
-description: "Python 데이터베이스 프로그래밍을 ORM의 내부 동작까지 심층 학습합니다. SQLAlchemy Core의 SQL 표현식 트리 구조, ORM의 Identity Map과 Unit of Work 패턴(Session의 flush()가 변경 감지하는 과정), 트랜잭션 격리 수준과 N+1 쿼리 문제, Alembic을 사용한 마이그레이션 관리, 연결 풀링과 세션 관리 전략을 다룹니다."
+description: "SQLAlchemy의 ORM 모델 정의와 세션 관리, 트랜잭션 경계를 잡는 방법, Alembic으로 마이그레이션을 운영하는 절차를 예제로 정리했습니다. N+1 문제 해결도 다룹니다."
 date: 2023-04-24 10:00:00 +0900
 category: python
 tags: [python, sqlalchemy, database, orm, migration, alembic, transaction]

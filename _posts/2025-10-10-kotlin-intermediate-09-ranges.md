@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 범위와 진법 — 범위, 진법, 비트 연산, 타입 캐스팅, 타입 검사"
-description: "Kotlin의 범위와 진법 시스템을 컴파일러 레벨에서 학습합니다. 범위는 .. 연산자로 정의하며 IntRange, LongRange 등을 제공합니다. downTo, step, until로 범위를 제어할 수 있습니다. 진법은 0x(16진수), 0b(2진수) 리터럴을 지원하며 toInt(radix)로 변환합니다. 비트 연산은 shl, shr, ushr, and, or, xor, inv를 제공합니다. 타입 캐스팅은 as, as? 연산자로 수행하며 안전한 캐스트를 지원합니다. 타입 검사는 is, !is 연산자로 수행하며 스마트 캐스트를 지원합니다."
+description: "Kotlin의 범위 표현과 until·downTo·step 활용, 진법 표기와 비트 연산, is·as로 타입을 검사하고 캐스팅하는 방법을 예제로 정리했습니다. 수 타입 변환도 함께 정리했습니다."
 date: 2025-10-10 10:00:00 +0900
 category: kotlin
 tags: [kotlin, ranges, number-systems, bit-operations, type-casting, type-checking]

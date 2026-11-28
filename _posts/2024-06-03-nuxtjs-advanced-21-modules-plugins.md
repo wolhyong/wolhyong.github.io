@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 모듈과 플러그인 — @nuxtjs/ 모듈 생태계와 defineNuxtModule로 커스텀 모듈 개발하기"
 
 
-description: "Nuxt.js의 모듈 시스템과 플러그인 시스템의 내부 동작을 시스템 레벨에서 심층 학습합니다. defineNuxtModule()이 NuxtKit의 installModule()을 통해 Nuxt 인스턴스의 hooks/options/components/composables를 확장하는 과정, @nuxtjs/ 모듈 생태계가 @nuxtjs/i18n/tailwindcss/image/color-mode 등으로 구성되어 nuxt.config.ts의 modules 배열에서 선언적으로 활성화되는 방식, addPlugin()이 createUnplugin()을 통해 Vite/Rollup 플러그인으로 변환되어 빌드 파이프라인에 통합되는 과정, addImportsSources()가 unplugin-auto-import의 presets을 확장하여 composable을 auto-imports에 등록하는 방식, addComponent()가 unplugin-vue-components의 컴포넌트 맵에 새 컴포넌트를 등록하는 과정을 다룹니다."
+description: "defineNuxtModule로 커스텀 모듈을 만들고 옵션을 정의하는 방법, @nuxtjs/ 모듈 생태계에서 자주 쓰는 모듈, 플러그인 등록 시점과 서버·클라이언트 구분을 다룹니다."
 
 
 date: 2024-06-03 10:00:00 +0900

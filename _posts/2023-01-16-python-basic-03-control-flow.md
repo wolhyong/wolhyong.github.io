@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 제어문 — 조건문, 반복문, 컴프리헨션의 내부 동작"
-description: "Python의 제어문을 내부 동작 원리와 함께 학습합니다. if 조건문의 바이트코드와 단축 평가(short-circuit evaluation), for 루프의 이터레이터 프로토콜과 StopIteration 예외, while 루프와 무한 루프 방지 가드 패턴, 리스트 컴프리헨션이 루프보다 1.5~2배 빠른 이유(LOAD_CONST → MAKE_FUNCTION 최적화), 제너레이터 표현식의 지연 평가와 메모리 효율성을 다룹니다."
+description: "Python의 if·for·while 문법과 컴프리헨션이 내부적으로 어떻게 바이트코드로 변환되는지, break·else 조합과 반복 최적화 요령을 정리했습니다. else 절 활용도 다룹니다."
 date: 2023-01-16 10:00:00 +0900
 category: python
 tags: [python, control-flow, if, for, while, comprehension, generator, iteration]

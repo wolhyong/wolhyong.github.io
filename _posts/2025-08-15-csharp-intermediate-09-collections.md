@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 컬렉션 — List, Dictionary, HashSet, Queue, Stack, LINQ, Enumerable, 쿼리 식"
-description: "C#의 컬렉션 시스템을 실무 레벨에서 학습합니다. List<T>는 동적 배열로 Add, Remove, Contains 등의 메서드를 제공합니다. Dictionary<TKey, TValue>는 키-값 쌍을 저장하며 해시 테이블로 구현되어 O(1) 평균 조회 시간을 제공합니다. HashSet<T>는 중복 없는 집합으로 Union, Intersect, Except 등의 집합 연산을 제공합니다. Queue<T>는 FIFO(선입선출) 큐로 Enqueue, Dequeue 메서드를 제공합니다. Stack<T>는 LIFO(후입선출) 스택으로 Push, Pop 메서드를 제공합니다. LINQ(Language Integrated Query)는 컬렉션 쿼리를 위한 통합 쿼리 언어로 Where, Select, OrderBy, GroupBy 등의 메서드를 제공합니다. LINQ는 메서드 구문과 쿼리 구문 두 가지 형식을 지원하며 지연 실행을 통해 성능을 최적화합니다."
+description: "C#의 List·Dictionary·HashSet·Queue·Stack을 내부 구조와 함께 비교하고, LINQ와 쿼리 식으로 컬렉션을 다루는 예제를 정리했습니다."
 date: 2025-08-15 10:00:00 +0900
 category: csharp
 tags: [csharp, collections, linq, list, dictionary, hashset, enumerable, linq-queries]

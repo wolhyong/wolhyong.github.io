@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 테스팅 — JUnit 5, Mockito, 통합 테스트, Spring Boot Test, TDD"
-description: "Java 테스팅 프레임워크를 심층 학습합니다. JUnit 5의 Jupiter 아키텍처(TestEngine → TestTemplate → TestInstanceFactory), Mockito의 mock() 동작(CGLIB/ByteBuddy로 프록시 생성), BDDMockito의 given/willReturn 스타일, Spring Boot Test 슬라이스 테스트(@WebMvcTest/@DataJpaTest)가 특정 Bean만 로딩하는 과정, @SpringBootTest의 전체 컨테이너 통합 테스트, 테스트 컨테이너(Testcontainers)로 실제 DB를 도커 컨테이너로 실행하는 방법을 다룹니다."
+description: "JUnit 5로 테스트를 구조화하고 Mockito로 의존성을 대체하는 방법, Spring Boot Test로 통합 테스트를 쓰는 절차, TDD 사이클을 예제로 정리했습니다."
 date: 2023-08-28 10:00:00 +0900
 category: java
 tags: [java, junit5, mockito, spring-boot-test, testcontainers, tdd]

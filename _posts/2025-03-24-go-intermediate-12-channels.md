@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 채널과 select — 채널의 hchan 내부 구조, 버퍼링/언버퍼링, select 다중 채널, context 패키지"
-description: "Go의 채널과 select 문을 런타임 레벨에서 학습합니다. chan T는 runtime.hchan 구조체(buf unsafe.Pointer, elemsize uint16, closed uint32, sendx/recvx uint32, sendq/recvq waitq)로 구현되어 원형 큐(ring buffer)에 데이터를 저장하고 고루틴 대기열을 관리합니다. ch <- v(송신)와 <-ch(수신)은 각각 runtime.chansend()와 runtime.chanrecv()를 호출해 hchan의 sendq/recvq에 대기 중인 고루틴을 깨우거나 직접 데이터를 전달합니다. 언버퍼 채널(unbuffered)은 고루틴 간 동기화에 사용되고, 버퍼 채널(buffered)은 비동기 통신을 제공합니다. select 문은 여러 case를 scase 배열로 변환해 다중 채널을 동시에 대기합니다. context 패키지는 Done() 채널로 취소 신호를 전파하고 WithTimeout/WithDeadline으로 시간 제한을 설정하는 구조를 제공합니다."
+description: "Go 채널의 hchan 구조와 버퍼 유무에 따른 동작 차이, select로 여러 채널을 동시에 기다리는 패턴, context로 취소를 전파하는 방법을 정리했습니다."
 date: 2025-03-24 10:00:00 +0900
 category: go
 tags: [go, golang, channels, select, hchan, context, csp, concurrency]

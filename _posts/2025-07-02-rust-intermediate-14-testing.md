@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 테스트 — 유닛 테스트, 통합 테스트, 문서 테스트, assert 매크로, 테스트 조직화"
-description: "Rust의 테스트 시스템을 실무 레벨에서 학습합니다. #[test] 속성으로 테스트 함수를 정의하며 assert!, assert_eq!, assert_ne! 매크로로 단언을 수행합니다. should_panic 속성으로 패닉이 발생하는지 확인하며 expected로 예상 메시지를 지정할 수 있습니다. Result<T, E>를 반환하여 테스트에서 에러를 처리할 수 있습니다. 유닛 테스트는 src 디렉토리의 각 모듈 내에 tests 모듈로 작성하며 private 함수도 테스트할 수 있습니다. 통합 테스트는 tests 디렉토리에 별도 파일로 작성하며 라이브러리의 공개 API만 테스트합니다. 문서 테스트는 코드 예제를 테스트하며 ///와 //!로 문서를 작성합니다. cargo test로 모든 테스트를 실행하며 필터링과 병렬 실행을 지원합니다."
+description: "Rust에 내장된 테스트 프레임워크로 유닛 테스트와 통합 테스트, 문서 주석 안의 예제 테스트를 나눠 작성하는 방법, assert 매크로와 테스트 조직화 규칙을 짚었습니다."
 date: 2025-07-02 10:00:00 +0900
 category: rust
 tags: [rust, testing, unit-tests, integration-tests, doc-tests, assertions]

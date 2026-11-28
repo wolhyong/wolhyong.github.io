@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 인터페이스와 추상화 — 인터페이스 구현, 다중 인터페이스, 명시적 구현, 기본 구현"
-description: "C#의 인터페이스와 추상화 시스템을 컴파일러 레벨에서 학습합니다. interface 키워드로 인터페이스를 정의하며 계약을 명시합니다. 클래스는 다중 인터페이스를 구현할 수 있으며 : IInterface1, IInterface2 문법을 사용합니다. 명시적 인터페이스 구현은 인터페이스 멤버를 특정 인터페이스 통해서만 접근 가능하게 하며 이름 충돌을 해결합니다. C# 8.0부터 인터페이스 기본 구현을 지원하며 default 키워드로 기본 메서드를 제공합니다. 제네릭 인터페이스는 타입 매개변수를 가지며 where 절로 제약을 추가할 수 있습니다. 인터페이스는 다형성, 느슨한 결합, 테스트 가능성을 제공하며 SOLID 원칙의 인터페이스 분리 원칙(ISP)을 지원합니다."
+description: "C# 인터페이스로 계약을 정의하고 여러 인터페이스를 함께 구현하는 방법, 명시적 구현이 필요한 상황, 기본 구현이 추가된 이후의 활용법을 예제로 정리했습니다. 인터페이스 분리 원칙도 짚습니다."
 date: 2025-08-11 10:00:00 +0900
 category: csharp
 tags: [csharp, interfaces, abstraction, polymorphism, default-implementation, generic-interfaces]

@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 배포 — Docker, CI/CD, 클라우드 배포, 모니터링"
-description: "Python 애플리케이션 배포를 운영 레벨에서 심층 학습합니다. Docker 멀티스테이지 빌드로 이미지 크기 최적화, GitHub Actions를 사용한 CI/CD 파이프라인 구축, Gunicorn/Uvicorn 프로세스 관리와 워커 설정, 환경 변수와 설정 관리, 로깅과 모니터링(Prometheus + Grafana), 무중단 배포 전략을 다룹니다."
+description: "Python 앱을 Docker 이미지로 만들고 CI/CD로 배포하는 파이프라인, 클라우드 환경별 설정 차이, 배포 후 로그와 지표를 모니터링하는 방법을 다뤘습니다."
 date: 2023-05-01 10:00:00 +0900
 category: python
 tags: [python, deployment, docker, cicd, gunicorn, uvicorn, monitoring, devops]

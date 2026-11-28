@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 테스트 — 단위 테스트, 통합 테스트, xUnit, Moq, 테스트 더블, 테스트 필터"
-description: "C#의 테스트 시스템을 실무 레벨에서 학습합니다. 단위 테스트는 개별 메서드나 클래스를 테스트하며 xUnit, NUnit, MSTest 프레임워크를 사용합니다. 통합 테스트는 여러 컴포넌트가 함께 작동하는지 테스트하며 TestServer로 ASP.NET Core를 테스트합니다. Moq는 모의 객체(mock)를 생성하여 의존성을 격리합니다. 테스트 더블은 여러 데이터 집합으로 테스트를 반복하며 [Theory], [InlineData] 특성을 사용합니다. 테스트 필터는 특정 테스트만 실행하며 [Trait], [Category] 특성을 사용합니다. 테스트는 AAA(Arrange-Act-Assert) 패턴을 따르며 FluentAssertions로 가독성 있는 어설션을 작성할 수 있습니다."
+description: "xUnit으로 단위·통합 테스트를 나눠 작성하고 Moq로 의존성을 대체하는 방법, 테스트 더블의 종류와 필터로 실행 범위를 좁히는 요령을 예제와 함께 확인합니다."
 date: 2025-09-05 10:00:00 +0900
 category: csharp
 tags: [csharp, testing, unit-tests, integration-tests, xunit, moq, test-doubles]

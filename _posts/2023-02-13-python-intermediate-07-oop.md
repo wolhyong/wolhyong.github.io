@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 객체지향 프로그래밍 — 클래스, 상속, 매직 메서드, 프로퍼티"
-description: "Python의 객체지향 프로그래밍을 내부 동작 원리와 함께 심층 학습합니다. 클래스가 type()으로 생성되는 메타클래스 구조, MRO(Method Resolution Order)의 C3 선형화 알고리즘, 매직 메서드가 연산자 오버로딩에서 동작하는 방식(__add__ → BINARY_OP), @property가 디스크립터 프로토콜로 구현되는 원리, super()의 내부 동작을 다룹니다."
+description: "Python 클래스가 타입 객체로 만들어지는 과정, 상속과 super(), __str__·__eq__ 같은 매직 메서드, property로 속성을 감싸는 방법을 정리했습니다."
 date: 2023-02-13 10:00:00 +0900
 category: python
 tags: [python, oop, class, inheritance, magic-methods, property, decorator, metaclass]

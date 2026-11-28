@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 예외 처리 — try-catch, 사용자 정의 예외, throw, finally, 예외 필터"
-description: "Kotlin의 예외 처리 시스템을 실무 레벨에서 학습합니다. try-catch-finally로 예외를 포착하고 처리하며 catch 블록에서 특정 예외 타입을 지정할 수 있습니다. throw 키워드로 예외를 발생시키며 throw Exception(message) 형식을 사용합니다. 사용자 정의 예외는 Exception 클래스를 상속하여 정의하며 커스텀 에러 정보를 제공합니다. finally 블록은 예외 발생 여부와 상관없이 실행되며 리소스 정리에 사용됩니다. Kotlin은 예외 필터를 지원하지 않지만 when과 함께 사용하여 조건부 catch를 구현할 수 있습니다. use 함수로 자동 리소스 해제를 제공합니다."
+description: "Kotlin의 try-catch-finally 흐름과 checked 예외가 없는 이유, 사용자 정의 예외를 만드는 방법, use로 자원을 닫고 예외를 로깅하는 패턴을 정리했습니다."
 date: 2025-10-13 10:00:00 +0900
 category: kotlin
 tags: [kotlin, exceptions, try-catch, custom-exceptions, throw, finally, use]

@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js Nitro 서버 엔진 — server/api/ 디렉토리가 h3 라우터로 등록되어 요청을 처리하는 과정"
 
 
-description: "Nuxt.js에 내장된 Nitro 서버 엔진이 server/ 디렉토리의 파일을 h3 라우터에 등록하고 HTTP 요청을 처리하는 과정을 시스템 레벨에서 심층 학습합니다. defineEventHandler()가 h3의 eventHandler()로 래핑되어 Node.js IncomingMessage/ServerResponse를 추상화한 H3Event를 생성하는 원리, 파일명 기반 라우팅이 server/api/users/[id].ts를 /api/users/:id로 매핑하는 방식, getQuery()와 readBody()가 각각 URLSearchParams와 request body 버퍼를 파싱하는 내부 과정, createError()가 H3Error 클래스를 생성하여 sendError()로 적절한 HTTP 상태 코드와 JSON 에러 본문을 응답하는 방식, server/middleware/ 디렉토리의 핸들러가 모든 API 요청보다 먼저 실행되어 event.context에 공통 데이터를 주입하는 과정, runtimeConfig가 .env 파일의 NUXT_ 접두사 환경 변수를 자동 매핑하는 과정을 다룹니다."
+description: "Nuxt의 server/api/ 디렉토리가 h3 라우터로 등록되어 요청을 처리하는 구조와 HTTP 메서드별 핸들러, 라우트 파라미터·쿼리 읽기, 에러 응답 방식을 예제로 설명합니다."
 
 
 date: 2024-02-19 10:00:00 +0900

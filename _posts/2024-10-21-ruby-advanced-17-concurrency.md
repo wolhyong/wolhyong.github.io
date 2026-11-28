@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Ruby 동시성 — Thread의 GVL, Fiber의 협력적 스케줄링, Ractor의 병렬 처리 모델"
-description: "Ruby의 세 가지 동시성 모델(Thread, Fiber, Ractor)을 시스템 레벨에서 심층 학습합니다. Thread가 pthread(OS 스레드)로 생성되지만 GVL(Global VM Lock)에 의해 동시에 하나의 스레드만 Ruby 코드를 실행할 수 있는 과정(GVL 회전율이 I/O 바운드 작업에는 95% 이상의 효율을 보이지만 CPU 바운드 작업에서는 단일 코어 성능으로 제한됨), Mutex#synchronize가 MonitorMixin을 통해 스레드 간 임계 구역을 보호하여 경쟁 조건을 방지하는 방식, Thread::Queue가 조건 변수(ConditionVariable)로 생산자-소비자 패턴을 구현하는 과정, Fiber가 사용자 공간(user-space)에서 협력적 스케줄링(cooperative scheduling)을 통해 명시적인 Fiber.yield로 제어권을 전환하는 방식과 Fiber Scheduler가 non-blocking I/O를 위해 rb_thread_io_wait()를 후킹하는 원리, Ractor가 Actor 모델로 GVL 없이 완전한 병렬 실행을 제공하며 Ractor 간 메시지 전달을 위해 Ractor#send/Ractor#receive를 사용하는 과정을 다룹니다."
+description: "Ruby의 세 가지 동시성 모델을 비교합니다. Thread와 GVL의 제약, Fiber의 협력적 스케줄링과 Fiber Scheduler, Ractor의 메시지 전달 방식까지 예제와 함께 정리했습니다."
 date: 2024-10-21 10:00:00 +0900
 category: ruby
 tags: [ruby, threads, fiber, ractor, concurrency, parallelism, gvl, mutex]

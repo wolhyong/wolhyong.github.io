@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 제어문 — if/unless/case/when과 조건부 수식어, 삼항 연산자의 내부 평가 방식"
 
 
-description: "Ruby의 제어문과 조건부 평가 방식을 시스템 레벨에서 심층 학습합니다. if/elsif/else가 조건식을 평가하여 truthy/falsy(nil/false만 falsy)를 판별하고 해당 분기의 AST 노드를 실행하는 과정, unless가 조건이 false일 때만 실행되는 if의 역전(negation) 형태로 동작하는 원리, case/when이 === 연산자(세 번째 등호)로 when 절을 평가하여 Range#===는 include?와 동일하게 동작하는 방식, 조건부 수식어(statement modifier)가 if/unless를 문장 뒤에 배치하여 가독성을 높이는 문법 설탕(syntactic sugar)의 내부 파싱 과정, 삼항 연산자(?:)가 단일 표현식 내에서 조건부 값을 선택하는 방식과 C의 조건 연산자와의 차이점을 다룹니다."
+description: "Ruby의 if·unless·case/when과 조건부 수식어가 값을 반환하는 방식, 삼항 연산자와 안전 내비게이션 연산자, 조건이 평가되는 순서를 예제로 설명합니다."
 
 
 date: 2024-07-15 10:00:00 +0900

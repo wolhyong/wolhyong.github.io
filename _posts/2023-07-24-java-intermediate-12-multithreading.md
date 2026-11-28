@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 멀티스레딩 — Thread, Runnable, 동기화, Executor, 동시성 컬렉션"
-description: "Java 멀티스레딩을 JVM 스레드 모델과 OS 레벨에서 심층 학습합니다. Thread와 Runnable의 차이(start()가 OS 스레드를 생성하고 run()을 실행하는 과정), synchronized 키워드가 객체의 모니터(monitor)를 획득하는 바이트코드 레벨 동작(monitorenter/monitorexit), volatile이 가시성을 보장하는 Happens-Before 규칙, ExecutorService의 스레드 풀(ThreadPoolExecutor) 구조와 작업 큐 처리, 동시성 컬렉션(ConcurrentHashMap)의 세그먼트 기반 락 구조를 다룹니다."
+description: "Java 스레드 생성과 동기화, Executor 프레임워크로 작업을 위임하는 방법, 동시성 컬렉션과 원자 클래스를 쓰는 기준을 예제로 정리했습니다. 교착 상태를 피하는 방법도 함께 봅니다."
 date: 2023-07-24 10:00:00 +0900
 category: java
 tags: [java, multithreading, thread, synchronization, executor, concurrent-hashmap, volatile]

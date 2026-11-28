@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 제어문 — if/else, when, for, while, 범위, 시퀀스, break, continue, return"
-description: "Kotlin의 제어문 시스템을 컴파일러 레벨에서 학습합니다. if/else는 표현식으로 값을 반환할 수 있으며 삼항 연산자 대신 사용합니다. when은 Java의 switch 문의 강화된 버전으로 여러 조건을 처리하며 표현식으로 사용할 수 있습니다. for는 범위, 컬렉션, 시퀀스를 순회하며 in 연산자와 함께 사용합니다. while과 do-while은 조건부 반복을 수행합니다. 범위는 .. 연산자로 정의하며 downTo, step으로 제어할 수 있습니다. 시퀀스는 지연 평가 컬렉션으로 sequenceOf로 생성합니다. break, continue, return으로 제어 흐름을 제어하며 레이블로 중첩 루프를 제어할 수 있습니다."
+description: "Kotlin의 if와 when을 표현식으로 쓰는 방법, for·while 반복과 범위, break·continue·return으로 흐름을 제어하는 예제를 정리했습니다."
 date: 2025-09-26 10:00:00 +0900
 category: kotlin
 tags: [kotlin, control-flow, if-else, when, for, while, ranges, sequences]

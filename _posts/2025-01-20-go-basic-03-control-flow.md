@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 제어문 — if/for/switch와 조건문, Go에서 유일한 반복문인 for의 다양한 형태"
-description: "Go의 제어문과 반복문을 컴파일러와 어셈블리 레벨에서 학습합니다. if 조건문은 조건식을 평가하고 참일 때만 분기 블록을 실행합니다. Go의 독특한 문법은 괄호 없이 중괄호를 필수로 사용합니다. if 조건절 내에서 statement-if 선언을 하면 변수의 스코프가 if-else 블록으로 제한됩니다. Go의 유일한 반복문 for는 전통적인 for, while-style for, infinite for(true), range for의 네 가지 형태를 모두 지원합니다. range for는 배열/슬라이스/맵/문자열/채널을 순회하면서 인덱스와 값을 분해합니다. switch는 break 없이 자동 탈출하고, case에 표현식을 쓰거나 복수 조건을 콤마로 나열할 수 있는 유연성을 제공합니다."
+description: "Go의 if·for·switch 세 키워드만으로 흐름을 제어하는 방법, for의 다양한 형태와 range 순회, switch에서 break를 쓰지 않는 이유를 예제로 설명합니다."
 date: 2025-01-20 10:00:00 +0900
 category: go
 tags: [go, golang, control-flow, if, for, switch, range, break, continue]

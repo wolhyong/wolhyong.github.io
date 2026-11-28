@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 언어 소개 — Ken Thompson이 설계한 정적 컴파일 언어의 철학과 실행 구조"
-description: "Go(Golang) 언어의 탄생 배경과 설계 철학, 실행 구조를 시스템 레벨에서 학습합니다. Robert Griesemer, Rob Pike, Ken Thompson이 Google 내부의 복잡한 빌드 시스템과 느린 컴파일 속도를 해결하기 위해 Go를 설계한 과정을 다룹니다. Go 컴파일러(gc)는 소스 코드를 lexing하고 recursive descent 파싱으로 AST를 구성한 뒤 SSA 중간 표현으로 변환하고 네이티브 머신 코드로 컴파일합니다. go mod init/go build/go run/go fmt/go vet 등의 도구는 단일 실행 파일(binary)을 생성하는 통합 설계 철학을 보여줍니다. Go 런타임의 고루틴 스케줄러는 M:N 스레딩 모델로 수만 개의 경량 스레드를 OS 스레드 위에서 관리합니다. 정적 컴파일로 생성된 단일 바이너리의 장점과 CGO를 통한 C 라이브러리 호출 방식을 다룹니다."
+description: "Go가 만들어진 배경과 간결함·효율성이라는 설계 목표, 컴파일과 실행 구조, 고루틴과 가비지 컬렉터가 다른 언어와 갈리는 지점을 정리했습니다. 첫 프로그램을 실행하는 절차도 담았습니다."
 date: 2025-01-06 10:00:00 +0900
 category: go
 tags: [go, golang, compiler, goroutine, static-linking, google, ken-thompson, ssa]

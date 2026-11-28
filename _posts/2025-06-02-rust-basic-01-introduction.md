@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 언어 소개 — Mozilla가 설계한 메모리 안전 시스템 프로그래밍 언어의 철학과 컴파일러 구조"
-description: "Rust 언어의 탄생 배경과 설계 철학, 컴파일러 구조를 시스템 레벨에서 학습합니다. Graydon Hoare가 2006년부터 개발을 시작하여 Mozilla에서 2010년에 공식 발표한 Rust는 C++의 메모리 안전성 문제를 해결하기 위해 설계되었습니다. Rust 컴파일러(rustc)는 소스 코드를 lexing하고 파싱하여 HIR(Higher IR) → MIR(Mid IR) → LLVM IR로 변환한 후 네이티브 머신 코드로 컴파일합니다. 소유권(Ownership), 대여(Borrowing), 수명(Lifetime) 시스템이 컴파일 타임에 메모리 안전성을 보장하는 방식을 다룹니다. cargo new/cargo build/cargo run/cargo test 등의 도구 체인과 crates.io 생태계를 설명합니다. Rust의 Zero-cost abstractions 원칙과 안전한 동시성 모델을 설명합니다."
+description: "Rust가 메모리 안전성과 동시성을 해결하려는 방식, 소유권과 빌림 검사기가 컴파일 타임에 하는 일, Cargo 생태계와 컴파일러 구조를 살펴봅니다. 첫 프로젝트를 만드는 절차도 정리했습니다."
 date: 2025-06-02 10:00:00 +0900
 category: rust
 tags: [rust, ownership, borrowing, memory-safety, mozilla, compiler, llvm, cargo]

@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 배포와 성능 최적화 — OPcache, PHP-FPM, CI/CD, 모니터링"
-description: "PHP 애플리케이션의 배포와 성능 최적화를 인프라 레벨에서 심층 학습합니다. OPcache가 Zend Engine의 컴파일 단계에서 생성된 OPcode(중간 코드)를 공유 메모리(opcache.memory_consumption, 기본 128MB)에 캐싱하여 요청마다 PHP 소스 코드를 다시 파싱/컴파일하지 않도록 하는 과정, PHP-FPM(FastCGI Process Manager)의 pm(process manager) 설정(dynamic/static/ondemand)이 워커 프로세스 풀을 관리하고 각 워커가 요청을 처리하는 방식, CI/CD 파이프라인(GitHub Actions)의 자동 테스트와 배포, 성능 모니터링(Xdebug 프로파일링, Blackfire.io)과 병목 지점 분석을 다룹니다."
+description: "PHP 운영 배포에서 OPcache와 PHP-FPM을 튜닝하는 기준, CI/CD 파이프라인 구성, 배포 후 응답 시간과 에러를 모니터링하는 방법을 정리했습니다. 무중단 배포도 다룹니다."
 date: 2024-01-08 10:00:00 +0900
 category: php
 tags: [php, deployment, opcache, php-fpm, cicd, performance, monitoring]

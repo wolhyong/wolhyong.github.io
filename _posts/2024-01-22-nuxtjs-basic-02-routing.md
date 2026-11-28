@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 파일 기반 라우팅 — pages/ 디렉토리가 vue-router의 RouteRecord로 컴파일되는 과정"
 
 
-description: "Nuxt.js의 파일 기반 라우팅 시스템이 pages/ 디렉토리 구조를 vue-router의 RouteRecord 배열로 변환하는 과정을 시스템 레벨에서 심층 학습합니다. Vite의 import.meta.glob()이 빌드 시점에 pages/ 디렉토리를 정적 분석하여 .nuxt/paths.mjs에 RouteRecordRaw 타입의 라우트 정의를 생성하는 원리, [id].vue 같은 동적 라우트가 path: '/blog/:id'로 변환되어 Vue Router의 params에서 추출되는 과정, [...slug].vue가 /:pathMatch(.*)* catch-all 라우트로 매핑되는 방식, definePageMeta()가 route.meta에 layout/middleware/validate를 컴파일 타임에 등록하는 과정, NuxtLink가 RouterLink를 확장하여 prefetch와 외부 URL fallback을 처리하는 내부 로직, navigateTo()가 클라이언트에서는 router.push()로 SSR에서는 302 Location 헤더로 동작하는 이중 구현을 다룹니다."
+description: "Nuxt의 pages/ 디렉토리가 vue-router 라우트 레코드로 컴파일되는 과정, 동적 라우트 규칙, NuxtLink의 내부 동작과 navigateTo() 호출 방식을 다룹니다."
 
 
 date: 2024-01-22 10:00:00 +0900

@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 라우트 미들웨어와 인증 — defineNuxtRouteMiddleware가 JWT, OAuth, API Key 인증을 처리하는 과정"
 
 
-description: "Nuxt.js의 라우트 미들웨어 시스템이 페이지 접근 제어와 인증을 처리하는 과정을 시스템 레벨에서 심층 학습합니다. defineNuxtRouteMiddleware()가 Vue Router의 네비게이션 가드(beforeEach)에 등록되어 to/from 라우트 객체로 전환을 제어하는 과정, 전역/레이아웃/페이지 미들웨어가 세 단계로 실행되는 순서, navigateTo()와 abortNavigation()이 각각 router.push()와 next(false)로 라우트 전환을 제어하는 방식, 클라이언트 미들웨어와 서버 미들웨어(event.context.auth)의 이중 인증 구조, OAuth 2.0 Authorization Code Flow에서 PKCE(Proof Key for Code Exchange)가 CSRF 공격을 방지하는 원리, API Key 인증이 h3의 getHeader()로 Authorization 헤더를 검증하는 과정을 다룹니다."
+description: "defineNuxtRouteMiddleware로 인증을 처리하는 구조와 JWT·OAuth·API 키를 각각 검증하는 방식, 서버 미들웨어와의 역할 분담, 리다이렉트 처리까지 다뤘습니다."
 
 
 date: 2024-03-18 10:00:00 +0900

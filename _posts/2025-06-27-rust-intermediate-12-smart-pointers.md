@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 스마트 포인터 — Box, Rc, Arc, RefCell, 내부 가변성, Deref 트레이트"
-description: "Rust의 스마트 포인터 시스템을 메모리 레벨에서 학습합니다. Box<T>는 힙에 데이터를 할당하며 컴파일 타임에 크기를 알 수 없는 타입을 저장할 수 있습니다. Rc<T>는 참조 카운팅으로 다중 소유권을 허용하며 단일 스레드에서만 사용됩니다. Arc<T>는 원자적 참조 카운팅으로 스레드 안전한 다중 소유권을 제공합니다. RefCell<T>는 내부 가변성으로 런타임에 빌림 규칙을 검사하며 컴파일 타임에 불가능한 가변성을 허용합니다. Deref 트레이트는 스마트 포인터를 일반 참조처럼 동작하게 합니다. Drop 트레이트는 스마트 포인터가 범위를 벗어날 때 자동으로 리소스를 해제합니다."
+description: "Box·Rc·Arc가 소유권을 어떻게 나누는지, RefCell로 내부 가변성을 얻는 방법, Deref 트레이트로 역참조를 구현하는 원리를 예제로 정리했습니다. 순환 참조 해결도 다룹니다."
 date: 2025-06-27 10:00:00 +0900
 category: rust
 tags: [rust, smart-pointers, box, rc, arc, refcell, interior-mutability, deref]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 트레이트와 제네릭 — 트레이트 정의와 구현, 제네릭 타입, 트레이트 바운드, 트레이트 객체"
-description: "Rust의 트레이트와 제네릭 시스템을 컴파일러 레벨에서 학습합니다. trait 키워드로 공유 동작을 정의하며 impl 키워드로 타입에 트레이트를 구현합니다. 제네릭은 타입 매개변수로 코드를 재사용 가능하게 만들며 T, U 등의 이름을 사용합니다. 트레이트 바운드<T: Trait>는 제네릭 타입이 특정 트레이트를 구현하도록 제한합니다. impl Trait은 함수 인자나 반환값에 트레이트 구현을 허용합니다. 트레이트 객체는 dyn Trait으로 런타임 다형성을 제공하며 vtable로 동적 디스패치를 수행합니다. Rust는 모노모피제이션(monomorphization)으로 제네릭을 컴파일 타임에 구체화하여 성능을 보장합니다."
+description: "Rust 트레이트로 공통 동작을 정의하고 제네릭에 바운드를 걸어 타입을 제한하는 방법, 트레이트 객체로 동적 디스패치하는 상황과 정적 디스패치의 차이를 짚었습니다."
 date: 2025-06-18 10:00:00 +0900
 category: rust
 tags: [rust, traits, generics, trait-bounds, trait-objects, monomorphization, vtable]

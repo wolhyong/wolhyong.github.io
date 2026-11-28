@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 문자열과 정규표현식 — String의 인코딩/메서드 체인, Regexp의 NFA 엔진과 패턴 매칭"
 
 
-description: "Ruby의 String과 Regexp(정규표현식)의 내부 동작을 시스템 레벨에서 심층 학습합니다. String이 C 레벨에서 RString 구조체로 관리되며 ascii_only/encoding/frozen/taint 플래그와 char* 포인터로 문자열 데이터에 접근하는 방식, UTF-8/Multibyte 인코딩이 Encoding 클래스로 관리되어 문자열 메서드가 각 인코딩에 맞게 바이트 단위 대신 문자 단위로 동작하는 과정, gsub/sub/split/scan 등 String 메서드가 블록/해시와 함께 동작할 때 일치하는 패턴마다 yield 또는 해시 조회를 수행하는 방식, Regexp가 Onigmo(Oniguruma) 정규표현식 엔진으로 컴파일되어 NFA(Nondeterministic Finite Automaton) 기반으로 백트래킹하며 패턴 매칭을 수행하는 과정, String#match와 Regexp#match의 차이, =~ 연산자의 특수 변수($1/$2/$~) 설정 방식을 다룹니다."
+description: "Ruby 문자열의 인코딩과 주요 메서드 체인, gsub에 해시나 블록을 넘기는 활용, Regexp의 패턴 매칭과 캡처 그룹 사용법을 예제로 정리했습니다. 자주 틀리는 백슬래시 이스케이프도 함께 짚습니다."
 
 
 date: 2024-08-12 10:00:00 +0900

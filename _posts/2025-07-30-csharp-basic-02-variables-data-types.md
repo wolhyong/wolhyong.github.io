@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 변수와 데이터 타입 — 값 타입과 참조 타입, 박싱/언박싱, nullable, var 타입 추론"
-description: "C#의 변수 시스템과 데이터 타입을 메모리 레벨에서 학습합니다. C#은 값 타입(value type)과 참조 타입(reference type)으로 구분됩니다. 값 타입은 스택에 직접 값을 저장하며 int, float, bool, struct, enum이 포함됩니다. 참조 타입은 힙에 객체를 저장하며 스택에 참조를 저장합니다. string, class, interface, delegate, array가 포함됩니다. 박싱(boxing)은 값 타입을 참조 타입으로 변환하며 언박싱(unboxing)은 그 반대입니다. nullable 타입(T?)은 값 타입에 null을 허용합니다. var 키워드는 컴파일러가 타입을 추론합니다. C#의 타입 시스템은 통합 타입 시스템(unified type system)으로 모든 타입은 object에서 파생됩니다."
+description: "C#의 값 타입과 참조 타입이 메모리에 저장되는 위치 차이, 박싱·언박싱 비용, nullable 타입과 var 추론이 컴파일 타임에 결정되는 과정을 예제로 정리했습니다."
 date: 2025-07-30 10:00:00 +0900
 category: csharp
 tags: [csharp, variables, data-types, value-type, reference-type, boxing, nullable]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 컬렉션 — List, Set, Map, 시퀀스, 컬렉션 함수, 불변/가변 컬렉션"
-description: "Kotlin의 컬렉션 시스템을 실무 레벨에서 학습합니다. List는 순서가 있는 컬렉션이며 listOf로 불변, mutableListOf로 가변 리스트를 생성합니다. Set은 중복 없는 컬렉션이며 setOf로 불변, mutableSetOf로 가변 세트를 생성합니다. Map은 키-값 쌍 컬렉션이며 mapOf로 불변, mutableMapOf로 가변 맵을 생성합니다. 시퀀스는 지연 평가 컬렉션으로 sequenceOf로 생성하며 대용량 데이터 처리에 유용합니다. 컬렉션 함수는 map, filter, reduce, fold, flatMap 등을 제공하며 함수형 프로그래밍을 지원합니다. 불변 컬렉션은 스레드 안전하며 가변 컬렉션은 변경 가능합니다."
+description: "Kotlin의 불변·가변 컬렉션 구분과 List·Set·Map 사용법, 시퀀스로 지연 평가하는 이유, map·filter·groupBy 같은 컬렉션 함수를 조합하는 예제를 확인합니다."
 date: 2025-10-06 10:00:00 +0900
 category: kotlin
 tags: [kotlin, collections, list, set, map, sequences, functional-programming]

@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 배포와 CI/CD — Vercel/Netlify/Docker에 배포하고 GitHub Actions로 자동화하는 과정"
 
 
-description: "Nuxt.js 애플리케이션을 다양한 플랫폼에 배포하고 CI/CD 파이프라인을 구축하는 과정을 시스템 레벨에서 심층 학습합니다. Nitro의 .output/server/index.mjs가 Node.js http.createServer()를 직접 호출하여 독립 실행형 서버로 동작하는 원리, Vercel 배포 시 @vercel/nitro 패키지가 serverless 함수로 변환되어 각 API 엔드포인트가 개별 Lambda로 배포되는 과정, Netlify 배포 시 @netlify/functions로 변환되고 Edge Functions에서 Nitro 핸들러가 실행되는 방식, Docker 배포 시 Node.js Alpine 이미지 위에 .output 디렉토리를 복사하고 CMD로 서버를 시작하는 multi-stage build 과정, GitHub Actions에서 nuxi build와 nuxi generate를 자동 실행하고 S3/SSH로 배포하는 CI/CD 파이프라인을 다룹니다."
+description: "Nitro 출력물을 Vercel·Netlify·Docker에 배포하는 설정 차이와 GitHub Actions로 빌드·배포를 자동화하는 워크플로를 예제로 정리했습니다."
 
 
 date: 2024-05-27 10:00:00 +0900

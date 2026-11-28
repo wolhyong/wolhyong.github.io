@@ -1,6 +1,7 @@
 ﻿---
 layout: post
 title: "Javascript Async"
+description: "자바스크립트 비동기 처리가 필요한 이유와 콜백에서 Promise, async/await로 넘어온 흐름을 예제로 정리했습니다. 이벤트 루프가 작업을 처리하는 순서도 함께 설명합니다."
 date: 2024-02-20 10:00:00 +0900
 category: javascript
 level: beginner

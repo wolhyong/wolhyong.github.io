@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 소개 — JVM, JDK, JRE, Hello World, 개발 환경"
-description: "Java 프로그래밍의 기초를 시스템 레벨에서 심층 학습합니다. JVM의 클래스 로딩 메커니즘과 바이트코드 실행 구조, JDK와 JRE의 구성 요소 차이, main() 메서드가 JVM에서 호출되는 과정(Java Invocation API), javac 컴파일러의 소스-바이트코드 변환 단계, JVM 메모리 구조(Heap/Metaspace/Stack)와 GC의 기본 원리를 다룹니다."
+description: "Java가 JVM 위에서 실행되는 구조와 JDK·JRE 차이, 개발 환경을 설치하고 첫 프로그램을 컴파일·실행하는 절차를 처음 시작하는 사람 기준으로 정리했습니다."
 date: 2023-05-08 10:00:00 +0900
 category: java
 tags: [java, jvm, jdk, jre, bytecode, classloader, hello-world]

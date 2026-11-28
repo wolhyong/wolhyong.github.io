@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 성능 최적화 — 메모리 관리, 프로파일링, 코루틴 최적화, 컬렉션 최적화"
-description: "Kotlin의 성능 최적화 기법을 시스템 레벨에서 학습합니다. 메모리 관리는 객체 생성을 줄이고 객체 풀을 사용하며 불변 객체를 활용합니다. 프로파일링은 Android Profiler, VisualVM, JProfiler 등으로 성능 병목을 찾습니다. 코루틴 최적화는 Dispatchers.IO로 I/O 작업을, Dispatchers.Default로 CPU 작업을 처리하며 구조화된 동시성을 사용합니다. 컬렉션 최적화는 시퀀스를 사용하여 지연 평가를 활용하고 적절한 컬렉션 타입을 선택합니다. 인라인 함수는 람다 오버헤드를 줄이며 tailrec로 꼬리 재귀를 최적화합니다."
+description: "Kotlin 코드에서 프로파일러로 병목을 찾고, 컬렉션 연산과 코루틴 디스패처를 조정해 메모리·CPU 사용을 줄이는 방법을 사례와 함께 정리했습니다. 인라인 함수의 효과도 짚습니다."
 date: 2025-11-03 10:00:00 +0900
 category: kotlin
 tags: [kotlin, performance, memory-management, profiling, coroutines, collections]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 안드로이드 개발 — Activity, Fragment, ViewModel, LiveData, Jetpack Compose"
-description: "Kotlin의 안드로이드 개발 프레임워크를 실무 레벨에서 학습합니다. 안드로이드는 Kotlin을 공식 언어로 사용하며 Jetpack 라이브러리를 제공합니다. Activity는 애플리케이션의 단일 화면을 나타내며 onCreate, onStart, onResume 등의 생명주기를 가집니다. Fragment는 재사용 가능한 UI 컴포넌트로 Activity 내에서 동적으로 추가/제거됩니다. ViewModel은 UI 관련 데이터를 보관하며 생명주기 변경에서 살아남습니다. LiveData는 관찰 가능한 데이터 홀더로 데이터 변경을 UI에 자동으로 반영합니다. Jetpack Compose는 선언형 UI 프레임워크로 XML 없이 코드로 UI를 작성합니다."
+description: "Kotlin으로 Activity·Fragment 생명 주기를 다루고 ViewModel과 LiveData로 상태를 유지하는 방법, Jetpack Compose로 화면을 구성하는 예제를 살펴봤습니다."
 date: 2025-10-27 10:00:00 +0900
 category: kotlin
 tags: [kotlin, android, jetpack, activity, fragment, viewmodel, livedata, jetpack-compose]

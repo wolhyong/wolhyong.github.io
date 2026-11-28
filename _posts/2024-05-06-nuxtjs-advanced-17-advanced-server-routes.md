@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 고급 서버 라우트 — WebSocket, SSE, 미들웨어 체인, rate limiting 구현"
 
 
-description: "Nuxt.js의 고급 서버 기능인 WebSocket, SSE, 미들웨어 체인, rate limiting의 내부 동작을 시스템 레벨에서 심층 학습합니다. h3의 handleUpgrade()가 Node.js http.Server의 upgrade 이벤트를 가로채 WebSocket 핸드셰이크를 처리하는 과정, SSE(Server-Sent Events)가 EventSource API로 단방향 텍스트 스트림을 구축하고 setHeader('Content-Type', 'text/event-stream')으로 연결을 유지하는 방식, 미들웨어 체인이 defineEventHandler()에서 return undefined로 next()를 호출하여 순차적으로 실행되는 과정, rate limiting이 Map<IP, { count, resetTime }>으로 메모리 내 토큰 버킷을 구현하고 429 Too Many Requests를 응답하는 방식을 다룹니다."
+description: "Nitro 서버에서 SSE와 WebSocket을 구현하고, 미들웨어 체인으로 공통 처리를 묶는 방법, rate limiting을 붙이는 예제를 정리했습니다. 실시간 스트림을 안전하게 끊는 방법도 다룹니다."
 
 
 date: 2024-05-06 10:00:00 +0900

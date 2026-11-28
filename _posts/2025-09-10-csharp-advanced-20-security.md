@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 보안 — 암호화, 인증, 권한 부여, HTTPS, 데이터 보호, 보안 코딩"
-description: "C#의 보안 시스템을 실무 레벨에서 학습합니다. 암호화는 Symmetric(대칭), Asymmetric(비대칭), Hash(해시) 알고리즘을 제공하며 Aes, RSA, SHA256 등을 사용합니다. 인증은 ASP.NET Core Identity로 사용자 인증을 지원하며 JWT, OAuth, OpenID Connect를 지원합니다. 권한 부여는 [Authorize] 특성으로 역할 기반 접근 제어를 제공합니다. HTTPS는 Kestrel로 TLS/SSL을 구성하며 인증서를 사용합니다. 데이터 보호는 IDataProtector로 민감 데이터를 보호합니다. 보안 코딩은 SQL 인젝션, XSS, CSRF 방지를 포함합니다."
+description: "C#에서 데이터 보호 API와 해시·대칭키 암호화를 쓰는 방법, ASP.NET Core 인증·권한 부여 구성, HTTPS 강제와 보안 코딩 수칙을 예제로 다뤘습니다."
 date: 2025-09-10 10:00:00 +0900
 category: csharp
 tags: [csharp, security, encryption, authentication, authorization, https, data-protection]

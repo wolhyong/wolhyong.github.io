@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 표준 라이브러리 — itertools, collections, datetime, re, random"
-description: "Python의 주요 표준 라이브러리를 내부 동작 원리와 함께 심층 학습합니다. itertools 카테고리의 lazy 평가와 C 레벨 구현 성능, collections의 deque가 양방향 큐로 동작하는 이중 연결 리스트 구조, datetime의 시간대 처리와 DST, 정규표현식 엔진의 NFA 기반 매칭 과정, random의 Mersenne Twister 알고리즘을 다룹니다."
+description: "itertools로 조합을 만들고 collections의 Counter·defaultdict를 활용하는 법, datetime과 re, random 모듈에서 자주 쓰는 기능을 예제로 정리했습니다."
 date: 2023-03-06 10:00:00 +0900
 category: python
 tags: [python, standard-library, itertools, collections, datetime, regex, random]

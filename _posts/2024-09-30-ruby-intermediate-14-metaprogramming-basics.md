@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 메타프로그래밍 기초 — method_missing, define_method, send, class_eval, instance_eval"
 
 
-description: "Ruby의 메타프로그래밍 기본 도구를 시스템 레벨에서 심층 학습합니다. method_missing이 BasicObject#method_missing으로 정의되어 Ruby VM이 ancestors 체인에서 메서드를 찾지 못했을 때 rb_method_missing()으로 호출하는 과정, respond_to_missing?을 함께 재정의하지 않으면 respond_to?가 false를 반환하는 이유, define_method가 Module#define_method를 호출하여 블록을 메서드 본문으로 사용하는 동적 메서드 정의 방식, send가 Object#send로 메서드 이름을 Symbol/String으로 동적으로 호출하고 private 메서드도 호출 가능한 이유(public_send는 불가), class_eval이 Class::Eval로 클래스 컨텍스트에서 eval을 실행하여 인스턴스 메서드를 정의하는 방식과 instance_eval이 singleton 메서드를 정의하는 방식의 차이를 다룹니다."
+description: "method_missing과 respond_to_missing?를 함께 정의하는 이유, define_method로 메서드를 동적으로 만드는 법, send·class_eval·instance_eval의 차이를 예제로 설명합니다."
 
 
 date: 2024-09-30 10:00:00 +0900

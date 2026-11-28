@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# LINQ 심화 — 쿼리 식, 그룹화, 조인, 집계, 파티션, 변환, 지연 실행 vs 즉시 실행"
-description: "C# LINQ의 고급 기능을 실무 레벨에서 학습합니다. 쿼리 식은 SQL과 유사한 from-where-select 문법을 제공하며 복잡한 쿼리를 가독성 있게 작성할 수 있습니다. 그룹화(group by)는 데이터를 키로 그룹화하며 GroupBy 메서드와 group by 절을 사용합니다. 조인(join)은 두 컬렉션을 결합하며 Join, GroupJoin 메서드와 join 절을 사용합니다. 집계(Aggregate)는 Sum, Average, Count, Max, Min 등을 제공하며 Aggregate 메서드로 커스텀 집계를 수행할 수 있습니다. 파티션(Take, Skip, TakeWhile, SkipWhile)은 컬렉션을 분할합니다. 변환(Select, SelectMany)은 데이터를 변환하며 SelectMany는 중첩 컬렉션을 평탄화합니다. LINQ는 지연 실행을 지원하며 ToList, ToArray 등으로 즉시 실행을 강제할 수 있습니다."
+description: "C# LINQ의 쿼리 식 문법과 그룹화·조인·집계·파티션 연산자를 예제로 정리하고, 지연 실행과 즉시 실행이 결과에 어떤 차이를 만드는지 다룹니다. 실무에서 자주 묶어 쓰는 조합도 함께 소개합니다."
 date: 2025-08-27 10:00:00 +0900
 category: csharp
 tags: [csharp, linq, query-syntax, grouping, joining, aggregation, deferred-execution]

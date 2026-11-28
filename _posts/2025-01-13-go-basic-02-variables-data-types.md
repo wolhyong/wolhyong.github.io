@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 변수와 데이터 타입 — 정적 타이핑, 제로값, 타입 추론, int/string/bool/float의 메모리 구조"
-description: "Go의 변수 시스템과 데이터 타입을 메모리 레벨에서 학습합니다. var 키워드와 := 짧은 선언은 각각 명시적 타입 선언과 타입 추론으로 동작합니다. Go의 정적 타이핑은 컴파일 타임에 모든 변수의 타입을 결정해 런타임 타입 오류를 줄입니다. int/int8/int16/int32/int64/uint/float32/float64는 고정 크기 메모리로 할당되며 C 타입과의 유사점을 설명합니다. string은 reflect.StringHeader(Data uintptr + Len int)로 표현되어 UTF-8 바이트 시퀀스를 저장하는 불변 타입입니다. bool이 1바이트만 차지하는 이유와 메모리 정렬을 설명합니다. const는 컴파일 타임에 리터럴로 치환되어 런타임 오버헤드가 없습니다. 제로값은 변수 선언 시 초기화 없이 int=0, string=\"\", bool=false, float=0.0으로 자동 설정되는 Go의 안전성 철학을 다룹니다."
+description: "Go의 var와 := 선언 방식, 제로값 규칙과 타입 추론, int·string·bool·float가 메모리에 배치되는 방식, 형변환에서 주의할 점을 예제로 정리했습니다."
 date: 2025-01-13 10:00:00 +0900
 category: go
 tags: [go, golang, variables, data-types, static-typing, zero-value, constants, type-inference]

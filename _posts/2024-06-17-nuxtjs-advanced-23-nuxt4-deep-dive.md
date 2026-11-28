@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt 4 심층 분석 — Vite 6 통합, Nitro 3 엔진, 새로운 API와 마이그레이션"
 
 
-description: "Nuxt 4의 주요 변경 사항과 업그레이드된 내부 엔진을 시스템 레벨에서 심층 학습합니다. Vite 6의 Module Runner API가 vite/runtime 패키지에서 import되는 새로운 청크 로딩 시스템으로 빌드 성능을 20% 향상시키는 과정, Nitro 3의 Edge SSR 최적화가 WinterCG 호환 런타임에서 H3Event를 효율적으로 처리하는 방식, Nuxt 4의 새로운 app/ 디렉토리 구조가 기존 pages/server/layouts/components를 통합하는 방식과 app/router.options.ts로 Vue Router 옵션을 직접 제어할 수 있는 기능, nuxi upgrade 명령어와 마이그레이션 가이드를 사용하여 Nuxt 3에서 Nuxt 4로 업그레이드하는 과정을 다룹니다."
+description: "Nuxt 4에서 바뀐 Vite 6·Nitro 3 기반 구조와 새 디렉토리 규칙, 추가된 API, 기존 프로젝트를 옮길 때 손봐야 할 지점을 마이그레이션 순서로 정리했습니다."
 
 
 date: 2024-06-17 10:00:00 +0900

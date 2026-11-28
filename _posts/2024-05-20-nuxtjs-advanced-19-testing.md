@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 테스팅 — Vitest로 유닛 테스트, Playwright로 E2E 테스트, @nuxt/test-utils 모듈 활용"
 
 
-description: "Nuxt.js 애플리케이션의 테스팅 전략을 시스템 레벨에서 심층 학습합니다. @nuxt/test-utils 모듈이 setup() 함수에서 Nuxt 인스턴스를 생성하고 mountSuspended()로 컴포넌트를 마운트하여 useFetch/useState/useRoute 등 Nuxt composable이 정상 동작하는 환경을 제공하는 과정, Vitest의 describe/it/expect API가 Node.js의 assert 모듈과 chai 라이브러리를 기반으로 테스트를 구조화하고 assertion을 수행하는 방식, Playwright의 chromium.launch()로 헤드리스 브라우저를 실행하고 page.goto()로 실제 페이지에 접근하여 DOM 요소를 검증하는 E2E 테스트 과정, mockNuxtImport()로 useFetch 등의 외부 의존성을 가로채어(mock) 테스트 더블을 주입하는 방식을 다룹니다."
+description: "Vitest로 컴포저블과 컴포넌트를 단위 테스트하고, Playwright로 E2E 시나리오를 작성하는 방법, @nuxt/test-utils 설정과 모킹 전략을 정리했습니다."
 
 
 date: 2024-05-20 10:00:00 +0900

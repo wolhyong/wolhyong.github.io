@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 웹 프레임워크 — Flask와 FastAPI 심층 비교"
-description: "Python의 주요 웹 프레임워크인 Flask와 FastAPI를 내부 동작까지 심층 학습합니다. Flask의 WSGI 핸들링(Request/Response 객체의 environ 기반 구조)과 블루프린트 모듈화, FastAPI의 ASGI/Starlette 기반 비동기 처리와 Pydantic을 통한 자동 검증, OpenAPI 자동 문서화, 미들웨어 체인의 동작 방식을 다룹니다."
+description: "Flask의 WSGI 방식과 FastAPI의 ASGI 비동기 처리 차이를 비교하고, 검증·문서화·성능 측면에서 어떤 상황에 무엇을 고를지 정리했습니다. 간단한 API 예제도 담았습니다."
 date: 2023-04-17 10:00:00 +0900
 category: python
 tags: [python, flask, fastapi, web-framework, rest-api, asgi, wsgi, pydantic]

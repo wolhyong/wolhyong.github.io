@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 빌드 도구와 배포 — Maven, Gradle, CI/CD, Docker, 클라우드 배포"
-description: "Java 빌드 도구와 배포 전략을 심층 학습합니다. Maven의 POM(Project Object Model)과 의존성 해결(로컬 저장소 → 중앙 저장소 → 원격 저장소), Gradle의 Incremental Build(변경된 파일만 재컴파일), 빌드 생명주기(compile → test → package → deploy), Docker 멀티스테이지 빌드로 Spring Boot 애플리케이션 최적화, CI/CD 파이프라인(GitHub Actions/Jenkins), 무중단 배포 전략을 다룹니다."
+description: "Maven과 Gradle의 빌드 구조 차이, CI/CD 파이프라인 구성, Docker 이미지로 패키징해 클라우드에 배포하는 절차를 예제로 정리했습니다. 배포 후 롤백 전략도 함께 다룹니다."
 date: 2023-09-04 10:00:00 +0900
 category: java
 tags: [java, maven, gradle, ci-cd, docker, deployment, devops]

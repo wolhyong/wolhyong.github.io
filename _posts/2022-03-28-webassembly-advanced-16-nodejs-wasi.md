@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "WebAssembly 고급(16) — Node.js와 WASI: 서버 측 WASM"
-description: "WebAssembly와 WASI를 Node.js에서 활용하는 방법 — wasm-pack Node.js 타겟, WASI preview1/preview2, 성능 측정(네이티브 대비 85~95%), 서버리스/엣지 컴퓨팅(Fastly Compute@Edge, Cloudflare Workers), 멀티스레딩 한계와 극복"
+description: "Node.js에서 WASI 모듈을 실행하는 방법, WASI가 제공하는 시스템 인터페이스 범위, 엣지와 CLI 환경에서 WASM을 쓰는 사례와 제약을 확인합니다. 설정 방법도 함께 안내합니다."
 date: 2022-03-28 10:00:00 +0900
 category: webassembly
 tags: [webassembly, nodejs, wasi, serverless, edge-computing, fastly, cloudflare-workers, wasmtime, performance-comparison, server-side-wasm]

@@ -1,6 +1,7 @@
 ﻿---
 layout: post
 title: "Start Github Blog"
+description: "GitHub Pages와 Jekyll로 무료 기술 블로그를 만드는 과정을 설치부터 첫 글 발행까지 순서대로 정리했습니다. 테마 적용과 배포 확인 방법도 담았습니다."
 date: 2024-01-15 10:00:00 +0900
 category: git
 level: beginner

@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 예외 처리 — try/catch/finally, throws, 사용자 정의 예외, try-with-resources"
-description: "Java의 예외 처리 시스템을 JVM 레벨에서 심층 학습합니다. try/catch/finally의 Exception Table 구조(try 시작/종료/핸들러 PC), checked/unchecked 예외의 차이와 throws 선언이 컴파일러에게 주는 의미, 사용자 정의 예외 작성 패턴과 예외 체이닝(initCause()), try-with-resources가 AutoCloseable의 close()를 호출하는 Suppressed 예외 처리 과정, 다중 catch 블록의 정밀한 예외 처리와 멀티 catch(|)를 다룹니다."
+description: "Java의 checked·unchecked 예외 구분과 try-with-resources로 자원을 닫는 방법, 사용자 정의 예외를 설계하는 기준, finally 실행 순서를 정리했습니다."
 date: 2023-06-19 10:00:00 +0900
 category: java
 tags: [java, exception, try-catch, finally, throws, try-with-resources, custom-exception]

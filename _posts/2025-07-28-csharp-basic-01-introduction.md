@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 언어 소개 — Microsoft가 설계한 객체지향 프로그래밍 언어의 철학과 .NET 생태계"
-description: "C# 언어의 탄생 배경과 설계 철학, .NET 생태계를 시스템 레벨에서 학습합니다. Anders Hejlsberg가 2000년에 Microsoft에서 개발한 C#은 .NET 플랫폼의 주력 언어로 객체지향, 타입 안전, 가비지 컬렉션을 제공합니다. C# 컴파일러(csc)는 소스 코드를 IL(Intermediate Language)로 컴파일하며 JIT(Just-In-Time) 컴파일러가 런타임에 네이티브 코드로 변환합니다. CLR(Common Language Runtime)은 메모리 관리, 예외 처리, 스레드 관리를 담당합니다. .NET의 BCL(Base Class Library)은 풍부한 표준 라이브러리를 제공하며 NuGet 패키지 매니저로 의존성을 관리합니다. C#은 진화하는 언어로 최신 버전에서 레코드, 패턴 매칭, 비동기 스트림 등을 지원합니다."
+description: "C#이 등장한 배경과 .NET 플랫폼 구조, CLR 위에서 컴파일·실행되는 과정, 객체지향 언어로서 갖는 특징과 생태계를 처음 접하는 사람 눈높이에서 정리했습니다."
 date: 2025-07-28 10:00:00 +0900
 category: csharp
 tags: [csharp, dotnet, clr, jit, garbage-collection, nuget, microsoft]

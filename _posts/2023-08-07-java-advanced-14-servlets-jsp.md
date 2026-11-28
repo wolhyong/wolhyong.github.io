@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 서블릿과 JSP — HttpServlet, 요청/응답 처리, 세션, MVC 패턴"
-description: "Java 웹 애플리케이션의 기초인 서블릿과 JSP를 컨테이너 레벨에서 심층 학습합니다. Servlet Container(Tomcat)가 HttpServletRequest/ServletResponse 객체를 생성하고 서블릿 스레드를 할당하는 과정, doGet()/doPost()의 service() 메서드 디스패치, 세션 관리(HttpSession의 JSESSIONID 쿠키 기반 추적), JSP가 서블릿으로 변환되어 컴파일되는 과정(Jasper 엔진), 필터 체인의 동작과 MVC 패턴(서블릿이 컨트롤러, JSP가 뷰)을 다룹니다."
+description: "HttpServlet이 요청을 처리하는 생명 주기, 세션 관리와 MVC 패턴을 서블릿으로 구성하는 방법, Spring MVC가 이 위에서 동작하는 구조를 설명합니다."
 date: 2023-08-07 10:00:00 +0900
 category: java
 tags: [java, servlet, jsp, tomcat, session, mvc, filter]

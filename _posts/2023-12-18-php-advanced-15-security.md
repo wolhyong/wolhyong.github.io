@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 보안 — XSS, CSRF, SQL 인젝션, 파일 업로드 보안, 입력 검증"
-description: "PHP 애플리케이션의 보안 취약점과 방어 기법을 웹 보안 표준(OWASP Top 10) 레벨에서 심층 학습합니다. XSS(Cross-Site Scripting)의 Stored/Reflected/DOM 기반 유형과 Content-Security-Policy 헤더, CSRF(Cross-Site Request Forgery)의 동기화 토큰 패턴(Synchronizer Token Pattern)과 SameSite 쿠키, SQL 인젝션의 prepared statement 방어(네트워크 레벨 바이너리 프로토콜), 파일 업로드 보안의 MIME 타입 검증(파일 매직 바이트)과 exec 함수 차단(disable_functions), 비밀번호 해싱의 bcrypt/Argon2 알고리즘과 password_hash()의 salt 자동 생성(cost factor 기본 10)을 다룹니다."
+description: "PHP에서 XSS와 CSRF, SQL 인젝션을 막는 출력 인코딩·토큰·prepared statement 사용법, 파일 업로드 검증과 입력 필터링 원칙을 예제로 정리했습니다."
 date: 2023-12-18 10:00:00 +0900
 category: php
 tags: [php, security, xss, csrf, sql-injection, password-hashing, owasp]

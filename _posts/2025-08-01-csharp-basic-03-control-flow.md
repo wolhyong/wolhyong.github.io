@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 제어문 — if/else, switch 패턴 매칭, for, foreach, while, do-while, break/continue"
-description: "C#의 제어문을 컴파일러 레벨에서 학습합니다. if/else는 조건문으로 불리언 표현식을 평가하며 중첩 가능합니다. switch는 패턴 매칭을 지원하며 case, when, default를 사용합니다. for는 초기화, 조건, 반복자, 본문으로 구성된 반복문입니다. foreach는 컬렉션을 순회하며 IEnumerable을 구현한 타입에 사용됩니다. while은 조건이 true인 동안 반복하며 do-while은 최소 한 번 실행 후 조건을 확인합니다. break는 루프를 탈출하고 continue는 다음 반복으로 건너뜁니다. goto는 특정 라벨로 점프하며 사용을 피해야 합니다. C# 8.0부터 switch 식으로 값을 반환할 수 있습니다."
+description: "C#의 if·switch와 패턴 매칭, for·foreach·while·do-while 반복문의 차이, break·continue로 흐름을 바꾸는 예제를 처음 배우는 사람 기준으로 정리했습니다."
 date: 2025-08-01 10:00:00 +0900
 category: csharp
 tags: [csharp, control-flow, if-else, switch, for, foreach, while, pattern-matching]

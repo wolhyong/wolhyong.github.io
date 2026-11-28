@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 제네릭 — 1.18 타입 파라미터, 타입 제약과 인터페이스 제약, 제네릭 함수와 타입"
-description: "Go 1.18에 도입된 제네릭(Generics) 프로그래밍을 컴파일러 레벨에서 학습합니다. func F[T any](args T) T 구문으로 타입 파라미터를 선언하고 호출 시 구체적 타입으로 인스턴스화되는 방식을 다룹니다. 타입 제약(Type Constraint)은 인터페이스를 기반으로 하며 ~int | ~string 같은 타입 집합(type set)을 지정할 수 있습니다. 제네릭 함수는 컴파일 타임에 구체적 타입별로 별도 함수를 생성하는 monomorphization(단형화)을 사용합니다. 이 방식은 제로 런타임 오버헤드(zero-cost abstraction)를 가능하게 합니다. 제네릭 타입 struct와 interface에 타입 파라미터를 사용하는 방법(type Stack[T any] struct)을 살펴봅니다. comparable 제약은 맵의 키나 비교 연산이 필요한 제네릭 함수를 작성할 때 사용합니다. Go 팀은 단순성과 명확성을 위해 메서드의 타입 파라미터를 허용하지 않는 결정을 내렸고, 그 대안을 다룹니다."
+description: "Go 1.18에서 들어온 타입 파라미터 문법과 제약 조건 정의, 제네릭 함수·타입을 실제로 쓰는 예제, 인터페이스 제약과의 차이를 정리했습니다. 표준 라이브러리가 제네릭을 쓰는 방식도 함께 짚습니다."
 date: 2025-03-03 10:00:00 +0900
 category: go
 tags: [go, golang, generics, type-parameters, type-constraints, monomorphization, go1.18]

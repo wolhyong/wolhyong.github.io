@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go unsafe와 CGO — unsafe.Pointer와 uintptr, 메모리 레이아웃 조작, cgo로 C 코드 호출"
-description: "Go의 unsafe 패키지와 CGO(ccall go)를 저수준 시스템 레벨에서 학습합니다. unsafe.Pointer가 Go의 타입 시스템을 우회하여 모든 포인터 타입 간의 변환을 허용하는 특수한 포인터 타입(``type Pointer *ArbitraryType``)과 uintptr이 Go의 GC로부터 추적되지 않는 정수형 메모리 주소인 차이, unsafe.Sizeof()/Offsetof()/Alignof()가 컴파일 타임에 구조체 필드의 메모리 레이아웃을 분석하는 방식과 이를 활용한 구조체 크기 최적화, unsafe.Pointer → uintptr 변환 시 Go 1.17+에서 도입된 안전성 규칙(메모리 주소를 uintptr로 변환한 후 GC가 객체를 이동시킬 수 있음), cgo를 사용하여 Go 코드에서 C 라이브러리를 호출하는 과정(import \"C\" 주석 지시문과 cgo 툴체인이 C 소스 코드를 Go와 함께 컴파일하는 방식), cgo의 성능 비용(Go 스택 → C 스택 전환, 고루틴 블로킹)과 이에 대한 최적화 전략을 다룹니다."
+description: "unsafe.Pointer와 uintptr의 차이, 구조체 메모리 레이아웃을 직접 다루는 방법, cgo로 C 라이브러리를 호출하는 절차와 주의할 점을 예제로 살펴봅니다."
 date: 2025-04-28 10:00:00 +0900
 category: go
 tags: [go, golang, unsafe, pointer, cgo, c-call, memory-layout, syscall]

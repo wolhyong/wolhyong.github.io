@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 에러 핸들링과 로깅 — Vue 에러 바운더리, 서버 오류 처리, Winston/Pino 로깅 전략"
 
 
-description: "Nuxt.js에서 클라이언트와 서버의 에러를 체계적으로 처리하고 로깅하는 과정을 시스템 레벨에서 심층 학습합니다. Vue 3의 onErrorCaptured() 라이프사이클 훅이 컴포넌트 트리에서 발생한 에러를 캡처하여 에러 바운더리 컴포넌트로 전파하는 과정, NuxtErrorBoundary 컴포넌트가 provide/inject로 하위 컴포넌트의 에러를 수집하고 fallback UI로 대체하는 방식, 서버에서 createError()로 발생시킨 H3Error가 sendError()를 통해 statusCode/statusMessage/data로 직렬화되어 클라이언트에 JSON으로 응답되는 과정, useFetch의 error.value가 H3Error 객체를 통해 서버 에러를 클라이언트에 전달하는 방식, Pino 로거가 JSON 형식으로 구조화된 로그를 출력하고 니어-실시간으로 모니터링 시스템에 전송하는 과정을 다룹니다."
+description: "Vue 에러 바운더리와 Nitro의 오류 처리로 클라이언트·서버 에러를 잡고, Winston·Pino로 로그 레벨을 나눠 남기는 전략을 예제로 정리했습니다. 요청 ID로 로그를 묶는 방법도 다룹니다."
 
 
 date: 2024-04-29 10:00:00 +0900

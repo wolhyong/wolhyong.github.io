@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 테스트 — 단위 테스트, 통합 테스트, MockK, JUnit, Kotest"
-description: "Kotlin의 테스트 시스템을 실무 레벨에서 학습합니다. JUnit은 표준 테스트 프레임워크로 @Test 어노테이션으로 테스트 메서드를 정의합니다. MockK는 Kotlin 전용 모킹 라이브러리로 mockk(), every(), verify()로 모의 객체를 생성하고 검증합니다. Kotest는 Kotlin 전용 테스트 프레임워크로 should, shouldNot 등의 DSL을 제공합니다. 단위 테스트는 개별 함수/클래스를 테스트하며 통합 테스트는 여러 컴포넌트의 통합을 테스트합니다. 테스트 더블은 Stub, Mock, Fake, Spy로 구현합니다. 테스트는 코드 품질과 유지보수성을 높입니다."
+description: "JUnit과 Kotest로 단위 테스트를 작성하고 MockK로 코루틴과 확장 함수까지 모킹하는 방법, 통합 테스트 구성과 테스트 더블 사용 기준을 정리했습니다. 테스트 픽스처 구성도 담았습니다."
 date: 2025-10-31 10:00:00 +0900
 category: kotlin
 tags: [kotlin, testing, junit, mockk, kotest, unit-testing, integration-testing]

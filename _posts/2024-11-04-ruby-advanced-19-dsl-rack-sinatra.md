@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Ruby 웹 프레임워크 — Rack 인터페이스, Sinatra DSL, Rails MVC 구조"
-description: "Ruby의 웹 프레임워크 생태계를 시스템 레벨에서 심층 학습합니다. Rack이 웹 서버와 Ruby 애플리케이션 간의 최소 인터페이스를 정의하여(env 해시 → [status, headers, body] 배열) Thin/Unicorn/Puma 등 다양한 웹 서버와 Rails/Sinatra/Roda 등 다양한 웹 프레임워크를 연결하는 미들웨어 체인의 동작 방식, Sinatra의 get/post/put/delete DSL이 instance_eval로 라우트를 등록하고 Rack의 call 인터페이스로 요청을 처리하는 과정, Rails의 MVC 아키텍처가 Action Dispatch(라우팅) → Action Controller(비즈니스 로직) → Action View(템플릿 렌더링)의 3단계 파이프라인으로 동작하는 방식을 다룹니다."
+description: "Rack의 call(env) 인터페이스가 웹 서버와 앱을 잇는 방식, Sinatra DSL이 라우트를 등록하는 구조, Rails의 MVC가 그 위에서 어떻게 동작하는지 비교합니다."
 date: 2024-11-04 10:00:00 +0900
 category: ruby
 tags: [ruby, rack, sinatra, rails, web-framework, middleware, dsl]

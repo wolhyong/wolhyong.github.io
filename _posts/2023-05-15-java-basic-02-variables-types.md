@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 변수와 타입 — 원시 타입, 참조 타입, 형변환, 상수, var"
-description: "Java의 변수와 데이터 타입을 메모리 레벨에서 심층 학습합니다. 원시 타입(primitive)이 Stack에 값 자체를 저장하는 방식과 참조 타입(reference)이 Heap의 객체 주소를 저장하는 방식, 자동 형변환( widening)과 명시적 형변환(narrowing)의 데이터 손실 위험, final 상수의 컴파일 타임 상수 풀 최적화, var 키워드의 타입 추론이 컴파일 타임에만 동작하는 원리를 다룹니다."
+description: "Java의 원시 타입 8가지와 참조 타입 차이, 형변환 시 값이 잘리거나 넘치는 지점, 상수 선언과 var 타입 추론 사용법을 예제로 정리했습니다. 문자열 비교 함정도 다룹니다."
 date: 2023-05-15 10:00:00 +0900
 category: java
 tags: [java, variables, data-types, primitive, type-casting, var, final]

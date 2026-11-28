@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Ruby Gem 개발 — Gem 구조, Bundler, RubyGems 배포, 의존성 관리, 버전 규약"
-description: "Ruby에서 Gem을 개발하고 배포하는 전체 과정을 시스템 레벨에서 심층 학습합니다. Gem의 디렉토리 구조(lib/bin/spec)가 $LOAD_PATH에 추가되어 require로 로드되는 과정, gemspec 파일이 Gem::Specification 클래스를 통해 Gem의 메타데이터(이름/버전/의존성/파일 목록)를 정의하는 방식, Semantic Versioning(MAJOR.MINOR.PATCH)이 Gem::Version으로 비교되어 의존성 해결에 사용되는 과정, Bundler의 Gemfile.lock이 Gem::DependencyResolver를 사용하여 모든 Gem의 의존성 트리를 해결하고 정확한 버전을 고정하는 방식, gem push 명령어가 RubyGems.org API로 Gem 패키지를 업로드하여 전 세계 Ruby 개발자에게 배포하는 과정을 다룹니다."
+description: "Gem 구조와 gemspec 작성법, Bundler로 의존성을 관리하는 방법, RubyGems에 배포하는 절차와 버전 규약, 네이밍 규칙까지 실제 예제로 정리했습니다."
 date: 2024-11-11 10:00:00 +0900
 category: ruby
 tags: [ruby, gem-development, rubygems, bundler, gem-publish, versioning]

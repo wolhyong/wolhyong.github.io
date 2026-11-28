@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 함수 — 람다, 고차 함수, 기본 매개변수, 명명된 인자, 가변 인자, 표현식 본문"
-description: "Kotlin의 함수 시스템을 컴파일러 레벨에서 학습합니다. fun 키워드로 함수를 정의하며 표현식 본문으로 간결한 함수를 작성할 수 있습니다. 기본 매개변수와 명명된 인자로 유연한 함수 호출을 지원합니다. 가변 인자(vararg)로 여러 인자를 받을 수 있습니다. 람다는 익명 함수로 { -> } 문법을 사용하며 it로 단일 매개변수에 접근합니다. 고차 함수는 함수를 매개변수로 받거나 반환하며 map, filter, reduce 등을 제공합니다. 꼬리 재귀(tail recursion)은 tailrec 키워드로 스택 오버플로우를 방지합니다. 함수 타입은 (Type) -> ReturnType으로 정의하며 함수 리터럴로 전달할 수 있습니다."
+description: "Kotlin 함수의 표현식 본문과 기본 매개변수, 명명된 인자와 가변 인자, 람다와 고차 함수를 인자로 넘기는 방법을 예제로 정리했습니다. 지역 함수와 확장 함수도 다룹니다."
 date: 2025-09-29 10:00:00 +0900
 category: kotlin
 tags: [kotlin, functions, lambda, higher-order-functions, default-parameters, named-arguments, varargs]

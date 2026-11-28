@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 성능 최적화 — pprof CPU/메모리 프로파일링, escape analysis, GC 튜닝, 동시성 최적화"
-description: "Go 애플리케이션의 성능 최적화 방법을 실무 레벨에서 학습합니다. runtime/pprof 패키지가 SIGPROF 신호로 100밀리초마다 CPU 샘플링을 수행하여 CPU 시간을 가장 많이 소비하는 함수를 식별하는 과정, runtime.MemStats와 pprof 힙 프로파일링으로 메모리 할당 패턴을 분석하고 불필요한 힙 할당을 줄이는 방법, go test -bench와 -benchmem으로 벤치마크를 실행하고 allocs/op을 최소화하는 객체 풀링(object pool)과 sync.Pool의 동작 원리, escape analysis 최적화를 위해 변수의 수명을 컴파일러가 분석하도록 유도하고 go build -gcflags='-m'로 결과를 확인하는 과정, GC 튜닝을 위한 GOGC 설정과 GODEBUG=gctrace=1로 GC 로그를 분석하는 방법, 고루틴 프로파일링으로 블로킹과 경합(contention)을 식별하는 runtime/trace 사용법, Go 1.22+의 메모리 최적화(로드맵)와 profile-guided optimization(PGO)의 원리를 다룹니다."
+description: "pprof로 CPU와 메모리 병목을 찾는 절차, escape analysis 결과를 읽는 법, GC 튜닝과 고루틴 수 조절까지 실제 프로파일 예시로 정리했습니다."
 date: 2025-05-05 10:00:00 +0900
 category: go
 tags: [go, golang, performance, pprof, profiling, escape-analysis, gc-tuning, sync-pool, pgo]

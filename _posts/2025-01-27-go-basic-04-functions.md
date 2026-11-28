@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 함수 — func 키워드, 다중 반환값, defer 지연 실행, 에러 처리 패턴과 일급 함수"
-description: "Go의 함수 시스템을 컴파일러와 런타임 레벨에서 학습합니다. func 키워드로 함수를 정의하며 func name(params) returnType 시그니처로 타입 안전성을 보장합니다. Go의 다중 반환값은 여러 값을 스택이나 레지스터에 연속 배치해 반환합니다. defer는 함수 종료까지 실행을 지연시키고 LIFO 스택으로 역순으로 실행됩니다. 이 패턴은 file.Close, mutex.Unlock 같은 리소스 정리에 자주 쓰입니다. (result, error)와 if err != nil 관용구는 Go의 명시적 에러 처리 철학을 구현합니다. 함수는 일급 객체로 변수에 할당되며 다른 함수의 인자나 반환값으로 사용할 수 있습니다. 함수 타입은 인터페이스와 결합해 추상화를 제공합니다."
+description: "Go 함수의 다중 반환값과 이름 있는 반환값, defer가 실행되는 시점, 에러를 값으로 돌려주는 패턴과 함수를 값으로 넘기는 방법을 예제 코드로 설명합니다. 클로저 사용 예도 담았습니다."
 date: 2025-01-27 10:00:00 +0900
 category: go
 tags: [go, golang, functions, defer, multiple-return, error-handling, closure, first-class]

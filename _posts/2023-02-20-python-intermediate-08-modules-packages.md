@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 모듈과 패키지 — import 시스템, __init__, pip 심화"
-description: "Python의 모듈과 패키지 시스템을 내부 동작 원리와 함께 심층 학습합니다. import의 3단계 탐색 과정(1. sys.modules 캐시 → 2. 내장 모듈 → 3. sys.path), __init__.py가 패키지를 초기화하는 과정, 상대 임포트(.)와 절대 임포트의 차이, pip의 의존성 해결 알고리즘, 가상 환경의 내부 구조, 그리고 패키지 배포(PyPI)까지 다룹니다."
+description: "import가 모듈을 찾는 3단계 과정과 __init__.py의 역할, 패키지 구조를 나누는 기준, pip와 가상 환경으로 의존성을 관리하는 방법을 짚었습니다. 순환 import 해결도 담았습니다."
 date: 2023-02-20 10:00:00 +0900
 category: python
 tags: [python, modules, packages, import, pip, pypi, virtualenv]

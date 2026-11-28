@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 소개 — PHP란? 설치, 기본 문법, 개발 환경, 태그"
-description: "PHP 프로그래밍의 기초를 시스템 레벨에서 심층 학습합니다. PHP가 서버 사이드 스크립트로 동작하며 HTML에 삽입되는 CGI/FastCGI/SAPI 모듈 기반 처리 과정, Zend Engine이 소스 코드를 OPcode(op_array)로 컴파일하고 실행하는 과정, PHP 태그(<?php ?>)의 동작 원리와 short_open_tag와의 차이, echo/print가 출력 버퍼를 통해 HTTP 응답으로 전송되는 과정을 다룹니다."
+description: "PHP가 서버에서 실행되는 방식과 설치, HTML에 코드를 넣는 태그 표기, 첫 스크립트를 실행하며 기본 문법과 개발 환경을 잡는 방법을 정리했습니다. 흔한 설정 오류도 짚습니다."
 date: 2023-09-11 10:00:00 +0900
 category: php
 tags: [php, introduction, zend-engine, opcode, xampp, server-side]

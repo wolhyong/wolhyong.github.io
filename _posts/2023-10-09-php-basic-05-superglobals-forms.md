@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 슈퍼글로벌과 폼 처리 — $_GET, $_POST, $_SERVER, $_SESSION"
-description: "PHP의 슈퍼글로벌 변수와 폼 처리를 SAPI 레벨에서 심층 학습합니다. $_GET/$_POST가 SAPI(Server API)에 의해 URL 쿼리 문자열 또는 요청 본문에서 파싱되어 HashTable로 저장되는 과정, $_SERVER의 CGI 환경 변수 매핑, $_SESSION이 파일 기반 세션 핸들러로 serialize/unserialize되어 저장되는 세션 파일 구조, $_COOKIE의 HTTP Cookie 헤더 파싱, 파일 업로드의 $_FILES 구조와 php.ini 설정( upload_max_filesize, post_max_size)을 다룹니다."
+description: "PHP 슈퍼글로벌 변수가 요청에서 어떻게 채워지는지, 폼 데이터를 안전하게 받아 검증하는 방법, 세션과 서버 변수를 다룰 때의 주의점을 정리했습니다. 파일 업로드 폼의 함정도 짚습니다."
 date: 2023-10-09 10:00:00 +0900
 category: php
 tags: [php, superglobals, forms, session, cookie, server-api]

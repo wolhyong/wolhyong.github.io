@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Nuxt.js 보안 — CSP(Content Security Policy), CSRF 토큰, XSS 방어, Helmet 설정"
-description: "Nuxt.js 애플리케이션의 보안 전략을 시스템 레벨에서 심층 학습합니다. CSP(Content Security Policy)가 Content-Security-Policy HTTP 헤더를 통해 브라우저가 로드할 수 있는 리소스의 출처를 제한하여 XSS 공격을 방지하는 과정, strict-dynamic 지시자가 인라인 스크립트에 nonce를 할당하고 nonce 값이 일치하는 스크립트만 실행을 허용하는 방식, CSRF(Cross-Site Request Forgery) 토큰이 서버에서 생성한 난수값을 form hidden 필드나 Meta 태그에 포함시켜 POST/PUT/DELETE 요청의 출처를 검증하는 과정, Helmet 미들웨어가 X-Content-Type-Options/X-Frame-Options/Strict-Transport-Security 등 11개의 보안 헤더를 자동 설정하는 방식을 다룹니다."
+description: "Nuxt 앱에 CSP 헤더와 nonce를 적용하고, CSRF 토큰과 XSS 방어를 서버·클라이언트 양쪽에 배치하는 방법, Helmet이 설정하는 보안 헤더를 정리했습니다."
 date: 2024-05-13 10:00:00 +0900
 category: nuxtjs
 tags: [nuxtjs, security, csp, csrf, xss, helmet, nonce]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 데이터베이스 — Entity Framework Core, LINQ to SQL, 마이그레이션, DbContext, 모델"
-description: "C#의 데이터베이스 접근 기술을 실무 레벨에서 학습합니다. Entity Framework Core는 ORM(Object-Relational Mapper)로 C# 객체와 데이터베이스 테이블을 매핑합니다. DbContext는 데이터베이스 컨텍스트를 나타내며 DbSet<TEntity>로 엔티티를 노출합니다. LINQ to SQL은 LINQ 쿼리를 SQL로 변환하며 Where, Select, OrderBy 등을 지원합니다. 마이그레이션은 데이터베이스 스키마를 버전 관리하며 Add-Migration, Update-Database로 생성하고 적용합니다. 모델은 데이터베이스 테이블을 나타내는 클래스로 [Key], [Required] 등의 데이터 주석으로 매핑을 정의합니다. EF Core는 SQL Server, PostgreSQL, MySQL 등 다양한 데이터베이스를 지원하며 ChangeTracker로 변경 추적을 수행합니다."
+description: "EF Core로 모델을 매핑하고 마이그레이션을 관리하는 절차, DbContext 수명 주기와 변경 추적 방식, LINQ to SQL이 만드는 쿼리를 확인하는 방법을 다룹니다."
 date: 2025-09-03 10:00:00 +0900
 category: csharp
 tags: [csharp, entity-framework-core, database, orm, linq-to-sql, migration, dbcontext]

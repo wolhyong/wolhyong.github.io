@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Node.js 파일 시스템 — fs 모듈, 버퍼, 스트림 실무 안내"
-description: "Node.js의 fs 모듈을 이용한 파일 및 디렉토리 조작을 심층 학습합니다. 동기/비동기 API의 내부 동작 차이, libuv 스레드 풀과의 관계, Buffer 메모리 관리, 스트림의 backpressure(배압) 메커니즘, pipeline 에러 처리, 파일 시스템 성능 측정까지 실전 예제로 익힙니다."
+description: "fs 모듈의 동기·비동기 API 차이와 Buffer 다루는 법, 스트림으로 큰 파일을 처리하는 방법, 정적 파일 서빙과 에러 처리 패턴을 예제로 정리했습니다. 경로 보안도 짚습니다."
 date: 2022-05-09 10:00:00 +0900
 category: nodejs
 tags: [nodejs, javascript, filesystem, fs, stream, file-io, buffer, libuv, backpressure]

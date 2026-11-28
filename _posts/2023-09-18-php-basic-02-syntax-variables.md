@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 기본 문법과 변수 — 변수, 상수, 데이터 타입, 문자열, 연산자"
-description: "PHP의 기본 문법과 변수 시스템을 Zend Engine 메모리 구조와 함께 심층 학습합니다. PHP 변수가 $ 접두사로 선언되고 zval(Zend Value) 구조체에 저장되는 방식(value + type + refcount + is_ref), 가변 변수($$var)의 동적 이름 해석, 타입 저글링(type juggling)의 자동 형변환 규칙(약타입 언어 특성), 문자열 처리(작은따옴표/큰따옴표의 변수 보간 차이, Heredoc/Nowdoc), 연산자 우선순위와 참조(&)의 메모리 구조를 다룹니다."
+description: "PHP의 동적 타입과 zval 구조, 변수·상수 선언 방법, 문자열과 숫자가 섞일 때의 형변환 규칙, 연산자 우선순위를 예제로 정리했습니다. 문자열 보간과 heredoc 표기법도 다룹니다."
 date: 2023-09-18 10:00:00 +0900
 category: php
 tags: [php, variables, data-types, strings, operators, zval, type-juggling]

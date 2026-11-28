@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 국제화(i18n) — @nuxtjs/i18n 모듈이 다국어 라우팅, 번역 파일 로딩, hreflang 메타태그를 생성하는 과정"
 
 
-description: "Nuxt.js의 국제화 모듈인 @nuxtjs/i18n이 다국어 웹사이트를 구축하는 과정을 시스템 레벨에서 심층 학습합니다. i18n 모듈이 nuxt.config.ts의 lang/locales 설정을 읽어 각 로케일별로 별도의 Vue Router 라우트 트리를 생성하는 과정, /ko/about처럼 로케일 접두사가 URL에 추가되는 원리, 번역 파일(locales/ko.json)이 빌드 타임에 정적 JSON으로 번들링되어 런타임에 lazy-loading되는 방식, useLocalePath()와 switchLocalePath()가 현재 로케일과 대상 로케일의 라우트를 매핑하는 과정, hreflang alternate 링크가 각 로케일의 정규 URL을 가리키도록 생성되어 검색 엔진이 다국어 페이지를 올바르게 인덱싱하는 원리, SEO 최적화를 위해 각 로케일별 sitemap과 canonical URL이 생성되는 과정을 다룹니다."
+description: "@nuxtjs/i18n으로 다국어 라우팅을 구성하고 번역 파일을 로딩하는 과정, 언어 전환 시 URL 처리, hreflang 메타태그를 생성하는 방법을 정리했습니다."
 
 
 date: 2024-03-25 10:00:00 +0900

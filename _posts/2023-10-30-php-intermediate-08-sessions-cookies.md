@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 세션과 쿠키 — 세션 핸들러, 쿠키 보안, 캐시 제어"
-description: "PHP의 세션과 쿠키 시스템을 HTTP 프로토콜과 SAPI 레벨에서 심층 학습합니다. 세션 핸들러(파일/Redis/Memcached)가 session_set_save_handler()로 등록되는 과정과 세션 GC(Garbage Collection)의 확률적 실행(gc_probability / gc_divisor), 세션 고정 공격(Session Fixation) 방지를 위한 session_regenerate_id(), 쿠키의 HttpOnly/Secure/SameSite 플래그가 Set-Cookie 헤더에 설정되는 방식, PHP의 출력 버퍼링과 setcookie() 호출 제약(flush 전에 호출), Cache-Control 헤더를 통한 브라우저 캐시 제어를 다룹니다."
+description: "PHP 세션이 핸들러를 통해 데이터를 저장하는 구조, 쿠키 속성(HttpOnly·Secure·SameSite) 설정, 캐시 제어 헤더로 상태를 다루는 방법을 짚었습니다."
 date: 2023-10-30 10:00:00 +0900
 category: php
 tags: [php, session, cookie, security, cache-control, session-handler]

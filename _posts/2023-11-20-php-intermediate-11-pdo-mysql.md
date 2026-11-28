@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP PDO와 MySQL — prepared statements, 트랜잭션, 연결 풀링"
-description: "PHP의 PDO(PHP Data Objects)를 MySQL 프로토콜 레벨에서 심층 학습합니다. PDO가 C 확장(pdo_mysql)으로 MySQL 네이티브 프로토콜(또는 mysqlnd)을 통해 통신하는 과정, prepared statement가 MySQL 서버에서 PREPARE → EXECUTE → DEALLOCATE PREPARE의 세 단계로 실행되는 원리(쿼리 캐싱 + SQL 인젝션 방어), PDO::beginTransaction()이 SET autocommit = 0으로 시작하고 COMMIT/ROLLBACK으로 완료되는 트랜잭션 처리, fetch 스타일(PDO::FETCH_ASSOC/OBJ/CLASS)의 데이터 매핑, PDO의 에러 모드(ERRMODE_EXCEPTION 권장), persistent connection의 연결 풀링 동작을 다룹니다."
+description: "PDO로 prepared statement를 쓰는 이유와 바인딩 방식, 트랜잭션 처리와 예외 모드 설정, 연결 풀링과 지연 연결 옵션을 예제로 정리했습니다. 대량 삽입 시 성능 차이도 비교합니다."
 date: 2023-11-20 10:00:00 +0900
 category: php
 tags: [php, pdo, mysql, database, prepared-statement, transaction]

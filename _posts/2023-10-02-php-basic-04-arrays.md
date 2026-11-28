@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 배열 — 연관 배열, 배열 함수, 다차원 배열, 배열 정렬"
-description: "PHP의 배열 시스템을 Zend Engine 해시 테이블(HashTable) 구조와 함께 심층 학습합니다. PHP 배열이 사실상 Ordered Hash Table(정렬된 해시 테이블)로 구현되어 정수 키와 문자열 키를 동시에 지원하는 원리, array_merge와 + 연산자의 차이(키 중복 시 덮어쓰기 vs 유지), sort/asort/ksort의 정렬 알고리즘(Quick Sort 기반), array_map/array_filter/array_reduce의 콜백 기반 배열 처리, 다차원 배열의 메모리 구조와 순회를 다룹니다."
+description: "PHP 배열이 정렬된 해시 테이블로 구현된 구조, 연관 배열과 다차원 배열 사용법, 정렬 함수별 키 유지 여부와 배열 함수 활용을 정리했습니다. 자주 쓰는 함수 조합도 표로 담았습니다."
 date: 2023-10-02 10:00:00 +0900
 category: php
 tags: [php, arrays, hashing, sort, array-functions]

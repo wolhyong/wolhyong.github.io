@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 컴포넌트와 auto-imports — components/ 디렉토리가 unplugin-vue-components로 전역 등록되는 과정"
 
 
-description: "Nuxt.js의 컴포넌트 시스템과 auto-imports의 내부 동작을 시스템 레벨에서 심층 학습합니다. unplugin-vue-components가 components/ 디렉토리를 재귀적으로 스캔하여 파일명을 PascalCase 컴포넌트 이름으로 변환하고 Vite의 transform 훅에서 템플릿 태그명과 매칭시키는 과정, Lazy 접두사가 defineAsyncComponent()로 변환되어 별도의 JavaScript 청크로 분할되는 원리, .client.vue 접미사가 SSR 단계에서 <div> placeholder로 대체되고 하이드레이션 후에만 클라이언트에서 마운트되는 방식, .server.vue가 서버에서만 렌더링되고 클라이언트에는 직렬화된 HTML만 전달되는 과정, Vue의 slot 시스템이 $slots 객체를 통해 VNode 배열을 주입하는 내부 동작을 다룹니다."
+description: "components/ 디렉토리의 .vue 파일이 unplugin-vue-components로 전역 등록되는 과정, 자동 import 규칙과 이름 충돌 회피, props·emit 사용법을 다룹니다."
 
 
 date: 2024-02-05 10:00:00 +0900

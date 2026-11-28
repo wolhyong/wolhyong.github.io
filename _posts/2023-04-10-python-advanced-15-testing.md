@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 테스팅 — unittest, pytest, mocking, TDD, 통합 테스트"
-description: "Python 테스팅을 도구와 방법론까지 심층 학습합니다. unittest의 TestLoader가 discover()로 테스트를 수집하는 과정과 setUp/tearDown의 실행 순서, pytest의 fixture 시스템과 conftest.py의 계층 구조, unittest.mock의 patch()가 속성을 임시로 대체하는 Mechanism, TDD의 Red-Green-Refactor 사이클을 다룹니다."
+description: "unittest와 pytest의 구조 차이, fixture와 mock으로 의존성을 분리하는 방법, TDD 사이클과 통합 테스트를 나눠 쓰는 기준을 예제로 정리했습니다."
 date: 2023-04-10 10:00:00 +0900
 category: python
 tags: [python, testing, unittest, pytest, mocking, tdd, pytest-fixture]

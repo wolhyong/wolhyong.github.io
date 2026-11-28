@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 객체지향 프로그래밍 — 클래스, 상속, 인터페이스, 트레이트, 의존성 주입"
-description: "PHP의 객체지향 프로그래밍을 Zend Engine 객체 모델 레벨에서 심층 학습합니다. PHP 클래스가 내부적으로 `zend_class_entry` 구조체(properties_info, methods_table, ce_flags, default_properties_table)로 저장되는 방식, 객체가 `zend_object` 구조체(ce, properties, handlers)로 인스턴스화되는 과정, 가시성(public/protected/private)이 `zend_property_info`의 `flags`로 컴파일 타임에 검사되는 원리, 인터페이스와 트레이트의 충돌 해소(트레이트 우선순위: 자식 클래스 > 트레이트 > 부모 클래스), 의존성 주입(DI) 패턴과 ReflectionClass를 통한 자동 와이어링을 다룹니다."
+description: "PHP 클래스가 Zend Engine에서 객체로 만들어지는 과정, 상속·인터페이스·트레이트를 조합하는 기준, 생성자 프로퍼티 프로모션과 의존성 주입 사용법을 정리했습니다."
 date: 2023-10-23 10:00:00 +0900
 category: php
 tags: [php, oop, class, inheritance, interface, trait, dependency-injection]

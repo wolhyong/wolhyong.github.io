@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 레이아웃 시스템 — definePageMeta와 layouts/ 디렉토리가 useHead로 SEO 메타데이터를 주입하는 과정"
 
 
-description: "Nuxt.js의 레이아웃 시스템과 SEO 메타데이터 관리의 내부 동작을 시스템 레벨에서 심층 학습합니다. layouts/ 디렉토리의 .vue 파일이 Vue Router의 route.meta.layout에 등록되어 페이지 렌더링 시 slot 기반으로 감싸지는 과정, useHead()와 useSeoMeta()가 @unhead/vue 라이브러리를 통해 <head>의 title/meta/script/link 요소를 DOM API로 조작하는 원리, definePageMeta()의 layout/middleware/name/key 프로퍼티가 .nuxt/pages/에 컴파일 타임에 저장되는 방식, 레이아웃 전환 시 Transition 컴포넌트의 enter/leave 애니메이션이 Vue의 <component :is> 동적 컴포넌트 교체로 동작하는 과정을 다룹니다."
+description: "layouts/ 디렉토리의 .vue 파일이 라우트 메타와 연결되어 페이지를 감싸는 구조, definePageMeta로 레이아웃을 바꾸는 법, useHead로 메타태그를 주입하는 과정을 다룹니다."
 
 
 date: 2024-01-29 10:00:00 +0900

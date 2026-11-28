@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 테스팅 — testing 패키지, table-driven tests, 커버리지, 벤치마크, fuzzing과 mock"
-description: "Go의 테스팅 시스템을 표준 라이브러리 레벨에서 학습합니다. testing.T 구조체가 테스트 함수의 컨텍스트를 관리하고 t.Error/t.Fatal/t.Skip/t.Log 등으로 테스트 결과를 제어하는 방식, Go 1.18에 도입된 fuzzing이 입력을 변형(mutating)하면서 예상치 못한 버그를 찾는 방법, go test -cover로 전체 테스트 커버리지를 측정하고 -coverprofile로 파일로 내보내 상세 분석하는 방법, table-driven tests 패턴이 입력 케이스를 구조체 배열로 정의하여 모든 테스트 케이스를 체계적으로 검증하는 Go의 관행, testing.B 구조체로 벤치마크를 실행하고 b.ResetTimer()로 설정 시간을 제외하며 b.N으로 반복 횟수를 자동 조절하는 방식, httptest.Server로 HTTP 서버 목(mock)을 생성하여 클라이언트 코드를 통합 테스트하는 방식을 다룹니다."
+description: "Go testing 패키지로 테이블 주도 테스트를 작성하는 방법과 커버리지 측정, 벤치마크, fuzzing, 목을 쓰는 자리를 예제로 정리했습니다. 병렬 실행과 테스트 격리 팁도 함께 담았습니다."
 date: 2025-04-07 10:00:00 +0900
 category: go
 tags: [go, golang, testing, table-driven, coverage, benchmark, fuzzing, mock]

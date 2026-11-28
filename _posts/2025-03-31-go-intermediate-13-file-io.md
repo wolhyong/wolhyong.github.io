@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 파일 입출력 — os.File, io.Reader/Writer 인터페이스, bufio 버퍼링, encoding/csv/json"
-description: "Go의 파일 입출력 시스템을 표준 라이브러리 레벨에서 학습합니다. os.OpenFile()이 syscall.Open()을 호출하여 OS의 파일 디스크립터(fd)를 획득하고 os.File 구조체에 래핑하는 과정, io.Reader의 Read(p []byte) (n int, err error) 메서드가 파일 디스크립터를 통해 커널 공간에서 사용자 공간으로 데이터를 복사하는 방식, io.Writer의 Write(p []byte) (n int, err error)가 반대 방향으로 데이터를 쓰는 과정, bufio.Reader/bufio.Writer가 내부 버퍼(기본 4096바이트)를 사용하여 시스템 콜 횟수를 줄이는 버퍼링 기법, io.Copy가 32KB 버퍼로 Reader에서 Writer로 스트리밍 복사하는 sendfile(2) 시스템 콜 활용, encoding/csv와 encoding/json 패키지가 io.Reader/io.Writer 인터페이스를 기반으로 동작하여 스트리밍 읽기/쓰기를 지원하는 방식을 다룹니다."
+description: "os.File과 io.Reader/Writer 인터페이스로 파일을 다루는 기본, bufio 버퍼링의 효과, encoding/csv·json으로 데이터를 읽고 쓰는 방법을 예제로 설명합니다."
 date: 2025-03-31 10:00:00 +0900
 category: go
 tags: [go, golang, file-io, reader, writer, bufio, csv, json, streaming]

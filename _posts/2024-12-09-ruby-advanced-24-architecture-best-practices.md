@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Ruby 아키텍처와 베스트 프랙티스 — 프로젝트 구조, SOLID 원칙, Ruby 방식의 코드, 디자인 패턴"
-description: "Ruby 프로젝트의 아키텍처 설계와 베스트 프랙티스를 시스템 레벨에서 심층 학습합니다. 도메인 기반 프로젝트 구조가 app/lib/spec 디렉토리를 features/services/domains 레이어로 분리하는 방식, SOLID 원칙(Single Responsibility/Open-Closed/Liskov Substitution/Interface Segregation/Dependency Inversion)을 Ruby에서 Duck Typing과 Mixin으로 구현하는 방법, Ruby 방식의 코드 작성(POLA: Principle of Least Surprise, TIMTOWTDI의 적절한 사용, 메서드 체이닝과 블록의 활용), 전략/팩토리/옵저버/데코레이터 패턴을 Ruby의 Proc/Module/prepend로 구현하는 방식, 성능/보안/유지보수성을 고려한 코드 리뷰 체크리스트를 다룹니다."
+description: "Ruby 프로젝트를 도메인 단위로 나누는 구조와 SOLID 원칙 적용, Rails 없이도 통하는 디자인 패턴, Ruby다운 코드를 위한 관용 표현을 정리했습니다."
 date: 2024-12-09 10:00:00 +0900
 category: ruby
 tags: [ruby, architecture, best-practices, solid, design-patterns, code-quality]

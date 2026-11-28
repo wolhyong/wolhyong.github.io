@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 클래스와 객체 — class 키워드, initialize, attr_accessor, self, 메서드 가시성"
 
 
-description: "Ruby의 클래스와 객체 시스템을 시스템 레벨에서 심층 학습합니다. class 키워드가 Class.new를 호출하여 새로운 Class 객체를 생성하고 상수에 할당하는 과정, initialize가 new 호출 시 C 레벨에서 rb_class_new_instance()로 allocate 후 initialize를 호출하는 두 단계 객체 생성 방식, attr_accessor/attr_reader/attr_writer가 Module#define_method로 getter/setter 메서드를 동적으로 생성하는 과정, public/protected/private이 Module#public/protected/private 메서드를 호출하여 이후 정의되는 메서드의 가시성을 제어하는 방식, self가 현재 메서드의 레시버를 나타내며 메서드 호출의 기본 레시버가 되는 원리, class << self가 singleton 클래스에 메서드를 정의하여 클래스 메서드와 동일한 효과를 내는 과정을 다룹니다."
+description: "class 키워드가 Class 객체를 만들고 new가 인스턴스를 생성하는 과정, initialize와 attr_accessor, self의 의미, 메서드 가시성 설정을 예제로 살펴봅니다."
 
 
 date: 2024-08-26 10:00:00 +0900

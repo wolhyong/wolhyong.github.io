@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 제어문 — if/else 조건문, match 패턴 매칭, loop/for/while 반복문과 break/continue/레이블"
-description: "Rust의 제어문을 컴파일러 레벨에서 학습합니다. if/else는 조건식으로 표현식이며 불리언이 아닌 타입도 조건으로 사용할 수 있습니다. match는 패턴 매칭으로 모든 가능한 경우를 컴파일 타임에 검사하며 exhaustive하도록 강제합니다. loop는 무한 루프로 break로 탈출하며 레이블과 함께 사용하여 중첩 루프를 제어할 수 있습니다. for는 이터레이터 기반 반복으로 범위, 컬렉션을 순회하며 while은 조건식이 true인 동안 반복합니다. if let과 while let은 패턴 매칭을 간소화하는 구문 설탕(syntactic sugar)입니다. Rust의 제어문은 표현식으로 값을 반환할 수 있어 함수형 스타일의 코드를 작성할 수 있습니다."
+description: "Rust의 if와 match가 값을 반환하는 표현식이라는 점, match로 패턴을 나눠 처리하는 방법, loop·for·while과 레이블로 중첩 반복을 제어하는 예제를 정리했습니다."
 date: 2025-06-06 10:00:00 +0900
 category: rust
 tags: [rust, control-flow, if-else, match, loop, for, while, pattern-matching]

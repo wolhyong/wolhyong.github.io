@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHPUnit 테스팅 — 단위 테스트, 목 객체, 데이터 제공자, 코드 커버리지"
-description: "PHPUnit을 사용한 테스팅 전략을 PHPUnit 프레임워크의 내부 동작 레벨에서 심층 학습합니다. PHPUnit이 리플렉션(ReflectionClass)으로 테스트 클래스의 @test 어노테이션 또는 test* 메서드를 수집하고, 각 테스트 메서드마다 새 인스턴스를 생성하여 격리(isolation)하는 과정(setUpBeforeClass → setUp → test → tearDown → tearDownAfterClass), 목 객체(Mock)가 PHPUnit의 MockObject 생성기로 동적 클래스(프록시)를 생성하고 expect 메서드의 매처(matcher)를 등록하는 원리, 데이터 제공자(data provider)가 @dataProvider 어노테이션으로 메서드에서 반환된 배열을 각 테스트 케이스로 분할하는 방식, 코드 커버리지의 Xdebug/PCOV 기반 라인/브랜치 커버리지 측정과 HTML 리포트 생성을 다룹니다."
+description: "PHPUnit으로 단위 테스트를 작성하고 목 객체로 의존성을 분리하는 방법, 데이터 제공자와 코드 커버리지 측정, 리플렉션 기반 테스트 수집 과정을 다룹니다. 테스트 실행 속도 팁도 담았습니다."
 date: 2023-12-25 10:00:00 +0900
 category: php
 tags: [php, phpunit, testing, mock, code-coverage, tdd]

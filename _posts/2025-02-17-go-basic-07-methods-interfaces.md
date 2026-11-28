@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 메서드와 인터페이스 — 리시버 기반 메서드, 덕 타이핑 인터페이스, 빈 인터페이스와 타입 단언"
-description: "Go의 메서드와 인터페이스 시스템을 컴파일러와 런타임 레벨에서 학습합니다. func 키워드와 리시버(receiver)는 타입에 메서드를 연결합니다. 값 리시버(func (t Type) Method())는 복사본을 수정하고, 포인터 리시버(func (t *Type) Method())는 원본을 수정합니다. 값 리시버는 포인터와 값 모두 호출 가능하지만 포인터 리시버는 값 호출 시 자동 역참조됩니다. 인터페이스는 runtime.iface 구조체(tab *itab + data unsafe.Pointer)로 구현되어 메서드 테이블(itab)과 데이터를 저장합니다. 덕 타이핑(duck typing)은 명시적 implements 선언 없이 메서드 집합으로 타입 적합성을 검사합니다. 빈 인터페이스(interface{})는 모든 타입을 담는 any 타입 별칭(Go 1.18+)으로 동작하며 runtime.eface 구조체(type *_type + data unsafe.Pointer)로 구현됩니다. 타입 단언(type assertion) x.(T)는 인터페이스 값에서 구체적 타입을 추출하고, 콤마-ok 패턴(value, ok := x.(T))은 안전한 검사 방법입니다. 타입 스위치(type switch)와 인터페이스는 의존성 주입(Dependency Injection) 패턴에도 활용됩니다."
+description: "Go에서 메서드를 값 리시버와 포인터 리시버로 나눠 정의할 때 생기는 차이, 인터페이스가 메서드 집합만으로 타입을 판별하는 덕 타이핑, 빈 인터페이스와 타입 단언·타입 스위치 활용법을 코드로 확인합니다."
 date: 2025-02-17 10:00:00 +0900
 category: go
 tags: [go, golang, methods, interfaces, duck-typing, type-assertion, iface, eface, generics]

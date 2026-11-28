@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 함수 — 매개변수와 반환값, 문 vs 표현식, 클로저와 고차 함수, 캡처 규칙"
-description: "Rust의 함수 시스템을 컴파일러 레벨에서 학습합니다. fn 키워드로 함수를 정의하며 매개변수 타입을 명시해야 합니다. 반환 타입은 -> 화살표로 지정하며 표현식의 마지막 값이 자동으로 반환됩니다(세미콜론 없음). 문(statement)은 값을 반환하지 않고 표현식(expression)은 값을 반환합니다. 클로저(closure)는 익명 함수로 환경을 캡처할 수 있으며 Fn/FnMut/FnOnce 트레이트로 캡처 방식이 결정됩니다. 고차 함수는 함수를 인자로 받거나 반환할 수 있습니다. Rust의 함수는 일급 시민(first-class citizen)으로 변수에 할당하고 전달할 수 있습니다. 함수 포인터와 클로저의 차이를 설명합니다."
+description: "Rust 함수의 매개변수와 반환값 표기, 문과 표현식을 구분하는 규칙, 클로저가 변수를 캡처하는 세 가지 방식과 고차 함수 활용을 예제 코드로 정리했습니다. 반환값 생략 규칙도 짚습니다."
 date: 2025-06-09 10:00:00 +0900
 category: rust
 tags: [rust, functions, closures, higher-order-functions, fn, fnmut, fnonce]

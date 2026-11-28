@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 함수 — 스코프, 인자 전달, 클로저, 람다 완벽 이해"
-description: "Python 함수의 내부 동작 원리와 실전 사용법을 학습합니다. 함수가 CPython에서 PyFunctionObject로 표현되는 방식, 인자 전달(pass by assignment)의 실제 메커니즘, LEGB 스코프 규칙, 클로저가 외부 변수를 캡처하는 방법, 람다 함수의 바이트코드와 성능을 다룹니다."
+description: "Python 함수의 인자 전달 방식과 스코프 규칙, 클로저가 변수를 기억하는 원리, 람다와 가변 인자·키워드 인자 활용을 예제로 정리했습니다. 재귀와 내부 함수도 다룹니다."
 date: 2023-01-23 10:00:00 +0900
 category: python
 tags: [python, functions, scope, closure, lambda, arguments, first-class]

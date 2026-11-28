@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 렌더링 모드 — SSR, SSG, SPA, Hybrid 전략의 내부 동작과 routeRules 설정"
 
 
-description: "Nuxt.js의 네 가지 렌더링 모드(SSR, SSG, SPA, Hybrid)의 내부 동작을 시스템 레벨에서 심층 학습합니다. Universal(SSR) 모드에서 vue/server-renderer의 renderToString()이 Vue 컴포넌트 트리를 직렬화하고 __NUXT__ payload를 HTML에 인라인으로 포함하는 과정, SSG 모드에서 Nitro prerenderer가 routeRules의 prerender:true 페이지를 puppeteer/happy-dom으로 방문하여 정적 HTML을 생성하는 방식, SPA 모드에서 ssr:false가 빌드 타임에 서버 번들을 생성하지 않고 CSR 전용 HTML을 출력하는 원리, Hybrid 모드에서 routeRules의 swr TTL이 Cache-Control 헤더를 설정하고 Stale-While-Revalidate 패턴으로 동작하는 과정, npm run generate가 Nitro 엔진의 정적 사이트 생성 파이프라인을 실행하는 과정을 다룹니다."
+description: "Nuxt의 SSR·SSG·SPA·Hybrid 렌더링 모드가 각각 언제 HTML을 만들고 하이드레이션하는지, routeRules로 페이지별 모드를 지정하는 방법을 비교합니다."
 
 
 date: 2024-03-04 10:00:00 +0900

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 의존성 주입 — DI 컨테이너, IoC 컨테이너, 서비스 수명 주기, Microsoft.Extensions.DependencyInjection"
-description: "C#의 의존성 주입 시스템을 실무 레벨에서 학습합니다. 의존성 주입(DI)은 객체의 의존성을 외부에서 주입하여 결합도를 낮추고 테스트 가능성을 높입니다. IoC(Inversion of Control) 컨테이너는 객체 생성과 수명 주기를 관리하며 Microsoft.Extensions.DependencyInjection이 표준 DI 컨테이너입니다. 서비스 수명 주기는 Transient(매번 새 인스턴스), Scoped(요청 범위), Singleton(애플리케이션 전체)로 구분됩니다. AddTransient, AddScoped, AddSingleton으로 서비스를 등록하며 IServiceProvider로 서비스를 해결합니다. 생성자 주입, 메서드 주입, 속성 주입을 지원하며 ILogger, IConfiguration 등의 내장 서비스를 제공합니다."
+description: "Microsoft.Extensions.DependencyInjection으로 서비스를 등록하고 주입하는 방법, Singleton·Scoped·Transient 수명 주기 차이와 IoC 컨테이너 구성 원리를 정리했습니다."
 date: 2025-08-29 10:00:00 +0900
 category: csharp
 tags: [csharp, dependency-injection, ioc-container, service-lifetime, microsoft-extensions-dependencyinjection]

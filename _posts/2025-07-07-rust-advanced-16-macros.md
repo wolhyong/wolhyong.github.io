@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 매크로 — 선언형 매크로, 절차형 매크로, derive 매크로, 매크로 시스템, 메타 프로그래밍"
-description: "Rust의 매크로 시스템을 컴파일러 레벨에서 학습합니다. 선언형 매크로(declarative macro)는 macro_rules!로 패턴 매칭 기반 코드 생성을 수행하며 match와 유사한 구문을 사용합니다. 절차형 매크로(procedural macro)는 함수처럼 입력 토큰을 처리하여 코드를 생성하며 TokenStream을 조작합니다. derive 매크로는 #[derive] 속성으로 트레이트 구현을 자동화하며 DeriveInput을 파싱합니다. attribute-like 매크로는 사용자 정의 속성을 추가하며 function-like 매크로는 함수 호출처럼 사용됩니다. Rust 매크로는 컴파일 타임에 확장되어 런타임 오버헤드가 없으며 강력한 메타 프로그래밍을 제공합니다."
+description: "Rust의 선언형 매크로와 절차형 매크로를 직접 만들어 보며, derive 매크로가 구조체에 코드를 붙이는 원리와 매크로를 디버깅하는 방법을 예제로 정리했습니다."
 date: 2025-07-07 10:00:00 +0900
 category: rust
 tags: [rust, macros, declarative-macros, procedural-macros, derive-macros, meta-programming]

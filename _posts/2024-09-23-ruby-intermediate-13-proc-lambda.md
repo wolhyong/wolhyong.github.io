@@ -7,7 +7,7 @@ layout: post
 title: "Ruby Proc과 Lambda 심층 — 클로저의 변수 캡처, 커링, arity, Binding 객체"
 
 
-description: "Ruby의 Proc과 Lambda의 고급 기능을 시스템 레벨에서 심층 학습합니다. 클로저(closure)가 생성된 당시의 지역 변수 환경(env)을 Proc 객체의 iseq 포인터와 함께 YARV의 env 구조체에 캡처하여 블록이 정의된 스코프의 변수에 접근하고 수정할 수 있는 원리, Proc#arity와 Proc#parameters가 각각 인자 개수와 인자 이름/종류를 반환하는 방식, Proc#curry가 부분 적용(partial application)을 구현하여 다중 인자 Proc을 단일 인자 Proc 체인으로 변환하는 과정, Binding 객체가 현재 실행 컨텍스트의 지역 변수/self/블록 참조를 캡슐화하여 eval()에 전달함으로써 다른 스코프의 변수에 접근할 수 있게 하는 방식, Proc#source_location이 Proc이 정의된 파일과 라인 번호를 반환하여 디버깅에 활용되는 과정을 다룹니다."
+description: "Proc과 Lambda가 변수를 캡처하는 방식과 return 동작 차이, arity와 커링, Binding으로 문맥을 들여다보는 방법을 예제 코드로 확인합니다. 블록과의 차이도 짚습니다."
 
 
 date: 2024-09-23 10:00:00 +0900

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 언어 소개 — JetBrains가 설계한 현대적 프로그래밍 언어의 철학과 생태계"
-description: "Kotlin은 JetBrains가 설계한 현대적 프로그래밍 언어로 JVM, Android, Kotlin/Native, Kotlin/JS를 지원합니다. Kotlin은 널 안전성, 확장 함수, 데이터 클래스, 코루틴 등의 기능을 제공하며 Java와 100% 상호 운용 가능합니다. Kotlin은 간결하고 표현력이 풍부하며 안전한 코드를 작성할 수 있게 합니다. Kotlin 컴파일러는 Kotlin 코드를 Java 바이트코드로 변환하여 JVM에서 실행합니다. Kotlin은 Android 개발의 공식 언어이며 Spring Boot, Ktor 등의 프레임워크를 지원합니다."
+description: "Kotlin이 만들어진 배경과 간결함·널 안전성이라는 설계 목표, JVM·Native·JS로 컴파일되는 구조, 자바 코드와 상호운용되는 지점을 정리했습니다. 첫 프로젝트 실행 절차도 담았습니다."
 date: 2025-09-22 10:00:00 +0900
 category: kotlin
 tags: [kotlin, introduction, jvm, android, coroutines, null-safety]

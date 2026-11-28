@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Node.js REST API 설계 — HTTP 메서드, 상태 코드, HATEOAS 완전 이해"
-description: "RESTful API의 진정한 의미와 설계 원칙 — HTTP 메서드의 멱등성과 안전성이 데이터 무결성에 미치는 영향, HATEOAS가 진정한 REST의 핵심인 이유, URL 설계 패턴 7가지 비교, 상태 코드 선택 가이드, 입력 검증과 에러 응답 표준화, 페이지네이션과 API 문서화까지 실전 예제로 마스터"
+description: "REST가 HTTP 메서드와 상태 코드를 어떻게 활용하는지, 리소스 설계와 HATEOAS의 의미, Node.js로 API를 구성할 때 자주 틀리는 지점을 정리했습니다."
 date: 2022-06-13 10:00:00 +0900
 category: nodejs
 tags: [nodejs, rest-api, api-design, express, http-methods, idempotent, hateoas, openapi, swagger, validation, pagination, error-handling, api-versioning]

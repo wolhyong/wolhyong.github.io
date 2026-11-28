@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 소유권 심화 — 대여 규칙, 라이프타임, 댕글링 참조 방지, 슬라이스"
-description: "Rust의 소유권 시스템을 컴파일러 레벨에서 심화 학습합니다. 대여 규칙(borrowing rules)은 데이터에 여러 불변 참조 또는 단일 가변 참조만 허용하여 데이터 레이스를 방지합니다. 댕글링 참조(dangling reference)는 컴파일러가 라이프타임(lifetime)을 추적하여 방지합니다. 라이프타임은 참조가 유효한 범위를 나타내며 'a 문법으로 명시할 수 있습니다. 슬라이스는 컬렉션의 연속된 요소 참조로 &str은 문자열 슬라이스, &[T]는 배열 슬라이스입니다. Rust 컴파일러는 빌림 검사기(borrow checker)로 대여 규칙을 컴파일 타임에 검사합니다."
+description: "Rust의 대여 규칙과 라이프타임 표기, 댕글링 참조를 컴파일 타임에 막는 원리, 슬라이스가 원본 데이터를 빌려 쓰는 방식을 예제로 설명합니다. 라이프타임 파라미터를 읽는 요령도 다룹니다."
 date: 2025-06-16 10:00:00 +0900
 category: rust
 tags: [rust, ownership, borrowing, lifetime, slice, dangling-reference, borrow-checker]

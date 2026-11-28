@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 캐싱과 성능 최적화 — defineCachedEventHandler와 SWR 전략이 Nitro 서버에서 동작하는 과정"
 
 
-description: "Nuxt.js의 서버 사이드 캐싱 시스템이 Nitro 엔진에서 동작하는 과정을 시스템 레벨에서 심층 학습합니다. defineCachedEventHandler()가 unstorage 어댑터로 캐시 저장소(메모리/Redis/파일시스템)를 추상화하고 응답을 직렬화하여 TTL만큼 보관하는 과정, SWR(Stale-While-Revalidate) 전략에서 캐시가 만료된 후 첫 요청에는 만료된 캐시를 반환하고 백그라운드에서 새 응답을 생성하는 방식, defineCachedEventHandler와 defineEventHandler의 응답 처리 파이프라인 차이, Nitro의 routeRules swr 옵션이 페이지 레벨 캐싱에 Cache-Control 헤더를 설정하는 과정, unstorage의 다양한 드라이버(redis/fs/cloudflare-kv)가 추상화 레이어를 통해 일관된 API로 동작하는 원리를 다룹니다."
+description: "defineCachedEventHandler로 API 응답을 캐싱하고 SWR 방식으로 갱신하는 과정, routeRules에서 캐시 헤더를 지정하는 방법과 무효화 시점을 정리했습니다."
 
 
 date: 2024-04-08 10:00:00 +0900

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 에러 처리 — Result와 Option 체이닝, ? 연산자, 커스텀 에러 타입, panic과 unwrap"
-description: "Rust의 에러 처리 시스템을 실무 레벨에서 학습합니다. Result<T, E>는 성공(Ok) 또는 실패(Err)를 표현하며 예외 대신 타입 안전한 에러 처리를 제공합니다. Option<T>는 값이 있거나 없음을 표현하며 널 안전성을 보장합니다. ? 연산자는 에러 전파를 간소화하는 구문 설탕으로 Result 함수에서 사용됩니다. unwrap과 expect는 에러 발생 시 패닉을 일으키며 프로토타이핑에 사용됩니다. 커스텀 에러 타입은 std::error::Error 트레이트를 구현하여 에러를 구조화합니다. map, and_then, or_else 등의 메서드로 체이닝을 수행하며 함수형 에러 처리가 가능합니다. panic!은 복구 불가능한 에러에 사용되며 스택 트레이스를 출력합니다."
+description: "Result와 Option을 체이닝해 에러를 전파하는 방법, ? 연산자가 하는 일, 커스텀 에러 타입을 정의하고 panic과 unwrap을 구분해 쓰는 기준을 정리했습니다."
 date: 2025-06-20 10:00:00 +0900
 category: rust
 tags: [rust, error-handling, result, option, panic, unwrap, custom-error]

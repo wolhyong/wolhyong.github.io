@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 이미지 최적화와 폰트 — @nuxt/image의 리사이징/WebP 변환과 @nuxtjs/fontaine의 FOUT 방지 과정"
 
 
-description: "Nuxt.js에서 이미지와 폰트를 최적화하는 과정을 시스템 레벨에서 심층 학습합니다. @nuxt/image 모듈이 NuxtImg 컴포넌트의 src/width/height/quality/fit 옵션을 기반으로 이미지 CDN URL을 생성하고 최적화 파라미터를 쿼리스트링에 추가하는 과정, WebP 변환이 Accept 헤더의 image/webp 지원 여부에 따라 자동으로 이미지 형식을 선택하는 방식, @nuxtjs/fontaine 모듈이 로컬 폰트 파일의 메트릭(유니퍼, 어센더, 디센더)을 추출하여 CSS font-size-adjust로 fallback 폰트의 레이아웃 시프트를 방지하는 원리, Google Fonts의 woff2 파일이 @nuxtjs/google-fonts로 프로젝트에 번들링되어 외부 요청 없이 셀프호스팅되는 과정, 이미지 지연 로딩(loading=lazy)과 preload/preconnect 힌트가 LCP(Largest Contentful Paint)에 미치는 영향을 다룹니다."
+description: "@nuxt/image가 이미지를 리사이징하고 WebP로 변환하는 설정, @nuxtjs/fontaine으로 폰트 지표를 맞춰 FOUT와 CLS를 줄이는 방법을 측정값과 함께 정리했습니다."
 
 
 date: 2024-04-01 10:00:00 +0900

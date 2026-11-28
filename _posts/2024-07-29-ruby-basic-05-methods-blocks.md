@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 메서드와 블록 — 메서드 정의, 인자 종류, 블록/Proc/Lambda의 차이와 변환 과정"
 
 
-description: "Ruby의 메서드와 블록 시스템을 시스템 레벨에서 심층 학습합니다. def 키워드가 TOPLEVEL/BODY 태그로 파싱되어 클래스에 메서드를 정의하고 YARV의 iseq에 저장되는 과정, 필수/선택/기본값/키워드/배열/블록 인자의 여섯 가지 종류와 파싱 규칙, 블록(do...end/{ })이 Proc 객체로 변환되지 않고 YARV 스택에서 iseq 포인터로 직접 전달되어 yield로 실행되는 과정, Proc.new가 블록을 Proc 객체로 변환하여 변수에 저장 가능하게 하는 방식, Lambda가 Proc과 달리 인자 개수를 검사하고 return이 람다를 감싼 메서드가 아닌 람다 자체에서만 반환되는 차이, Symbol#to_proc가 &를 통해 블록으로 변환되는 간결한 표현을 다룹니다."
+description: "Ruby 메서드의 인자 종류(기본값·키워드·splat)와 블록을 받는 방법, Proc·Lambda와 블록이 서로 변환되는 과정을 예제로 정리했습니다. 블록의 변수 스코프도 함께 설명합니다."
 
 
 date: 2024-07-29 10:00:00 +0900

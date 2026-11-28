@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 배열과 슬라이스 — 고정 크기 배열의 메모리 배치와 동적 슬라이스의 Slice Header 구조, append/slice/copy의 내부 동작"
-description: "Go의 배열과 슬라이스 메모리 구조를 심층 학습합니다. 배열([n]T)는 고정 크기로 스택이나 힙에 연속 메모리 블록을 할당하며 인덱스로 직접 접근합니다. 슬라이스([]T)는 reflect.SliceHeader(Data unsafe.Pointer + Len int + Cap int)로 구현되어 배열 일부를 참조하는 동적 뷰를 제공합니다. make([]T, len, cap)는 runtime.makeslice()를 호출해 힙에 backing array를 할당하고 SliceHeader를 초기화합니다. append()는 cap이 충분하면 기존 배열에 요소를 추가하고, 부족하면 runtime.growslice()로 2배 또는 1.25배로 메모리를 재할당합니다. slice[i:j]는 새로운 배열을 만들지 않고 원본을 참조해 부분 문자열을 처리하므로 메모리 누수 위험이 있습니다. copy()는 memmove() 시스템 콜 수준에서 메모리 블록을 복사합니다. range for 슬라이스 순회는 컴파일러가 최적화합니다."
+description: "Go 배열의 고정 크기 메모리 배치와 슬라이스 헤더(포인터·길이·용량) 구조, append가 재할당되는 조건, copy와 부분 슬라이스가 원본에 미치는 영향을 다룹니다."
 date: 2025-02-03 10:00:00 +0900
 category: go
 tags: [go, golang, arrays, slices, slice-header, append, make, copy, memory]

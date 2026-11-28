@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 배열과 해시 — Array의 동적 확장, Hash의 해시 테이블 구조, 고급 컬렉션 메서드"
 
 
-description: "Ruby의 배열(Array)과 해시(Hash)의 내부 구조와 고급 메서드를 시스템 레벨에서 심층 학습합니다. Array가 C 레벨에서 RArray 구조체로 구현되어 내부적으로 VALUE* 포인터 배열을 관리하며 요소 추가 시 1.5배씩 동적 확장(capa 재할당)하는 과정, push/pop/shift/unshift가 각각 배열의 앞/뒤에서 요소를 추가/제거할 때 발생하는 메모리 이동(shift는 모든 요소를 한 칸씩 앞으로 이동), Hash가 st_table(심볼 테이블) 기반의 해시 테이블로 구현되어 key의 hash 값을 버킷 인덱스로 변환하고 충돌 시 체이닝으로 해결하는 방식, default_proc가 Hash#[] 호출 시 키가 없을 때 동적 기본값을 생성하는 Proc 실행 과정, Array#&/Array#|/Array#- 등의 집합 연산자가 내부적으로 해시를 사용하여 O(n)으로 동작하는 방식, splat 연산자(*)가 배열을 풀어 여러 인자로 변환하는 과정을 다룹니다."
+description: "Ruby 배열의 동적 확장과 얕은 복사 함정, 해시 테이블 구조, map·select·reduce 같은 컬렉션 메서드를 상황별로 골라 쓰는 기준을 예제와 함께 다룹니다."
 
 
 date: 2024-08-05 10:00:00 +0900

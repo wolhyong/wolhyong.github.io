@@ -7,7 +7,7 @@ layout: post
 title: "Ruby Enumerable과 Lazy Enumerator — 템플릿 메서드 패턴, 지연 평가, 무한 시퀀스"
 
 
-description: "Ruby의 Enumerable 모듈과 Lazy Enumerator의 고급 기능을 시스템 레벨에서 심층 학습합니다. Enumerable 모듈의 60여 개 메서드가 each 메서드만으로 구현되는 템플릿 메서드 패턴(Template Method Pattern)의 구조와 Ruby VM이 이러한 메서드들을 C 레벨에서 최적화하는 방식, Enumerator::Lazy가 map/select/filter_map을 지연 평가(lazy evaluation)하여 중간 배열을 생성하지 않고 최종 결과만을 생성하는 과정, lazy 체인에서 take(n)이 평가를 조기 종료시키는 방식(무한 시퀀스에서 유용), Enumerator.new(yield)와 Enumerator.produce로 사용자 정의 생성기를 만드는 방법, Enumerator#next와 Enumerator#rewind로 외부 반복자 패턴을 구현하는 방식을 다룹니다."
+description: "Enumerable이 each 하나로 map·select·reduce를 만들어내는 템플릿 메서드 구조, Lazy Enumerator의 지연 평가로 무한 시퀀스를 다루는 방법을 예제로 설명합니다."
 
 
 date: 2024-10-07 10:00:00 +0900

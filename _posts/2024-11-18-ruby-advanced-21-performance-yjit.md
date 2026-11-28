@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Ruby 성능 최적화 — YJIT JIT 컴파일러, Benchmark/Profile, 메모리 최적화, GC 튜닝"
-description: "Ruby 애플리케이션의 성능 최적화 방법을 시스템 레벨에서 심층 학습합니다. YJIT(Yet Another JIT)가 Ruby 3.1+에서 기본 활성화되어 iseq(명령어 시퀀스)를 런타임에 x86_64/AArch64 기계어로 컴파일하여 특정 코드 경로의 실행 속도를 30~60% 향상시키는 과정, Benchmark.bm과 Benchmark.bmbm이 wall clock 시간을 측정하여 코드 조각의 성능을 비교하는 방식, StackProf이 Signal.trap(:PROF)로 샘플링 프로파일링을 수행하여 CPU 시간을 가장 많이 소비하는 메서드를 식별하는 과정, ObjectSpace로 메모리 할당을 추적하여 GC(Garbage Collection) 부담이 큰 코드를 찾는 방법, Ruby GC의 Generational Mark&Sweep 알고리즘(Young 객체와 Old 객체를 구분하여 마킹)을 이해하고 GC.disable/GC.start로 GC 동작을 제어하는 방식을 다룹니다."
+description: "YJIT가 바이트코드를 기계어로 바꾸는 방식, Benchmark와 stackprof로 병목을 찾는 절차, GC 파라미터 조정과 메모리 최적화 사례를 다룹니다. 메모리 프로파일링도 다룹니다."
 date: 2024-11-18 10:00:00 +0900
 category: ruby
 tags: [ruby, performance, yjit, profiling, benchmarking, optimization, gc]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Web Components 1부 — Custom Elements로 나만의 HTML 태그 만들기"
-description: "Web Components의 Custom Elements는 어떻게 만드나요? HTMLElement 상속, 생명주기 콜백(connectedCallback·disconnectedCallback·attributeChangedCallback), observedAttributes, 자율형과 확장형 커스텀 엘리먼트의 차이를 예제와 함께 다룹니다."
+description: "브라우저 기본 기능만으로 재사용 가능한 태그를 만드는 Custom Elements의 생명 주기, Shadow DOM으로 스타일을 격리하는 방법, 템플릿과 조합하는 예제를 살펴봤습니다."
 date: 2015-08-24 00:00:00 +0900
 category: html
 level: advanced

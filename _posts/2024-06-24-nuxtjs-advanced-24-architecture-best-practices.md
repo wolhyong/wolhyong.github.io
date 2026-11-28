@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 아키텍처와 베스트 프랙티스 — 대규모 프로젝트 구조 설계, 성능 최적화, 확장 전략"
 
 
-description: "Nuxt.js로 대규모 프로젝트를 설계하고 운영하기 위한 아키텍처 패턴과 베스트 프랙티스를 시스템 레벨에서 심층 학습합니다. 도메인 기반 디렉토리 구조가 features/domains/shared 레이어로 프로젝트를 분리하여 관심사를 분리하는 방식, Nitro server/api의 계층화 전략이 repository/service/controller 패턴으로 API 레이어를 분리하는 과정, 컴포넌트 설계 패턴이 Atomic Design(atom/molecule/organism/template/page)으로 재사용성을 극대화하는 방법, 성능 최적화 전략이 lazy loading/defineCachedEventHandler/routeRules prerender/SWR을 조합하여 TTFB(Time to First Byte)를 최소화하는 과정, 모노레포 구성이 pnpm workspace/turborepo로 공유 타입/Zod 스키마/Nuxt 모듈을 패키지로 관리하는 방식을 다룹니다."
+description: "대규모 Nuxt 프로젝트를 도메인 단위로 나누는 디렉토리 설계, 빌드·런타임 성능을 함께 잡는 설정, 기능이 늘어도 구조가 무너지지 않게 확장하는 전략을 짚었습니다."
 
 
 date: 2024-06-24 10:00:00 +0900

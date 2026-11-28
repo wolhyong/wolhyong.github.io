@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 제네릭 — 타입 파라미터, 와일드카드, 타입 소거, 한정적 타입"
-description: "Java 제네릭을 컴파일러와 바이트코드 레벨에서 심층 학습합니다. 타입 파라미터가 컴파일 타임에만 존재하고 런타임에는 Object로 변환되는 타입 소거(Type Erasure) 과정, 와일드카드(? extends T / ? super T)의 공변/반공변 생산자-소비자 원칙(PECS), 한정적 타입 파라미터(<T extends Comparable>)의 바운드 정보 보존, 제네릭 메서드의 타입 추론 과정, raw type과의 호환성 유지를 위한 브리지 메서드 생성을 다룹니다."
+description: "Java 제네릭의 타입 파라미터와 와일드카드 표기, 타입 소거 때문에 런타임에 타입 정보가 사라지는 결과, 한정적 타입으로 범위를 좁히는 방법을 정리했습니다. 제네릭 메서드 작성법도 담았습니다."
 date: 2023-07-03 10:00:00 +0900
 category: java
 tags: [java, generics, type-erasure, wildcard, pecs, type-parameter]

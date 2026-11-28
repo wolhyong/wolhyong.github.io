@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 자료구조 — 리스트, 딕셔너리, 집합의 내부와 성능"
-description: "Python 내장 자료구조의 내부 구현과 성능 특성을 학습합니다. 리스트의 동적 배열(O(1) 분할 상환 append), 딕셔너리의 해시 테이블(Open Addressing, Python 3.6+ Compact Dict), 집합의 해시 기반 멤버십 테스트(O(1)), 큐/스택으로서의 리스트 사용과 collections.deque의 성능 비교, 그리고 자료구조 선택 기준을 다룹니다."
+description: "Python 리스트·튜플·딕셔너리·집합의 내부 구현과 시간 복잡도, 상황별로 어떤 자료구조를 골라야 하는지 성능 비교와 함께 정리했습니다. 얕은 복사 함정도 짚습니다."
 date: 2023-01-30 10:00:00 +0900
 category: python
 tags: [python, data-structures, list, dict, set, tuple, deque, performance]

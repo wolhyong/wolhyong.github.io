@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Node.js 미들웨어와 에러 처리 — 체인, 파이프라인, 안전한 종료"
-description: "Express.js 미들웨어 시스템의 내부 동작 원리와 체계적인 에러 처리 전략 — 미들웨어 체인이 next()를 통해 요청을 전달하는 정확한 메커니즘, 비동기 에러가 Express 4.x에서 자동으로 잡히지 않는 이유, asyncHandler가 Promise를 catch하는 내부 동작, 운영 에러(Operational Error)와 프로그래밍 버그(Programmer Error)를 구분하는 실제 기준, 계층화된 에러 처리 파이프라인 설계, Winston 로깅 시스템 구성, Graceful Shutdown이 프로세스 종료 시그널(SIGTERM/SIGINT)을 처리하는 방법"
+description: "Express 미들웨어 체인이 요청을 넘기는 방식과 에러 미들웨어의 시그니처, 비동기 에러를 안전하게 잡는 패턴, 프로세스를 안전하게 종료하는 절차를 다뤘습니다."
 date: 2022-06-27 10:00:00 +0900
 category: nodejs
 tags: [nodejs, express, middleware, error-handling, async-error, logging, winston, graceful-shutdown, cors, rate-limiting, compression, sigterm]

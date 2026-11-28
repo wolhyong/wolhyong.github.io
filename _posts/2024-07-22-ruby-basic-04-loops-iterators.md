@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 루프와 이터레이터 — while/until/each/times/loop와 Enumerable 모듈의 내부 동작"
 
 
-description: "Ruby의 반복문과 이터레이터 시스템을 시스템 레벨에서 심층 학습합니다. while/until 키워드가 YARV의 jump/branchif/branchunless 명령어로 컴파일되어 조건 검사와 점프를 반복하는 과정, Integer#times/String#each_line/Array#each/ Hash#each가 각각 yield로 블록에 값을 전달하고 C 레벨에서 rb_yield()를 호출하는 방식, loop가 Kernel#loop로 무한 루프를 구성하고 break/next/redo로 흐름을 제어하는 원리, for-in이 내부적으로 each 이터레이터의 문법 설탕으로 동작하는 과정, Enumerable 모듈이 map/select/reduce 등의 메서드를 each 하나만으로 구현하는 템플릿 메서드 패턴을 다룹니다."
+description: "Ruby의 while·until·each·times·loop를 상황에 맞게 고르는 기준과 Enumerable이 동작하는 방식, break·next·redo로 반복을 제어하는 예제를 다뤘습니다."
 
 
 date: 2024-07-22 10:00:00 +0900

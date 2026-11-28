@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 문자열과 정규표현식 — 문자열 함수, 패턴 매칭, PCRE 엔진"
-description: "PHP의 문자열 처리와 정규표현식을 PCRE(Perl Compatible Regular Expression) 엔진 레벨에서 심층 학습합니다. PHP 문자열이 C 언어의 `char*` 버퍼를 zend_string 구조체(length, hash, val)로 래핑하는 방식, PCRE 엔진의 컴파일(compile) 단계에서 패턴을 내부 바이트코드로 변환하고 실행(match) 단계에서 NFA(Non-deterministic Finite Automaton) 백트래킹으로 매칭하는 과정, preg_match의 PCRE 캡처 그룹 추출, 백트래킹 한계(pcre.backtrack_limit), UTF-8 모드(/u)의 문자 단위 매칭을 다룹니다."
+description: "PHP 문자열 함수의 동작과 인코딩 주의점, PCRE 정규표현식으로 패턴을 매칭·치환하는 방법, 자주 쓰는 패턴과 성능 차이를 예제와 함께 정리했습니다. mb_* 함수 사용 기준도 담았습니다."
 date: 2023-10-16 10:00:00 +0900
 category: php
 tags: [php, strings, regex, pcre, pattern-matching, utf-8]

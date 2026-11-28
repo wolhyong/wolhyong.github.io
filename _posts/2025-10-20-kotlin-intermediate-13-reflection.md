@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 리플렉션 — KClass, KProperty, 어노테이션, 동적 호출, KCallable"
-description: "Kotlin의 리플렉션 시스템을 컴파일러 레벨에서 학습합니다. 리플렉션은 런타임에 타입 정보를 검사하고 동적으로 코드를 실행할 수 있게 합니다. KClass는 Kotlin 클래스의 리플렉션 정보를 제공하며 ::class로 접근합니다. KProperty는 프로퍼티의 리플렉션 정보를 제공하며 get(), set()로 접근합니다. 어노테이션은 메타데이터를 코드에 추가하며 @AnnotationName 문법을 사용합니다. 동적 호출은 call()로 메서드를 호출하며 KCallable로 함수, 프로퍼티, 생성자를 표현합니다. Kotlin은 Java의 java.lang.reflect와 kotlin.reflect 패키지를 활용합니다."
+description: "KClass와 KProperty로 런타임에 타입과 프로퍼티를 조사하고, 어노테이션을 읽어 동작을 바꾸는 방법, KCallable로 함수를 동적 호출하는 예제를 정리했습니다."
 date: 2025-10-20 10:00:00 +0900
 category: kotlin
 tags: [kotlin, reflection, kclass, kproperty, annotations, dynamic-invocation]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 상속과 다형성 — 기본 클래스, 파생 클래스, virtual, override, sealed, abstract"
-description: "C#의 상속과 다형성 시스템을 컴파일러 레벨에서 학습합니다. class는 : 기본클래스 문법으로 상속하며 단일 상속만 지원합니다. virtual 키워드는 파생 클래스에서 재정의할 수 있는 메서드를 정의하며 override로 재정의합니다. sealed 키워드는 상속이나 재정의를 방지합니다. abstract 키워드는 추상 클래스와 추상 메서드를 정의하며 인스턴스화할 수 없습니다. 인터페이스는 다중 상속을 지원하며 계약을 정의합니다. 다형성은 기본 클래스 참조로 파생 클래스 객체를 처리하며 런타임에 적절한 메서드가 호출됩니다. C#은 is와 as 연산자로 타입 확인과 변환을 수행합니다."
+description: "C#의 기본 클래스와 파생 클래스 관계, virtual·override로 다형성을 구현하는 방법, sealed와 abstract를 구분해 쓰는 기준을 예제로 정리했습니다."
 date: 2025-08-08 10:00:00 +0900
 category: csharp
 tags: [csharp, inheritance, polymorphism, virtual, override, sealed, abstract, interface]

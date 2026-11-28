@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 고급 동시성 패턴 — Worker Pool, Fan-In/Fan-Out, Pipeline, 배압 관리와 graceful shutdown"
-description: "Go의 고급 동시성 패턴을 실제 애플리케이션 설계 레벨에서 학습합니다. Worker Pool 패턴이 제한된 수의 고루틴을 미리 생성하고 작업 채널을 통해 작업을 분배하여 리소스 사용량을 제어하는 방식(채널 버퍼링과 고루틴 풀의 관계), Fan-Out 패턴이 하나의 입력 채널에서 여러 Workers에게 작업을 분산하여 처리량을 높이는 구조(동적 worker 수 조절), Fan-In 패턴이 여러 입력 채널을 하나의 출력 채널로 병합하는 방식(merge 함수의 select + goroutine 조합), Pipeline 패턴이 각 단계를 채널로 연결하여 데이터가 순차적으로 흐르는 구조(gen → sq → print), 배압 관리(Backpressure)를 위해 버퍼 크기를 제한하고 채널이 가득 차면 생산자가 블로킹되도록 하는 방식, 컨텍스트 취소와 sync.WaitGroup 조합으로 graceful shutdown을 구현하는 방법을 다룹니다."
+description: "Worker Pool, Fan-In/Fan-Out, Pipeline 같은 Go 동시성 패턴을 채널로 구현하고, 배압 관리와 graceful shutdown을 붙이는 방법을 예제로 다룹니다."
 date: 2025-04-14 10:00:00 +0900
 category: go
 tags: [go, golang, concurrency-patterns, worker-pool, fan-in, fan-out, pipeline, backpressure, graceful-shutdown]

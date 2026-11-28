@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 예외 처리 — try-catch-finally, 사용자 정의 예외, throw, 예외 필터, using 문"
-description: "C#의 예외 처리 시스템을 실무 레벨에서 학습합니다. try-catch-finally로 예외를 포착하고 처리하며 catch 블록에서 특정 예외 타입을 지정할 수 있습니다. finally 블록은 예외 발생 여부와 상관없이 실행되며 리소스 정리에 사용됩니다. throw 키워드로 예외를 발생시키며 throw new Exception(message) 형식을 사용합니다. 사용자 정의 예외는 Exception 클래스를 상속하여 정의하며 커스텀 에러 정보를 제공합니다. 예외 필터(when 절)은 C# 6.0부터 지원되며 catch 블록의 조건을 추가할 수 있습니다. using 문은 IDisposable을 구현한 객체의 자동 리소스 해제를 제공합니다. C#의 예외 처리는 구조화되어 있으며 예외 전파와 스택 트레이스를 제공합니다."
+description: "C#의 try-catch-finally 흐름과 사용자 정의 예외를 만드는 방법, 예외 필터와 when 절, using 문으로 리소스를 정리하는 패턴을 예제로 설명합니다."
 date: 2025-08-18 10:00:00 +0900
 category: csharp
 tags: [csharp, exceptions, try-catch, custom-exceptions, exception-filters, using, idisposable]

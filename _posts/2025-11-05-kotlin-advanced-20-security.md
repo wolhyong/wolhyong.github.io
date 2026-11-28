@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 보안 — 암호화, 인증, 권한 부여, 보안 코딩"
-description: "Kotlin의 보안 시스템을 실무 레벨에서 학습합니다. 암호화는 대칭 암호화(AES)와 비대칭 암호화(RSA)로 데이터를 보호합니다. 해시는 SHA-256, MD5로 데이터 무결성을 확인합니다. 인증은 JWT, OAuth2로 사용자를 인증합니다. 권한 부여는 RBAC, ABAC로 접근을 제어합니다. 보안 코딩은 입력 검증, SQL 인젝션 방지, XSS 방지 등을 포함합니다. Kotlin은 Java의 보안 라이브러리를 활용하며 안드로이드 보안을 제공합니다."
+description: "Kotlin과 JVM 환경에서 대칭·비대칭 암호화를 쓰는 방법, 안드로이드 키스토어로 키를 보관하는 절차, 인증과 권한 검사를 코드에 배치하는 지점을 살펴봤습니다."
 date: 2025-11-05 10:00:00 +0900
 category: kotlin
 tags: [kotlin, security, encryption, authentication, authorization, secure-coding]

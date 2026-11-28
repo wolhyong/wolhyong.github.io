@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "npm과 패키지 관리 — Node.js 생태계 완벽 활용법 정리"
-description: "npm(Node Package Manager)의 핵심 개념과 실전 사용법을 학습합니다. package.json 구조, SemVer 버저닝과 의존성 해석 알고리즘, package-lock.json의 역할과 의존성 트리 구조, npm 스크립트와 프리/포스트 훅, npx 동작 원리, 캐시와 보안 감사, pnpm의 효율적인 저장소 구조까지 다룹니다."
+description: "package.json의 의존성 표기와 버전 범위 규칙, npm install이 의존성 트리를 만드는 방식, 스크립트와 lock 파일로 재현 가능한 환경을 만드는 방법을 정리했습니다."
 date: 2022-05-23 10:00:00 +0900
 category: nodejs
 tags: [nodejs, npm, package-manager, dependencies, semver, node-modules, lockfile]

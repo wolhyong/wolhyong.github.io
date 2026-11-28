@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 소개 — Matz가 설계한 순수 객체지향 스크립트 언어의 철학과 실행 원리"
 
 
-description: "Ruby 언어의 탄생 배경과 설계 철학, 실행 원리를 시스템 레벨에서 심층 학습합니다. Yukihiro Matsumoto(Matz)가 Perl의 실용성과 Smalltalk의 순수 객체지향을 결합하여 Ruby를 설계한 과정, Ruby의 MRI(YARV) 인터프리터가 소스 코드를 파싱하여 AST(Abstract Syntax Tree)를 생성하고 YARV(Yet Another Ruby VM) 명령어로 컴파일한 후 스택 기반 VM에서 실행하는 과정, IRB(Pry)가 Readline 라이브러리로 사용자 입력을 읽고 eval() 루프로 Ruby 코드를 즉시 실행하는 REPL(Read-Eval-Print Loop) 구조, 모든 값이 객체(Object)이며 메서드 호출(message passing)이 기본 실행 단위인 Ruby의 순수 객체지향 철학을 다룹니다."
+description: "Ruby가 추구한 '프로그래머의 행복'과 순수 객체지향 철학, MRI가 소스를 파싱해 YARV 바이트코드로 실행하는 과정, IRB로 바로 실습하는 방법을 확인합니다."
 
 
 date: 2024-07-01 10:00:00 +0900

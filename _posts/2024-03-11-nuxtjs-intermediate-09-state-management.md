@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 상태 관리 — useState와 Pinia가 SSR-safe하게 직렬화되고 하이드레이션되는 과정"
 
 
-description: "Nuxt.js의 상태 관리 시스템이 SSR과 CSR 환경에서 상태 일관성을 유지하는 과정을 시스템 레벨에서 심층 학습합니다. useState가 Nuxt 인스턴스의 _useState 맵에 키-값 쌍을 저장하고 SSR 단계에서 nuxt._payload.data에 직렬화되어 클라이언트 하이드레이션 시 동일한 키로 복원되는 과정, Pinia의 defineStore()가 Setup Store 문법에서 ref/computed/function을 각각 state/getter/action으로 변환하고 $state를 __NUXT__.pinia에 직렬화하는 방식, @pinia/nuxt 모듈이 createPinia()를 Nuxt 플러그인으로 등록하고 SSR 하이드레이션을 자동 처리하는 과정, composable 패턴이 useState나 Pinia 없이도 재사용 가능한 로직을 캡슐화하는 방법을 다룹니다."
+description: "useState와 Pinia가 서버에서 만든 상태를 직렬화해 클라이언트로 넘기고 하이드레이션하는 과정, SSR에서 상태가 어긋나지 않게 설계하는 방법을 설명합니다."
 
 
 date: 2024-03-11 10:00:00 +0900

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 컬렉션 — Vec, HashMap, BTreeMap, HashSet, BTreeSet, 이터레이터와 소비자"
-description: "Rust의 컬렉션 시스템을 메모리 레벨에서 학습합니다. Vec<T>는 가변 크기 동적 배열로 힙에 할당되며 capacity와 length를 가집니다. HashMap<K, V>는 해시 테이블로 O(1) 평균 조회 시간을 제공하며 DefaultHasher를 사용합니다. BTreeMap<K, V>는 정렬된 맵으로 O(log n) 조회 시간을 제공하며 순서가 보존됩니다. HashSet<T>와 BTreeSet<T>는 중복 없는 집합을 제공합니다. 이터레이터는 lazy evaluation으로 체이닝이 가능하며 map, filter, fold 등의 어댑터를 제공합니다. 소비자(consumer)는 collect, sum, count 등으로 이터레이터를 소비합니다. Rust의 컬렉션은 제네릭으로 타입 안전성을 보장합니다."
+description: "Vec·HashMap·BTreeMap·HashSet·BTreeSet을 내부 구조와 성능 특성으로 비교하고, 이터레이터와 소비자 메서드를 조합해 데이터를 처리하는 예제를 살펴봤습니다."
 date: 2025-06-23 10:00:00 +0900
 category: rust
 tags: [rust, collections, vec, hashmap, btreemap, iterator, hashset]

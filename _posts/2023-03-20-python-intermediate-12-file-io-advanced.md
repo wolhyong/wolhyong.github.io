@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 파일 입출력 심화 — CSV, JSON, pickle, os, pathlib, tempfile"
-description: "Python의 파일 입출력을 실무 수준에서 심층 학습합니다. CSV 파싱의 다양한 옵션과 대용량 처리, JSON 직렬화의 내부 구조와 커스텀 인코더, pickle의 프로토콜 버전별 동작과 보안 위험, os 모듈의 파일/디렉토리 조작과 저수준 시스템 콜, pathlib의 객체 지향 경로 처리, tempfile의 안전한 임시 파일 생성을 다룹니다."
+description: "pathlib로 경로를 다루는 현대적인 방법, CSV·JSON·pickle로 구조화 데이터를 저장하는 기준, tempfile과 os 모듈 활용을 예제로 정리했습니다."
 date: 2023-03-20 10:00:00 +0900
 category: python
 tags: [python, file-io, csv, json, pickle, pathlib, tempfile, serialization]

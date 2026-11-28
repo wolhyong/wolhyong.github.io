@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 동시성 — 스레드, 메시지 전달, 채널, 공유 상태, Mutex, RwLock, Atomics"
-description: "Rust의 동시성 모델을 시스템 레벨에서 학습합니다. thread::spawn으로 새 스레드를 생성하며 move 클로저로 소유권을 이동합니다. 메시지 전달(message passing)은 채널(channel)을 통해 스레드 간 통신을 안전하게 수행하며 mpsc::channel로 다중 생산자 단일 소비자 패턴을 구현합니다. 공유 상태(concurrency)는 Mutex와 RwLock으로 동시 접근을 제어하며 lock으로 가변 접근을 보호합니다. Arc<T>로 스레드 간 안전한 공유를 구현합니다. Atomic 타입은 원자적 연산으로 락 없이 동시성을 제어합니다. Rust는 타입 시스템 수준에서 데이터 레이스를 컴파일 타임에 방지하며 Send와 Sync 트레이트로 스레드 안전성을 보장합니다."
+description: "Rust가 타입 시스템으로 데이터 레이스를 막는 방식, 스레드와 채널로 메시지를 주고받는 예제, Mutex·RwLock·Atomics로 공유 상태를 다루는 기준을 정리했습니다."
 date: 2025-06-30 10:00:00 +0900
 category: rust
 tags: [rust, concurrency, threads, channels, mutex, arc, atomics, message-passing]

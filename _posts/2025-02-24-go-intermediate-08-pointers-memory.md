@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 포인터와 메모리 관리 — &/* 연산자, new/make의 차이, 스택과 힙 할당, GC의 동작 원리"
-description: "Go의 포인터와 메모리 관리 시스템을 컴파일러와 런타임 레벨에서 학습합니다. & 연산자는 변수의 메모리 주소를 반환하고 * 연산자는 포인터가 가리키는 값을 역참조하는 과정을 다룹니다. new(T)는 T 타입의 제로값 인스턴스를 힙에 할당하고 그 포인터(*T)를 반환하는 방식과 make()가 슬라이스/맵/채널의 내부 헤더를 초기화하고 값 자체를 반환하는 차이를 설명합니다. Go 컴파일러의 escape analysis는 변수의 수명(lifetime)을 분석하여 함수가 종료된 후에도 필요한 변수는 힙에 할당하고 그렇지 않으면 스택에 할당하는 과정을 다룹니다. Go GC의 동시적 Mark&Sweep(Concurrent Mark & Sweep) 알고리즘이 STW(Stop-The-World) 시간을 1ms 미만으로 유지하면서 힙 메모리를 관리하는 방식을 설명합니다. GODEBUG=gctrace=1 환경 변수로 GC 로그를 확인하고 GOGC 변수로 GC 빈도를 조정하는 튜닝 방법을 다룹니다."
+description: "Go 포인터의 &와 * 사용법, new와 make의 차이, 변수가 스택에 남을지 힙으로 옮겨질지 결정하는 escape analysis와 GC 동작을 정리했습니다."
 date: 2025-02-24 10:00:00 +0900
 category: go
 tags: [go, golang, pointers, memory, escape-analysis, gc, stack, heap, allocation]

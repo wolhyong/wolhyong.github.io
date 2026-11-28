@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 폼과 유효성 검사 — HTML5 폼, VeeValidate, Zod 스키마가 서버/클라이언트에서 이중 검증하는 과정"
 
 
-description: "Nuxt.js에서 폼 입력과 유효성 검사를 처리하는 모든 방법을 시스템 레벨에서 심층 학습합니다. HTML5 기본 폼의 input/select/textarea 요소가 브라우저의 ValidationMessage API로 required/minlength/pattern 등의 제약 조건을 실시간 검증하는 과정, VeeValidate의 useForm과 useField가 Vue의 provide/inject로 폼 상태를 관리하고 Field 컴포넌트가 v-model을 가로채어 유효성 검사를 수행하는 방식, Zod 스키마가 z.object().parse()로 런타임에 데이터 타입을 검증하고 TypeScript 타입으로 자동 추론되는 과정, 서버에서 Zod로 검증된 데이터를 받아 DB에 저장하고 유효성 검사 실패 시 createError()로 400 에러를 응답하는 이중 검증 구조를 다룹니다."
+description: "HTML5 폼 검증 위에 VeeValidate와 Zod를 얹어 클라이언트와 서버가 같은 스키마로 검증하는 구조, 에러 메시지를 필드에 연결하는 방법을 예제로 다뤘습니다."
 
 
 date: 2024-04-15 10:00:00 +0900

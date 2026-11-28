@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java OOP 기초 — 클래스, 객체, 생성자, this, 접근 제어자, static"
-description: "Java 객체지향 프로그래밍의 기초를 메모리와 바이트코드 레벨에서 심층 학습합니다. new 키워드가 Heap에 객체를 생성하는 과정과 생성자 체이닝(super() 호출), this 키워드의 레퍼런스 의미와 this() 생성자 호출, 접근 제어자(public/protected/default/private)의 가시성 범위, static 멤버가 메서드 영역에 단일 인스턴스로 로딩되는 과정, 패키지와 임포트의 클래스 로딩을 다룹니다."
+description: "Java 클래스와 객체를 만들고 생성자로 초기화하는 방법, this와 접근 제어자, static 멤버가 메모리에서 공유되는 방식을 예제로 정리했습니다. 초기화 순서도 함께 봅니다."
 date: 2023-05-29 10:00:00 +0900
 category: java
 tags: [java, oop, class, object, constructor, this, access-modifier, static]

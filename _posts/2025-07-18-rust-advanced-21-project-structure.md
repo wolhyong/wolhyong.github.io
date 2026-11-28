@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 프로젝트 구조 — 워크스페이스, 빌드 스크립트, CI/CD, 표준 프로젝트 레이아웃, 모범 사례"
-description: "Rust 프로젝트 구조와 빌드 시스템을 실무 레벨에서 학습합니다. 워크스페이스(workspace)는 여러 패키지를 단일 프로젝트로 관리하며 Cargo.toml의 [workspace] 섹션으로 정의합니다. 빌드 스크립트(build.rs)는 컴파일 전에 코드를 생성하며 cc, bindgen 등과 함께 사용됩니다. CI/CD는 GitHub Actions, GitLab CI로 자동화된 테스트, 빌드, 배포를 구현합니다. 표준 프로젝트 레이아웃은 src, tests, benches, examples 디렉토리 구조를 따릅니다. 모범 사례는 /internal 패키지로 외부 노출을 차단하고, /bin과 /lib로 바이너리와 라이브러리를 분리하며, /crates로 멀티 크레이트 프로젝트를 구성합니다. cargo-make로 복잡한 빌드 작업을 자동화합니다."
+description: "Rust 워크스페이스로 여러 크레이트를 묶는 방법, build.rs로 빌드 시점 코드를 실행하는 용도, 모듈 분리와 CI 파이프라인 구성까지 표준 레이아웃을 제시합니다."
 date: 2025-07-18 10:00:00 +0900
 category: rust
 tags: [rust, project-structure, workspace, build-script, ci-cd, cargo-make]

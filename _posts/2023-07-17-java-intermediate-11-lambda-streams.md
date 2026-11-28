@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 람다와 스트림 — 함수형 인터페이스, Stream API, Optional, 메서드 참조"
-description: "Java의 함수형 프로그래밍 요소를 바이트코드와 JVM 레벨에서 심층 학습합니다. 람다 표현식이 invokedynamic(Java 7+)으로 컴파일 타임에 LambdaMetafactory를 통해 함수형 인터페이스 인스턴스로 변환되는 과정, Stream API의 lazy 평가(중간 연산이 최종 연산까지 지연됨)와 파이프라인 구조(Spliterator → Sink 체인), Optional의 값 존재 여부에 따른 분기 처리, 메서드 참조(ClassName::method)의 invokedynamic 최적화를 다룹니다."
+description: "Java 함수형 인터페이스와 람다, Stream API의 중간·최종 연산, Optional로 null을 다루는 방법, 메서드 참조로 줄이는 예제를 정리했습니다. 병렬 스트림 주의점도 다룹니다."
 date: 2023-07-17 10:00:00 +0900
 category: java
 tags: [java, lambda, stream, functional-interface, optional, method-reference, invokedynamic]

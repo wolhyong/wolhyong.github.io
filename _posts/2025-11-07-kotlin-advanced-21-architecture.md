@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 아키텍처와 디자인 패턴 — 클린 아키텍처, MVVM, MVI, 디자인 패턴"
-description: "Kotlin의 아키텍처와 디자인 패턴을 실무 레벨에서 학습합니다. 클린 아키텍처는 도메인 중심 설계로 계층을 분리하고 의존성을 역전합니다. MVVM은 Model-View-ViewModel 패턴으로 UI 로직을 분리하고 데이터 바인딩을 사용합니다. MVI는 Model-View-Intent 패턴으로 단방향 데이터 흐름을 제공합니다. 디자인 패턴은 Singleton, Factory, Strategy, Observer, Repository 등을 제공합니다. SOLID 원칙을 따르며 테스트 가능하고 유지보수 가능한 코드를 작성합니다."
+description: "Kotlin 프로젝트를 클린 아키텍처로 나누고 MVVM·MVI로 상태를 다루는 방법, 팩토리·옵저버처럼 반복되는 디자인 패턴의 적용 지점을 정리했습니다. 단방향 상태 흐름을 예제로 보여줍니다."
 date: 2025-11-07 10:00:00 +0900
 category: kotlin
 tags: [kotlin, architecture, design-patterns, clean-architecture, mvvm, mvi, solid]

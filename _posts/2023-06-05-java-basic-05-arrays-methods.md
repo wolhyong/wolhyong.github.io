@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 배열과 메서드 — 배열 생성, 다차원 배열, 메서드 호출, 오버로딩, 가변 인자"
-description: "Java의 배열과 메서드를 JVM 메모리 구조와 함께 심층 학습합니다. 배열이 Heap의 연속된 메모리 블록에 저장되는 방식과 length 필드의 JVM 내부 구현, 다차원 배열이 배열의 배열(ragged array)로 Heap에 할당되는 구조, 메서드 호출 시 JVM Stack 프레임이 생성/소멸되는 과정(Call Stack), 메서드 오버로딩의 컴파일 타임 다형성(정적 디스패치), 가변 인자(varargs)가 배열로 변환되는 원리를 다룹니다."
+description: "Java 배열 생성과 다차원 배열 구조, 메서드 호출과 오버로딩, 가변 인자와 참조 전달 방식이 메모리에서 어떻게 동작하는지 예제로 정리했습니다. 배열 복사 함정도 다룹니다."
 date: 2023-06-05 10:00:00 +0900
 category: java
 tags: [java, array, method, overloading, varargs, jvm-stack, call-stack]

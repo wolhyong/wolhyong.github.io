@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 파일 처리 — fopen/fread/fwrite, SplFileObject, 디렉토리 탐색, 파일 잠금"
-description: "PHP의 파일 처리 시스템을 OS 시스템 콜 레벨에서 심층 학습합니다. fopen()이 C 라이브러리의 fopen()을 호출하여 내부 FILE* 버퍼(stdio 버퍼, 기본 8KB)를 생성하는 과정, fread()/fwrite()가 버퍼링된 I/O로 read()/write() 시스템 콜을 최소화하는 방식, flock()의 조언적 잠금(advisory locking)이 LOCK_SH(공유)/LOCK_EX(배타적)로 동작하는 원리, SplFileObject의 객체 지향 파일 처리와 CSV 파싱(중첩된 줄바꿈, 인용부호 처리), 디렉토리 탐색(scandir, RecursiveDirectoryIterator)과 GlobIterator를 다룹니다."
+description: "PHP에서 fopen/fread/fwrite로 파일을 다루는 기본, SplFileObject로 객체지향적으로 읽는 방법, 디렉토리 탐색과 파일 잠금 처리까지 예제로 정리했습니다."
 date: 2023-11-06 10:00:00 +0900
 category: php
 tags: [php, file, i-o, stream, flock, splfileobject]

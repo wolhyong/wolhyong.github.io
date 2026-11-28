@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java I/O — InputStream/OutputStream, Reader/Writer, 버퍼링, NIO, 직렬화"
-description: "Java I/O 시스템을 운영체제 레벨까지 심층 학습합니다. InputStream/OutputStream의 데코레이터 패턴(FilterInputStream 체인), Reader/Writer가 바이트 스트림을 문자로 변환하는 인코딩 과정(CharsetDecoder), BufferedInputStream의 내부 버퍼(기본 8KB)와 read()가 fill()로 OS에 추가 읽기 요청하는 과정, NIO의 Channel과 Buffer 구조(Selector가 epoll/kqueue로 다중 I/O 처리), ObjectOutputStream의 직렬화 과정(writeObject가 그래프를 DFS로 탐색)을 다룹니다."
+description: "Java의 InputStream·OutputStream과 Reader·Writer 계층, 데코레이터로 버퍼링을 조합하는 방법, NIO 채널과 직렬화 사용 시 주의점을 확인합니다."
 date: 2023-07-10 10:00:00 +0900
 category: java
 tags: [java, io, inputstream, outputstream, bufferedreader, nio, serialization]

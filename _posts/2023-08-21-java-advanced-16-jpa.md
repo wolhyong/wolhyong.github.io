@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java JPA — 영속성 컨텍스트, 엔티티 매핑, 연관 관계, JPQL, 벌크 연산"
-description: "Java JPA(Java Persistence API)를 Hibernate의 내부 구조까지 심층 학습합니다. 영속성 컨텍스트(PersistenceContext)가 1차 캐시로 동작하며 엔티티 스냅샷으로 변경을 감지하는 Dirty Checking 과정, @Entity의 테이블 매핑과 @Id 생성 전략(SEQUENCE/TABLE/IDENTITY), 연관 관계(@OneToMany/@ManyToOne)의 FetchType.LAZY가 프록시 객체를 생성하는 메커니즘, JPQL이 SQL로 변환되어 실행되는 과정, 벌크 연산(@Modifying + @Query)이 영속성 컨텍스트를 무시하는 문제를 다룹니다."
+description: "JPA의 영속성 컨텍스트가 엔티티를 관리하는 방식, 연관 관계 매핑과 지연 로딩 설정, JPQL과 벌크 연산을 쓸 때 주의할 점을 예제로 정리했습니다. N+1 문제를 피하는 방법도 다룹니다."
 date: 2023-08-21 10:00:00 +0900
 category: java
 tags: [java, jpa, hibernate, persistence-context, entity-mapping, jpql, dirty-checking]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 데이터베이스 — SQLx, Diesel ORM, 마이그레이션, 연결 풀, 트랜잭션"
-description: "Rust의 데이터베이스 생태계를 실무 레벨에서 학습합니다. SQLx는 컴파일 타임 쿼리 검사를 제공하는 비동기 SQL 라이브러리로 타입 안전한 쿼리를 보장합니다. Diesel ORM은 타입 안전한 쿼리 빌더로 컴파일 타임에 SQL을 생성하며 마이그레이션을 지원합니다. 연결 풀은 데이터베이스 연결을 재사용하여 성능을 최적화하며 PgPoolOptions로 구성합니다. 트랜잭션은 begin, commit, rollback으로 원자성을 보장하며 여러 쿼리를 그룹화합니다. 마이그레이션은 데이터베이스 스키마 버전 관리를 제공하며 up/down 마이그레이션으로 스키마 변경을 추적합니다."
+description: "SQLx로 컴파일 타임에 쿼리를 검증하고 커넥션 풀을 관리하는 방법, Diesel ORM으로 스키마를 정의하는 절차, 마이그레이션과 트랜잭션 처리를 정리했습니다."
 date: 2025-07-14 10:00:00 +0900
 category: rust
 tags: [rust, database, sqlx, diesel, orm, migration, connection-pool]

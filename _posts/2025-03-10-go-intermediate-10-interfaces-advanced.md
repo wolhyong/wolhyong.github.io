@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 고급 인터페이스 패턴 — iface/eface 내부 구조, 덕 타이핑 심화, 의존성 주입과 데코레이터"
-description: "Go 인터페이스의 고급 패턴과 내부 구조를 런타임 레벨에서 학습합니다. runtime.iface 구조체(tab *itab + data unsafe.Pointer)는 인터페이스 타입과 구체적 타입의 메서드 테이블을 캐싱합니다. 빈 인터페이스 runtime.eface(type *_type + data unsafe.Pointer)는 타입 메타데이터만 저장하는 더 가벼운 구조입니다. 인터페이스 nil 검사에서 (type nil, value nil) 쌍의 의미와 (*T)(nil)을 인터페이스에 할당할 때 type이 nil이 아닌 이유를 설명합니다. io.Reader/io.Writer 같은 단일 메서드 인터페이스로 미니멀한 추상화를 달성하는 방법을 다룹니다. 인터페이스는 의존성 주입(DI) 패턴과 데코레이터 패턴에도 활용됩니다. 인터페이스 분리 원칙(ISP)과 Go의 철학적 연관성을 다룹니다."
+description: "Go 인터페이스가 iface·eface 구조체로 구현되는 방식, 덕 타이핑을 살린 의존성 주입과 데코레이터 패턴, 빈 인터페이스 남용을 피하는 기준을 다룹니다. 테스트 대역 만드는 법도 담았습니다."
 date: 2025-03-10 10:00:00 +0900
 category: go
 tags: [go, golang, interfaces, iface, eface, duck-typing, dependency-injection, decorator, itab]

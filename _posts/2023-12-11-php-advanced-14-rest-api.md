@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP REST API 구축 — JSON 응답, API 인증, Rate Limiting, API 버전 관리"
-description: "PHP로 RESTful API를 구축하는 방법을 HTTP 프로토콜과 설계 원칙 레벨에서 심층 학습합니다. REST의 6가지 제약 조건(Uniform Interface, Stateless, Cacheable, Layered System, Code on Demand, Client-Server)과 HTTP 메서드(GET/POST/PUT/PATCH/DELETE)의 의미론적 사용, JSON 응답의 Content-Type 헤더와 CORS 설정(Origin, Access-Control-Allow-*), API 인증 방식(Bearer JWT — Header.Payload.Signature 구조, Access Token/Refresh Token 패턴), Rate Limiting의 Token Bucket/Leaky Bucket 알고리즘, API 버전 관리 전략(URI prefix vs Accept 헤더)을 다룹니다."
+description: "PHP로 JSON 응답을 내는 REST API를 만들며 상태 코드와 에러 형식을 맞추는 방법, 토큰 인증과 rate limiting, 버전 관리 전략을 예제로 짚었습니다."
 date: 2023-12-11 10:00:00 +0900
 category: php
 tags: [php, rest-api, json, jwt, rate-limiting, cors]

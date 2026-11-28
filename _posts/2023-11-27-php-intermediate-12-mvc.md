@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP MVC 패턴 — 라우팅, 컨트롤러, 모델, 뷰, 프론트 컨트롤러"
-description: "PHP의 MVC(Model-View-Controller) 패턴을 아키텍처 레벨에서 심층 학습합니다. 프론트 컨트롤러 패턴(index.php)이 모든 요청을 .htaccess(ModRewrite) 또는 Nginx 설정으로 단일 진입점으로 라우팅하는 과정, 디스패처가 URL을 파싱하여 컨트롤러/액션을 결정하고 ReflectionMethod로 invoke하는 원리, PSR-4 오토로딩이 Composer의 ClassLoader(파일 맵 기반)로 클래스 파일을 지연 로딩하는 방식, 서비스 컨테이너가 컨트롤러의 생성자 타입 힌트를 ReflectionClass로 분석하여 의존성을 자동 주입하는 과정, 템플릿 엔진(Twig/Blade)의 컴파일과 캐싱을 다룹니다."
+description: "프론트 컨트롤러에서 라우팅해 컨트롤러·모델·뷰로 요청을 나누는 MVC 구조를 PHP로 직접 구현하며, 프레임워크가 이 패턴을 어떤 식으로 확장했는지 다뤘습니다. 라우터 설계도 함께 봅니다."
 date: 2023-11-27 10:00:00 +0900
 category: php
 tags: [php, mvc, routing, controller, model, view, front-controller]

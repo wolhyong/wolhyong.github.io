@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Express.js 웹 프레임워크 — 미들웨어, 라우팅, Layer 내부 구조 완전 이해"
-description: "Express.js 프레임워크의 내부 동작 원리와 실전 구현 — http 모듈 위에서 Express가 동작하는 계층 구조, 미들웨어 Layer 객체가 router.stack 배열에 저장되고 next()로 연결되는 정확한 실행 흐름, app.get('/users/:id')이 Layer 객체의 path/regexp/keys를 설정하고 URL 매칭 시 정규식으로 파라미터를 추출하는 과정, 미들웨어 유형별 성능 오버헤드(내장/서드파티/커스텀 비교), express.json()이 내부적으로 스트림을 읽고 JSON.parse()를 호출하는 본문 파싱 과정, 에러 처리 미들웨어가 Function.length로 4개 파라미터를 감지하는 원리, next()의 3가지 호출 방식(next/next('route')/next(err))이 내부 Layer 스택 탐색에 미치는 영향"
+description: "Express의 미들웨어가 Layer 스택을 따라 실행되는 구조, 라우팅이 경로 패턴을 매칭하는 방식, 에러 미들웨어와 next()의 동작을 소스 수준에서 설명합니다."
 date: 2022-05-30 10:00:00 +0900
 category: nodejs
 tags: [nodejs, express, middleware, routing, web-framework, server, next-function, layer, controller, service, model, ejs, template-engine, error-handling, project-structure, http-module]

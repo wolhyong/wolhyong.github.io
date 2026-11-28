@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 널 안전성 심화 — 스마트 캐스트, 안전한 캐스트, 널 가능성 어노테이션, 플랫폼 타입"
-description: "Kotlin의 널 안전성 시스템을 컴파일러 레벨에서 학습합니다. 스마트 캐스트는 타입 검사 후 자동으로 캐스트를 수행하며 is 연산자로 타입을 확인합니다. 안전한 캐스트는 as? 연산자로 캐스트 실패 시 null을 반환합니다. 널 가능성 어노테이션은 @Nullable, @NotNull으로 Java 코드와 상호 운용성을 제공합니다. 플랫폼 타입은 Java 코드에서 널 가능성 정보가 없는 타입으로 Kotlin에서는 널 가능으로 처리됩니다. require, check, assert 함수로 사전 조건을 검사합니다. let 함수로 널 체크 후 안전하게 실행할 수 있습니다."
+description: "Kotlin의 스마트 캐스트가 동작하는 조건, as?로 안전하게 캐스팅하는 방법, 자바에서 넘어온 플랫폼 타입을 다룰 때의 주의점을 예제로 정리했습니다. lateinit과 by lazy의 차이도 다룹니다."
 date: 2025-10-03 10:00:00 +0900
 category: kotlin
 tags: [kotlin, null-safety, smart-cast, safe-cast, platform-types, nullability-annotations]

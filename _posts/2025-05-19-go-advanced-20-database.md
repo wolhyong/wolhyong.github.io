@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 데이터베이스 프로그래밍 — database/sql, 연결 풀, 마이그레이션, 트랜잭션, SQLC 코드 생성"
-description: "Go의 데이터베이스 프로그래밍을 실무 레벨에서 학습합니다. database/sql 패키지가 sql.DB 연결 풀(connection pool)을 관리하고 sql.Open()으로 등록된 드라이버를 통해 실제 데이터베이스 연결을 생성하는 과정, sql.DB의 SetMaxOpenConns/SetMaxIdleConns/SetConnMaxLifetime으로 연결 풀의 동작을 세밀하게 제어하는 방식, sql.Rows가 데이터베이스 커서(cursor)를 래핑하여 Next() → Scan() 루프로 대량의 결과를 스트리밍하는 구조, 트랜잭션 처리에서 sql.Tx가 Begin() → Exec/Query → Commit/Rollback의 생명주기를 관리하고 동시성 제어를 위해 격리 수준(isolation level)을 설정하는 방법, sqlx와 같은 서드파티 라이브러리가 구조체 필드와 데이터베이스 컬럼을 매핑하는 편의 기능, SQLC(SQL Compiler)가 SQL 쿼리에서 Go 타입 안전한 코드를 자동 생성하여 런타임 오류를 컴파일 타임에 잡아내는 방식, golang-migrate 또는 goose를 사용한 데이터베이스 마이그레이션 전략을 다룹니다."
+description: "Go에서 database/sql로 커넥션 풀을 다루고 트랜잭션을 처리하는 방법, 마이그레이션 도구 운용과 sqlc로 타입 안전한 코드를 생성하는 과정을 예제로 정리했습니다."
 date: 2025-05-19 10:00:00 +0900
 category: go
 tags: [go, golang, database, sql, connection-pool, migration, sqlc, transaction, sqlx]

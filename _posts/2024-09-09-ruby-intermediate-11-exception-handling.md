@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 예외 처리 — begin/rescue/ensure/raise, 예외 클래스 계층, 커스텀 예외"
 
 
-description: "Ruby의 예외 처리 시스템을 시스템 레벨에서 심층 학습합니다. begin/rescue/ensure 블록이 YARV 스택에서 예외가 발생하면 throw_data로 예외 객체를 전파하고 rescue가 Exception#===로 예외 타입을 매칭하여 해당 rescue 절의 iseq를 실행하는 과정, StandardError/RuntimeError/ArgumentError/TypeError/NoMethodError 등의 예외 클래스 계층 구조가 Exception을 루트로 하는 트리 구조로 상속되는 방식, ensure 블록이 rescue 실행 후에도 항상 실행되어 파일/네트워크 연결 등을 정리하는 과정, raise가 Kernel#raise를 호출하여 예외 객체를 생성하고 throw 태그로 YARV 스택을 역으로 탐색하며 rescue_handler를 찾는 방식, rescue가 inline(단일 문장 뒤)으로도 사용 가능한 문법, retry가 rescue 블록 내에서 begin 블록을 다시 실행하는 방식을 다룹니다."
+description: "Ruby의 begin/rescue/ensure 흐름과 예외 클래스 계층, 커스텀 예외를 정의해 의미 있는 에러를 던지는 방법, retry와 raise 사용 시 주의점을 확인합니다."
 
 
 date: 2024-09-09 10:00:00 +0900

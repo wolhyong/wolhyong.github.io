@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 람다 심화 — 고차 함수, 함수형 프로그래밍, 함수 합성, 커링, 부분 적용"
-description: "Kotlin의 람다와 함수형 프로그래밍 시스템을 심화 레벨에서 학습합니다. 람다는 익명 함수로 { -> } 문법을 사용하며 it로 단일 매개변수에 접근합니다. 고차 함수는 함수를 매개변수로 받거나 반환하며 map, filter, reduce 등을 제공합니다. 함수 합성은 여러 함수를 체이닝하여 새로운 함수를 만들며 compose와 andThen을 사용합니다. 커링은 여러 인자를 받는 함수를 단일 인자 함수로 변환하며 커링된 함수를 반환합니다. 부분 적용은 일부 인자를 미리 설정하여 새로운 함수를 만듭니다. Kotlin은 함수형 프로그래밍 패턴을 지원하며 불변성과 순수 함수를 권장합니다."
+description: "Kotlin 고차 함수와 함수 합성, 커링과 부분 적용을 람다로 구현하는 방법, 수신 객체 지정 람다와 inline 함수가 성능에 주는 영향을 정리했습니다. 컬렉션 처리에 응용하는 예도 함께 봅니다."
 date: 2025-10-24 10:00:00 +0900
 category: kotlin
 tags: [kotlin, lambda, higher-order-functions, functional-programming, function-composition, currying]

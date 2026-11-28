@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 리플렉션과 특성 — Reflection, Attribute, 동적 타입, dynamic 키워드, 메타데이터"
-description: "C#의 리플렉션과 특성 시스템을 컴파일러 레벨에서 학습합니다. Reflection은 런타임에 타입 정보를 검사하고 동적으로 코드를 실행할 수 있게 합니다. Type 클래스로 타입 정보를 얻으며 MethodInfo, PropertyInfo, FieldInfo 등으로 멤버에 접근합니다. Attribute는 메타데이터를 코드에 추가하며 [AttributeName] 문법을 사용합니다. 사용자 정의 특성은 Attribute 클래스를 상속하여 정의하며 AttributeUsage로 적용 대상을 지정합니다. dynamic 키워드는 동적 타입으로 컴파일 타임 타입 검사를 건너뜁니다. 리플렉션은 DI 컨테이너, ORM, 직렬화 등에 사용되며 강력하지만 성능 오버헤드가 있습니다."
+description: "C# 리플렉션으로 런타임에 타입과 멤버를 조사하고, 어트리뷰트를 읽어 동작을 바꾸는 방법, dynamic 키워드와의 차이, 리플렉션이 느려지는 지점을 설명합니다."
 date: 2025-08-25 10:00:00 +0900
 category: csharp
 tags: [csharp, reflection, attributes, dynamic, metadata, type-system]

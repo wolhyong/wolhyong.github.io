@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 코루틴 — suspend 함수, async/await, CoroutineScope, Job, Dispatcher"
-description: "Kotlin의 코루틴 시스템을 시스템 레벨에서 학습합니다. 코루틴은 비동기 프로그래밍을 간단하게 만들며 스레드보다 가볍고 효율적입니다. suspend 함수는 비동기 작업을 표현하며 suspend 키워드로 정의합니다. async/await는 코루틴을 시작하고 결과를 기다리며 async로 코루틴을 생성하고 await로 완료를 기다립니다. CoroutineScope는 코루틴의 수명 주기를 관리하며 launch, async로 코루틴을 시작합니다. Job은 코루틴을 제어하며 cancel로 취소할 수 있습니다. Dispatcher는 코루틴이 실행될 스레드를 지정하며 Dispatchers.Main, Dispatchers.IO 등을 제공합니다."
+description: "suspend 함수가 어떻게 중단·재개되는지, CoroutineScope와 Job으로 작업 범위를 관리하는 법, Dispatcher 선택과 async/await 병렬 처리 예제를 정리했습니다."
 date: 2025-10-15 10:00:00 +0900
 category: kotlin
 tags: [kotlin, coroutines, async-await, suspend, coroutine-scope, dispatcher]

@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 디자인 패턴 — 싱글턴, 팩토리, 전략, 옵저버, 데코레이터 패턴"
-description: "Python으로 GoF 디자인 패턴을 구현하는 방법을 심층 학습합니다. 싱글턴 패턴의 여러 구현 방식(메타클래스, __new__, 모듈)과 스레드 안전성, 팩토리 메서드와 추상 팩토리 패턴, 전략 패턴의 일급 함수 기반 구현, 옵저버 패턴의 이벤트 기반 아키텍처, Python의 @ 구문을 활용한 데코레이터 패턴을 다룹니다."
+description: "싱글턴·팩토리·전략·옵저버·데코레이터 패턴을 Python의 동적 특성에 맞게 구현하는 방법과 각 패턴을 실제로 꺼내 쓸 상황을 예제로 정리했습니다. 남용을 피하는 기준도 담았습니다."
 date: 2023-04-03 10:00:00 +0900
 category: python
 tags: [python, design-patterns, singleton, factory, strategy, observer, decorator-pattern]

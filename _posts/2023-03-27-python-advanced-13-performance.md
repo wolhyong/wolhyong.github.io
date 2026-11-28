@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 성능 최적화 — 프로파일링, 메모리 관리, 병목 분석, 고성능 패턴"
-description: "Python 성능 최적화를 시스템 레벨에서 심층 학습합니다. cProfile과 py-spy로 프로파일링하는 방법, CPython 메모리 관리의 reference counting과 generational GC, GIL(Global Interpreter Lock)의 동작과 우회, __slots__와 메모리 최적화, Cython/Numba/JIT 컴파일을 통한 고성능 전략, asyncio와 멀티프로세싱을 활용한 동시성 최적화를 다룹니다."
+description: "cProfile로 병목을 찾고 line_profiler로 핫라인을 확인하는 절차, 메모리 사용을 줄이는 패턴과 C 확장·벡터화로 속도를 끌어올리는 방법을 정리했습니다."
 date: 2023-03-27 10:00:00 +0900
 category: python
 tags: [python, performance, profiling, cprofile, memory, gil, cython, numba, optimization]

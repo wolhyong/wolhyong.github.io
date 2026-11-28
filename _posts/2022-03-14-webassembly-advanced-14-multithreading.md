@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "WebAssembly 고급(14) — 멀티스레딩: SharedArrayBuffer와 Atomics"
-description: "WebAssembly 멀티스레딩 실무 안내 — SharedArrayBuffer 메모리 공유 모델, Atomic 연산의 CPU 레벨 동작 원리(MESI 캐시 일관성 프로토콜), Mutex/Spin-lock 구현, Lock-free 프로그래밍(CAS 패턴), Web Workers 통신, COOP/COEP 보안 정책"
+description: "WASM이 스레드를 직접 만들지 못하는 이유와 Web Worker로 병렬화하는 구조, SharedArrayBuffer와 Atomics로 메모리를 공유하는 방법을 예제로 정리했습니다."
 date: 2022-03-14 10:00:00 +0900
 category: webassembly
 tags: [webassembly, multithreading, sharedarraybuffer, atomics, web-workers, mutex, lock-free, cas, spin-lock, mesicache, coop-coep, parallelism]

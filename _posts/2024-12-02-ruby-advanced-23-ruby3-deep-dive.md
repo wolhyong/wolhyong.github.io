@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Ruby 3 심층 분석 — Ractor, YJIT, Fiber Scheduler, RBS 타입 시스템, Ruby 4 전망"
-description: "Ruby 3.x 시리즈의 주요 신기능을 시스템 레벨에서 심층 학습합니다. Ractor의 Actor 모델이 GVL 없이 완전한 병렬 처리를 제공하는 방식과 Ractor 간 객체 공유 제한이 Marshal.dump 기반의 deep copy로 구현되는 과정, YJIT의 4단계 최적화 파이프라인(해석 → 모니터링 → 컴파일 → 네이티브 코드 실행)이 iseq에서 x86_64/AArch64 기계어를 생성하는 방식, Fiber Scheduler가 커널 스레드를 사용하지 않고 rb_thread_io_wait()를 후킹하여 수천 개의 동시 연결을 단일 스레드에서 처리하는 과정, RBS(Type Definition)와 TypeProf(Type Inference)가 선택적 타입 검사를 제공하는 방식과 Ruby 3의 3×3 성능 목표 달성 현황, Ruby 4에서 예상되는 주요 기능(Guilds, 타입 시스템 강화, 패턴 매칭 심화)을 다룹니다."
+description: "Ruby 3의 Ractor, YJIT, Fiber Scheduler, RBS 타입 시스템이 각각 무엇을 바꿨는지 예제로 비교하고, Ruby 4에서 이어질 방향도 살펴봤습니다."
 date: 2024-12-02 10:00:00 +0900
 category: ruby
 tags: [ruby, ruby3, ractor, yjit, fiber-scheduler, type-system, rbs, typeprof]

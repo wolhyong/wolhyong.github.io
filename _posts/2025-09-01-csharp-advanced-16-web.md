@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 웹 개발 — ASP.NET Core, MVC, Web API, 미들웨어, 라우팅, 컨트롤러"
-description: "C#의 웹 개발 프레임워크인 ASP.NET Core를 실무 레벨에서 학습합니다. ASP.NET Core는 크로스 플랫폼 고성능 웹 프레임워크로 MVC(Model-View-Controller) 패턴과 Web API를 지원합니다. MVC는 모델, 뷰, 컨트롤러로 분리하여 웹 애플리케이션을 구조화합니다. Web API는 RESTful 서비스를 구축하며 JSON 직렬화를 자동으로 처리합니다. 미들웨어는 HTTP 요청 파이프라인에 로깅, 인증, CORS 등을 추가합니다. 라우팅은 URL 패턴을 컨트롤러 액션에 매핑하며 특성 기반 라우팅과 규칙 기반 라우팅을 지원합니다. Startup 클래스에서 서비스와 미들웨어를 구성하며 Program.cs에서 호스트를 빌드합니다."
+description: "ASP.NET Core의 미들웨어 파이프라인과 라우팅, 컨트롤러 기반 Web API와 MVC를 구성하는 방법, 의존성 주입을 웹 계층에 연결하는 예제를 정리했습니다."
 date: 2025-09-01 10:00:00 +0900
 category: csharp
 tags: [csharp, aspnet-core, mvc, web-api, middleware, routing, controllers]

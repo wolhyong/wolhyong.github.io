@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 제네릭 — 제네릭 클래스, 제네릭 함수, 제네릭 인터페이스, 제네릭 제약, variance"
-description: "Kotlin의 제네릭 시스템을 컴파일러 레벨에서 학습합니다. 제네릭은 타입 매개변수로 코드 재사용성과 타입 안전성을 동시에 제공합니다. 제네릭 클래스는 ClassName<T> 문법으로 정의하며 여러 타입 매개변수를 가질 수 있습니다. 제네릭 함수는 메서드 수준에서 타입 매개변수를 정의합니다. 제네릭 제약(where 절)은 타입 매개변수에 제약을 추가하며 where T : class, where T : UpperBound 등을 지정합니다. variance는 in, out 키워드로 공변성과 반공변성을 제어합니다. Kotlin의 제네릭은 컴파일 타임에 구체화되며 런타임에 타입 소거(Type Erasure)가 발생합니다."
+description: "Kotlin 제네릭 클래스·함수·인터페이스를 정의하고 제약을 거는 방법, in·out 키워드로 선언적 variance를 지정하는 이유와 자바 와일드카드와의 차이를 정리했습니다."
 date: 2025-10-22 10:00:00 +0900
 category: kotlin
 tags: [kotlin, generics, generic-constraints, variance, type-erasure, reified]

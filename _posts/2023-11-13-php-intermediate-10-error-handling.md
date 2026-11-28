@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 에러 처리 — Exception/Error, try/catch, set_error_handler, 로깅"
-description: "PHP의 에러 처리 시스템을 Zend Engine 레벨에서 심층 학습합니다. PHP 7+의 Throwable 인터페이스 계층 구조(Error vs Exception), set_error_handler()가 E_* 에러를 ErrorException으로 변환하여 try/catch로 잡을 수 있게 하는 패턴, set_exception_handler()가 잡히지 않은 예외를 처리하는 최종 방어선, error_reporting(E_ALL)의 비트 마스크 기반 에러 수준 제어, PHP-FPM의 stderr 로깅과 Monolog의 PSR-3 로그 레벨(DEBUG/INFO/WARNING/ERROR/CRITICAL)을 다룹니다."
+description: "PHP 7 이후 Exception과 Error가 나뉜 구조, try/catch로 잡는 방법과 set_error_handler로 경고를 처리하는 법, 에러 로깅과 복구 전략을 정리했습니다."
 date: 2023-11-13 10:00:00 +0900
 category: php
 tags: [php, error-handling, exception, logging, monolog, throwable]

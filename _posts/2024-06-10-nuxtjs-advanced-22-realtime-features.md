@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 실시간 기능 — WebSocket 채팅, 실시간 알림, 협업 편집 구현"
 
 
-description: "Nuxt.js에서 실시간 기능을 구현하는 과정을 시스템 레벨에서 심층 학습합니다. WebSocket 연결이 HTTP Upgrade 요청을 통해 ws/wss 프로토콜로 전환되고 핸드셰이크에서 Sec-WebSocket-Key/Sec-WebSocket-Accept로 연결을 검증하는 과정, Nitro의 defineWebSocketHandler()가 h3의 handleUpgrade()를 통해 WebSocket 이벤트(message/close/error)를 처리하는 방식, BroadcastChannel API가 동일 출처의 여러 탭 간 메시지를 동기화하는 과정, SSE(Server-Sent Events)가 서버에서 클라이언트로 단방향 알림 스트림을 전송하는 방식, CRDT(Conflict-free Replicated Data Type) 기반 협업 편집이 Yjs 라이브러리로 오프라인/온라인 상태에서 동시 편집 충돌을 해결하는 원리를 다룹니다."
+description: "Nuxt에서 WebSocket 채팅과 실시간 알림, BroadcastChannel을 이용한 탭 간 동기화까지 실시간 기능을 구현하는 구조와 예제를 정리했습니다. 재연결 처리도 다룹니다."
 
 
 date: 2024-06-10 10:00:00 +0900

@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 심볼과 범위 — Symbol의 ID 테이블, Range의 순회와 Include 검사, 상수 조회 경로"
 
 
-description: "Ruby의 Symbol과 Range, 상수 시스템의 내부 동작을 시스템 레벨에서 심층 학습합니다. Symbol이 C 레벨에서 ID 타입(정수)으로 관리되며 global_symbols 테이블에 단일 인스턴스로 저장되어 문자열보다 빠른 비교와 메모리 효율성을 제공하는 과정, Range가 C 레벨에서 RRange 구조체로 begin/end/exclude_end? 플래그를 관리하고 Range#===가 include?로 Range#cover?와 Range#include?의 차이점, Range#each가 Integer/String 등 순회 가능한 타입에서만 동작하고 Float에서는 NoMethodError를 발생시키는 이유, 상수 조회 경로가 Module.nesting과 Module.constants를 따라 현재 네임스페이스에서 조상 체인으로 올라가며 탐색하는 과정을 다룹니다."
+description: "Symbol이 심볼 테이블에 저장되어 같은 객체를 재사용하는 방식, Range의 순회와 include? 검사, 상수 조회 경로가 어디까지 탐색하는지 예제로 정리했습니다."
 
 
 date: 2024-08-19 10:00:00 +0900

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Node.js 실시간 통신 — WebSocket과 Socket.IO 내부 동작 완전 이해"
-description: "Node.js에서 WebSocket과 Socket.IO가 실시간 통신을 구현하는 내부 원리 — HTTP Upgrade 핸드셰이크가 WebSocket 연결로 전환되는 정확한 과정, WebSocket 프레임(Frame) 구조의 비트별 분석, Socket.IO의 Engine.IO가 폴백(fallback) 전송을 처리하는 방식, Socket.IO 패킷 타입 6가지와 내부 프로토콜, 방(Room)이 메모리에 저장되는 구조와 브로드캐스트의 내부 구현, Redis 어댑터가 Pub/Sub으로 여러 서버 인스턴스의 이벤트를 동기화하는 원리, 재연결 전략과 지수 백오프 알고리즘"
+description: "WebSocket 핸드셰이크가 HTTP 업그레이드로 이뤄지는 과정, Socket.IO가 폴링에서 웹소켓으로 전환하는 방식, 재연결과 룸 관리 구조를 설명합니다. 스케일 아웃 구성도 짚습니다."
 date: 2022-07-04 10:00:00 +0900
 category: nodejs
 tags: [nodejs, websocket, socket-io, realtime, chat, bidirectional, engine-io, long-polling, redis-adapter, pubsub, room, namespace, bidirectional]

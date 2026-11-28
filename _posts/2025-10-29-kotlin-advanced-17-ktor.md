@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin Ktor 웹 프레임워크 — HTTP 서버, 라우팅, 플러그인, 콘텐트 협상"
-description: "Kotlin의 Ktor 웹 프레임워크를 실무 레벨에서 학습합니다. Ktor는 경량화된 비동기 웹 프레임워크로 코루틴을 기반으로 합니다. HTTP 서버는 embeddedServer로 시작하며 Netty 엔진을 사용합니다. 라우팅은 routing 플러그인으로 URL 패턴을 핸들러에 매핑하며 get, post, put, delete 등을 지원합니다. 플러그인은 기능을 모듈화하며 ContentNegotiation, StatusPages, CallLogging 등을 제공합니다. 콘텐트 협상은 JSON, XML 등의 콘텐트 타입을 자동으로 변환합니다. Ktor는 유연하고 확장 가능한 아키텍처를 제공합니다."
+description: "Ktor로 HTTP 서버를 만들고 라우팅을 구성하는 방법, 플러그인으로 인증·직렬화를 붙이는 구조, 콘텐트 협상과 코루틴 기반 처리 방식을 정리했습니다. 테스트 클라이언트 예제도 담았습니다."
 date: 2025-10-29 10:00:00 +0900
 category: kotlin
 tags: [kotlin, ktor, web-framework, http-server, routing, plugins, content-negotiation]

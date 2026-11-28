@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 파일 입출력 — open, with, JSON, CSV 완벽 이해"
-description: "Python의 파일 입출력 시스템을 내부 동작 원리와 함께 학습합니다. open() 함수의 파일 디스크립터와 버퍼링 메커니즘, with 문의 컨텍스트 매니저 프로토콜(__enter__/__exit__), 텍스트와 바이너리 모드의 차이, JSON 직렬화/역직렬화의 내부 과정, CSV 파싱의 동작 원리, 그리고 대용량 파일 처리를 위한 스트리밍 기법을 다룹니다."
+description: "open과 with 문으로 파일을 안전하게 열고 닫는 방법, 텍스트·바이너리 모드 차이, JSON과 CSV를 읽고 쓰는 예제를 정리했습니다. 인코딩과 줄바꿈 처리도 함께 짚습니다."
 date: 2023-02-06 10:00:00 +0900
 category: python
 tags: [python, file-io, json, csv, context-manager, with-statement, pickle, serialization]

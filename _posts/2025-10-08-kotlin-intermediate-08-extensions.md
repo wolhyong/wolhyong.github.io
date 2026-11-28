@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 확장 함수 — 확장 함수, 확장 프로퍼티, 연산자 오버로딩, 중위 함수"
-description: "Kotlin의 확장 시스템을 컴파일러 레벨에서 학습합니다. 확장 함수는 기존 클래스에 새로운 함수를 추가하며 ClassName.functionName 문법으로 정의합니다. 확장 프로퍼티는 기존 클래스에 새로운 프로퍼티를 추가하며 val/var로 정의합니다. 연산자 오버로딩은 operator 키워드로 연산자를 재정의하며 plus, minus, times 등을 구현합니다. 중위 함수는 infix 키워드로 중위 표기법을 지원하며 to, until 등이 예입니다. 확장은 상속 없이 기능을 확장할 수 있으며 정적 디스패치로 컴파일됩니다."
+description: "Kotlin 확장 함수와 확장 프로퍼티를 정의하는 방법, 연산자 오버로딩으로 문법을 확장하는 예제, 중위 함수와의 조합을 정리했습니다. 확장 함수가 정적 디스패치되는 이유도 설명합니다."
 date: 2025-10-08 10:00:00 +0900
 category: kotlin
 tags: [kotlin, extensions, extension-functions, extension-properties, operator-overloading, infix-functions]

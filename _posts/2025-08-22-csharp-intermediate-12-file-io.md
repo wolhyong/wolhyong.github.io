@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 파일 I/O — Stream, StreamReader/Writer, File, Directory, 직렬화, JSON 직렬화"
-description: "C#의 파일 I/O 시스템을 실무 레벨에서 학습합니다. Stream은 바이트 기반 추상화로 FileStream, MemoryStream, NetworkStream 등을 제공합니다. StreamReader/Writer는 텍스트 기반 I/O를 제공하며 인코딩을 지원합니다. File 클래스는 파일 생성, 복사, 삭제, 이동 등의 정적 메서드를 제공합니다. Directory 클래스는 디렉토리 생성, 삭제, 열거 등의 메서드를 제공합니다. 직렬화는 객체를 바이트로 변환하여 저장하며 BinaryFormatter, JSON 직렬화를 지원합니다. System.Text.Json은 JSON 직렬화/역직렬화를 제공하며 JsonSerializer를 사용합니다. Path 클래스는 파일 경로 조작을 지원하며 Path.Combine, Path.GetFileName 등의 메서드를 제공합니다."
+description: "C#에서 Stream과 StreamReader/Writer로 파일을 읽고 쓰는 방법, File·Directory 클래스로 경로를 다루는 법, JSON 직렬화 옵션과 인코딩 처리를 살펴봤습니다."
 date: 2025-08-22 10:00:00 +0900
 category: csharp
 tags: [csharp, file-io, stream, streamreader, serialization, json, system-text-json]

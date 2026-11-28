@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Ruby 고급 메타프로그래밍 — DSL 구축, TracePoint, 고유 메서드, 상속 훅, const_missing"
-description: "Ruby의 고급 메타프로그래밍 기법을 시스템 레벨에서 심층 학습합니다. DSL(Domain-Specific Language) 구축을 위한 instance_eval/class_eval 패턴이 레시버를 변경하여 블록 내 self를 조작하는 방식(RSpec, Sinatra의 내부 구조), TracePoint가 Ruby VM의 이벤트 후크 시스템을 통해 라인/호출/반환/클래스/예외 이벤트를 캡처하는 과정(TracePoint.new(:call) { |tp| ... }), inherited/included/extended/method_added 등의 상속 훅이 Module#include 시점에 자동 호출되어 메타프로그래밍 패턴을 가능하게 하는 방식, const_missing이 정의되지 않은 상수 참조 시 호출되어 자동 로딩(Autoloading)을 구현하는 과정(Rails의 Zeitwerk가 이 방식을 사용), removed_method/undef_method로 메서드를 동적으로 제거하는 방식을 다룹니다."
+description: "TracePoint로 메서드 호출과 예외를 후킹하는 방법, DSL을 만드는 패턴, inherited·method_added 같은 상속 훅과 const_missing 활용을 예제로 다룹니다."
 date: 2024-10-28 10:00:00 +0900
 category: ruby
 tags: [ruby, metaprogramming, dsl, tracepoint, hooks, const-missing, autoload]

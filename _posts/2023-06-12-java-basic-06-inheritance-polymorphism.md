@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 상속과 다형성 — extends, super, @Override, instanceof, 추상 클래스, 인터페이스"
-description: "Java의 상속과 다형성을 JVM 가상 메서드 테이블(VTable) 레벨에서 심층 학습합니다. extends에 의한 클래스 계층 구조와 super() 생성자 체이닝, @Override 애너테이션의 컴파일 타임 검증, instanceof 연산자가 객체의 실제 타입을 검사하는 과정, 추상 클래스와 인터페이스의 차이(다중 상속/상태), 다형성의 동적 바인딩(Virtual Method Invocation)을 다룹니다."
+description: "Java의 extends 상속과 super 호출, @Override로 재정의하는 규칙, instanceof와 추상 클래스·인터페이스로 다형성을 구성하는 예제를 확인합니다."
 date: 2023-06-12 10:00:00 +0900
 category: java
 tags: [java, inheritance, polymorphism, extends, override, interface, abstract]

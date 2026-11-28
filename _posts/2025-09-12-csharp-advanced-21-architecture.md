@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 아키텍처와 디자인 패턴 — 클린 아키텍처, SOLID, DDD, 레이어드 아키텍처, 마이크로서비스"
-description: "C#의 아키텍처와 디자인 패턴을 실무 레벨에서 학습합니다. 클린 아키텍처는 의존성 규칙으로 내부 레이어가 외부 레이어에 의존하지 않도록 합니다. SOLID 원칙은 단일 책임, 개방-폐쇄, 리스코프 치환, 인터페이스 분리, 의존성 역전 원칙입니다. DDD(Domain-Driven Design)는 도메인 중심 설계로 엔티티, 값 객체, 애그리거트, 리포지토리를 정의합니다. 레이어드 아키텍처는 프레젠테이션, 비즈니스, 데이터 액세스 레이어로 분리합니다. 마이크로서비스는 독립 배포 가능한 서비스로 분산 시스템을 구축합니다. 디자인 패턴은 싱글톤, 팩토리, 전략, 옵저버 등을 포함합니다."
+description: "C# 프로젝트를 클린 아키텍처로 나누는 기준과 SOLID 원칙 적용, DDD의 경계 설정, 레이어드 구조와 마이크로서비스로 확장하는 지점을 정리했습니다. 테스트하기 좋은 경계를 잡는 기준도 짚습니다."
 date: 2025-09-12 10:00:00 +0900
 category: csharp
 tags: [csharp, architecture, clean-architecture, solid, ddd, layered-architecture, microservices, design-patterns]

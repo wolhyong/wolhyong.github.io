@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 고루틴과 동시성 — goroutine의 스택 구조, M:N 스케줄러, sync.WaitGroup/Mutex/Once"
-description: "Go의 고루틴과 동시성 제어를 런타임 레벨에서 학습합니다. go 키워드는 runtime.newproc()를 호출해 새로운 고루틴을 생성합니다. 초기 스택 크기는 2KB에서 시작하고 필요에 따라 동적으로 확장됩니다. Go 런타임의 M:N 스케줄러는 G(고루틴)와 P(Processor)를 OS 스레드 위에서 조합해 work stealing으로 스레드 간 고루틴을 분산합니다. sync.WaitGroup은 counter와 semaphore로 구현되어 Add()로 카운터를 증가시키고 Done()으로 감소시키며 Wait()가 0이 될 때까지 대기합니다. sync.Mutex는 runtime mutex와 OS 페러먼트(futex)를 사용해 잠금 경합 시 고루틴을 GOMAXPROCS 기반으로 블로킹합니다. sync.Once는 atomic 연산과 fast path/slow path로 단 한 번의 초기화를 보장합니다."
+description: "고루틴이 작은 스택에서 시작해 필요할 때 늘어나는 구조와 GOMAXPROCS 기반 M:N 스케줄링, WaitGroup·Mutex·Once로 동기화하는 패턴을 예제로 다룹니다."
 date: 2025-03-17 10:00:00 +0900
 category: go
 tags: [go, golang, goroutines, concurrency, scheduler, gmp, waitgroup, mutex, sync]

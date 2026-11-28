@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 에러 처리 — try/except, 사용자 정의 예외, 예외 체이닝"
-description: "Python의 예외 처리 시스템을 내부 동작 원리와 함께 심층 학습합니다. try/except/else/finally의 4블록 구조와 PVM의 예외 전파 과정, raise와 raise ... from의 차이(예외 체이닝과 __cause__), 사용자 정의 예외 클래스 작성 패턴, traceback 객체의 스택 프레임 역참조, 컨텍스트 관리자의 예외 처리(__exit__의 exc_info), 그리고 EAFP vs LBYL 철학을 다룹니다."
+description: "Python의 try/except/else/finally 흐름과 사용자 정의 예외, 예외 체이닝으로 원인을 보존하는 방법, EAFP 스타일이 유리한 경우를 예제로 정리했습니다."
 date: 2023-02-27 10:00:00 +0900
 category: python
 tags: [python, exceptions, error-handling, try-except, traceback, eafp, context-manager]

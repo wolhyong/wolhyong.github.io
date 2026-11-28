@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Node.js 인증과 인가 — JWT, bcrypt, OAuth2 과정 완료"
-description: "Node.js 사용자 인증(Authentication)과 인가(Authorization) 심층 가이드 — bcrypt의 Blowfish 암호화가 비밀번호를 안전하게 저장하는 원리, JWT의 HS256/RS256/ES256 서명 알고리즘 차이와 성능 비교, 액세스 토큰과 리프레시 토큰의 이중 구조가 필요한 이유, Refresh Token Rotation이 보안을 강화하는 방법, 세션 기반 인증과 JWT의 실제 트레이드오프, OAuth2 Authorization Code Flow 개념, Rate Limiting과 무차별 대입 공격 방어 전략"
+description: "JWT 발급과 검증, bcrypt로 비밀번호를 해싱하는 방법, OAuth2 흐름과 토큰 저장 위치, 세션 기반 인증과의 차이를 보안 관점에서 정리했습니다. 리프레시 토큰 관리도 다룹니다."
 date: 2022-06-20 10:00:00 +0900
 category: nodejs
 tags: [nodejs, authentication, jwt, bcrypt, session, authorization, security, oauth2, refresh-token, rate-limiting, csrf, xss, jsonwebtoken, express-session]

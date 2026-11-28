@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 성능 최적화 — 프로파일링, 벤치마킹, 메모리 최적화, 알고리즘 최적화, 컴파일러 최적화"
-description: "Rust의 성능 최적화 기법을 시스템 레벨에서 학습합니다. 프로파일링은 perf, flamegraph, cargo-flamegraph로 병목 지점을 식별합니다. 벤치마킹은 criterion 라이브러리로 정확한 성능 측정을 제공하며 통계적 분석을 수행합니다. 메모리 최적화는 스택 할당, 힙 할당 최소화, 작은 크기 최적화, 인라이닝으로 메모리 사용을 줄입니다. 알고리즘 최적화는 Big-O 분석, 캐시 친화적 알고리즘, 병렬화로 계산 복잡도를 줄입니다. 컴파일러 최적화는 LTO(Link Time Optimization), PGO(Profile-Guided Optimization), 코드 생성 옵션으로 성능을 향상합니다. Rust의 제로-cost 추상화 원칙으로 고수준 코드도 저수준 코드와 동일한 성능을 보장합니다."
+description: "cargo flamegraph와 criterion으로 병목을 찾고 벤치마크를 남기는 절차, 할당을 줄이는 메모리 최적화, 컴파일러 최적화 옵션을 실제 측정값과 함께 다룹니다."
 date: 2025-07-16 10:00:00 +0900
 category: rust
 tags: [rust, performance, profiling, benchmarking, optimization, lto, pgo]

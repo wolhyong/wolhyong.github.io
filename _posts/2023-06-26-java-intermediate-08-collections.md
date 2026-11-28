@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 컬렉션 프레임워크 — List, Set, Map, Queue, 정렬, 검색"
-description: "Java Collections Framework를 내부 자료구조 레벨에서 심층 학습합니다. ArrayList의 동적 배열 구조와 grow() 메서드의 크기 증가 전략(50%), LinkedList의 이중 연결 리스트 노드 구조, HashMap의 해시 충돌 처리(Java 8+ TreeNode/Red-Black Tree)와 해시 버킷 재할당(rehash), TreeMap의 Red-Black Tree 균형 유지, Collections 유틸리티의 정렬(MergeSort/TimSort)과 이진 검색을 다룹니다."
+description: "Java의 List·Set·Map·Queue 구현체를 내부 구조와 성능으로 비교하고, 정렬·검색에서 어떤 컬렉션을 골라야 하는지 예제로 정리했습니다. 초기 용량 설정이 성능에 미치는 영향도 짚습니다."
 date: 2023-06-26 10:00:00 +0900
 category: java
 tags: [java, collections, arraylist, linkedlist, hashmap, treeset, timsort]

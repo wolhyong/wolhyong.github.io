@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 리플렉션 — reflect 패키지, Type/Value 객체, 동적 타입 검사, Struct 필드 조작과 태그 읽기"
-description: "Go의 reflect(리플렉션) 패키지를 런타임 레벨에서 학습합니다. reflect.TypeOf(v)가 interface{}에 저장된 구체적 타입 정보를 runtime._type 구조체에서 읽어 reflect.Type 인터페이스로 반환하는 과정, reflect.ValueOf(v)가 runtime.eface/iface의 data 포인터에서 실제 값을 읽어 reflect.Value 구조체로 감싸는 방식, reflect.Value.Elem()으로 포인터가 가리키는 값이나 인터페이스에 저장된 값에 접근하고 reflect.Value.Set()으로 값을 변경하는 방법(변경 가능한 경우에만), 구조체 필드를 reflect.Type.NumField()/Field(i)로 순회하고 Field.Tag.Get()으로 태그 값을 읽어 JSON/XML 직렬화를 동적으로 처리하는 방식, reflect.MakeFunc()로 런타임에 함수를 동적 생성하는 고급 패턴, 리플렉션 사용 시 성능 비용(리플렉션 호출은 일반 호출보다 10~100배 느림)과 이를 완화하는 캐싱 전략을 다룹니다."
+description: "Go reflect 패키지로 타입과 값을 런타임에 검사하고, 구조체 필드·태그를 읽어 동적으로 값을 채우는 방법을 예제로 다룹니다. 리플렉션이 느린 이유도 짚습니다."
 date: 2025-04-21 10:00:00 +0900
 category: go
 tags: [go, golang, reflection, reflect, runtime, dynamic, struct-tags, performance]

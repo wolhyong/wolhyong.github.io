@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# 성능 최적화 — 프로파일러, 메모리 최적화, Span<T>, Memory<T>, 배열 풀링, 비동기 최적화"
-description: "C#의 성능 최적화 기법을 시스템 레벨에서 학습합니다. 프로파일러는 Visual Studio Profiler, dotnet-trace로 병목 지점을 식별합니다. 메모리 최적화는 박싱/언박싱 방지, 구조체 사용, ArrayPool<T>로 메모리 할당을 줄입니다. Span<T>와 Memory<T>는 안전한 메모리 슬라이스를 제공하며 unsafe 코드 없이 메모리를 조작할 수 있습니다. 배열 풀링은 ArrayPool<T>, MemoryPool<T>로 배열 재사용을 제공합니다. 비동기 최적화는 ConfigureAwait(false), ValueTask로 비동기 오버헤드를 줄입니다. JIT 컴파일러 최적화와 NGEN(Ahead-of-Time) 컴파일로 시작 시간을 개선합니다."
+description: "Visual Studio 프로파일러와 dotnet-trace로 병목을 찾고, Span·Memory로 복사를 줄이는 방법, ArrayPool과 비동기 최적화를 측정값과 함께 다룹니다."
 date: 2025-09-08 10:00:00 +0900
 category: csharp
 tags: [csharp, performance, profiling, memory-optimization, span, memory-pooling, async-optimization]

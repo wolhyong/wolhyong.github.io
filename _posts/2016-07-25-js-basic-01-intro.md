@@ -1,6 +1,7 @@
 ﻿---
 layout: post
 title: "Js Basic 01 Intro"
+description: "자바스크립트가 웹 페이지를 움직이게 하는 원리와 브라우저 밖에서도 쓰이는 이유, 변수와 함수를 처음 다루는 기본 문법을 예제로 정리했습니다. 실행 환경 준비도 함께 안내합니다."
 date: 2016-07-25 10:00:00 +0900
 category: javascript
 level: beginner

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 변수와 데이터 타입 — val/var, 널 안전성, 타입 추론, 기본 타입, 문자열, 배열"
-description: "Kotlin의 변수와 데이터 타입 시스템을 컴파일러 레벨에서 학습합니다. val은 읽기 전용 상수이며 var는 변경 가능 변수입니다. 널 안전성은 String(널 불가능)과 String?(널 가능)으로 구분하며 ?. 안전 호출, ?: 엘비스 연산자, !! 널 단정 연산자를 제공합니다. 타입 추론은 컴파일러가 타입을 자동으로 추론하며 명시적 타입 지정도 가능합니다. 기본 타입은 Int, Long, Double, Float, Boolean, Char 등을 제공하며 박싱/언박싱 없이 최적화됩니다. 문자열은 불변이며 문자열 템플릿, 여러 줄 문자열, raw string을 지원합니다. 배열은 Array<T>와 기본 타입 배열(IntArray 등)을 제공하며 listOf, mutableListOf로 리스트를 생성합니다."
+description: "Kotlin의 val과 var 구분, String과 String?로 나뉘는 널 안전성, 타입 추론과 기본 타입, 문자열 템플릿과 배열·리스트를 만드는 방법을 예제로 정리했습니다."
 date: 2025-09-24 10:00:00 +0900
 category: kotlin
 tags: [kotlin, variables, data-types, null-safety, type-inference, strings, arrays]

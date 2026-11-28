@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Node.js 데이터베이스 연동 — SQLite, MySQL, Prisma 깊이 이해하기"
-description: "Node.js에서 데이터베이스를 연동할 때 알아야 할 모든 것 — SQLite와 MySQL의 내부 동작 원리, 커넥션 풀이 메모리와 성능에 미치는 영향, SQL 인젝션이 실제로 어떻게 동작하는지, Prisma와 Knex.js의 내부 쿼리 생성 방식 비교, 트랜잭션 격리 수준이 동시성에 미치는 영향, N+1 문제 해결 전략과 인덱싱 최적화"
+description: "Node.js에서 SQLite와 MySQL에 연결하고 Prisma로 스키마를 정의하는 방법, 커넥션 풀 관리와 쿼리 성능을 좌우하는 지점을 예제로 정리했습니다. 트랜잭션 처리도 함께 봅니다."
 date: 2022-06-06 10:00:00 +0900
 category: nodejs
 tags: [nodejs, database, sqlite, mysql, postgresql, orm, knex, prisma, crud, connection-pool, transaction, sql-injection, n-plus-one, indexing, database-optimization]

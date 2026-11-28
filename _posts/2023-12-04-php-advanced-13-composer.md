@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP Composer와 의존성 관리 — autoload, 패키지 버전 관리, 사용자 정의 명령"
-description: "PHP Composer의 의존성 관리 시스템을 내부 동작 레벨에서 심층 학습합니다. Composer가 composer.json을 읽어 Packagist API로 패키지 메타데이터를 가져오고, SAT(Satisfiability) 솔버로 의존성 그래프를 해결하는 과정(버전 충돌 시 업데이트 불가), 설치된 패키지의 정확한 버전을 composer.lock에 잠금(lock)하고 설치 시 lock 파일의 버전을 우선 사용하는 원리, PSR-4/PSR-0 오토로딩을 위한 vendor/composer/autoload_classmap.php의 클래스 맵 생성, 사용자 정의 Composer 명령(플러그인)의 CommandProvider 등록 과정, 스크립트 훅(pre/post-update-cmd)의 이벤트 시스템을 다룹니다."
+description: "Composer의 PSR-4 오토로딩 설정과 패키지 버전 제약을 거는 방법, lock 파일이 하는 역할, 사용자 정의 명령을 등록해 배포 작업을 자동화하는 예제를 정리했습니다."
 date: 2023-12-04 10:00:00 +0900
 category: php
 tags: [php, composer, dependency-management, packagist, autoloading, sat-solver]

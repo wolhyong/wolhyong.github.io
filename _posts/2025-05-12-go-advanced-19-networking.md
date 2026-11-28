@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 네트워킹 심화 — net/http 서버 심층 분석, HTTP 미들웨어 패턴, TCP 서버, JSON API 설계"
-description: "Go의 네트워킹을 서버 구현 레벨에서 학습합니다. net/http.Server가 Accept() → goroutine per connection → conn.serve() → serverHandler.ServeHTTP() → DefaultServeMux/ServeMux.Handler()의 체인으로 HTTP 요청을 처리하는 과정, HTTP/1.1 Keep-Alive가 연결을 재사용하는 방식과 HTTP/2의 multiplexing이 단일 연결로 여러 요청을 동시에 처리하는 구조, ServeMux의 패턴 매칭(Go 1.22+에서 메서드 기반 라우팅 \"/GET /api/users\" 지원)과 http.Handler/http.HandlerFunc/http.Handler 인터페이스의 관계, 미들웨어 패턴이 func(next http.Handler) http.Handler 형태로 각 핸들러를 감싸서 로깅/인증/압축/타임아웃 등 횡단 관심사를 처리하는 방식, text/template과 html/template의 차이점 — html/template이 컨텍스트 인식 이스케이프로 XSS(Cross-Site Scripting)를 방지하는 과정(JS/CSS/HTML/URL 컨텍스트별 이스케이프), encoding/json과 xml의 스트리밍 인코딩/디코딩을 다룹니다."
+description: "Go의 net/http가 연결을 받아 핸들러까지 전달하는 과정과 ServeMux 라우팅, 미들웨어를 조합하는 패턴, html/template의 컨텍스트 이스케이프와 JSON API 설계를 서버 코드로 살펴봅니다."
 date: 2025-05-12 10:00:00 +0900
 category: go
 tags: [go, golang, networking, http-server, middleware, tcp-server, template, rest-api]

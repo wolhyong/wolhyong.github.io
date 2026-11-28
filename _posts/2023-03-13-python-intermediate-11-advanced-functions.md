@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Python 고급 함수 — 데코레이터, 제너레이터, 람다, 클로저, 이터레이터"
-description: "Python의 고급 함수 개념을 내부 동작 원리와 함께 심층 학습합니다. 데코레이터가 함수를 감싸는 과정(closure + wrapper), 제너레이터의 yield가 프레임 객체를 일시 중단시키는 코루틴 메커니즘, 람다 표현식의 바이트코드 레벨 동작, 클로저가 자유 변수를 __closure__에 캡처하는 과정을 다룹니다."
+description: "데코레이터가 함수를 감싸는 원리와 인자를 받는 데코레이터 작성법, 제너레이터로 메모리를 아끼는 방법, 클로저와 이터레이터 구현 패턴을 예제와 함께 정리했습니다. functools 활용도 다룹니다."
 date: 2023-03-13 10:00:00 +0900
 category: python
 tags: [python, decorator, generator, lambda, closure, iterator, coroutine]

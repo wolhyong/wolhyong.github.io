@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Go 맵과 구조체 — 해시 테이블 map의 bucket 체인과 struct의 메모리 정렬, 필드 태그와 JSON 직렬화"
-description: "Go의 맵(map)과 구조체(struct)의 메모리 구조와 동작을 심층 학습합니다. map[K]V 해시 테이블은 runtime.hmap 구조체(buckets unsafe.Pointer, oldbuckets unsafe.Pointer, B uint8, count int)로 구현됩니다. key의 해시값 하위 B비트로 bucket을 선택하고, bucket 내부 tophash 배열에 키-값 쌍을 저장합니다. 충돌 시 overflow bucket 체인(linked list)으로 해결합니다. map 리터럴과 make(map[K]V, hint)로 생성하고 키-값을 할당/조회/삭제하는 방법을 설명합니다. struct는 필드 타입의 메모리 정렬(memory alignment) 요구사항에 따라 필드 사이에 패딩(padding)을 추가해 정렬 경계를 맞춥니다. 필드 순서 최적화로 구조체 크기를 줄이는 방법도 다룹니다. 구조체 필드 태그(tag)는 encoding/json이나 encoding/xml 같은 표준 라이브러리가 리플렉션(reflection)으로 읽어 직렬화를 제어합니다. 값 타입인 구조체는 함수 인자로 전달될 때 전체가 복사되며 포인터 리시버와 차이가 있습니다."
+description: "Go 맵의 해시 버킷 구조와 구조체 필드 정렬, 필드 태그로 JSON 직렬화 규칙을 바꾸는 방법을 다룹니다. 맵과 구조체를 함께 쓸 때 주의할 점도 코드로 확인합니다."
 date: 2025-02-10 10:00:00 +0900
 category: go
 tags: [go, golang, map, struct, hash-table, memory-alignment, json, struct-tags, reflection]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 비동기 프로그래밍 — Future, async/await, Tokio 런타임, 비동기 I/O, 태스크"
-description: "Rust의 비동기 프로그래밍 모델을 시스템 레벨에서 학습합니다. Future 트레이트는 비동기 연산을 표현하며 poll 메서드로 진행 상태를 확인합니다. async/await 문법은 비동기 코드를 동기 코드처럼 작성할 수 있게 하는 구문 설탕입니다. Tokio는 가장 인기 있는 비동기 런타임으로 태스크 스케줄링, 타이머, I/O를 제공합니다. 비동기 I/O는 논블로킹 I/O로 스레드를 효율적으로 사용합니다. 태스크는 비동기 작업 단위로 spawn으로 생성되며 JoinHandle로 결과를 기다릴 수 있습니다. Rust의 비동기 모델은 제로-cost 추상화로 동기 코드와 동일한 성능을 보장합니다."
+description: "Future가 폴링되는 구조와 async/await가 상태 머신으로 변환되는 과정, Tokio 런타임에서 태스크를 띄우고 비동기 I/O를 다루는 방법을 정리했습니다."
 date: 2025-07-09 10:00:00 +0900
 category: rust
 tags: [rust, async, future, async-await, tokio, async-io, zero-cost]

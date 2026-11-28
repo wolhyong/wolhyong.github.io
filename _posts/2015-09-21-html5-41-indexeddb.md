@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Service Worker — 오프라인 캐싱, 네트워크 전략, 업데이트 처리"
-description: "Service Worker로 오프라인 캐싱을 구현하는 방법은? Service Worker의 생명주기(install·activate·fetch), Cache API로 오프라인 캐싱 구현, Cache First·Network First·Stale-While-Revalidate 전략 비교, 업데이트 처리까지 다룹니다."
+description: "Service Worker가 네트워크 요청을 가로채 캐시에서 응답하는 구조, 캐싱 전략별 차이, 새 버전으로 업데이트하고 오프라인 화면을 처리하는 방법을 정리했습니다."
 date: 2015-09-21 00:00:00 +0900
 category: html
 level: advanced

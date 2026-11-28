@@ -7,7 +7,7 @@ layout: post
 title: "Ruby 테스팅 — Minitest의 assert/expect, RSpec의 describe/it/expect, TDD, mocking"
 
 
-description: "Ruby의 테스팅 프레임워크인 Minitest와 RSpec의 내부 동작을 시스템 레벨에서 심층 학습합니다. Minitest의 assert_equal/assert_raises/assert_nil이 TestCase 클래스의 인스턴스 메서드로 정의되어 MiniTest::Assertions 모듈을 include하여 테스트 검증을 수행하는 방식, Minitest::Mock이 expect와 verify로 모의 객체의 메서드 호출을 검증하는 과정(expectation이 충족되지 않으면 MockExpectationError), RSpec의 describe/it/context가 각각 ExampleGroup과 Example 객체를 생성하는 RSpec::Core::ExampleGroup의 클래스 메서드로 동작하는 방식, expect().to eq()가 RSpec::Matchers의 매처 객체를 생성하고 eq 매처가 == 연산자로 값을 비교하는 과정, before/after/let/let!가 각각 ExampleGroup의 실행 순서를 제어하는 훅과 지연 평가/즉시 평가 헬퍼를 제공하는 방식을 다룹니다."
+description: "Minitest의 assert와 RSpec의 describe/it 구조를 비교하고, 목 객체로 의존성을 분리하는 방법과 TDD 사이클을 예제 코드로 살펴봤습니다."
 
 
 date: 2024-10-14 10:00:00 +0900

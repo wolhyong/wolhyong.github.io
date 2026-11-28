@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java 제어문 — 조건문, 반복문, switch, break/continue, 레이블"
-description: "Java의 제어문을 바이트코드 레벨에서 심층 학습합니다. if-else의 조건부 분기와 tableswitch/lookupswitch 바이트코드, for/while 반복문의 JVM 프레임 변수 갱신 과정, switch 문의 컴파일러 최적화(tableswitch: O(1) vs lookupswitch: O(log n)), 향상된 for-each의 Iterable/Iterator 프로토콜 사용, break/continue와 레이블을 활용한 중첩 루프 제어를 다룹니다."
+description: "Java의 if·switch 조건문과 for·while 반복문, break·continue와 레이블로 중첩 루프를 제어하는 방법을 예제로 정리했습니다. switch 표현식 문법도 함께 짚습니다."
 date: 2023-05-22 10:00:00 +0900
 category: java
 tags: [java, control-flow, if-else, switch, for-loop, while, break, continue]

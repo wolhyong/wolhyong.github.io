@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 클래스와 객체 — 프로퍼티, 생성자, 상속, 인터페이스, 데이터 클래스, object 키워드"
-description: "Kotlin의 클래스와 객체 시스템을 컴파일러 레벨에서 학습합니다. class 키워드로 클래스를 정의하며 프로퍼티는 자동으로 getter/setter를 생성합니다. 주 생성자는 클래스 헤더에 정의하며 init 블록으로 초기화 로직을 작성합니다. 보조 생성자는 constructor 키워드로 정의하며 this()로 주 생성자를 호출합니다. 상속은 : BaseClass() 문법으로 단일 상속만 지원하며 open 키워드로 상속을 허용합니다. 인터페이스는 interface 키워드로 정의하며 다중 구현을 지원합니다. 데이터 클래스는 data class로 정의하며 equals, hashCode, toString, copy를 자동 생성합니다. object 키워드는 싱글톤과 익명 객체를 생성합니다."
+description: "Kotlin의 주 생성자와 프로퍼티 선언, 상속과 인터페이스 구현, data class가 자동으로 만들어 주는 메서드, object와 companion object의 쓰임을 예제로 정리했습니다."
 date: 2025-10-01 10:00:00 +0900
 category: kotlin
 tags: [kotlin, classes, objects, properties, constructors, inheritance, interfaces, data-class]

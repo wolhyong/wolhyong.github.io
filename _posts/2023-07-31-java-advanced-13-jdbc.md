@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Java JDBC — 데이터베이스 연결, PreparedStatement, 트랜잭션, Connection Pool"
-description: "Java JDBC를 드라이버 레벨에서 심층 학습합니다. DriverManager가 Class.forName()으로 드라이버를 로딩하고 URL 기반으로 연결하는 과정, PreparedStatement의 SQL Injection 방지(파라미터 바인딩이 DBMS의 prepare + 바인드 메커니즘), 트랜잭션의 ACID 원칙과 setAutoCommit(false)/commit()/rollback(), Connection Pool(HikariCP)의 ThreadLocal 기반 연결 관리와 유휴 연결 확인을 다룹니다."
+description: "JDBC로 연결을 열고 PreparedStatement로 쿼리를 실행하는 절차, 트랜잭션 처리와 롤백, 커넥션 풀을 구성해 성능을 확보하는 방법을 정리했습니다. 배치 처리 방법도 담았습니다."
 date: 2023-07-31 10:00:00 +0900
 category: java
 tags: [java, jdbc, database, prepared-statement, connection-pool, hikaricp, transaction]

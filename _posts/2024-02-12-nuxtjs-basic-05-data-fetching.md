@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 데이터 페칭 — useFetch와 useAsyncData가 __NUXT__.payload로 SSR 하이드레이션하는 과정"
 
 
-description: "Nuxt.js의 데이터 페칭 시스템이 SSR과 CSR에서 데이터 일관성을 유지하는 과정을 시스템 레벨에서 심층 학습합니다. useFetch가 SSR 단계에서 $fetch로 Nitro 서버에 HTTP 요청을 전송하고 응답을 __NUXT__.payload.data에 직렬화하여 HTML script 태그에 인라인으로 포함시키는 과정, useAsyncData가 useFetch의 내부 구현으로 동일한 직렬화/하이드레이션 사이클을 수행하는 원리, 클라이언트 하이드레이션 시 useFetch가 __NUXT__.data에서 캐시된 데이터를 발견하면 네트워크 요청 없이 즉시 반환하는 방식, key 옵션으로 캐시 키를 커스터마이징하여 데이터 중복을 방지하는 방법, lazy: true 옵션으로 SSR 페칭을 건너뛰고 CSR에서만 데이터를 로드하는 방식, transform과 pick 옵션으로 응답 데이터를 가공하는 과정을 다룹니다."
+description: "useFetch와 useAsyncData가 서버에서 받은 데이터를 payload로 직렬화해 클라이언트에 넘기는 하이드레이션 과정, 캐시 키와 재요청 옵션을 예제로 설명합니다."
 
 
 date: 2024-02-12 10:00:00 +0900

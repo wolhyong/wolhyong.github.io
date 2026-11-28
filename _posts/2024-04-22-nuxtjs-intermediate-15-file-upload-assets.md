@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 파일 업로드와 에셋 관리 — busboy로 multipart/form-data를 파싱하고 sharp로 이미지를 처리하는 과정"
 
 
-description: "Nuxt.js에서 파일 업로드를 처리하는 과정을 시스템 레벨에서 심층 학습합니다. h3의 readMultipartFormData()가 내부적으로 busboy 라이브러리를 사용하여 multipart/form-data 요청의 boundary를 기준으로 각 파트를 분리하고, 파일 파트를 Buffer로 수집하는 과정, sharp 라이브러리로 업로드된 이미지의 크기를 리사이징(resize)하고 WebP/AVIF 형식으로 변환하여 디스크나 S3에 저장하는 과정, readBody()의 multipart 지원과 readMultipartFormData()의 차이점, FormData 객체와 Blob이 fetch API에서 multipart 요청으로 직렬화되는 과정, 용량 제한과 파일 형식 검증을 서버에서 수행하는 보안 고려사항을 다룹니다."
+description: "h3의 readMultipartFormData()로 multipart/form-data를 파싱하고, sharp로 이미지를 리사이징·변환해 저장하는 과정, 업로드 파일 검증과 에셋 경로 관리 방법을 정리했습니다."
 
 
 date: 2024-04-22 10:00:00 +0900

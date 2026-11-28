@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "PHP 제어문과 함수 — 조건문, 반복문, 사용자 정의 함수, 스코프"
-description: "PHP의 제어문과 함수를 Zend Engine OPcode 레벨에서 심층 학습합니다. if/else/switch의 조건부 분기와 Zend VM의 JMPZ/JMPNZ OPcode, for/while/foreach의 반복 구조와 foreach가 내부 배열 포인터(internal array pointer)로 동작하는 과정, 사용자 정의 함수의 매개변수 전달 방식(값 전달 vs 참조 전달), 변수 스코프(global 키워드의 $GLOBALS 배열 접근, static 변수의 함수 간 상태 유지), 가변 함수(call_user_func)와 익명 함수(Closure)를 다룹니다."
+description: "PHP의 조건문과 반복문, 사용자 정의 함수와 인자 기본값, 전역·지역 스코프 규칙과 static 변수의 동작을 예제로 정리했습니다. 가변 인자와 참조 전달, 재귀 호출도 함께 다룹니다."
 date: 2023-09-25 10:00:00 +0900
 category: php
 tags: [php, control-flow, function, scope, closure, foreach]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 모듈 시스템 — 패키지, 크레이트, 모듈, use, pub, 파일 구조, 가시성 규칙"
-description: "Rust의 모듈 시스템을 컴파일러 레벨에서 학습합니다. 패키지(package)는 Cargo.toml로 정의되며 하나 이상의 크레이트(crate)를 포함합니다. 크레이트는 라이브러리(lib.rs) 또는 바이너리(main.rs)입니다. mod 키워드로 모듈을 정의하며 파일 시스템과 매핑됩니다. pub 키워드로 가시성을 제어하며 기본적으로 비공개입니다. use 키워드로 경로를 단축하며 as로 별칭을 지정할 수 있습니다. super와 self로 상대 경로를 참조합니다. Rust의 가시성 규칙은 캡슐화를 강제하며 pub(crate)로 크레이트 내부 공개, pub(super)로 상위 모듈 공개 등 세밀한 제어가 가능합니다."
+description: "Rust의 패키지·크레이트·모듈 관계와 use로 경로를 가져오는 방법, pub으로 공개 범위를 정하는 규칙, 파일 구조를 모듈 트리로 나누는 기준을 살펴봤습니다."
 date: 2025-06-25 10:00:00 +0900
 category: rust
 tags: [rust, modules, packages, crates, visibility, use, pub]

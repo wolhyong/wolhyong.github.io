@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kotlin 파일 I/O — File, Stream, BufferedReader/Writer, 직렬화, JSON 직렬화"
-description: "Kotlin의 파일 I/O 시스템을 실무 레벨에서 학습합니다. File 클래스는 파일 생성, 삭제, 복사, 이동 등의 작업을 제공합니다. BufferedReader/Writer는 텍스트 기반 I/O를 제공하며 use 함수로 자동 리소스 해제를 지원합니다. 직렬화는 객체를 바이트로 변환하여 저장하며 Serializable 인터페이스를 사용합니다. JSON 직렬화는 kotlinx.serialization 라이브러리를 사용하며 @Serializable 어노테이션으로 직렬화를 지정합니다. Path 클래스는 파일 경로 조작을 지원하며 Paths.get()로 경로를 생성합니다. Kotlin은 Java의 java.io와 java.nio 패키지를 활용합니다."
+description: "Kotlin에서 File과 스트림으로 파일을 읽고 쓰는 방법, use 블록으로 자원을 닫는 관용구, JSON 직렬화 라이브러리를 붙여 데이터를 저장하는 예제를 정리했습니다."
 date: 2025-10-17 10:00:00 +0900
 category: kotlin
 tags: [kotlin, file-io, streams, serialization, json, kotlinx-serialization]

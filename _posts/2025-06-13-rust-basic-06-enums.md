@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 열거형 — 데이터가 있는 열거형, Option과 Result, match로 패턴 매칭, 널 안전성"
-description: "Rust의 열거형 시스템을 타입 레벨에서 학습합니다. enum 키워드로 열거형을 정의하며 데이터가 있는 열거형은 각 변형이 다른 타입의 데이터를 가질 수 있습니다. Option<T>는 값이 있거나 없음을 표현하는 널 안전 타입으로 Some(T)과 None 변형을 가집니다. Result<T, E>는 성공 또는 실패를 표현하며 Ok(T)과 Err(E) 변형을 가집니다. match로 열거형을 패턴 매칭하며 exhaustive하게 모든 경우를 처리해야 합니다. if let과 while let으로 간단한 패턴 매칭을 할 수 있습니다. Rust의 열거형은 널 포인터 예외를 컴파일 타임에 방지합니다."
+description: "Rust 열거형에 데이터를 붙여 변형마다 다른 타입을 담는 방법, Option과 Result로 널과 에러를 표현하는 이유, match로 빠짐없이 처리하는 예제를 짚었습니다."
 date: 2025-06-13 10:00:00 +0900
 category: rust
 tags: [rust, enums, option, result, pattern-matching, null-safety]

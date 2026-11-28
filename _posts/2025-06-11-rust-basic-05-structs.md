@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 구조체 — 필드 구조체, 튜플 구조체, 유닛 구조체, 메서드, 연관 함수, 디버그 출력"
-description: "Rust의 구조체 시스템을 메모리 레벨에서 학습합니다. struct 키워드로 사용자 정의 타입을 정의하며 필드 구조체는 이름 있는 필드를 가집니다. 튜플 구조체는 이름 없는 필드를 가지며 튜플처럼 접근합니다. 유닛 구조체는 필드가 없는 타입으로 타입 마커로 사용됩니다. impl 블록으로 메서드와 연관 함수를 정의하며 self는 메서드의 수신자입니다. &self, &mut self, self는 소유권 전달 방식을 결정합니다. #[derive(Debug)]로 디버그 출력을 자동 구현할 수 있습니다. 구조체는 메모리에 필드 순서대로 저장되며 패딩(padding)으로 정렬됩니다."
+description: "Rust의 필드·튜플·유닛 구조체를 구분해 쓰는 법, impl로 메서드와 연관 함수를 붙이는 방법, Debug 트레이트로 값을 출력하는 예제를 정리했습니다. 구조체 갱신 문법도 함께 봅니다."
 date: 2025-06-11 10:00:00 +0900
 category: rust
 tags: [rust, structs, methods, associated-functions, derive, memory-layout]

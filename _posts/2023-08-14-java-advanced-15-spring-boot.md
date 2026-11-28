@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: "Spring Boot — 의존성 주입, REST API, JPA, AOP, 설정 관리"
-description: "Spring Boot 프레임워크를 내부 동작 원리와 함께 심층 학습합니다. IoC 컨테이너의 Bean 생명주기(스캐닝 → Definition → 생성 → 의존성 주입 → 초기화), @Autowired의 필드/생성자/세터 주입 방식과 순환 참조 해결, REST API(@RestController)의 내부에서 HttpMessageConverter가 Java 객체를 JSON으로 변환하는 과정(Jackson ObjectMapper), JPA의 영속성 컨텍스트(1차 캐시, 변경 감지, 지연 로딩), AOP의 프록시 기반 동작(CGLIB/JDK Proxy)을 다룹니다."
+description: "Spring Boot의 자동 설정이 동작하는 원리, 의존성 주입으로 빈을 구성하는 방법, REST API와 JPA, AOP를 붙이는 절차를 예제로 정리했습니다. 설정 분리 방법도 다룹니다."
 date: 2023-08-14 10:00:00 +0900
 category: java
 tags: [java, spring-boot, dependency-injection, rest-api, jpa, aop, ioc]

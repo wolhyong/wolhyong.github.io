@@ -7,7 +7,7 @@ layout: post
 title: "Nuxt.js 스타일링 — CSS Modules, Tailwind CSS, Nuxt UI 컴포넌트의 스타일 격리와 번들링 과정"
 
 
-description: "Nuxt.js에서 CSS를 적용하는 모든 방법과 내부 동작을 시스템 레벨에서 심층 학습합니다. 전역 CSS가 Vite의 CSS 번들링 파이프라인을 통해 PostCSS 변환과 Autoprefixer 적용 후 단일 CSS 파일로 병합되는 과정, Vue scoped styles가 PostCSS 플러그인으로 각 선택자에 data-v-{hash} 속성 셀렉터를 추가하여 스타일을 컴포넌트로 격리하는 방식, CSS Modules가 Vite의 CSS Modules 플러그인으로 클래스명을 [filename]_[classname]_[hash]로 변환하는 원리, @nuxtjs/tailwindcss 모듈이 Tailwind CSS JIT 엔진을 Vite에 통합하여 사용된 클래스만 추출하는 과정, Nuxt UI 컴포넌트가 Tailwind CSS와 Headless UI의 조합으로 접근성과 스타일링을 제공하는 방식을 다룹니다."
+description: "Nuxt에서 전역 CSS와 Scoped Styles, CSS Modules, Tailwind CSS를 섞어 쓸 때의 스타일 격리 방식과 빌드 시 번들링되는 과정을 예제로 비교합니다."
 
 
 date: 2024-02-26 10:00:00 +0900

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 웹 프로그래밍 — Actix-web, Axum, HTTP 서버, 핸들러, 미들웨어, 상태 관리"
-description: "Rust의 웹 프로그래밍 생태계를 실무 레벨에서 학습합니다. Actix-web은 고성능 웹 프레임워크로 액터 모델 기반 동시성을 제공하며 핸들러, 라우팅, 미들웨어를 지원합니다. Axum은 Tokio 기반 현대적 웹 프레임워크로 타입 안전한 라우팅과 추출기(extractor)를 제공합니다. HTTP 서버는 TcpListener로 연결을 수락하고 비동기로 요청을 처리합니다. 핸들러는 요청을 처리하고 응답을 반환하며 경로 매개변수, 쿼리 파라미터, JSON 바디를 추출할 수 있습니다. 미들웨어는 요청/응답 처리 파이프라인에 로깅, 인증, CORS 등을 추가합니다. 상태 관리는 AppState로 데이터베이스 풀, 설정 등을 공유합니다."
+description: "Actix-web과 Axum으로 HTTP 서버를 만들고 핸들러·미들웨어·상태를 구성하는 방법, 추출기로 요청 데이터를 받는 패턴, 두 프레임워크의 차이를 비교합니다."
 date: 2025-07-11 10:00:00 +0900
 category: rust
 tags: [rust, web, actix-web, axum, http-server, middleware, handlers]
