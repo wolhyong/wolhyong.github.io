@@ -91,34 +91,39 @@ func TestDivide(t *testing.T) {
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 테스트 커버리지는 어떻게 측정하나요?</strong></summary>
 
 `go test -cover`로 전체 커버리지 백분율을 확인합니다. `go test -coverprofile=coverage.out`으로 상세 정보를 파일로 저장하고, `go tool cover -html=coverage.out`으로 HTML 리포트를 생성합니다(브라우저에서 각 라인의 커버 여부를 시각적으로 확인 가능). `go test -covermode=count`는 각 라인이 실행된 횟수를 기록합니다. Go의 커버리지는 **문장(statement) 커버리지**를 측정합니다. 커버리지가 100%라고 버그가 없는 것은 아니지만, 테스트되지 않은 코드를 식별하는 데 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 벤치마크는 어떻게 작성하나요?</strong></summary>
 
 `func BenchmarkXxx(b *testing.B)` 형태로 작성합니다. `b.N`은 벤치마크 러너가 자동으로 조절하는 반복 횟수입니다. 보통 1초 정도 실행되는 횟수로 설정됩니다. `b.ResetTimer()`로 설정 코드의 시간을 제외할 수 있습니다. `b.RunParallel()`로 병렬 벤치마크를 실행합니다. 실행: `go test -bench=. -benchmem`. `-benchmem`은 메모리 할당 통계를 추가로 출력합니다. 출력 예: `BenchmarkAdd-8 1000000000 0.25 ns/op 0 B/op 0 allocs/op` (연산 1회당 시간, 할당 메모리, 할당 횟수).
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: fuzzing(Fuzz testing)은 어떻게 사용하나요?</strong></summary>
 
 Go 1.18부터 fuzzing이 정식 지원됩니다. `func FuzzXxx(f *testing.F)` 형태로 작성합니다. `f.Add()`로 시드 코퍼스(seed corpus)를 추가하고, `f.Fuzz(func(t *testing.T, data ...) { ... })`로 퍼징 타겟을 정의합니다. 실행: `go test -fuzz=Fuzz -fuzztime=30s`. 퍼저는 시드 입력을 변형(mutation)하여 새로운 입력을 생성하고, 패닉이나 실패를 유발하는 입력을 찾으면 `testdata/fuzz/FuzzXxx/` 디렉토리에 저장합니다. 주로 JSON 파서, 입력 검증 함수 등 경계 조건이 많은 함수의 버그를 찾는 데 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: HTTP 서버 테스트는 어떻게 하나요?</strong></summary>
 
 `net/http/httptest` 패키지를 사용합니다. `httptest.NewServer(handler)`로 실제 HTTP 서버를 띄우지 않고 테스트용 서버를 생성합니다. 서버는 랜덤 포트에서 수신하므로 충돌이 없습니다. `httptest.NewRequest(method, url, body)`로 요청을 생성하고, `httptest.NewRecorder()`로 응답을 기록합니다. 예: `req := httptest.NewRequest("GET", "/api/users", nil); w := httptest.NewRecorder(); handler.ServeHTTP(w, req); resp := w.Result()`. 클라이언트 테스트는 `httptest.NewServer`의 URL로 요청을 보냅니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 목(Mock) 객체는 어떻게 만드나요?</strong></summary>
 
 Go에는 표준 Mock 라이브러리가 없지만, 인터페이스를 활용하여 쉽게 Mock을 만들 수 있습니다. 방법: (1) **직접 Mock 구조체 작성** — 인터페이스를 구현하는 단순한 Mock 구조체를 직접 작성. (2) **gomock** — Google의 Mock 프레임워크로, 코드 생성으로 Mock을 자동 생성. (3) **testify/mock** — 간단한 Assertion과 Mock을 제공. (4) **interfaces** — Go의 암시적 구현 덕분에 생산 환경의 실제 객체와 테스트의 Mock 객체를 쉽게 교체 가능. Mock의 핵심은 의존성을 인터페이스로 추상화하는 것입니다.
+
 </details>
 
 ## 요약

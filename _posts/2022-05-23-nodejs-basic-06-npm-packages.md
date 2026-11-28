@@ -468,22 +468,25 @@ pnpm: node_modules 구조 (하드 링크)
   pnpm: 5MB + 10MB + 0.5MB = 15.5MB (90% 절약!)
 ```
 
-<details>
+<details markdown="1">
 <summary><strong>node_modules 폴더가 너무 큰데 어떻게 해야 하나요?</strong></summary>
 
 `node_modules`는 거대해질 수밖에 없습니다. `.gitignore`에 추가하여 git에 포함되지 않게 하고, CI/CD나 배포 시에는 `npm ci`(clean install)로 재현 가능한 설치를 사용하세요. 대규모 모노레포에서는 **pnpm**으로 전환하면 디스크 공간을 80~90% 절약할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>npm ci와 npm install의 차이는?</strong></summary>
 
 `npm ci`는 `package-lock.json`을 기준으로 **정확히** 패키지를 설치합니다. 의존성 해석 과정을 생략하므로 `npm install`보다 약 2배 빠릅니다. CI/CD 환경에 적합합니다. `npm install`은 `package.json`을 기준으로 설치하고 lock 파일을 업데이트할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>패키지 버전이 갑자기 안 맞을 때는?</strong></summary>
 
 `package-lock.json`이 있다면 `npm ci`로 정확히 동일한 버전을 복원할 수 있습니다. 버전 충돌이 있다면 `npm ls <패키지명>`으로 의존성 트리를 확인하세요. `npm ls`는 모든 의존성의 버전을 트리 구조로 표시하여 어떤 패키지가 충돌을 일으키는지 파악할 수 있습니다.
+
 </details>
 
 # 요약

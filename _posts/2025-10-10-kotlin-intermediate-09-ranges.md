@@ -12,7 +12,6 @@ Kotlin의 범위와 진법 시스템은 간결하고 표현력이 풍부하며 �
 
 > **핵심 정리** · 범위는 `..` 연산자로 정의합니다. `downTo`, `step`, `until`로 범위를 제어합니다. 진법은 `0x`, `0b` 리터럴을 지원합니다. 비트 연산은 `shl`, `shr`, `and`, `or`, `xor`를 제공합니다. `as`, `as?`로 타입 캐스팅을 수행합니다. `is`, `!is`로 타입 검사를 수행합니다.
 
-
 ## 수업 목표
 
 - 범위를 이해하고 사용할 수 있습니다.
@@ -263,39 +262,42 @@ val binaryNumber = 0b1010
 
 숫자 리터럴에 접미사를 사용하여 타입을 지정합니다. `L`은 Long, `f`는 Float입니다. 밑줄로 가독성을 높일 수 있습니다. `0x`, `0b`로 진법을 지정합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> ..과 until 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `..`는 끝값을 포함합니다. `until`은 끝값을 제외합니다. 0부터 n-1까지 순회할 때 `until`을 사용합니다. 끝값을 포함할 때 `..`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> as와 as? 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `as?`를 사용해야 합니다. 안전한 캐스트로 실패 시 `null`을 반환합니다. `as`는 실패 시 `ClassCastException`을 발생시킵니다. 예외 처리를 피하기 위해 `as?`를 우선 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 비트 연산은 언제 사용해야 하나요?</strong></summary>
 
 비트 연산은 플래그 처리, 마스킹, 최적화에 사용합니다. 하드웨어 제어, 암호화, 압축 등에 유용합니다. 일반적인 비즈니스 로직에는 거의 사용되지 않습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 스마트 캐스트는 언제 작동하나요?</strong></summary>
 
 스마트 캐스트는 다음 조건에서 작동합니다: (1) `val` 프로퍼티 (2) `is` 연산자로 타입 확인 (3) 확인 후 변경되지 않음. `var` 프로퍼티는 변경 가능하므로 스마트 캐스트가 작동하지 않을 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 진법 변환은 언제 사용해야 하나요?</strong></summary>
 
 진법 변환은 데이터 직렬화, 네트워크 프로토콜, 암호화에 사용합니다. 16진수는 바이트 표현에, 2진수는 비트 조작에 유용합니다. 일반적인 비즈니스 로직에는 거의 사용되지 않습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -320,7 +322,6 @@ val binaryNumber = 0b1010
 | **!is** | 타입 아님 검사 | 부정 |
 | **toLong()** | Long 변환 | 명시적 변환 |
 | **toInt()** | Int 변환 | 명시적 변환 |
-
 
 ## 다음 수업
 

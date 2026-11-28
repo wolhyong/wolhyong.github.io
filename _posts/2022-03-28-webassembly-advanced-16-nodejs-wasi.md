@@ -165,19 +165,25 @@ AWS Lambda (Firecracker):
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Node.js에서 WASM을 사용하면 어떤 성능 향상이 있나요?</strong></summary>
+
 계산 집약적 작업(Crypto, 이미지 처리, 데이터 압축)에서 WASM은 순수 JavaScript보다 2~10배 빠릅니다. I/O 바운드 작업(파일 읽기, 네트워크 요청)에서는 차이가 거의 없습니다. 실제 프로젝트 예: bcrypt 해싱(Js 350 ops/sec → WASM 1,200 ops/sec, 3.4배), JSON 파싱(JS 50MB/s → WASM simdjson 2GB/s, 40배), 이미지 리사이즈(JS 100ms → WASM 15ms, 6.7배).
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM을 서버 프로덕션에 도입할 때 고려할 점은 무엇인가요?</strong></summary>
+
 (1) **디버깅 어려움**: WASM의 디버깅 도구는 JavaScript만큼 성숙하지 않음. DWARF 정보 포함 빌드 필요. (2) **네트워크 한계**: WASI preview1은 네트워크 소켓 미지원. HTTP 요청은 JS 레이어를 통해야 함. (3) **멀티스레딩 제약**: WASM에서 직접 스레드 생성 불가. SharedArrayBuffer + Web Workers 필요. (4) **빌드 체인 복잡성**: Rust → wasm-pack → 최적화 → 배포의 파이프라인 구축 필요. (5) **메모리 제한**: 기본 1페이지(64KB)에서 시작, 필요시 grow (최대 4GB). 힙 메모리를 많이 사용하는 애플리케이션은 WASM에 부적합.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Fastly Compute@Edge와 Cloudflare Workers 중 어떤 플랫폼이 WASM에 더 적합한가요?</strong></summary>
+
 **Fastly Compute@Edge**는 WASM을 1등 시민(first-class citizen)으로 지원합니다. Rust/C로 작성된 WASM을 AOT 컴파일하여 로드하며, 캐시 퍼블 아키텍처로 복잡한 엣지 로직에 적합합니다. **Cloudflare Workers**는 주로 JavaScript/TypeScript를 사용하며, WASM은 JS와의 상호 운용을 통해 사용됩니다. **선택 기준**: WASM 중심 프로젝트 → Fastly, JS 중심 + 부분 WASM → Cloudflare Workers. 성능 면에서는 Fastly의 AOT 방식이 약간 우수합니다(1~3ms vs 5~10ms 콜드 스타트).
+
 </details>
 
 ---

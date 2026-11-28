@@ -57,34 +57,39 @@ func main() {
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: select 문은 여러 채널을 어떻게 동시에 대기하나요?</strong></summary>
 
 select 문은 컴파일러에 의해 여러 `scase` 구조체를 가진 select 배열로 변환됩니다. 런타임은 모든 case의 채널을 폴링(polling)합니다: (1) **빠른 경로**: 하나라도 준비된 case가 있으면 무작위로 하나 선택하여 실행. (2) **느린 경로**: 모두 준비되지 않았으면 현재 고루틴을 모든 채널의 대기열에 등록(sudog 구조체)하고 블로킹. (3) **깨어남**: 어떤 채널이 준비되면 고루틴이 깨어나고, 다른 채널의 대기열에서 제거됩니다. `default` case는 모든 채널이 준비되지 않았을 때 즉시 실행됩니다. select는 case 순서를 shuffle하여 채널 간 공정성(fairness)을 보장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 버퍼 채널의 크기는 어떻게 선택해야 하나요?</strong></summary>
 
 버퍼 채널의 크기는 다음과 같이 선택합니다: (1) **0 (언버퍼)** — 고루틴 간 동기화가 필요할 때. 이벤트 신호, 작업 완료 통지. (2) **1** — 하나의 값을 비동기로 보내고 즉시 계속 실행해야 할 때. 핑퐁 통신. (3) **작은 값(2~100)** — 생산자-소비자 패턴에서 속도 차이를 완충할 때. (4) **큰 값(100+)** — 대량의 데이터를 배치 처리할 때. 버퍼가 너무 크면 메모리 낭비, 너무 작으면 블로킹이 증가합니다. Go의 관례는 \"언버퍼부터 시작하고, 프로파일링 후 필요하면 버퍼를 추가\"입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: context 패키지는 내부적으로 어떻게 동작하나요?</strong></summary>
 
 context.Context는 인터페이스로, `Done() <-chan struct{}` 메서드가 핵심입니다. `context.WithCancel(parent)`은 `cancelCtx` 구조체를 생성하고, 취소 시 `Done()` 채널을 닫아(close channel) 모든 수신자에게 취소를 알립니다. `context.WithTimeout(parent, d)`는 `timerCtx`를 생성하고, 시간이 지나면 자동으로 취소를 호출합니다. 컨텍스트는 트리 구조로, 부모가 취소되면 모든 자식도 취소됩니다(취소 전파). HTTP 서버, 데이터베이스 쿼리 등 시간 제한이 필요한 모든 작업에서 컨텍스트를 첫 번째 파라미터로 전달하는 것이 Go의 관례입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 채널 송신/수신 시 고루틴 블로킹은 어떻게 처리되나요?</strong></summary>
 
 채널에서 블로킹된 고루틴은 `sudog`(sleep until goroutine) 구조체로 `sendq` 또는 `recvq` 대기열에 등록됩니다. 이 구조체는 블로킹된 고루틴의 포인터와 송신/수신할 값의 주소를 저장합니다. 이후 상대방 고루틴이 도착하면: (1) `<sudog.elem>`에서 직접 데이터를 복사 (고루틴 스택 간 직접 복사) (2) 대기열에서 제거 (3) `goready()`로 고루틴을 실행 가능 상태로 전환. 이 과정에서 락-프리(lock-free)에 가까운 효율적인 동기화가 이루어집니다. 채널 연산은 뮤텍스보다 가볍습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: close(ch)를 호출한 채널에서 수신하면 어떻게 되나요?</strong></summary>
 
 닫힌 채널에서 수신(`<-ch`)은 즉시 제로값을 반환합니다. `v, ok := <-ch`에서 `ok`는 `false`입니다. 닫힌 채널로 송신(`ch <- v`)은 panic을 발생시킵니다. 닫힌 채널을 다시 닫아도 panic입니다. range로 채널을 순회하면 채널이 닫힐 때까지 값을 읽고 종료됩니다. 채널을 닫는 것은 송신자(sender)의 책임이며, 수신자는 절대 채널을 닫아서는 안 됩니다. nil 채널에서 송신/수신은 영원히 블로킹됩니다.
+
 </details>
 
 ## 요약

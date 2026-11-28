@@ -52,34 +52,39 @@ $response->send();
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 프론트 컨트롤러 패턴의 장점은 무엇인가요?</strong></summary>
 
 1) **중앙 집중식 요청 처리**: 모든 요청이 단일 진입점(index.php)을 통과하므로 인증, 로깅, 세션, CORS 등 공통 로직을 한 곳에서 처리할 수 있습니다. 2) **URL 디자인 자유로움**: 디렉토리 구조에 종속되지 않고 RESTful URL을 자유롭게 설계할 수 있습니다. 3) **보안**: 직접 접근 가능한 PHP 파일이 없어지고, 모든 요청이 컨트롤러를 통하므로 접근 제어가 명확해집니다. 4) **테스트 용이성**: 각 컴포넌트를 독립적으로 테스트할 수 있습니다. 단점은 모든 요청이 index.php를 통과하므로 .htaccess/Nginx 설정이 필요합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PSR-4 오토로딩의 동작 방식은 무엇인가요?</strong></summary>
 
 PSR-4는 **클래스명(namespace)을 파일 경로로 매핑**합니다. `App\Controller\UserController` 클래스를 찾으면 namespace 접두사 `App\`을 등록된 디렉토리 `src/`로 매핑하여 `src/Controller/UserController.php`를 로드합니다. Composer의 ClassLoader는 `spl_autoload_register()`로 등록되며, `vendor/composer/autoload_psr4.php`에 매핑 정보가 저장됩니다. 클래스가 처음 사용되는 시점에 `require_once`로 지연 로딩되어 불필요한 파일 로딩을 방지합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Blade와 Twig의 차이는 무엇인가요?</strong></summary>
 
 **Blade**(Laravel)는 PHP 코드를 템플릿에 직접 허용하고(`@php` 지시어), 상속은 `@extends`/`@section`/`@yield`로 합니다. 런타임에 템플릿을 컴파일하여 `storage/framework/views/`에 캐싱합니다. **Twig**(Symfony)는 보안 중심으로 설계되어 PHP 코드 실행을 완전히 차단하고, {% raw %}`{% %}` / `{{ }}`{% endraw %} / `{# #}`의 자체 문법을 사용합니다. 더 엄격한 샌드박스와 이스케이프를 제공합니다. Blade는 Laravel 생태계에 더 친화적이고, Twig는 Symfony와 독립적으로 사용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 컨트롤러가 무거워지는 것을 방지하는 방법은 무엇인가요?</strong></summary>
 
 **Fat Controller 안티패턴**을 피하려면: 1) **Service Layer 도입** — 비즈니스 로직을 서비스 클래스로 분리하고 컨트롤러는 요청/응답 처리만 담당. 2) **Form Request** — 유효성 검사를 별도 Request 클래스로 분리. 3) **Action 클래스** — 하나의 액션만 담당하는 단일 메서드 컨트롤러(PSR-15의 핸들러와 유사). 4) **Repository 패턴** — DB 쿼리 로직을 Repository로 분리. 컨트롤러는 "HTTP 요청을 받아 서비스에 위임하고 응답을 반환"하는 얇은 레이어로 유지하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: RESTful 라우팅의 모범 사례는 무엇인가요?</strong></summary>
 
 RESTful 라우팅은 **리소스(명사) 기반**으로 설계합니다: `GET /users`(목록), `GET /users/{id}`(조회), `POST /users`(생성), `PUT/PATCH /users/{id}`(수정), `DELETE /users/{id}`(삭제). 중첩 리소스는 `/users/{userId}/posts`로 표현합니다. URL에 동작(동사)을 포함하지 않고(`getUsers` → `GET /users`), HTTP 메서드로 동작을 표현합니다. 페이지네이션은 쿼리 파라미터로(`?page=1&per_page=20`), 버전 관리는 접두사로(`/api/v1/users`) 처리합니다.
+
 </details>
 
 ---

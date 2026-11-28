@@ -12,7 +12,6 @@ Kotlin의 제어문은 간결하고 표현력이 풍부하며 표현식으로 �
 
 > **핵심 정리** · `if/else`는 표현식으로 값을 반환합니다. `when`은 강화된 switch 문입니다. `for`는 범위와 컬렉션을 순회합니다. `while`과 `do-while`은 조건부 반복입니다. 범위는 `..`으로 정의합니다. 시퀀스는 지연 평가 컬렉션입니다. `break`, `continue`, `return`으로 제어 흐름을 제어합니다.
 
-
 ## 수업 목표
 
 - if/else를 이해하고 사용할 수 있습니다.
@@ -351,39 +350,42 @@ val isString = obj is String  // true
 
 조건부 표현식은 `if/else`, `when`, `in`, `is` 등을 표현식으로 사용합니다. 간결하고 가독성 있는 코드를 작성할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Kotlin에는 삼항 연산자가 없나요?</strong></summary>
 
 Kotlin에는 삼항 연산자(`?:`)가 없습니다. 대신 `if/else`를 표현식으로 사용합니다. `if (condition) value1 else value2` 형식입니다. 더 명확하고 가독성이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> when과 if/else 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `when`은 여러 조건을 처리할 때 사용합니다. 특히 여러 값, 범위, 타입 체크가 필요할 때 유용합니다. 단순한 조건에는 `if/else`를 사용합니다. `when`이 더 가독성이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> for 루프와 while 루프 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `for` 루프는 컬렉션, 범위 순회에 사용합니다. 반복 횟수가 명확할 때 유용합니다. `while` 루프는 조건부 반복에 사용합니다. 반복 횟수가 불확실할 때 유용합니다. 대부분의 경우 `for` 루프를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 범위와 시퀀스 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 범위는 즉시 평가되며 작은 데이터에 적합합니다. 시퀀스는 지연 평가되며 대용량 데이터에 적합합니다. 성능이 중요하면 시퀀스를 사용합니다. 대부분의 경우 범위로 충분합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 레이블은 언제 사용해야 하나요?</strong></summary>
 
 레이블은 중첩 루프 제어에 사용합니다. 특정 루프를 종료하거나 건너뛸 때 유용합니다. 람다에서 `return`을 제어할 때도 사용합니다. 중첩 구조가 복잡할 때 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -402,7 +404,6 @@ Kotlin에는 삼항 연산자(`?:`)가 없습니다. 대신 `if/else`를 표현�
 | **레이블** | 중첩 제어 | label@ |
 | **in** | 범위 포함 | 조건부 표현식 |
 | **is** | 타입 체크 | 조건부 표현식 |
-
 
 ## 다음 수업
 

@@ -169,24 +169,32 @@ wasm-objdump -d -x module.wasm > module_dump.txt
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Chrome DevTools에서 WASM 함수에 브레이크포인트를 설정하는 방법은?</strong></summary>
+
 Sources 탭에서 Page → wasm:// 또는 wasm 파일을 찾습니다. WASM 모듈이 로드된 후에야 표시되므로, 페이지를 새로고침해야 할 수 있습니다. WASM 파일을 열면 WAT 디스어셈블리 코드가 표시됩니다. 여기서 원하는 함수나 특정 명령어 줄에 클릭하여 브레이크포인트를 설정합니다. 또는 JavaScript 코드에서 `debugger;`를 WASM 호출 앞에 추가하는 방법도 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 소스 맵(Source Map) 없이도 디버깅할 수 있나요?</strong></summary>
+
 네, 가능합니다. 소스 맵 없이도 Chrome DevTools는 WASM 바이너리를 WAT(텍스트 포맷)로 디스어셈블리하여 표시합니다. 함수명(export된 것만)과 WASM 명령어 레벨에서 브레이크포인트를 설정할 수 있습니다. 하지만 변수명은 i32, f64 등 타입만 표시되고, 원본 C/Rust 코드의 변수명은 보이지 않습니다. **권장**: 개발 시에는 소스 맵 포함 빌드를, 프로덕션 배포 시에는 제거하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 프로덕션 WASM에서 디버그 정보를 제거해야 하나요?</strong></summary>
+
 네, 반드시 제거해야 합니다. DWARF 정보는 WASM 바이너리 크기를 2~3배 증가시키고, 내부 구현 구조를 노출하여 보안 위험이 될 수 있습니다. `wasm-strip` 도구로 디버그 섹션을 제거할 수 있습니다: `wasm-strip module.wasm -o module_stripped.wasm`. 또는 wasm-opt를 사용해도 디버그 정보가 제거됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Rust의 panic!이나 unwrap()으로 인한 WASM 크래시를 디버깅하는 방법은?</strong></summary>
+
 Rust 코드에서 `console_error_panic_hook` 크레이트를 사용하면 panic 발생 시 JavaScript 콘솔에 스택 트레이스를 출력할 수 있습니다. `wasm-pack new`로 생성된 프로젝트에는 기본 포함되어 있습니다. `#[wasm_bindgen]` 함수 내에서 `set_panic_hook()`을 호출하면 됩니다. 또한 Chrome DevTools의 Console 탭에서 WASM 관련 에러 메시지를 확인할 수 있습니다.
+
 </details>
 
 ---

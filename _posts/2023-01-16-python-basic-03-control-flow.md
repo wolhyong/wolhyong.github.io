@@ -416,34 +416,39 @@ print(next(gen))  # 4 — 여기서 2**2 계산
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Python의 switch/case문은 없나요?</strong></summary>
 
 Python 3.10부터 **match/case** 문(구조적 패턴 매칭)이 도입되었습니다. C의 switch와 비슷하지만 훨씬 강력합니다: 값 매칭뿐 아니라 타입, 구조, 가드 조건까지 매칭할 수 있습니다. 예: `match status: case 200: ... case 404: ...`. Python 3.9 이하에서는 `if/elif/else`나 딕셔너리 매핑을 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: for 루프에서 리스트를 수정하면 안 되나요?</strong></summary>
 
 순회 중인 리스트를 수정하면 예기치 않은 동작이 발생합니다. 요소를 추가/제거하면 인덱스가 변경되어 일부 요소를 건너뛰거나 중복 처리할 수 있습니다. 리스트를 수정해야 한다면 **복사본을 순회**하세요: `for item in list[:]:` 또는 `for item in list.copy():`. 또는 새 리스트를 만들어 결과를 수집하는 것이 더 안전합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 컴프리헨션은 항상 가독성이 좋은가요?</strong></summary>
 
 아니요. 2중 이상 중첩되거나 조건이 3개 이상이면 컴프리헨션의 가독성이 급격히 떨어집니다. 예: `[fn(x) for x in data for y in nested[x] if cond1(x) and cond2(y) if cond3(x, y)]`는 이해하기 어렵습니다. 이런 경우 일반 for 루프를 사용하는 것이 유지보수에 좋습니다. **컴프리헨션은 최대 2중까지, 조건은 1~2개까지**가 적당합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 제너레이터와 이터레이터의 차이는 무엇인가요?</strong></summary>
 
 **이터레이터**는 `__iter__()`와 `__next__()` 메서드를 구현한 객체입니다. **제너레이터**는 이터레이터를 쉽게 만드는 함수(또는 표현식)입니다. 모든 제너레이터는 이터레이터이지만, 모든 이터레이터가 제너레이터는 아닙니다. 제너레이터는 `yield` 키워드로 자동으로 이터레이터 프로토콜을 구현합니다. 커스텀 이터레이터보다 훨씬 적은 코드로 작성할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: range(1000000)은 메모리를 얼마나 사용하나요?</strong></summary>
 
 `range(1000000)`은 **48바이트**만 사용합니다. 리스트 `[0, 1, ..., 999999]`는 약 **8MB** (8바이트 × 백만 개 + 리스트 오버헤드)를 사용합니다. range는 start, stop, step 세 값만 저장하고, 필요한 값은 산술 연산으로 즉시 계산합니다. `x in range(1000000)`도 O(1)로 동작합니다.
+
 </details>
 
 ---

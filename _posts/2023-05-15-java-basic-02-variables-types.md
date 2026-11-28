@@ -46,34 +46,39 @@ char c = 'A';           // 2바이트  (유니코드, 0 ~ 65535)
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: int와 Integer의 차이는 무엇인가요?</strong></summary>
 
-**int**는 원시 타입으로 Stack에 값(4바이트)을 직접 저장합니다. null을 가질 수 없습니다. **Integer**는 참조 타입(래퍼 클래스)으로 Heap에 객체를 생성하고 Stack에 주소(4/8바이트)를 저장합니다. null을 가질 수 있고, 컬렉션(List<Integer>)에 사용할 수 있습니다. Java 5+의 오토박싱/언박싱으로 자동 변환되지만, 루프 안에서는 성능 저하가 발생할 수 있습니다.
+**int**는 원시 타입으로 Stack에 값(4바이트)을 직접 저장합니다. null을 가질 수 없습니다. **Integer**는 참조 타입(래퍼 클래스)으로 Heap에 객체를 생성하고 Stack에 주소(4/8바이트)를 저장합니다. null을 가질 수 있고, 컬렉션(List&lt;Integer&gt;)에 사용할 수 있습니다. Java 5+의 오토박싱/언박싱으로 자동 변환되지만, 루프 안에서는 성능 저하가 발생할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: float과 double 중 어떤 것을 사용해야 하나요?</strong></summary>
 
 **double**을 기본으로 사용하세요. float은 정밀도가 6~7자리로 제한되어 있어 금융 계산에 부적합하고, 미세한 오차가 누적될 수 있습니다. double은 15~16자리 정밀도를 제공합니다. 메모리가 제한적이거나 대규모 배열을 다룰 때만 float을 고려하세요. 정확한 십진 연산이 필요하면 `BigDecimal`을 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: var를 사용해도 타입 안전성이 유지되나요?</strong></summary>
 
 네, `var`는 **컴파일 타입에 타입이 결정**되므로 런타임 타입 안전성을 보장합니다. `var x = "Hello"`는 컴파일러가 `String`으로 추론하고 바이트코드에도 `String`으로 기록됩니다. 하지만 메서드 리턴 타입, 필드, 매개변수에는 사용할 수 없고, 반드시 초기화가 필요합니다. 과도한 `var` 사용은 가독성을 해칠 수 있으므로, 로컬 변수에서 타입이 명확할 때만 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 형변환 시 데이터 손실은 어떻게 확인하나요?</strong></summary>
 
 명시적 형변환(casting)은 더 큰 타입에서 더 작은 타입으로 변환할 때 발생합니다. `int i = 300; byte b = (byte)i;` → b = 44 (300 - 256 = 44, 하위 1바이트만 유지). 실수→정수 변환은 소수점이 버려집니다. `(int)3.99` = 3. `Math.addExact()`나 `Math.toIntExact()` 메서드를 사용하면 오버플로우 시 예외를 발생시켜 안전하게 변환할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: String은 원시 타입인가요? 왜 특별한가요?</strong></summary>
 
 String은 **참조 타입**이지만, Java에서 특별 대우를 받습니다. 1) **String Pool**: 문자열 리터럴은 Heap 내 String Pool에 저장되어 재사용됩니다(`new String()`은 Pool을 사용하지 않음). 2) **불변(immutable)**: `String` 객체는 생성 후 변경할 수 없습니다(보안, 스레드 안전성, 캐싱). 3) **+ 연산자**: 컴파일러가 `StringBuilder`로 변환하여 최적화합니다.
+
 </details>
 
 ---

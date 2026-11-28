@@ -12,7 +12,6 @@ Go의 함수는 `func` 키워드로 정의되며, 다중 반환값과 defer 같�
 
 > **핵심 정리** · Go 함수는 `func name(params) returnType { body }` 형태입니다. 다중 반환값으로 (값, 에러) 쌍을 반환하는 것이 표준 패턴입니다. `defer`는 함수 종료 시까지 실행을 지연시키며, LIFO 스택 순서로 역순 실행됩니다. 함수는 일급 객체로, 변수에 할당하거나 다른 함수의 인자로 전달할 수 있습니다.
 
-
 ## 수업 목표
 
 - func 키워드와 함수 시그니처를 이해합니다.
@@ -252,39 +251,42 @@ func main() {
 
 Go의 함수는 **일급 객체(first-class citizen)**입니다. 함수를 변수에 할당하고, 다른 함수의 인자로 전달하며, 반환값으로 사용할 수 있습니다. `type Operation func(a, b int) int`는 함수 시그니처에 타입 별칭을 부여합니다. `compute` 함수는 `Operation` 타입의 함수를 인자로 받아 실행합니다. `makeMultiplier` 함수는 **클로저(closure)**를 반환합니다. 클로저는 자신이 정의된 환경의 변수(`factor`)를 캡처하여, 함수가 반환된 후에도 그 변수에 접근할 수 있습니다. `double(5)`는 `factor=2`가 캡처된 클로저를 통해 `5 * 2 = 10`을 계산합니다. 즉시 실행 함수(IIFE)는 함수를 정의하자마자 바로 호출하여 결과를 변수에 할당합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: defer와 finally의 차이는 무엇인가요?</strong></summary>
 
 `defer`는 Java의 `finally`와 유사하지만 중요한 차이가 있습니다: (1) **실행 시점**: `finally`는 try 블록 직후 즉시 실행됩니다. `defer`는 함수 전체가 종료될 때 실행됩니다. (2) **순서**: `finally`는 단일 블록, `defer`는 LIFO 스택으로 여러 개를 등록할 수 있습니다. (3) **스코프**: `finally`는 try 블록에 종속되고, `defer`는 함수 스코프입니다. (4) **인자 평가**: `defer`의 인자는 선언 시점에 평가되고, `finally`의 변수는 실행 시점의 값을 참조합니다. (`*`는 `/**` 사이의 내용을 강조 표시한 것입니다.)
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 다중 반환값은 내부적으로 어떻게 동작하나요?</strong></summary>
 
 Go의 다중 반환값은 컴파일러가 여러 값을 연속된 메모리(스택 또는 레지스터)에 배치하여 구현합니다. 작은 값(정수, 포인터 등)은 레지스터를 통해 반환되고, 큰 값은 스택에 임시로 저장됩니다. 호출자는 반환값의 순서와 타입을 알고 있으므로, 각 값을 올바르게 읽어옵니다. C에서는 구조체를 반환하거나 포인터를 통해 여러 값을 반환해야 했지만, Go는 언어 레벨에서 다중 반환을 지원하여 더 안전하고 편리합니다. 이는 PHP의 `list()`나 Python의 튜플 반환과 유사합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: named return values를 사용해야 하나요?</strong></summary>
 
 named return values는 함수 시그니처를 더 명확하게 하지만, 남용하면 가독성이 떨어질 수 있습니다. 주로 다음과 같은 경우에 사용하는 것이 좋습니다: (1) 반환값이 여러 개이고 각각의 의미를 명확히 하고 싶을 때 `func parse(input string) (value int, err error)` (2) 짧은 함수에서 naked return이 자연스러울 때. naked return은 함수가 짧을 때(10줄 이내)만 사용하는 것이 좋습니다. 긴 함수에서 naked return을 사용하면 반환값을 추적하기 어려워집니다. Go 커뮤니티의 관례는 "named returns는 문서화 목적으로 사용하되, naked return은 간단한 함수에서만 사용하라"입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: panic과 recover는 언제 사용하나요?</strong></summary>
 
 `panic`과 `recover`는 예외적인 상황(예: 배열 범위 초과, nil 포인터 역참조)에서 사용됩니다. 일반적인 에러 처리에는 `(result, error)` 패턴을 사용하고, `panic`은 **프로그램을 계속 실행할 수 없는 치명적 상태**에서만 사용합니다. 예를 들어 설정 파일이 없어 프로그램이 정상 동작할 수 없는 경우 `panic`을 사용할 수 있습니다. `recover`는 `defer` 블록 안에서만 유효하며, panic을 잡아내어 프로그램을 종료시키지 않고 정상 상태로 복원합니다. 표준 라이브러리의 JSON 파서, HTTP 서버 등은 내부적으로 `recover`를 사용하여 개별 요청의 panic이 전체 서버를 중단시키지 않도록 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Go에서 함수 오버로딩이 없는 이유는 무엇인가요?</strong></summary>
 
 Go는 **명시성(explicitness)**을 설계 원칙으로 삼아 함수 오버로딩을 지원하지 않습니다. 함수 오버로딩은 같은 이름의 함수가 다른 파라미터 타입에 따라 다르게 동작하게 하지만, 호출자가 어떤 함수가 실행될지 명확하지 않을 수 있습니다. Go는 대신 다음과 같은 대안을 제공합니다: (1) 가변 인자 `func sum(numbers ...int)`, (2) 인터페이스를 활용한 일반화 `func process(r io.Reader)`, (3) 제네릭(Go 1.18+) `func Max[T constraints.Ordered](a, b T) T`. 이 방식들은 오버로딩보다 더 명시적이고 타입 안전합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -296,7 +298,6 @@ Go는 **명시성(explicitness)**을 설계 원칙으로 삼아 함수 오버로
 | **에러 처리** | error 인터페이스 | `if err != nil` 패턴, `%w` 래핑 |
 | **클로저** | 환경 캡처 함수 | 함수 + 캡처된 변수 묶음 |
 | **가변 인자** | 여러 인자 처리 | 슬라이스로 변환되어 전달 |
-
 
 ## 다음 수업
 

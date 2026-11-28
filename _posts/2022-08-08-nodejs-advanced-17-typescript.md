@@ -700,25 +700,28 @@ function processItem<T extends { name: string }>(item: T) {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>TypeScript를 사용하면 생산성이 떨어지지 않나요?</strong></summary>
 
 위의 측정 데이터에서 보듯, **초기 설정 비용은 있지만 장기적으로 생산성이 크게 향상**됩니다. Airbnb 사례: 마이그레이션 첫 3개월은 생산성이 15% 감소했지만, 6개월 후에는 30% 향상되었습니다. 타입 시스템이 코드 문서화 역할을 하고, 리팩토링이 훨씬 안전해집니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>any 타입을 사용해도 되나요?</strong></summary>
 
 가능한 피해야 합니다. any를 사용하면 TypeScript를 사용하는 의미가 사라집니다. unknown을 먼저 고려하고, 외부 라이브러리는 @types 패키지를 설치하세요. `eslint @typescript-eslint/no-explicit-any: error` 규칙을 활성화하는 것을 추천합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>JavaScript 프로젝트를 TypeScript로 전환하는 가장 좋은 방법은?</strong></summary>
 
 점진적 접근법을 추천합니다. 위에서 설명한 단계별 마이그레이션 전략을 따르세요. 핵심은 `allowJs: true`로 시작해서 데이터 모델과 API 계층부터 타입을 정의하는 것입니다. **한 번에 모든 파일을 바꾸려고 하면 반드시 실패합니다.**
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>구조적 타이핑의 단점은 없나요?</strong></summary>
 
 가끔 예상치 못한 타입 호환이 발생할 수 있습니다. 예를 들어 두 인터페이스가 우연히 같은 구조를 가지면 서로 호환됩니다. 이 문제가 발생하면 **브랜딩(Branding)** 패턴으로 해결할 수 있습니다:
@@ -735,6 +738,7 @@ function getUser(id: UserId) { /* ... */ }
 getUser('abc' as UserId);  // ✅ OK
 // getUser('abc');         // ❌ 에러: string은 UserId에 할당 불가
 ```
+
 </details>
 
 ## 요약

@@ -12,7 +12,6 @@ Kotlin의 보안 시스템은 암호화, 인증, 권한 부여, 보안 코딩 �
 
 > **핵심 정리** · `AES`로 대칭 암호화를 수행합니다. `RSA`로 비대칭 암호화를 수행합니다. `SHA-256`으로 해시를 생성합니다. `JWT`로 토큰 기반 인증을 수행합니다. `RBAC`로 역할 기반 권한 부여를 수행합니다. 입력 검증으로 보안 코딩을 수행합니다.
 
-
 ## 수업 목표
 
 - 암호화를 이해하고 사용할 수 있습니다.
@@ -290,39 +289,42 @@ keyGenerator.generateKey()
 
 안드로이드 권한으로 리소스 접근을 제어합니다. `Manifest.permission`으로 권한을 선언합니다. `ContextCompat.checkSelfPermission`으로 권한을 확인합니다. `AndroidKeyStore`로 키를 안전하게 저장합니다. 네트워크 보안 설정을 구성합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 대칭 암호화와 비대칭 암호화 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 대칭 암호화는 대량 데이터 암호화에 사용합니다. 빠르고 효율적입니다. 비대칭 암호화는 키 교환, 디지털 서명에 사용합니다. 느리지만 안전합니다. 두 가지를 함께 사용하는 것이 일반적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> SHA-256과 MD5 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `SHA-256`을 사용해야 합니다. 안전한 해시 알고리즘입니다. `MD5`는 보안에 적합하지 않습니다. 충돌 저항성이 낮습니다. 비밀번호 저장에는 bcrypt, Argon2를 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> JWT와 OAuth2 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `JWT`는 토큰 기반 인증에 사용합니다. `OAuth2`는 인증 프로토콜입니다. `OAuth2`는 `JWT`와 함께 사용됩니다. 제3자 애플리케이션 인증에 `OAuth2`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> RBAC와 ABAC 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `RBAC`를 우선 사용해야 합니다. 간단하고 관리하기 쉽습니다. `ABAC`는 복잡한 정책이 필요할 때 사용합니다. 속성 기반으로 더 유연합니다. 대부분의 경우 `RBAC`로 충분합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 보안 코딩은 왜 중요한가요?</strong></summary>
 
 보안 코딩은 취약점을 방지합니다. SQL 인젝션, XSS, CSRF 등을 방지합니다. 데이터 유출, 시스템 해킹을 방지합니다. 보안은 개발 단계에서 고려해야 합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -341,7 +343,6 @@ keyGenerator.generateKey()
 | **안드로이드 권한** | 리소스 접근 제어 | Manifest.permission |
 | **AndroidKeyStore** | 키 저장 | 안전한 저장 |
 | **최소 권한 원칙** | 필요한 권한만 | 보안 원칙 |
-
 
 ## 다음 수업
 

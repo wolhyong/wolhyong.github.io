@@ -12,11 +12,10 @@ C#의 비동기 프로그래밍은 I/O 바운드 작업을 효율적으로 처�
 
 > **핵심 정리** · `async/await`는 비동기 코드를 동기 코드처럼 작성하게 합니다. `Task`와 `Task<T>`는 비동기 작업을 나타냅니다. `CancellationToken`으로 작업 취소를 지원합니다. `IAsyncEnumerable`로 비동기 스트림을 제공합니다. 상태 머신으로 컴파일됩니다.
 
-
 ## 수업 목표
 
 - async/await 문법을 이해합니다.
-- Task와 Task<T>를 이해합니다.
+- Task와 Task&lt;T&gt;를 이해합니다.
 - CancellationToken을 사용할 수 있습니다.
 - 비동기 스트림을 이해합니다.
 - ConfigureAwait를 이해합니다.
@@ -50,7 +49,7 @@ class Program
 
 `async` 키워드는 메서드를 비동기로 표시합니다. `await`는 비동기 작업이 완료될 때까지 기다립니다. 비동기 메서드는 `Task` 또는 `Task<T>`를 반환해야 합니다. `Task.Delay`로 비동기 대기를 수행합니다.
 
-## Task와 Task<T>
+## Task와 Task&lt;T&gt;
 
 ```csharp
 using System;
@@ -292,48 +291,51 @@ class Program
 
 `Task.WhenAll`은 모든 작업이 완료될 때까지 기다립니다. `Task.WhenAny`는 첫 번째 작업이 완료될 때까지 기다립니다. 병렬 작업에 유용합니다. `WhenAll`은 모든 결과를 배열로 반환합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> async/await는 언제 사용해야 하나요?</strong></summary>
 
 `async/await`는 I/O 바운드 작업에 사용합니다: 파일 I/O, 네트워크 요청, 데이터베이스 쿼리. CPU 바운드 작업에는 `Task.Run`을 사용하여 스레드 풀에서 실행해야 합니다. UI 스레드를 블로킹하지 않기 위해 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Task와 Thread 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Task`를 사용해야 합니다. `Task`는 스레드 풀을 사용하여 효율적이며 `async/await`와 통합됩니다. `Thread`는 저수준 스레드 제어가 필요할 때만 사용합니다. 대부분의 경우 `Task`가 더 좋은 선택입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> CancellationToken은 왜 필요한가요?</strong></summary>
 
 `CancellationToken`은 비동기 작업 취소를 지원합니다. 사용자 취소 요청, 타임아웃, 애플리케이션 종료 등에 사용됩니다. 취소 가능한 작업을 구현하여 리소스를 효율적으로 관리합니다. 협력적 취소 모델을 따릅니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> ConfigureAwait(false)는 언제 사용해야 하나요?</strong></summary>
 
 `ConfigureAwait(false)`는 라이브러리 코드에서 사용합니다. 컨텍스트 캡처를 방지하여 성능을 향상합니다. UI 애플리케이션에서는 기본 동작을 유지해야 합니다. 데드락 방지에도 사용됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 비동기 메서드는 어떻게 컴파일되나요?</strong></summary>
 
 비동기 메서드는 상태 머신으로 컴파일됩니다. 컴파일러는 `async` 메서드를 상태 머신 클래스로 변환합니다. `await` 지점에서 상태를 저장하고 재개합니다. IL 레벨에서 복잡한 상태 머신으로 구현됩니다.
-</details>
 
+</details>
 
 ## 요약
 
 | 개념 | 설명 | 특징 |
 |------|------|------|
-| **async** | 비동기 메서드 표시 | Task/Task<T> 반환 |
+| **async** | 비동기 메서드 표시 | Task/Task&lt;T&gt; 반환 |
 | **await** | 비동기 작업 대기 | 비동기 지점 |
 | **Task** | 값 없는 비동기 작업 | void 대응 |
-| **Task<T>** | 값 있는 비동기 작업 | 결과 반환 |
+| **Task&lt;T&gt;** | 값 있는 비동기 작업 | 결과 반환 |
 | **Task.Run** | 스레드 풀 실행 | CPU 바운드 작업 |
 | **CancellationToken** | 작업 취소 | 협력적 취소 |
 | **IAsyncEnumerable** | 비동기 스트림 | await foreach |
@@ -341,7 +343,6 @@ class Program
 | **WhenAll** | 모든 작업 대기 | 병렬 실행 |
 | **WhenAny** | 첫 작업 대기 | 경쟁 조건 |
 | **상태 머신** | 컴파일 변환 | await 지점 저장 |
-
 
 ## 다음 수업
 

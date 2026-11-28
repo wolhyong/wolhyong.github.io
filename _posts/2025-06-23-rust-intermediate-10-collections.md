@@ -12,16 +12,15 @@ Rust의 표준 라이브러리는 다양한 컬렉션을 제공하며 각각의 
 
 > **핵심 정리** · `Vec<T>`는 가변 크기 동적 배열로 힙에 할당됩니다. `HashMap<K, V>`는 O(1) 평균 조회 시간을 제공합니다. `BTreeMap<K, V>`는 정렬된 맵으로 O(log n) 조회 시간을 제공합니다. 이터레이터는 lazy evaluation으로 체이닝이 가능합니다.
 
-
 ## 수업 목표
 
-- Vec<T>의 사용법과 내부 구조를 이해합니다.
+- Vec&lt;T&gt;의 사용법과 내부 구조를 이해합니다.
 - HashMap과 BTreeMap의 차이를 이해합니다.
 - HashSet과 BTreeSet의 사용법을 이해합니다.
 - 이터레이터와 어댑터를 이해합니다.
 - 소비자(consumer)를 이해하고 사용할 수 있습니다.
 
-## Vec<T>
+## Vec&lt;T&gt;
 
 ```rust
 fn main() {
@@ -94,7 +93,7 @@ fn main() {
 
 `Vec`은 내부적으로 포인터, capacity, length를 가집니다. `capacity`는 할당된 메모리 크기, `len`은 실제 요소 개수입니다. `reserve`로 capacity를 미리 확보하여 재할당을 줄일 수 있습니다. `shrink_to_fit`으로 capacity를 len으로 줄일 수 있습니다.
 
-## HashMap<K, V>
+## HashMap&lt;K, V&gt;
 
 ```rust
 use std::collections::HashMap;
@@ -179,7 +178,7 @@ fn main() {
 
 `entry` API는 키가 있는지 확인하고 없으면 값을 삽입합니다. `or_insert`는 기본값을 설정합니다. 기존 값을 기반으로 업데이트할 때 유용합니다.
 
-## BTreeMap<K, V>
+## BTreeMap&lt;K, V&gt;
 
 ```rust
 use std::collections::BTreeMap;
@@ -203,7 +202,7 @@ fn main() {
 
 `BTreeMap<K, V>`는 정렬된 맵으로 키가 정렬된 순서로 저장됩니다. O(log n) 조회 시간을 제공하며 범위 조회가 가능합니다. `HashMap`과 달리 순서가 보존됩니다.
 
-## HashSet<T>
+## HashSet&lt;T&gt;
 
 ```rust
 use std::collections::HashSet;
@@ -314,52 +313,54 @@ fn main() {
 
 소비자는 이터레이터를 소비하여 결과를 반환합니다. `sum`, `fold`, `count`, `any`, `all`, `find` 등이 있습니다. `collect`는 다양한 컬렉션으로 변환할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Vec과 배열의 차이는 무엇인가요?</strong></summary>
 
 `Vec<T>`는 가변 크기 동적 배열로 힙에 할당됩니다. 크기를 런타임에 변경할 수 있습니다. 배열 `[T; N]`은 고정 크기로 스택에 할당됩니다. 크기가 컴파일 타임에 알려져야 합니다. `Vec`은 더 유연하지만 약간의 오버헤드가 있습니다. 배열은 더 빠르지만 크기가 고정됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> HashMap과 BTreeMap 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `HashMap`은 O(1) 평균 조회 시간을 제공하며 순서가 보장되지 않습니다. 대부분의 경우 `HashMap`을 사용합니다. `BTreeMap`은 O(log n) 조회 시간을 제공하며 정렬된 순서를 보장합니다. 정렬된 순서나 범위 조회가 필요할 때 `BTreeMap`을 사용합니다. `BTreeMap`은 메모리 사용량이 더 많습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 이터레이터가 lazy evaluation인 이유는 무엇인가요?</strong></summary>
 
 Lazy evaluation은 성능 최적화를 위함입니다: (1) **단락 평가**: `find`, `any` 등은 필요한 만큼만 평가합니다. (2) **메모리 효율**: 전체 결과를 저장하지 않고 필요할 때 계산합니다. (3) **체이닝**: 여러 어댑터를 체이닝해도 중간 결과를 저장하지 않습니다. 실제 계산은 소비자가 호출될 때 수행됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> collect는 어떻게 타입을 추론하나요?</strong></summary>
 
 `collect`는 타입 힌트(type hint)로 반환 타입을 결정합니다. `let v: Vec<i32> = iter.collect();`처럼 명시적으로 타입을 지정하거나, `let v = iter.collect::<Vec<i32>>();`처럼 터보피시(turbofish) 문법을 사용할 수 있습니다. 타입을 지정하지 않으면 컴파일 에러가 발생합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> HashSet과 Vec의 차이는 무엇인가요?</strong></summary>
 
 `HashSet<T>`는 중복 없는 값의 집합으로 O(1) 평균 조회 시간을 제공합니다. 순서가 보장되지 않습니다. `Vec<T>`는 중복을 허용하며 순서가 보장됩니다. `HashSet`은 포함 여부 확인이 빠르며 집합 연산(교집합, 합집합 등)을 제공합니다. `Vec`은 인덱스 접근이 빠르며 순서가 중요할 때 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
 | 개념 | 설명 | 특징 |
 |------|------|------|
-| **Vec<T>** | 가변 크기 배열 | 힙 할당, capacity/len |
-| **HashMap<K, V>** | 해시 테이블 | O(1) 평균 조회 |
-| **BTreeMap<K, V>** | 정렬된 맵 | O(log n) 조회, 순서 보존 |
-| **HashSet<T>** | 중복 없는 집합 | O(1) 평균 조회 |
+| **Vec&lt;T&gt;** | 가변 크기 배열 | 힙 할당, capacity/len |
+| **HashMap&lt;K, V&gt;** | 해시 테이블 | O(1) 평균 조회 |
+| **BTreeMap&lt;K, V&gt;** | 정렬된 맵 | O(log n) 조회, 순서 보존 |
+| **HashSet&lt;T&gt;** | 중복 없는 집합 | O(1) 평균 조회 |
 | **이터레이터** | 순회 방법 | lazy evaluation |
 | **어댑터** | 이터레이터 변환 | map, filter, chain |
 | **소비자** | 이터레이터 소비 | collect, sum, fold |
-
 
 ## 다음 수업
 

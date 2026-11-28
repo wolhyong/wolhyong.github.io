@@ -12,7 +12,6 @@ Rust는 표준 라이브러리에 내장된 테스트 프레임워크를 제공�
 
 > **핵심 정리** · `#[test]` 속성으로 테스트 함수를 정의합니다. `assert!`, `assert_eq!`, `assert_ne!`로 단언을 수행합니다. 유닛 테스트는 모듈 내 `tests` 모듈에 작성하며 private 함수도 테스트할 수 있습니다. 통합 테스트는 `tests` 디렉토리에 작성하며 공개 API만 테스트합니다. 문서 테스트는 코드 예제를 자동으로 테스트합니다.
 
-
 ## 수업 목표
 
 - #[test] 속성으로 테스트를 정의할 수 있습니다.
@@ -143,7 +142,7 @@ mod tests {
 
 `expected`로 패닉 메시지의 일부를 지정할 수 있습니다. 지정된 부분이 패닉 메시지에 포함되어야 통과합니다. 더 정확한 테스트가 가능합니다.
 
-## Result<T, E> 반환
+## Result&lt;T, E&gt; 반환
 
 ```rust
 #[cfg(test)]
@@ -309,39 +308,42 @@ fn expensive_test() {
 
 `#[ignore]` 속성으로 테스트를 무시할 수 있습니다. `cargo test -- --ignored`로 무시된 테스트만 실행할 수 있습니다. 시간이 오래 걸리는 테스트에 유용합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 유닛 테스트와 통합 테스트의 차이는 무엇인가요?</strong></summary>
 
 유닛 테스트는 개별 함수, 모듈, 단위를 테스트하며 `src` 디렉토리 내에 작성합니다. private 함수도 테스트할 수 있으며 빠르게 실행됩니다. 통합 테스트는 라이브러리의 공개 API를 테스트하며 `tests` 디렉토리에 작성합니다. 여러 모듈이 함께 작동하는지 테스트하며 느리게 실행됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 왜 private 함수도 테스트할 수 있나요?</strong></summary>
 
 Rust의 테스트는 같은 크레이트 내에 있으므로 private 항목에도 접근할 수 있습니다. 이는 내부 구현을 테스트할 수 있게 하여 버그를 조기에 발견하게 합니다. 하지만 공개 API 테스트를 우선하고, private 테스트는 보조적으로 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> assert_eq!와 assert! 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `assert_eq!`는 두 값이 같은지 확인할 때 사용하며 실패 시 두 값을 출력하여 디버깅에 유용합니다. `assert!`는 일반적인 조건을 확인할 때 사용합니다. 값 비교가 필요하면 `assert_eq!`를, 그렇지 않으면 `assert!`를 사용합니다. `assert_ne!`는 값이 다른지 확인할 때 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 문서 테스트는 언제 사용해야 하나요?</strong></summary>
 
 문서 테스트는 코드 예제가 올바르게 작동하는지 확인할 때 사용합니다. 문서와 테스트가 동기화되어 유지보수성이 높아집니다. 사용자에게 예제를 제공하며 예제가 항상 작동함을 보장합니다. 모든 공개 함수에 문서 테스트를 추가하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 테스트 병렬 실행은 어떻게 제어하나요?</strong></summary>
 
 `cargo test -- --test-threads=1`로 단일 스레드로 실행할 수 있습니다. 기본적으로 테스트는 병렬로 실행되어 빠르지만, 공유 상태를 수정하는 테스트는 충돌할 수 있습니다. 단일 스레드로 실행하면 충돌을 방지할 수 있지만 느려집니다. 각 테스트가 독립적이도록 작성하는 것이 좋습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -357,7 +359,6 @@ Rust의 테스트는 같은 크레이트 내에 있으므로 private 항목에�
 | **통합 테스트** | 공개 API 테스트 | tests 디렉토리 |
 | **문서 테스트** | 코드 예제 테스트 /// 문서 포함 |
 | **#[ignore]** | 테스트 무시 | --ignored로 실행 |
-
 
 ## 다음 수업
 

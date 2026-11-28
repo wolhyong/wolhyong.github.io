@@ -199,19 +199,25 @@ function printArea(shapePtr) {
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: call_indirect가 직접 호출보다 2.7배 느린 이유는 무엇인가요?</strong></summary>
+
 `call_indirect`는 세 가지 추가 검증을 수행하기 때문입니다: (1) 테이블 인덱스가 유효한 범위(0 ~ 테이블 크기-1) 내에 있는지 확인, (2) 해당 슬롯에 null이 아닌 함수 참조가 있는지 확인, (3) 함수의 시그니처(타입)가 호출 시 기대한 타입과 일치하는지 검증. 이 검증들은 CPU 분기 예측에 악영향을 주어 파이프라인 스톨을 유발합니다. 하지만 현대 WASM 엔진(V8의 Liftoff)은 이러한 검증을 최적화하여 초기 버전 대비 약 40% 개선되었습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM에서 함수 포인터 배열을 동적으로 수정할 수 있나요?</strong></summary>
+
 네, `table.set` 명령어로 런타임에 테이블 슬롯을 변경할 수 있습니다. 예를 들어 플러그인 시스템에서 새로운 기능을 동적으로 로드하여 테이블에 추가할 수 있습니다. JavaScript에서도 `instance.exports.__table_base`를 통해 간접적으로 테이블을 조작할 수 있습니다. 이는 동적 코드 로딩과 플러그인 아키텍처의 기초가 됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: C++ 소멸자와 WASM 테이블은 어떤 관계인가요?</strong></summary>
+
 C++의 가상 소멸자도 vtable을 통해 호출됩니다. Emscripten으로 컴파일하면 각 클래스의 소멸자가 WASM 테이블의 별도 슬롯에 배치됩니다. `delete shape` 호출은 테이블에서 해당 소멸자 함수를 찾아 `call_indirect`로 실행합니다. 이 과정에서 메모리 해제(operator delete)도 함께 수행됩니다.
+
 </details>
 
 ---

@@ -96,34 +96,39 @@ func main() {
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: SQLC는 어떻게 동작하나요?</strong></summary>
 
 SQLC(SQL Compiler)는 SQL 쿼리를 분석하여 Go 코드를 생성합니다. 동작 과정: (1) `.sql` 파일에 SQL 쿼리를 작성합니다. (2) `sqlc generate` 명령어로 실행합니다. (3) SQLC가 SQL을 파싱하여 쿼리의 입력/출력 타입을 분석합니다. (4) 타입 안전한 Go 함수와 구조체를 자동 생성합니다. 예: `SELECT id, name FROM users WHERE id = $1`에 대해 `GetUser(ctx context.Context, id int) (User, error)` 함수를 생성합니다. 장점: (1) 컴파일 타임에 SQL 오류 발견. (2) 런타임에 잘못된 컬럼명/타입 오류 없음. (3) ORM보다 예측 가능한 성능. SQLC는 Go에서 가장 인기 있는 데이터베이스 접근 방식 중 하나입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 연결 풀의 크기는 어떻게 결정하나요?</strong></summary>
 
 연결 풀 크기는 여러 요소를 고려하여 결정합니다: (1) **데이터베이스 연결 한도** — PostgreSQL의 `max_connections`(기본 100). (2) **동시 요청 수** — 예상되는 동시 HTTP 요청 수. (3) **쿼리 지연 시간** — 각 쿼리가 평균적으로 얼마나 오래 걸리는지. 공식: `PoolSize = (RequestPerSecond × QueryTimeSeconds) + Spare`. 너무 작으면 요청이 연결을 기다리며 블로킹됩니다. 너무 크면 데이터베이스에 부하가 가고 연결 리소스가 낭비됩니다. 일반적인 가이드라인: 10~50개 연결이 적절하며, 부하 테스트를 통해 조정합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 트랜잭션의 격리 수준(isolation level)은 어떻게 설정하나요?</strong></summary>
 
 `sql.Tx`의 격리 수준은 `db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelSerializable})`로 설정합니다. Go는 네 가지 표준 격리 수준을 지원합니다: (1) `LevelReadUncommitted` — dirty read 허용 (가장 낮음). (2) `LevelReadCommitted` — 커밋된 데이터만 읽음 (PostgreSQL 기본). (3) `LevelRepeatableRead` — 트랜잭션 내에서 동일한 읽기 결과 보장. (4) `LevelSerializable` — 완벽한 격리 (가장 높음, 성능 저하). PostgreSQL은 `LevelReadCommitted`와 `LevelSerializable`만 지원합니다. MySQL은 네 가지 모두 지원합니다. 격리 수준이 높을수록 데이터 일관성은 좋아지지만 동시성이 낮아집니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: sqlx는 database/sql과 어떻게 다른가요?</strong></summary>
 
 `sqlx`는 `database/sql`의 확장 버전으로, 추가 편의 기능을 제공합니다: (1) **구조체 매핑** — `rows.StructScan(&user)`로 구조체 필드에 직접 매핑. (2) **Named 인자** — `db.NamedExec("INSERT INTO users (name) VALUES (:name)", user)`. (3) **인라인 매핑** — `db.Get(&user, "SELECT * FROM users WHERE id=?", 1)`. (4) **IN 쿼리** — `db.In("SELECT * FROM users WHERE id IN (?)", ids)`. sqlx는 database/sql을 대체하지 않고 확장하므로, 기존 database/sql 코드와 함께 사용할 수 있습니다. SQLC와 달리 런타임 매핑이므로 타입 안전성은 SQLC가 더 높습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 마이그레이션은 어떻게 관리하나요?</strong></summary>
 
 Go에서 가장 널리 사용되는 마이그레이션 도구는 `golang-migrate/migrate`와 `pressly/goose`입니다. 기본 패턴: (1) 각 마이그레이션은 `timestamp_description.up.sql`(변경 적용)과 `timestamp_description.down.sql`(변경 롤백) 파일 쌍으로 구성됩니다. (2) `migrate up`으로 적용되지 않은 마이그레이션을 순차적으로 실행합니다. (3) `migrate down`으로 마지막 마이그레이션을 롤백합니다. (4) 마이그레이션 상태는 데이터베이스의 `schema_migrations` 테이블에 기록됩니다. 마이그레이션은 버전 관리되어야 하며, 절대 수정하면 안 됩니다. 새로운 수정은 새로운 마이그레이션 파일로 추가합니다.
+
 </details>
 
 ## 요약

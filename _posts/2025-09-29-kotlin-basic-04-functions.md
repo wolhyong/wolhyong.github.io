@@ -12,7 +12,6 @@ Kotlin의 함수 시스템은 간결하고 표현력이 풍부하며 함수형 �
 
 > **핵심 정리** · `fun`으로 함수를 정의합니다. 표현식 본문으로 간결한 함수를 작성합니다. 기본 매개변수와 명명된 인자를 지원합니다. `vararg`로 가변 인자를 받습니다. 람다는 익명 함수입니다. 고차 함수는 함수를 매개변수로 받거나 반환합니다. `tailrec`로 꼬리 재귀를 최적화합니다.
 
-
 ## 수업 목표
 
 - 함수 정의와 사용법을 이해합니다.
@@ -313,39 +312,42 @@ val result = measureTime {
 
 `inline` 키워드로 함수를 인라인화합니다. 람다 오버헤드를 줄입니다. 성능이 중요한 고차 함수에 사용합니다. `noinline`, `crossinline`으로 인라인 제어를 할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 표현식 본문과 블록 본문 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 표현식 본문은 단일 표현식을 반환할 때 사용합니다. 간결하고 가독성이 좋습니다. 블록 본문은 여러 문장이 필요할 때 사용합니다. 복잡한 로직에 사용합니다. 대부분의 경우 표현식 본문을 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 람다와 익명 함수 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 람다를 사용해야 합니다. 더 간결하고 표현력이 풍부합니다. 익명 함수는 반환 타입을 명시해야 할 때 사용합니다. 대부분의 경우 람다를 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> tailrec는 언제 사용해야 하나요?</strong></summary>
 
 `tailrec`는 재귀 깊이가 깊을 때 사용합니다. 스택 오버플로우를 방지합니다. 재귀 호출이 마지막 연산이어야 합니다. 누적 인자를 사용하여 꼬리 재귀를 구현해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> inline 함수는 언제 사용해야 하나요?</strong></summary>
 
 `inline` 함수는 람다 오버헤드를 줄여야 할 때 사용합니다. 성능이 중요한 고차 함수에 사용합니다. 과도한 사용은 코드 크기를 증가시킵니다. 핫 경로에서 고려해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> vararg는 언제 사용해야 하나요?</strong></summary>
 
 `vararg`는 가변 개수의 인자를 받을 때 사용합니다. 로깅, 포맷팅 등에 유용합니다. 마지막 매개변수여야 합니다. 스프레드 연산자로 배열을 전달할 수 있습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -363,7 +365,6 @@ val result = measureTime {
 | **지역 함수** | 내부 함수 | 캡슐화 |
 | **inline** | 인라인화 | 람다 오버헤드 감소 |
 | **함수 타입** | (Type) -> ReturnType | 함수 리터럴 |
-
 
 ## 다음 수업
 

@@ -321,34 +321,39 @@ tmp.close()
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: CSV와 JSON 중 어떤 형식을 사용해야 하나요?</strong></summary>
 
 **CSV**는 표 형식 데이터(스프레드시트, 데이터베이스 내보내기)에 적합하고 용량이 작습니다. **JSON**은 중첩 구조, 다양한 데이터 타입, API 통신에 적합합니다. CSV는 스키마가 단순하고 Excel에서 직접 열 수 있지만, 중첩 데이터를 표현할 수 없습니다. JSON은 구조화된 데이터를 자연스럽게 표현하지만 용량이 더 큽니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: pickle은 왜 위험한가요?</strong></summary>
 
 pickle은 Python 객체를 완전히 복원하는 과정에서 **악의적인 코드를 실행**할 수 있습니다. pickle 파일에는 객체 생성에 필요한 모든 정보(모듈, 클래스, 인자)가 포함되어 있고, 이 과정에서 `__reduce__` 메서드가 호출되어 임의의 함수를 실행할 수 있습니다. 따라서 **신뢰할 수 없는 소스의 pickle 데이터는 절대 load()하지 마세요**. 데이터 교환에는 JSON이나 다른 안전한 포맷을 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: pathlib과 os.path 중 어떤 것이 더 좋은가요?</strong></summary>
 
 **pathlib**이 더 현대적이고 직관적입니다. 객체 지향 API로 경로를 다루고, `/` 연산자로 경로를 결합하며, 메서드 체이닝이 가능합니다. Python 3.6+에서는 pathlib을 권장합니다. **os.path**는 문자열 기반으로 더 빠르고 하위 호환성이 좋지만, 가독성이 떨어집니다. 성능이 중요한 단순한 경로 조작에는 os.path를, 가독성과 유지보수성이 중요하면 pathlib을 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 대용량 JSON 파일을 메모리 효율적으로 읽으려면?</strong></summary>
 
 `json.load()`는 파일 전체를 메모리에 로드하므로 대용량 파일에 부적합합니다. 대안: 1) **ijson** 라이브러리(스트리밍 JSON 파서), 2) **JSON Lines** 형식(각 줄이 하나의 JSON 객체), 3) **청크 단위 분할**, 4) `orjson` 같은 고성능 라이브러리. JSON Lines은 가장 간단한 방법으로, 각 줄을 `json.loads()`로 개별 파싱할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 임시 파일을 사용해야 하는 이유는 무엇인가요?</strong></summary>
 
 임시 파일은 **이름 충돌 방지**, **보안**(예측 불가능한 파일명), **자동 정리**의 장점이 있습니다. 여러 프로세스가 동시에 임시 파일을 생성해도 충돌하지 않습니다. `tempfile` 모듈은 `/tmp/` 또는 `TEMP` 디렉토리에 안전하게 생성하며, with 블록 종료 시 자동으로 삭제됩니다. 보안이 중요한 경우 `mkstemp()`로 파일 디스크립터만 반환받아 사용할 수 있습니다.
+
 </details>
 
 ---

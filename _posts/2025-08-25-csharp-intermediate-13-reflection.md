@@ -12,7 +12,6 @@ C#의 리플렉션은 런타임에 타입 정보를 검사하고 동적으로 �
 
 > **핵심 정리** · `Reflection`은 런타임 타입 검사를 제공합니다. `Type` 클래스로 타입 정보를 얻습니다. `Attribute`는 메타데이터를 추가합니다. `dynamic`은 동적 타입을 제공합니다. 리플렉션은 DI, ORM 등에 사용되지만 성능 오버헤드가 있습니다.
 
-
 ## 수업 목표
 
 - Reflection의 개념과 사용법을 이해합니다.
@@ -374,39 +373,42 @@ class Person
 
 리플렉션은 성능 오버헤드가 있습니다. 직접 접근보다 훨씬 느립니다. 핫 경로에서는 피하고 캐싱이나 코드 생성을 사용하여 최적화해야 합니다. `Expression` 트리나 소스 생성기를 사용하여 성능을 향상할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 리플렉션은 언제 사용해야 하나요?</strong></summary>
 
 리플렉션은 다음 경우에 사용합니다: (1) 런타임에 타입 정보가 필요할 때 (2) 플러그인 시스템 (3) DI 컨테이너 (4) ORM (5) 직렬화. 하지만 성능 오버헤드가 있으므로 핫 경로에서는 피해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> dynamic은 언제 사용해야 하나요?</strong></summary>
 
 `dynamic`은 다음 경우에 사용합니다: (1) COM 상호작용 (2) 동적 언어 상호작용 (3) JSON/XML 역직렬화 (4) 단위 테스트 모킹. 타입 안전성을 희생하므로 신중하게 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Attribute는 언제 사용해야 하나요?</strong></summary>
 
 `Attribute`는 메타데이터가 필요할 때 사용합니다: (1) 직렬화 제어 (2) ORM 매핑 (3) 단위 테스트 (4) 보안 (5) 로깅. 컴파일러와 런타임이 메타데이터를 읽어 동작을 제어합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 리플렉션 성능을 어떻게 최적화하나요?</strong></summary>
 
 리플렉션 최적화 방법: (1) 캐싱: `Type`, `MethodInfo` 등을 캐시 (2) `Expression` 트리: 동적 코드 생성 (3) 소스 생성기: 컴파일 타임 코드 생성 (4) `Delegate.CreateDelegate`: 델리게이트 생성. 핫 경로에서는 직접 접근을 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> typeof와 GetType의 차이는 무엇인가요?</strong></summary>
 
 `typeof(T)`는 컴파일 타임에 타입 정보를 얻습니다. `obj.GetType()`은 런타임에 객체의 실제 타입 정보를 얻습니다. `typeof`는 정적 타입, `GetType`은 동적 타입입니다. 다형성이 있을 때 차이가 발생합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -422,7 +424,6 @@ class Person
 | **dynamic** | 동적 타입 | 컴파일 타임 검사 없음 |
 | **DLR** | 동적 언어 런타임 | dynamic 실행 |
 | **성능 오버헤드** | 리플렉션 느림 | 캐싱으로 최적화 |
-
 
 ## 다음 수업
 

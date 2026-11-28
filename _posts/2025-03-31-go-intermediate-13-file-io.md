@@ -83,34 +83,39 @@ func main() {
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: io.Copy는 내부적으로 어떻게 동작하나요?</strong></summary>
 
 `io.Copy(dst Writer, src Reader)`는 32KB 버퍼를 할당하여 `src.Read(buf)` → `dst.Write(buf)`를 반복합니다. Linux에서는 `dst`가 `*os.File`이고 `src`도 `*os.File`이면 `sendfile(2)` 시스템 콜을 사용하여 커널 공간에서 직접 데이터를 복사합니다(user space 복사 생략). macOS는 `copyfile()`, Windows는 `TransmitFile()`을 사용합니다. 따라서 같은 파일 시스템 내의 복사는 매우 효율적입니다. `io.CopyN`은 지정된 바이트 수만 복사하고, `io.CopyBuffer`는 사용자 지정 버퍼를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: bufio의 버퍼 크기는 어떻게 선택하나요?</strong></summary>
 
 `bufio.NewReaderSize(rd, size)`로 버퍼 크기를 지정할 수 있습니다. 기본값은 4096바이트(4KB)입니다. 일반 파일 읽기에는 4KB~64KB가 적절합니다. 네트워크 스트림에는 4KB~16KB가 일반적입니다. 큰 블록을 읽는다면 버퍼 크기를 늘려 시스템 콜을 줄일 수 있습니다. 버퍼가 너무 크면 메모리 낭비이고, 너무 작으면 시스템 콜이 증가합니다. `bufio.NewWriter`의 버퍼는 `Flush()`가 호출될 때까지 데이터를 모아두었다가 한 번에 씁니다. 따라서 자주 `Flush()`를 호출하면 버퍼링의 이점이 사라집니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: JSON 스트리밍 읽기/쓰기는 어떻게 하나요?</strong></summary>
 
 `encoding/json` 패키지는 `json.NewDecoder(r io.Reader)`와 `json.NewEncoder(w io.Writer)`로 스트리밍 처리를 지원합니다. `decoder.Decode(&v)`는 Reader에서 JSON을 읽고 구조체로 디코딩합니다. `encoder.Encode(v)`는 구조체를 JSON으로 인코딩하여 Writer에 씁니다. 이 방식은 파일 전체를 메모리에 로드하지 않고 처리할 수 있어 대용량 데이터에 적합합니다. 예: `dec := json.NewDecoder(file); for { if err := dec.Decode(&obj); err == io.EOF { break } }`. `json.Marshal`/`json.Unmarshal`은 전체를 메모리에 로드합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: os.ReadFile과 bufio.Reader 중 어떤 것을 사용해야 하나요?</strong></summary>
 
 `os.ReadFile`은 **작은 파일**(수 MB 이하)에 적합합니다. 파일 전체를 메모리에 로드하므로 간편하고 빠릅니다. `bufio.Reader`는 **큰 파일**이나 **스트리밍 처리**에 적합합니다. 필요한 만큼만 읽고 처리할 수 있어 메모리 효율적입니다. 선택 기준: (1) 파일 크기가 작고(<10MB) 전체가 필요하면 `os.ReadFile`. (2) 대용량 파일, 라인 단위 처리, 파이프라인 처리에는 `bufio.Scanner` 또는 `bufio.Reader`. (3) 네트워크 스트림은 항상 `bufio.Reader`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 파일 잠금(file locking)은 어떻게 구현하나요?</strong></summary>
 
 Go 표준 라이브러리는 크로스 플랫폼 파일 잠금을 직접 제공하지 않습니다. 대신 `golang.org/x/sys`의 `unix.Flock()`(Linux/macOS) 또는 `syscall.LockFileEx()`(Windows)를 사용할 수 있습니다. 더 간단한 방법은 `os.OpenFile`에 플래그를 지정하는 것입니다: `os.O_EXCL`로 파일이 없을 때만 생성하거나, 별도의 잠금 파일(lock file)을 사용하는 패턴입니다. 분산 환경에서는 etcd나 Redis의 분산 잠금을 사용합니다. 파일 잠금이 필요한 경우라면 데이터베이스를 사용하는 것이 더 나은 선택일 수 있습니다.
+
 </details>
 
 ## 요약

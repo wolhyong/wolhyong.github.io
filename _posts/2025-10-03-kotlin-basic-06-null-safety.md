@@ -12,7 +12,6 @@ Kotlin의 널 안전성 시스템은 컴파일 타임에 널 포인터 예외를
 
 > **핵심 정리** · 스마트 캐스트는 `is` 연산자로 타입 확인 후 자동 캐스트합니다. `as?`로 안전한 캐스트를 수행합니다. `@Nullable`, `@NotNull`으로 Java 상호 운용성을 제공합니다. 플랫폼 타입은 널 가능으로 처리됩니다. `require`, `check`, `assert`로 사전 조건을 검사합니다. `let`으로 널 체크 후 안전하게 실행합니다.
 
-
 ## 수업 목표
 
 - 스마트 캐스트를 이해합니다.
@@ -285,39 +284,42 @@ println(result2)  // 40
 
 `run` 함수는 객체를 받아 람다 결과를 반환합니다. 널 체크와 함께 사용할 수 있습니다. 여러 작업을 수행하고 결과를 반환할 때 사용됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 스마트 캐스트는 언제 작동하나요?</strong></summary>
 
 스마트 캐스트는 다음 조건에서 작동합니다: (1) `val` 프로퍼티 (2) `is` 연산자로 타입 확인 (3) 확인 후 변경되지 않음. `var` 프로퍼티는 변경 가능하므로 스마트 캐스트가 작동하지 않을 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> as와 as? 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `as?`를 사용해야 합니다. 안전한 캐스트로 실패 시 `null`을 반환합니다. `as`는 실패 시 `ClassCastException`을 발생시킵니다. 예외 처리를 피하기 위해 `as?`를 우선 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> require, check, assert 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `require`는 인자 검증에 사용합니다. `check`는 상태 검증에 사용합니다. `assert`는 개발 중 검증에 사용합니다. 각각 다른 예외를 발생시키며 용도가 다릅니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> let, also, apply, with, run 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `let`은 널 체크 후 실행에 사용합니다. `also`는 부작용에 사용합니다. `apply`는 객체 초기화에 사용합니다. `with`는 여러 작업에 사용합니다. `run`은 결과 반환에 사용합니다. 각각 다른 용도가 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 플랫폼 타입은 왜 문제가 되나요?</strong></summary>
 
 플랫폼 타입은 널 가능성 정보가 없어 컴파일러가 널 체크를 수행할 수 없습니다. 런타임에 `NullPointerException`이 발생할 수 있습니다. 명시적으로 타입을 선언하여 문제를 줄일 수 있습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -337,7 +339,6 @@ println(result2)  // 40
 | **apply** | 객체 초기화 | 프로퍼티 설정 |
 | **with** | 여러 작업 수행 | 람다 내 사용 |
 | **run** | 결과 반환 | 람다 결과 |
-
 
 ## 다음 수업
 

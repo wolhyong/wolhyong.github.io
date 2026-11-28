@@ -12,7 +12,6 @@ C#의 제어문은 프로그램의 실행 흐름을 제어하며 다양한 패�
 
 > **핵심 정리** · `if/else`는 조건문으로 불리언을 평가합니다. `switch`는 패턴 매칭을 지원하며 `case`, `when`을 사용합니다. `for`는 전통적인 반복문이며 `foreach`는 컬렉션 순회에 사용됩니다. `while`과 `do-while`은 조건 기반 반복입니다. `break`와 `continue`로 루프를 제어합니다.
 
-
 ## 수업 목표
 
 - if/else 조건문을 사용할 수 있습니다.
@@ -297,39 +296,42 @@ finally
 
 `try-catch-finally`로 예외를 처리합니다. `try`에서 예외가 발생하면 `catch`로 이동합니다. `finally`는 예외 발생 여부와 상관없이 실행됩니다. 리소스 정리에 사용됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> switch와 if-else 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `switch`는 단일 변수를 여러 값과 비교할 때 사용합니다. 더 읽기 쉽고 컴파일러러 최적화가 가능합니다. `if-else`는 복잡한 조건이 필요할 때 사용합니다. 패턴 매칭이 필요하면 `switch`가 더 강력합니다. C# 8.0부터 switch 식으로 값을 반환할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> for와 foreach 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `for`는 인덱스가 필요하거나 반복 횟수가 명확할 때 사용합니다. `foreach`는 컬렉션 순회에 사용하며 인덱스가 필요 없을 때 더 간결합니다. `foreach`는 `IEnumerable`을 구현한 타입에 사용할 수 있습니다. 성능 차이는 미미하며 가독성을 우선합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> while과 do-while의 차이는 무엇인가요?</strong></summary>
 
 `while`은 조건이 먼저 검사되므로 조건이 `false`면 실행되지 않습니다. `do-while`은 최소 한 번 실행 후 조건을 검사합니다. 사용자 입력 유효성 검사 같이 최소 한 번 실행해야 할 때 `do-while`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> goto는 왜 피해야 하나요?</strong></summary>
 
 `goto`는 코드를 읽기 어렵게 만들고 흐름을 추적하기 어렵습니다. 구조적 프로그래밍 원칙을 위반하며 스파게티 코드를 유발합니다. 대부분의 경우 `if`, `for`, `while`로 대체할 수 있습니다. 특수한 경우(상태 머신, 에러 복구)에만 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> switch 식은 언제 사용해야 하나요?</strong></summary>
 
 switch 식은 값을 반환해야 할 때 사용합니다. 더 간결하고 함수형 스타일의 코드를 작성할 수 있습니다. 복잡한 로직이 필요하면 전통적인 switch 문이 더 적합할 수 있습니다. C# 8.0부터 지원됩니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -347,7 +349,6 @@ switch 식은 값을 반환해야 할 때 사용합니다. 더 간결하고 함�
 | **continue** | 다음 반복 | 현재 반복 건너뜀 |
 | **goto** | 라벨 점프 | 사용 피해야 함 |
 | **try-catch** | 예외 처리 | finally로 정리 |
-
 
 ## 다음 수업
 

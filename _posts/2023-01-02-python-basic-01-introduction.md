@@ -417,29 +417,39 @@ python main.py
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Python 2와 Python 3의 차이는 무엇인가요?</strong></summary>
+
 Python 2는 2020년 1월 1일에 공식 지원이 종료되었습니다. 주요 차이점: `print`가 문장에서 함수로 변경, 정수 나눗셈이 몫(3.x)에서 실수(3.x)로 변경, 유니코드 문자열 기본 처리, f-string 도입 등. 모든 신규 프로젝트는 Python 3.x를 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Python이 느린데 왜 인기가 많나요?</strong></summary>
+
 Python이 느린 것은 사실이지만, 대부분의 실제 병목은 **I/O 대기**(데이터베이스, 네트워크, 파일)이지 CPU 연산이 아닙니다. CPU 집약적 계산이 필요하면 NumPy(C 확장), Cython, 또는 멀티프로세싱으로 해결합니다. 개발 생산성(코드 작성 시간)이 실행 시간보다 중요한 경우가 많습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 가상 환경은 꼭 사용해야 하나요?</strong></summary>
+
 네. 가상 환경 없이 패키지를 설치하면 **전역 site-packages**에 설치되어 프로젝트 간 의존성 충돌이 발생합니다. 예를 들어 프로젝트 A는 Django 4.2가 필요하고 프로젝트 B는 Django 5.0이 필요하다면, 전역 설치로는 둘 다 만족시킬 수 없습니다. 가상 환경은 이 문제를 해결합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Python은 메모리를 어떻게 관리하나요?</strong></summary>
+
 CPython은 **참조 카운팅(Reference Counting)** 을 주 메모리 관리 방식으로 사용하고, 순환 참조 처리를 위해 **세대별 GC(Generational Garbage Collector)** 를 추가로 사용합니다. 모든 Python 객체는 `ob_refcnt` 필드를 가지며, 이 값이 0이 되면 즉시 메모리가 해제됩니다. 순환 참조(객체 A가 B를, B가 A를 참조)는 GC가 주기적으로 탐지하여 해제합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PyPy가 CPython보다 항상 빠른가요?</strong></summary>
+
 PyPy의 JIT(Just-In-Time) 컴파일러는 반복 실행되는 순수 Python 코드에서 CPython보다 **4~10배 빠를 수 있습니다**. 그러나 C 확장(NumPy, Pandas)을 사용하는 코드에서는 호환성 문제가 발생할 수 있고, 초기 JIT 웜업 시간이 필요합니다. 일반적인 웹 애플리케이션에서는 CPython이 더 안정적이고 호환성이 좋습니다.
+
 </details>
 
 ---

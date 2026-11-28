@@ -63,34 +63,39 @@ if ($uri === '/api/v1/users' && $method === 'GET') {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: JWT Access Token과 Refresh Token의 차이는 무엇인가요?</strong></summary>
 
 **Access Token**은 자원 접근 권한을 증명하는 단기 토큰(보통 15분~1시간)입니다. API 요청의 Authorization 헤더에 포함됩니다. 만료되면 더 이상 사용할 수 없습니다. **Refresh Token**은 장기(보통 7일~30일)로 Access Token을 재발급받기 위한 토큰입니다. 서버에 저장되며(DB 또는 Redis), 한 번 사용되면 폐기됩니다(Rotation). Refresh Token도 만료되면 재로그인이 필요합니다. 이 패턴은 Access Token의 노출 위험을 최소화하면서 사용자 경험을 유지합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: CORS(Cross-Origin Resource Sharing)는 어떻게 동작하나요?</strong></summary>
 
 CORS는 브라우저가 다른 출처(Origin)의 리소스 요청을 제어하는 보안 메커니즘입니다. **Simple Request**(GET/POST, Content-Type: form-data/text/plain)는 Origin 헤더와 함께 직접 요청됩니다. **Preflight Request**(PUT/DELETE, 커스텀 헤더, application/json)는 실제 요청 전에 OPTIONS 메서드로 서버가 허용하는지 확인합니다. 서버는 `Access-Control-Allow-Origin`(허용 출처), `Access-Control-Allow-Methods`(허용 메서드), `Access-Control-Allow-Headers`(허용 헤더)를 응답해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Rate Limiting의 Token Bucket과 Leaky Bucket의 차이는 무엇인가요?</strong></summary>
 
 **Token Bucket**은 고정된 속도로 버킷에 토큰을 추가하고, 각 요청이 토큰 하나를 소비합니다. 버킷이 비면 요청이 거부됩니다(429). 버스트 트래픽을 허용하지만(버킷 크기만큼), 장기적 평균 속도를 제한합니다. **Leaky Bucket**은 요청을 버킷에 담고 고정된 속도로 처리합니다(큐 방식). 버킷이 가득 차면 요청이 버려집니다. 버스트를 허용하지 않고 처리 속도를 정확히 제어합니다. Token Bucket은 더 유연하고 널리 사용됩니다(RateLimiter 라이브러리, Redis 기반 구현).
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: API 버전 관리는 어떻게 해야 하나요?</strong></summary>
 
 두 가지 주요 전략이 있습니다: 1) **URI prefix**(`/api/v1/users`, `/api/v2/users`) — 가장 일반적이고 직관적이며, 캐싱과 디버깅이 쉽습니다. 2) **Accept 헤더**(`Accept: application/vnd.myapp.v1+json`) — 더 RESTful하지만 클라이언트 구현이 복잡합니다. URI prefix가 실용적인 선택입니다. 버전은 호환성이 깨지는 변경(breaking change)이 있을 때만 올리세요. 새 필드 추가는 v1에서도 호환 가능하며, 필드 제거나 타입 변경만 major 버전 업데이트가 필요합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: API 응답의 표준 형식은 무엇인가요?</strong></summary>
 
 일관된 응답 형식은 클라이언트 개발을 크게 단순화합니다. 표준 형식 예시: 성공 시 `{ "success": true, "data": { ... }, "meta": { "current_page": 1, "per_page": 20, "total": 100 } }`, 실패 시 `{ "success": false, "error": { "code": "VALIDATION_ERROR", "message": "이메일 형식이 올바르지 않습니다.", "details": { "email": ["올바른 이메일을 입력하세요."] } } }`. HTTP 상태 코드도 일관되게 사용하세요: 200(성공), 201(생성), 400(잘못된 요청), 401(미인증), 403(권한 없음), 404(없음), 422(유효성 검사 실패), 429(속도 제한), 500(서버 에러).
+
 </details>
 
 ---

@@ -245,24 +245,32 @@ async function profileWasm() {
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM이 네이티브 C보다 항상 느린가요? 얼마나 차이가 나나요?</strong></summary>
+
 보통 10~30% 느리지만, 작업 유형에 따라 다릅니다. 순수 수치 연산(행렬 곱셈, 피보나치)은 네이티브의 90~100%까지 도달합니다. 메모리 집약적 작업은 캐시 효율에 따라 네이티브의 70~95%입니다. I/O 바운드 작업은 차이가 거의 없습니다. 단, SIMD/AVX 같은 CPU 특화 명령어는 아직 WASM에서 완전히 지원되지 않으므로 이러한 명령어에 의존하는 코드(C의 Intel IPP, MKL 등)는 더 큰 차이가 날 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Liftoff와 TurboFan의 차이가 실제 사용자 경험에 어떤 영향을 주나요?</strong></summary>
+
 초기 로딩 시에는 Liftoff(1MB당 약 1ms)로 빠르게 실행을 시작하지만, 네이티브의 50~80% 성능입니다. 사용자가 페이지와 상호작용하는 동안 백그라운드에서 TurboFan이 핫 함수만 재컴파일하여 네이티브의 90~100%까지 성능을 올립니다. 실제 체감: (1) 첫 1~2초: 약간 느리지만 사용 가능, (2) 5~10초 후: 모든 핫 함수 최적화 완료, (3) 이후: 네이티브 수준 성능. 게임, 이미지 편집기 등 장시간 사용하는 앱에서 이 전략이 효과적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: AOT 컴파일이 항상 JIT보다 좋은가요?</strong></summary>
+
 아닙니다. AOT는 시작 시간이 빠르고(5ms, JIT의 45ms 대비) 메모리 사용량이 적지만, JIT는 **실행 중 프로파일링 정보를 바탕으로 최적화**하므로 장기 실행 시 더 나은 성능을 낼 수 있습니다. 또한 AOT는 플랫폼별 바이너리를 생성하므로 이식성이 떨어집니다. **선택 기준**: CLI 도구/임베디드 → AOT, 서버/웹 애플리케이션 → JIT, 개발 중 → JIT(빠른 반복).
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM에서 분기 제거가 중요한 이유는 CPU 아키텍처와 어떤 관련이 있나요?</strong></summary>
+
 현대 CPU는 파이프라인 실행을 위해 **분기 예측(Branch Prediction)**을 사용합니다. 분기 예측이 실패하면 파이프라인이 완전히 비워져 10~20사이클(약 5~10ns)이 낭비됩니다. WASM의 조건부 분기(`if/else`, `br_if`)는 CPU 분기로 컴파일되므로, 예측 실패율이 높은 분기(예: 랜덤 데이터 분류)는 성능에 큰 영향을 줍니다. 산술 연산(`i32.max_s`, `i32.min_s`)으로 분기를 제거하면 이러한 예측 실패 페널티가 사라집니다. Intel의 경우 분기 예측 정확도가 95%일 때, 분기 명령어 100개당 약 500사이클 손실이 발생합니다.
+
 </details>
 
 ## 요약 — 성능 최적화 핵심 포인트

@@ -59,34 +59,39 @@ public class HelloWorld {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: JDK와 JRE의 차이는 무엇인가요?</strong></summary>
 
 **JRE**(Java Runtime Environment)는 Java 프로그램을 실행하는 데 필요한 최소 환경입니다(JVM + 핵심 라이브러리). **JDK**(Java Development Kit)는 JRE에 개발 도구(javac, jar, javadoc, jdb 등)가 추가된 전체 패키지입니다. Java 프로그램을 개발하려면 JDK가 필요하고, 실행만 하려면 JRE로 충분합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: JVM은 어떻게 플랫폼 독립성을 보장하나요?</strong></summary>
 
 Java 소스는 플랫폼에 종속되지 않는 **바이트코드(.class)**로 컴파일됩니다. 각 운영체제용 JVM이 이 바이트코드를 해당 OS의 네이티브 코드로 변환하여 실행합니다. 즉, "한 번 컴파일하면 어디서든 실행"되지만, JVM 자체는 각 플랫폼에 맞게 구현되어 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: public static void main(String[] args)의 각 키워드는 무엇을 의미하나요?</strong></summary>
 
 **public**: JVM이 어디서든 접근할 수 있어야 함. **static**: 객체 생성 없이 JVM이 직접 호출. **void**: JVM에 반환할 값 없음. **main**: JVM이 찾는 메서드 이름(고정). **String[] args**: 명령줄 인자를 전달받는 문자열 배열. Java 21부터는 `String... args`(가변 인자)도 사용 가능합니다. JVM은 이 시그니처를 정확히 찾아내어 실행합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 자바의 GC는 어떻게 동작하나요?</strong></summary>
 
 GC는 Heap에서 더 이상 참조되지 않는 객체를 자동으로 회수합니다. Young Generation(Eden → S0 → S1)에서 빈번하게 Minor GC가 발생하고, 살아남은 객체가 Old Generation으로 승격됩니다. Old Generation이 가득 차면 Major GC(Full GC)가 발생합니다. G1GC, ZGC, Shenandoah 등 다양한 GC 알고리즘이 있으며, Java 21에서는 ZGC가 기본에 가까워지고 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Java와 C++의 가장 큰 차이는 무엇인가요?</strong></summary>
 
 1) **메모리 관리**: Java는 GC가 자동 관리, C++는 수동(new/delete). 2) **플랫폼 독립성**: Java는 JVM 위에서 실행, C++는 네이티브 컴파일. 3) **포인터**: Java는 포인터 연산이 없음(참조만). 4) **다중 상속**: Java는 인터페이스로만 다중 상속, C++는 클래스 다중 상속 가능. 5) **성능**: C++가 일반적으로 더 빠르지만, 최신 Java(JIT 컴파일)는 격차를 줄이고 있습니다.
+
 </details>
 
 ---

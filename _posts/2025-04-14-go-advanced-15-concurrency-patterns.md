@@ -280,34 +280,39 @@ Graceful Shutdown은 `os.Signal`로 SIGINT/SIGTERM을 감지하고, `context.Wit
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Worker Pool의 크기는 어떻게 결정하나요?</strong></summary>
 
 Worker Pool의 크기는 작업의 특성에 따라 결정됩니다: (1) **CPU 바운드 작업** — `runtime.GOMAXPROCS(0)` 이하로 설정합니다. CPU 코어 수를 초과하면 컨텍스트 스위칭 오버헤드만 증가합니다. (2) **I/O 바운드 작업** — 네트워크, 파일, 데이터베이스 요청 등은 CPU보다 대기 시간이 지배적이므로 더 많은 Worker가 효과적입니다. 보통 2~10배까지 실험적으로 결정합니다. (3) **외부 API 호출** — API의 Rate Limit에 맞춰 Worker 수를 제한합니다. (4) **메모리 제한** — 각 Worker가 사용하는 메모리를 고려하여 총 메모리 한도 내에서 결정합니다. 실제로는 메트릭을 수집하면서 조정하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Fan-Out과 Fan-In 패턴의 일반적인 구현은 어떻게 되나요?</strong></summary>
 
 Fan-Out: 하나의 입력 채널에서 데이터를 읽어 여러 Worker 고루틴에게 분배합니다. 각 Worker는 동일한 입력 채널에서 `range`로 읽습니다. 채널은 여러 수신자에게 데이터를 안전하게 분배합니다. 각 Worker는 결과를 개별 출력 채널에 씁니다. Fan-In: 여러 입력 채널의 데이터를 하나의 출력 채널로 병합합니다. Select 문이나 별도의 고루틴이 각 입력 채널을 읽어 출력 채널에 씁니다. Fan-In 함수는 `sync.WaitGroup`으로 모든 입력 소스의 완료를 기다린 후 출력 채널을 닫습니다. 이 패턴은 대규모 데이터 처리 시스템의 기본 구성 요소입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Pipeline 패턴에서 에러 처리는 어떻게 하나요?</strong></summary>
 
 Pipeline의 각 단계에서 에러가 발생하면: (1) **에러 채널 도입** — 각 단계에 별도의 에러 채널을 추가하여 에러를 전파합니다. (2) **컨텍스트 취소** — 모든 단계가 동일한 `context.Context`를 공유하여, 에러 발생 시 컨텍스트를 취소하면 모든 단계가 중단됩니다. (3) **결과 구조체** — `type Result struct { Value T; Err error }` 형태로 값과 에러를 함께 전달합니다. (4) **조기 종료** — `done` 채널을 파이프라인에 전달하여 에러 발생 시 모든 단계가 조기에 종료되도록 합니다. 실제 프로덕션 코드에서는 컨텍스트 취소 + 에러 채널 조합이 가장 일반적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 배압(backpressure)이 중요한 이유는 무엇인가요?</strong></summary>
 
 배압이 없으면 생산자가 소비자보다 빠를 때 채널 버퍼가 무한정 커지거나(메모리 고갈), 생산자가 블로킹되지 않고 계속 데이터를 생성하여 시스템이 과부하 상태가 됩니다. Go에서 배압을 구현하는 방법: (1) **버퍼 크기 제한** — 채널 버퍼에 상한을 설정하여 버퍼가 가득 차면 생산자가 블로킹되도록 합니다. (2) **명시적 블로킹** — 생산자와 소비자 속도를 일치시키기 위해 언버퍼 채널을 사용합니다. (3) **동적 조절** — 소비자의 처리 속도를 측정하여 생산자의 속도를 조절합니다. 배압은 시스템 안정성의 핵심 메커니즘입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Graceful Shutdown은 어떻게 구현하나요?</strong></summary>
 
 Graceful Shutdown은 애플리케이션 종료 시 진행 중인 작업을 안전하게 완료하고 리소스를 정리하는 과정입니다. 구현: (1) `os.Signal` 채널로 SIGINT/SIGTERM을 감지합니다. (2) 컨텍스트 취소로 모든 고루틴에 종료 신호를 보냅니다. (3) `sync.WaitGroup`으로 모든 고루틴이 완료될 때까지 기다립니다. HTTP 서버는 `Shutdown(ctx)` 메서드로 기존 요청을 완료하고 새 요청을 거부합니다. 타임아웃을 설정하여 무한 대기를 방지합니다. 실제 예: `srv.Shutdown(ctx) + wg.Wait() + close(done)`.
+
 </details>
 
 ## 요약

@@ -12,7 +12,6 @@ Go의 맵은 해시 테이블 기반의 동적 컬렉션이고, 구조체는 필
 
 > **핵심 정리** · map은 `runtime.hmap` 구조체로 구현된 해시 테이블입니다. key의 해시값 → bucket 선택 → tophash 비교 → 키-값 쌍 접근 순서로 동작합니다. struct는 필드를 연속 메모리에 배치하지만, CPU 메모리 정렬 요구사항에 따라 필드 사이에 패딩이 추가될 수 있습니다. struct 태그는 리플렉션으로 읽혀 JSON 직렬화 동작을 제어합니다.
 
-
 ## 수업 목표
 
 - 맵의 해시 테이블 구조와 bucket 체인을 이해합니다.
@@ -246,39 +245,42 @@ func main() {
 
 CPU는 메모리를 읽을 때 특정 **정렬 경계(alignment boundary)**를 기준으로 읽습니다. `int64`는 8바이트 정렬이 필요하므로, 주소가 8의 배수여야 합니다. `BadStruct`에서 `bool`(1바이트) 뒤에 `int64`(8바이트)가 오면, `int64`의 시작 주소를 8의 배수로 맞추기 위해 7바이트의 패딩이 추가됩니다. `GoodStruct`처럼 큰 타입을 먼저 배치하면 패딩을 최소화할 수 있습니다. `unsafe.Offsetof()`는 각 필드의 시작 오프셋을 보여줍니다. 구조체 크기는 `BadStruct` 24바이트, `GoodStruct` 16바이트로, **단순히 필드 순서만 바꿔도 33% 절약**됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 맵의 키로 사용할 수 있는 타입은 무엇인가요?</strong></summary>
 
 맵의 키로는 **비교 가능(comparable)**한 타입만 사용할 수 있습니다. 비교 가능한 타입은 `==`와 `!=` 연산자를 지원하는 타입으로, `bool`, `int`, `float64`, `string`, `pointer`, `channel`, `struct`(모든 필드가 comparable), `array`(요소 타입이 comparable)가 해당됩니다. **비교 불가능**한 타입은 슬라이스(`[]T`), 맵(`map[K]V`), 함수(`func`)입니다. 이 타입들은 런타임에 비교가 불가능하므로 맵의 키로 사용할 수 없습니다. 인터페이스 타입은 가능하지만, 런타임에 저장된 값이 비교 가능해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 맵의 요소를 수정하려면 어떻게 해야 하나요?</strong></summary>
 
 맵의 값을 직접 수정하려면, 값이 포인터나 슬라이스 같은 참조 타입이거나, 구조체 전체를 교체해야 합니다. `m["key"].Field = value`는 컴파일 오류입니다(맵 인덱스가 주소를 반환하지 않으므로). 해결 방법: (1) 구조체를 통째로 읽고 수정 후 다시 할당: `v := m["key"]; v.Field = value; m["key"] = v` (2) 값 타입을 포인터로 사용: `map[string]*MyStruct` (3) 맵 값 자체를 슬라이스나 다른 참조 타입으로 설계. 구조체 값의 포인터를 맵에 저장하면 직접 필드 수정이 가능합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 구조체는 값 타입인데, 큰 구조체는 함수 인자로 전달할 때 비효율적이지 않나요?</strong></summary>
 
 네, 구조체는 **값 타입**이므로 함수 인자로 전달하면 전체가 복사됩니다. 큰 구조체(수백 바이트 이상)는 복사 비용이 큽니다. 따라서 큰 구조체는 **포인터**로 전달하는 것이 일반적입니다: `func Process(p *Person)`. 하지만 작은 구조체(수십 바이트 이하)는 값 전달이 오히려 빠를 수 있습니다(포인터 간접 참조 비용 제거). Go의 관례는 일관성을 위해 메서드 리시버를 포함하여: (1) 변경이 필요하면 포인터 리시버 (`func (p *Person) Update()`) (2) 변경이 없고 작으면 값 리시버 (`func (p Person) String() string`). 가이드라인: **일관성**을 유지하세요. 같은 타입의 리시버는 모두 값 또는 모두 포인터로 통일합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: struct 태그는 어떤 용도로 사용되나요?</strong></summary>
 
 struct 태그는 **메타데이터**를 필드에 첨부하는 기능입니다. 주요 용도: (1) **JSON 직렬화**: `json:"field_name,omitempty"` (2) **XML 직렬화**: `xml:"element,attr"` (3) **데이터베이스 ORM**: `gorm:"column:user_name;type:varchar(100)"` (4) **폼 검증**: `validate:"required,min=3,max=100"` (5) **YAML**: `yaml:"field_name"` (6) **환경 변수**: `env:"MY_VAR"`. 태그는 리플렉션(`reflect` 패키지)으로 읽히며, 런타임에 `field.Tag.Get("json")`으로 접근할 수 있습니다. 태그 값은 공백으로 구분된 `key:"value"` 쌍의 형태입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: make(map[K]V, hint)의 hint는 어떤 역할을 하나요?</strong></summary>
 
 `hint`는 맵의 **예상 크기(초기 용량)**를 지정합니다. hint가 주어지면, Go 런타임은 추가적인 재해싱(rehashing) 없이 hint 개수의 요소를 저장할 수 있는 충분한 bucket을 미리 할당합니다. hint가 없거나 작으면, 요소가 추가될 때마다 bucket이 부족해져 재할당이 발생합니다. 재해싱은 모든 키-값 쌍을 새 bucket에 다시 분배하므로 O(n) 비용이 듭니다. 따라서 예상 크기를 알고 있다면 hint를 지정하는 것이 성능에 좋습니다. hint는 **최대 요소 수**가 아니라 예상 값이며, 실제로는 hint에 가장 가까운 2의 제곱수에 비례하는 bucket이 할당됩니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -290,7 +292,6 @@ struct 태그는 **메타데이터**를 필드에 첨부하는 기능입니다. 
 | **struct** | 필드 그룹화 | 연속 메모리 + 필드별 패딩 |
 | **메모리 정렬** | CPU 접근 최적화 | 큰 타입을 먼저 배치하여 패딩 최소화 |
 | **struct 태그** | 메타데이터 | 리플렉션으로 런타임 접근 |
-
 
 ## 다음 수업
 

@@ -560,13 +560,14 @@ Access-Control-Max-Age:
 
 (기존 실전 예제 코드는 그대로 유지됩니다. 위에서 설명한 모든 개념을 종합한 완전한 REST API 서버입니다.)
 
-<details>
+<details markdown="1">
 <summary><strong>http 모듈 대신 Express를 써야 하나요?</strong></summary>
 
 http 모듈로 직접 서버를 만들면 내부 동작 원리를 이해하는 데 좋습니다. 하지만 실제 프로덕션에서는 Express.js 같은 프레임워크를 사용하는 것이 효율적입니다. 라우팅, 미들웨어, 에러 처리 등이 훨씬 편리합니다. http 모듈은 초당 수만 건의 요청을 처리해야 하는 초고성능 서버나 커스텀 프로토콜 구현 시에 직접 사용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>서버가 느리면 어떻게 해결하나요?</strong></summary>
 
 Node.js는 싱글 스레드이므로 CPU 집약적인 작업은 서버 응답을 차단합니다. 해결 방법:
@@ -574,9 +575,10 @@ Node.js는 싱글 스레드이므로 CPU 집약적인 작업은 서버 응답을
 2. CPU 작업을 별도 마이크로서비스로 분리
 3. 클러스터 모드(`cluster` 모듈)로 멀티코어 활용
 4. PM2 등의 프로세스 매니저로 멀티 인스턴스 실행
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>HTTP 상태 코드는 어떻게 선택하나요?</strong></summary>
 
 | 상태 코드 | 의미 | 사용 상황 |
@@ -590,6 +592,7 @@ Node.js는 싱글 스레드이므로 CPU 집약적인 작업은 서버 응답을
 | 403 Forbidden | 권한 없음 | 로그인은 했지만 접근 권한 없음 |
 | 404 Not Found | 리소스 없음 | 존재하지 않는 URL |
 | 500 Internal Server Error | 서버 에러 | 예상치 못한 예외 |
+
 </details>
 
 ## 요약

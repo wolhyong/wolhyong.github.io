@@ -445,19 +445,21 @@ my-express-app/
 
 ## 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong><code>app.use()</code>와 <code>app.get()</code>의 차이는 무엇인가요?</strong></summary>
 
 내부적으로 `app.use(fn)`은 `layer.method = undefined`로 설정되고, `app.get('/path', fn)`은 `layer.method = 'get'`으로 설정됩니다. `app.use()`는 경로가 일치하면 **모든 HTTP 메서드**를 처리하고, `app.get()`은 **GET 메서드만** 처리합니다. 미들웨어 등록에는 `app.use()`를, 라우트 정의에는 `app.get()`, `app.post()` 등을 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong><code>next()</code>를 호출하지 않으면 어떻게 되나요?</strong></summary>
 
 응답이 클라이언트에 전송되지 않고 **타임아웃까지 대기**합니다. Express는 `next()`가 호출될 때까지 아무 일도 하지 않습니다. `res.send()`나 `res.json()`으로 응답을 보냈더라도 `next()`를 호출하지 않으면 이후 미들웨어가 실행되지 않습니다. 응답이 이미 전송된 상태에서 `next()`를 호출하면 "Cannot set headers after they are sent" 에러가 발생합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Express 앱의 성능을 어떻게 측정하나요?</strong></summary>
 
 autocannon이나 wrk 도구를 사용할 수 있습니다:
@@ -465,12 +467,14 @@ autocannon이나 wrk 도구를 사용할 수 있습니다:
 npx autocannon -c 100 -d 10 http://localhost:3000/users
 ```
 위 명령어는 100개의 동시 연결로 10초간 부하 테스트를 수행합니다. 응답 시간의 p50, p95, p99 값과 초당 요청 수를 확인할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Express 5.x는 4.x와 무엇이 다른가요?</strong></summary>
 
 Express 5.x의 주요 변경 사항: async/await 에러를 자동으로 catch (asyncHandler 불필요), `app.delete()` 메서드 지원, Promise 기반 미들웨어, Path-to-Regexp v8 업데이트로 라우트 매칭 변경. Express 4.x에서 5.x로의 마이그레이션은 대부분 호환되지만, 일부 라우트 패턴이 다르게 동작할 수 있습니다.
+
 </details>
 
 ---

@@ -48,34 +48,39 @@ try (BufferedWriter bw = new BufferedWriter(
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: FileReader/FileWriter 대신 InputStreamReader/OutputStreamWriter를 사용해야 하나요?</strong></summary>
 
 네, **명시적으로 인코딩을 지정**할 수 있는 `InputStreamReader`/`OutputStreamWriter`를 권장합니다. `FileReader`/`FileWriter`는 플랫폼 기본 인코딩을 사용하므로, 다른 환경에서 문제가 발생할 수 있습니다. 크로스 플랫폼 애플리케이션에서는 항상 "UTF-8"을 명시적으로 지정하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: NIO와 전통 I/O의 가장 큰 차이는 무엇인가요?</strong></summary>
 
 **블로킹 vs 논블로킹**입니다. 전통 I/O는 스레드가 I/O 작업 완료를 기다리는 동안 블로킹됩니다. NIO는 단일 스레드가 Selector로 여러 채널을 감시하면서 I/O 준비가 된 채널만 처리할 수 있습니다(논블로킹). 대용량 연결이 필요한 서버에서는 NIO가 스레드 수를 크게 줄여줍니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: BufferedInputStream을 사용하면 항상 성능이 좋아지나요?</strong></summary>
 
 대부분의 경우 **네**. 버퍼링 없이 1바이트씩 읽으면 read() 시스템 콜이 매번 발생하여 성능이 크게 저하됩니다. BufferedInputStream은 내부 8KB 버퍼를 사용하여 시스템 콜 횟수를 1/8192로 줄입니다. 하지만 이미 전체 파일을 읽는 `readAllBytes()`나 `Files.readAllLines()`는 내부적으로 최적화되어 있어 별도 버퍼링이 필요 없습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 직렬화에서 serialVersionUID의 역할은 무엇인가요?</strong></summary>
 
 `serialVersionUID`는 직렬화된 객체의 **클래스 버전을 식별**합니다. 역직렬화 시 저장된 객체의 UID와 현재 클래스의 UID가 일치하지 않으면 `InvalidClassException`이 발생합니다. 명시적으로 선언하지 않으면 컴파일러가 클래스 구조를 기반으로 자동 생성합니다. 클래스 구조가 변경되면 자동 생성된 UID도 변경되므로, **명시적으로 선언하는 것이 좋습니다**.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Files 클래스(Java 7+)를 사용해야 하는 이유는 무엇인가요?</strong></summary>
 
 `java.nio.file.Files`는 **더 간결하고 강력한 I/O API**를 제공합니다. `Files.readAllLines()`, `Files.write()`, `Files.copy()`, `Files.move()`, `Files.walk()` 등 한 줄로 파일 전체를 읽고 쓸 수 있습니다. 또한 심볼릭 링크, 파일 속성, 파일 트리 탐색 등 고급 기능을 지원합니다. Java 8+ 스트림과의 결합이 자연스럽습니다.
+
 </details>
 
 ---

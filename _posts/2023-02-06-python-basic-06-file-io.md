@@ -414,34 +414,39 @@ def process_with_progress(filename):
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
-<summary><strong>Q: `with open()`을 사용하지 않으면 어떤 문제가 있나요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>with open()</code>을 사용하지 않으면 어떤 문제가 있나요?</strong></summary>
 
 `close()`를 명시적으로 호출하지 않으면 **파일 디스크립터 누수**가 발생합니다. OS는 프로세스당 열 수 있는 파일 디스크립터 수에 제한이 있습니다(기본 1,024개). 누수가 계속되면 `OSError: [Errno 24] Too many open files` 에러가 발생합니다. `with` 문은 블록 종료 시 자동으로 `close()`를 호출하므로 이 문제를 완벽히 방지합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 텍스트 모드와 바이너리 모드의 차이는 무엇인가요?</strong></summary>
 
 텍스트 모드(`"r"`)는 파일을 읽을 때 바이트를 문자열(str)로 **디코딩**(기본 utf-8)하고, 쓸 때 문자열을 바이트로 **인코딩**합니다. 또한 줄바꿈 문자를 OS에 맞게 변환합니다(Windows: `\r\n`, Linux: `\n`). 바이너리 모드(`"rb"`)는 아무 변환 없이 bytes 객체를 그대로 반환합니다. 이미지, 영상, 실행 파일 등은 항상 바이너리 모드로 열어야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: JSON 대신 pickle을 사용해도 되나요?</strong></summary>
 
 내부 저장/전송용이라면 pickle이 JSON보다 2~3배 빠르고 용량도 작습니다. 하지만 주의할 점: (1) pickle은 **Python 전용**이라 다른 언어에서 읽을 수 없습니다, (2) pickle 데이터는 **보안 위험**이 있습니다 — 악의적인 pickle 데이터는 임의 코드를 실행할 수 있습니다, (3) Python 버전이 다르면 역직렬화가 실패할 수 있습니다. 웹 API나 크로스 플랫폼 환경에서는 반드시 JSON을 사용하세요.
+
 </details>
 
-<details>
-<summary><strong>Q: `open(..., encoding='utf-8')`을 항상 지정해야 하나요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>open(..., encoding='utf-8')</code>을 항상 지정해야 하나요?</strong></summary>
 
 네, 지정하는 것이 좋습니다. 시스템 기본 인코딩은 플랫폼마다 다릅니다(Linux: UTF-8, Windows: CP949). 인코딩을 지정하지 않으면 `locale.getpreferredencoding()`이 사용되어, Windows에서 만든 CSV 파일이 Linux에서 글자가 깨질 수 있습니다. 항상 명시적으로 `encoding='utf-8'`을 지정하여 **크로스 플랫폼 호환성**을 확보하세요.
+
 </details>
 
-<details>
-<summary><strong>Q: `newline=''`을 CSV writer에서 지정하는 이유는?</summary>
+<details markdown="1">
+<summary><strong>Q: <code>newline=''</code>을 CSV writer에서 지정하는 이유는?</summary>
 
 `csv.writer`는 내부적으로 줄바꿈을 자체 처리합니다(따옴표 안의 줄바꿈 포함). `newline=''`을 지정하지 않으면, Python이 파일에 쓸 때 `\n`을 OS 기본 줄바꿈(Windows: `\r\n`)으로 변환하여 `\r\r\n`처럼 중복된 줄바꿈이 생길 수 있습니다. `newline=''`은 이 변환을 비활성화하여 CSV writer가 줄바꿈을 직접 제어할 수 있게 합니다.
+
 </details>
 
 ---

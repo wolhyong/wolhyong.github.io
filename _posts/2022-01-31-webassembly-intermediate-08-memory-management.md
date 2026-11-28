@@ -348,19 +348,25 @@ reset();
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM에서 메모리 누수가 발생할 수 있나요?</strong></summary>
+
 네, 가능합니다. WASM의 선형 메모리는 JavaScript의 가비지 컬렉터가 관리하지 않습니다. 따라서 `malloc`으로 할당한 메모리를 `free`로 해제하지 않으면 WASM 내에서 메모리 누수가 발생합니다. 다만 WASM 인스턴스가 종료되면 모든 메모리는 브라우저에 의해 회수됩니다. 장기 실행 애플리케이션(웹 서버, 게임)에서는 반드시 메모리 프로파일링 도구를 사용해 누수를 모니터링해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: memory.grow를 너무 자주 호출하면 어떤 문제가 생기나요?</strong></summary>
+
 `memory.grow`는 약 5~10μs가 소요되며, 호출할 때마다 기존 `ArrayBuffer`가 detach됩니다. detach되면 JavaScript에서 생성한 모든 TypedArray가 무효화되므로 다시 생성해야 합니다. 또한 grow는 OS로부터 메모리를 할당받는 시스템 콜을 유발할 수 있습니다. **권장 사항**: 초기에 예상 최대 메모리의 70~80%를 할당하고, grow는 최후의 수단으로만 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Rust의 alloc 크레이트는 내부적으로 어떤 할당자를 사용하나요?</strong></summary>
+
 Rust의 `alloc` 크레이트는 기본적으로 **dlmalloc**을 사용합니다. `wasm-pack`으로 빌드하면 자동으로 dlmalloc이 포함되어 `Box`, `Vec`, `String` 등의 표준 컬렉션이 정상 작동합니다. 또는 `wee_alloc`(작은 WASM 바이너리에 최적화된 경량 할당자)로 교체할 수 있습니다. `wee_alloc`은 dlmalloc보다 코드 크기가 약 5KB 작지만 할당 속도가 약 2배 느립니다.
+
 </details>
 
 ---

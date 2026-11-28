@@ -12,7 +12,6 @@ C#의 의존성 주입은 느슨한 결합과 테스트 가능성을 제공하�
 
 > **핵심 정리** · DI는 의존성을 외부에서 주입하여 결합도를 낮춥니다. IoC 컨테이너는 객체 생성과 수명 주기를 관리합니다. `Transient`, `Scoped`, `Singleton` 수명 주기를 제공합니다. `AddTransient`, `AddScoped`, `AddSingleton`으로 서비스를 등록합니다. `IServiceProvider`로 서비스를 해결합니다.
 
-
 ## 수업 목표
 
 - 의존성 주입의 개념을 이해합니다.
@@ -452,39 +451,42 @@ class Program
 
 `ILogger`는 로깅을 제공합니다. `IConfiguration`은 설정을 제공합니다. `IServiceProvider` 자체도 서비스로 등록됩니다. 내장 서비스는 추가 의존성 없이 사용할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 의존성 주입은 왜 필요한가요?</strong></summary>
 
 의존성 주입은 다음 이유로 필요합니다: (1) 결합도 감소 (2) 테스트 가능성 향상 (3) 유지보수성 향상 (4) 수명 주기 관리. 직접 의존성을 제거하고 인터페이스를 통해 구현을 교체할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Transient, Scoped, Singleton 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Transient`는 상태가 없는 서비스에 사용합니다. `Scoped`는 요청 범위 상태가 필요할 때 사용합니다(웹 요청). `Singleton`은 전역 상태나 비용 있는 초기화가 필요할 때 사용합니다. 스레드 안전성을 고려해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 생성자 주입과 속성 주입 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 생성자 주입을 우선 사용해야 합니다. 필수 의존성은 생성자 주입으로, 선택적 의존성은 속성 주입으로 주입합니다. 생성자 주입은 불변성을 보장하고 의존성을 명확하게 만듭니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 서비스 로케이터 패턴은 언제 사용해야 하나요?</strong></summary>
 
 서비스 로케이터는 서비스 해결을 캡슐화할 때 사용합니다. `IServiceProvider`를 직접 사용하는 것을 피하고 로케이터를 통해 해결합니다. 서비스 로케이터 패턴은 복잡한 의존성 그래프를 관리할 때 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> DI 컨테이너는 언제 사용해야 하나요?</strong></summary>
 
 DI 컨테이너는 대규모 애플리케이션에서 사용합니다. 작은 애플리케이션에서는 수동 DI로 충분합니다. ASP.NET Core는 DI를 기본적으로 지원하므로 사용하는 것이 좋습니다. 복잡한 수명 주기가 필요할 때 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -497,11 +499,10 @@ DI 컨테이너는 대규모 애플리케이션에서 사용합니다. 작은 �
 | **Singleton** | 전체 인스턴스 | 전역 상태 |
 | **생성자 주입** | 생성자 주입 | 필수 의존성 |
 | **팩토리 패턴** | 객체 생성 캡슐화 | 복잡한 생성 |
-| **IOptions<T>** | 설정 주입 | Configure<T> |
+| **IOptions&lt;T&gt;** | 설정 주입 | Configure&lt;T&gt; |
 | **ILogger** | 로깅 서비스 | 내장 서비스 |
 | **IConfiguration** | 설정 서비스 | 내장 서비스 |
 | **CreateScope** | 새 범위 생성 | Scoped 서비스 |
-
 
 ## 다음 수업
 

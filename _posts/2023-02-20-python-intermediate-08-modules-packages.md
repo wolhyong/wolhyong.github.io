@@ -233,34 +233,39 @@ pip install flask 실행 시:
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
-<summary><strong>Q: `if __name__ == "__main__"`은 왜 필요한가요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>if __name__ == "__main__"</code>은 왜 필요한가요?</strong></summary>
 
 이 조건문은 모듈이 직접 실행될 때와 임포트될 때를 구분합니다. `python script.py`로 직접 실행하면 `__name__`이 `"__main__"`이 되고, `import script`로 임포트하면 모듈 이름(script)이 됩니다. 이 패턴을 사용하면 모듈을 CLI 도구와 라이브러리로 동시에 사용할 수 있습니다. 테스트 코드나 데모 코드를 이 블록 안에 넣는 것이 일반적입니다.
+
 </details>
 
-<details>
-<summary><strong>Q: `from module import *`을 사용하면 안 되는 이유는?</summary></strong>
+<details markdown="1">
+<summary><strong>Q: <code>from module import *</code>을 사용하면 안 되는 이유는?</summary></strong>
 
 네임스페이스를 오염시키고 예기치 않은 이름 충돌을 일으킬 수 있습니다. `*`로 임포트된 이름을 추적하기 어렵고, 모듈이 업데이트되면 새로운 이름이 갑자기 코드에 나타날 수 있습니다. `__all__`로 제어할 수 있지만, 명시적 임포트가 항상 더 좋습니다. `from module import specific_name`처럼 필요한 것만 임포트하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: pip와 conda의 차이는 무엇인가요?</strong></summary>
 
 pip는 Python 전용 패키지 매니저로 PyPI에서 패키지를 설치합니다. conda는 언어에 독립적인 패키지 매니저로, Python뿐 아니라 C/C++ 라이브러리, R 등도 관리합니다. conda는 의존성 해결이 더 강력하고(충돌이 적음), 바이너리 패키지를 제공하여 컴파일이 필요 없습니다. 데이터 과학 분야에서는 conda를, 일반 Python 개발에서는 pip를 주로 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 패키지를 PyPI에 배포하려면 어떻게 하나요?</strong></summary>
 
 `setuptools`를 사용하여 `setup.py` 또는 `pyproject.toml`을 작성하고, `build`로 패키지를 빌드한 후 `twine upload`로 PyPI에 업로드합니다. 최근에는 `pyproject.toml` 기반의 `flit`이나 `poetry`를 사용하는 것이 표준이 되고 있습니다. 테스트 배포는 `test.pypi.org`를 먼저 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 가상 환경은 어떻게 작동하나요?</strong></summary>
 
 가상 환경은 `PATH` 환경 변수를 수정하여 시스템 Python 대신 가상 환경의 Python이 먼저 실행되도록 합니다. `site-packages` 디렉토리가 격리되어 있어, 시스템에 설치된 패키지와 독립적으로 패키지를 관리할 수 있습니다. `python -m venv myenv`로 생성되고, `source myenv/bin/activate`(Linux) 또는 `myenv\\Scripts\\activate`(Windows)로 활성화합니다.
+
 </details>
 
 ---

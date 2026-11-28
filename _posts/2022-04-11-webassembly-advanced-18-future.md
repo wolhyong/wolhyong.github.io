@@ -202,19 +202,25 @@ fun createPeople(): List<Person> {
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM GC가 추가되면 JavaScript를 WASM으로 컴파일하는 것이 의미가 있나요?</strong></summary>
+
 기술적으로 가능하지만 실용적이지 않습니다. JavaScript는 WASM의 타겟 언어가 되기에는 (1) 동적 타입 시스템, (2) 프로토타입 기반 객체 모델, (3) eval과 같은 동적 기능, (4) JIT 최적화에 의존하는 성능 특성 등이 WASM의 정적 모델과 맞지 않습니다. JavaScript는 V8 엔진에서 가장 잘 실행되며, WASM은 JavaScript를 대체하는 것이 아니라 **보완하는 역할**을 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Component Model이 실제로 언제 사용 가능한가요?</strong></summary>
+
 2025년 기준, Component Model은 Bytecode Alliance(Wasmtime, Wasmtime, Wit)를 중심으로 활발히 개발 중입니다. Wasmtime은 이미 Component Model의 프리뷰를 지원합니다. warg(WebAssembly Registry)도 알파 단계입니다. 프로덕션 완전 지원은 2025~2026년으로 예상됩니다. 지금은 WIT 문법을 학습하고, 소규모 프로젝트에 Component Model을 적용해보는 것을 권장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Exception Handling이 WASM에서 중요한 이유는 무엇인가요?</strong></summary>
+
 Exception Handling이 없으면 C++의 `try/catch`, Rust의 `panic!`, Java의 `throw` 등이 WASM에서 정상 동작하지 않습니다. 현재 Emscripten은 JavaScript의 `try/catch`를 통해 예외를 에뮬레이션하지만, 이는 성능 저하를 유발합니다. WASM 레벨의 Exception Handling이 추가되면 (1) 예외 처리 성능이 10~100배 개선되고, (2) C++/Rust 표준 라이브러리의 예외 의존 코드가 정상 동작하며, (3) 디버깅 경험이 크게 향상됩니다.
+
 </details>
 
 ---

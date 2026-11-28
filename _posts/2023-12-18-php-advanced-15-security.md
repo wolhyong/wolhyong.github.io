@@ -61,34 +61,39 @@ if (password_verify($inputPassword, $hash)) {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Stored XSS, Reflected XSS, DOM-based XSS의 차이는 무엇인가요?</strong></summary>
 
 **Stored XSS**(저장형): 악성 스크립트가 서버 DB에 저장되고(게시글, 댓글), 다른 사용자가 페이지를 방문할 때 실행됩니다. 가장 위험합니다. **Reflected XSS**(반사형): URL 파라미터에 포함된 스크립트가 서버 응답에 그대로 반영되어 실행됩니다. 피싱 링크로 유포됩니다. **DOM-based XSS**(DOM 기반): 서버를 거치지 않고 클라이언트 JavaScript가 URL 해시나 `document.referrer` 등을 innerHTML으로 직접 삽입할 때 발생합니다. Stored XSS 방어는 출력 인코딩 + CSP, Reflected는 입력 필터링 + 인코딩, DOM-based는 innerHTML/textContent 사용과 DOMPurify 라이브러리로 대응합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: password_hash는 어떤 알고리즘을 사용하나요?</strong></summary>
 
 PHP 8.0+에서 `password_hash()`의 기본 알고리즘은 `PASSWORD_BCRYPT`입니다(bcrypt, Blowfish 기반). `PASSWORD_ARGON2I`(Argon2i — Argon2의 데이터 독립형, side-channel 방어)와 `PASSWORD_ARGON2ID`(Argon2id — Argon2i + Argon2d 혼합, 가장 안전)도 지원합니다. Argon2id는 2023년 기준 권장됩니다: `password_hash($password, PASSWORD_ARGON2ID, ['memory_cost' => 65536, 'time_cost' => 4, 'threads' => 3])`. `password_needs_rehash()`로 기존 해시가 더 강력한 알고리즘으로 업그레이드가 필요한지 확인할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: hash_equals()가 === 비교보다 안전한 이유는 무엇인가요?</strong></summary>
 
 `hash_equals()`는 **타이밍 공격(Timing Attack)을 방어**합니다. 일반 `===` 비교는 첫 번째 다른 바이트에서 즉시 false를 반환하므로, 공격자가 응답 시간을 측정하여 올바른 값을 유추할 수 있습니다. `hash_equals()`는 두 입력의 **모든 바이트를 비교**하고, 비교 대상 문자열의 길이도 고정하여 실행 시간이 항상 일정합니다. CSRF 토큰, HMAC 서명, 비밀번호 확인 등 타이밍 정보가 중요한 비교에는 항상 `hash_equals()`를 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 파일 업로드 보안에서 MIME 타입 검증만으로 충분한가요?</strong></summary>
 
 **MIME 타입 검증만으로는 부족합니다**. 브라우저가 보내는 `Content-Type`은 조작이 가능합니다. 실제 파일 검증은 1) **파일 매직 바이트**(시그니처) 확인 — `finfo_file($finfo, $tmpFile, FILEINFO_MIME_TYPE)`이 실제 파일 내용을 분석, 2) **확장자 화이트리스트** — `['jpg', 'png', 'pdf']`만 허용, 3) **이미지 재압축** — 업로드된 이미지를 GD/ImageMagick으로 다시 인코딩(EICAR/WebShell 실행 방지), 4) **`exif_imagetype()`** — 실제 이미지 파일인지 확인. 또한 `move_uploaded_file()`로 저장할 때는 웹 루트 밖에 저장하고, `disable_functions`에 exec/system/passthrough를 추가하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: CSRF 방어에서 SameSite 쿠키만으로 충분한가요?</strong></summary>
 
 **SameSite 쿠키만으로는 완전한 CSRF 방어가 되지 않습니다**. SameSite=Lax는 GET 요청과 Top-level 탐색에서 쿠키를 전송하므로, GET 기반 상태 변경(권장되지 않지만 존재)은 방어할 수 없습니다. SameSite=Strict는 링크 클릭 시에도 쿠키를 전송하지 않아 사용자 경험을 해칠 수 있습니다. 가장 안전한 방법은 **Synchronizer Token Pattern** + **SameSite=Lax**를 함께 사용하는 것입니다. Laravel 등 주요 프레임워크는 자동으로 CSRF 토큰 검증을 수행하므로 프레임워크의 보안 기능을 활용하는 것이 좋습니다.
+
 </details>
 
 ---

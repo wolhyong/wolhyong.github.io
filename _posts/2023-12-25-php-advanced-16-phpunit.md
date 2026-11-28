@@ -83,34 +83,39 @@ class UserServiceTest extends TestCase
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: createMock과 getMockBuilder의 차이는 무엇인가요?</strong></summary>
 
 `createMock(ClassName::class)`는 기본 설정(모든 메서드가 null 반환, `$this->any()` 매처)으로 빠르게 목을 생성합니다. `getMockBuilder(ClassName::class)`는 더 세밀한 제어가 가능합니다: `disableOriginalConstructor()`(생성자 호출 방지), `setMethods(['method1'])`(특정 메서드만 목킹), `enableProxyingToOriginalMethods()`(기본 메서드는 실제 호출). 대부분의 경우 `createMock()`으로 충분하고, 복잡한 설정이 필요할 때만 `getMockBuilder()`를 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 코드 커버리지 측정 시 Xdebug와 PCOV의 차이는 무엇인가요?</strong></summary>
 
 **Xdebug**는 디버깅과 프로파일링 도구로, 코드 커버리지 기능도 제공합니다. 기능이 풍부하지만 **성능 오버헤드가 큽니다**(테스트 실행 시간 5~10배 증가). **PCOV**(PHP Code Coverage)는 커버리지 측정에 특화된 경량 확장입니다. Xdebug보다 **훨씬 빠르고**(오버헤드 약 2~3배), 메모리 사용량도 적습니다. CI 환경에서 커버리지만 필요하다면 PCOV를 권장합니다. `phpunit --coverage-html coverage/ --coverage-text`로 HTML 리포트와 텍스트 요약을 생성할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: @test 어노테이션과 test 접두사 중 어떤 것을 사용해야 하나요?</strong></summary>
 
 두 방식 모두 PHPUnit이 지원합니다. `test` 접두사: `public function test_something_works(): void` — 네이티브 PHP 문법으로 IDE 지원이 좋습니다. `@test` 어노테이션: `/** @test */ public function something_works(): void` — 메서드명이 자연어로 읽힙니다. **PHP 8 어트리뷰트**(PHPUnit 10+): `#[Test]` — 가장 현대적인 방식입니다. PHP 8.1+ 프로젝트라면 `#[Test]` 어트리뷰트를 권장합니다. 메서드 시그니처를 자유롭게 작성할 수 있고 타입 안전합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHPUnit 10에서 변경된 주요 사항은 무엇인가요?</strong></summary>
 
 PHPUnit 10(2023년 2월)은 많은 변경 사항이 있습니다: 1) **어노테이션 → 어트리뷰트**: `@test` → `#[Test]`, `@dataProvider` → `#[DataProvider]`, `@group` → `#[Group]`. 2) **기본 템플릿 제거**: 더 이상 `PHPUnit_Framework_TestCase`가 없습니다. 3) **@deprecated 검증**: `#[Deprecated]` 어트리뷰트로 deprecated 코드 경고 테스트. 4) **정적 분석 개선**: `assertContains()` 등의 반환 타입이 `void`로 고정. 5) **더 엄격한 타입**: 모든 메서드에 `void` 반환 타입 필수. PHPUnit 11에서는 더 많은 어트리뷰트 전환이 진행됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 테스트를 작성할 때 should와 test 중 어떤 네이밍을 사용해야 하나요?</strong></summary>
 
 두 네이밍 컨벤션이 널리 사용됩니다: **테스트 우선**: `test_` 접두사 + 언더스코어 — `test_find_user_returns_user_when_exists()`(PHP 전통적), **행동 중심**: `should_` — `should_return_user_when_exists()`(BDD 스타일). PHP 커뮤니티에서는 `test_` 접두사가 더 일반적입니다(PHPUnit 기본). 중요한 것은 **일관성**과 **가독성**이며, 메서드명에서 Given_When_Then을 명확히 표현하는 것이 더 중요합니다. 예: `test_it_throws_exception_when_user_not_found()`. PHP 8에서는 `#[\PHPUnit\Framework\Attributes\Test]`와 함께 자연어 메서드명을 사용하는 추세입니다.
+
 </details>
 
 ---

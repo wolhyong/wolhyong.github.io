@@ -12,7 +12,6 @@ Kotlin의 확장 시스템은 상속 없이 기존 클래스에 기능을 추가
 
 > **핵심 정리** · 확장 함수는 `ClassName.functionName`으로 정의합니다. 확장 프로퍼티는 `val/var`로 정의합니다. `operator`로 연산자를 재정의합니다. `infix`로 중위 표기법을 지원합니다. 상속 없이 기능을 확장합니다. 정적 디스패치로 컴파일됩니다.
 
-
 ## 수업 목표
 
 - 확장 함수를 이해하고 작성할 수 있습니다.
@@ -261,39 +260,42 @@ println(list.randomOrNull())  // 랜덤 요소
 
 확장 함수는 유틸리티 함수에 유용합니다. 문자열, 숫자, 컬렉션 등에 기능을 추가할 수 있습니다. 코드 재사용성을 높입니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 확장 함수와 상속 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 확장 함수를 우선 사용해야 합니다. 상속 없이 기능을 추가할 수 있습니다. 다형성이 필요하면 상속을 사용합니다. 확장 함수는 정적 디스패치이므로 다형성이 적용되지 않습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 확장 함수는 언제 사용해야 하나요?</strong></summary>
 
 확장 함수는 유틸리티 함수에 사용합니다. 기존 클래스에 기능을 추가할 때 유용합니다. 상속이 불가능한 클래스에도 사용할 수 있습니다. 코드 재사용성을 높입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 연산자 오버로딩은 언제 사용해야 하나요?</strong></summary>
 
 연산자 오버로딩은 도메인 특정 연산에 사용합니다. 수학적 연산, 비교 연산 등에 유용합니다. 과도한 사용은 가독성을 떨어뜨립니다. 의미 있는 연산에만 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 중위 함수는 언제 사용해야 하나요?</strong></summary>
 
 중위 함수는 자연스러운 표현에 사용합니다. `to`, `until`처럼 읽기 쉬운 표현에 유용합니다. 과도한 사용은 혼란을 야기할 수 있습니다. 명확한 의미가 있을 때 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 확장 프로퍼티는 언제 사용해야 하나요?</strong></summary>
 
 확장 프로퍼티는 계산된 속성에 사용합니다. backing field가 필요 없는 속성에 유용합니다. 상태를 저장할 수 없으므로 제한적입니다. 읽기 전용 속성에 적합합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -309,7 +311,6 @@ println(list.randomOrNull())  // 랜덤 요소
 | **유틸리티** | 코드 재사용 | 문자열, 숫자 |
 | **to** | Pair 생성 | 내장 중위 |
 | **until** | 범위 끝 제외 | 내장 중위 |
-
 
 ## 다음 수업
 

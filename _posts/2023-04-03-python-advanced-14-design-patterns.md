@@ -83,28 +83,32 @@ result = sorter.sort([3, 1, 4, 1, 5])
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Python의 디자인 패턴과 GoF 패턴의 차이는 무엇인가요?</strong></summary>
 
 Python은 동적 타이핑, 일급 함수, 데코레이터, 메타클래스 등 GoF 패턴을 더 간결하게 만드는 기능이 많습니다. 예를 들어 전략 패턴은 Strategy 인터페이스가 필요 없고 함수를 직접 전달합니다. 싱글턴은 메타클래스나 모듈로 구현합니다. 하지만 GoF 패턴의 핵심 의도와 문제 해결 방식은 동일합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 싱글턴 패턴의 단점은 무엇인가요?</strong></summary>
 
 싱글턴은 전역 상태를 만들고 단위 테스트를 어렵게 합니다. 의존성 주입(DI)으로 대체하는 것이 좋습니다. Python에서는 `app.config` 같은 모듈 레벨 객체가 싱글턴 역할을 하지만, 테스트 시 교체가 어렵습니다. FastAPI/Flask의 `app.config`도 실제로는 싱글턴입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 옵저버 패턴 대신 asyncio를 사용할 수 있나요?</strong></summary>
 
 옵저버 패턴과 asyncio는 다른 개념입니다. 옵저버는 상태 변경 알림(동기/이벤트)에 사용되고, asyncio는 I/O 동시성(비동기 작업)에 사용됩니다. GUI 이벤트 처리에는 옵저버가, 데이터베이스 쿼리 병렬 처리에는 asyncio가 적합합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 팩토리 패턴이 항상 필요한가요?</strong></summary>
 
 아니요. 객체 생성이 단순하면 직접 생성하는 것이 좋습니다. 팩토리는 1) 생성 로직이 복잡하거나, 2) 생성할 클래스를 런타임에 결정해야 하거나, 3) 생성 과정을 유연하게 확장해야 할 때 유용합니다. 과도한 패턴 사용은 YAGNI 원칙을 위반할 수 있습니다.
+
 </details>
 
 ---

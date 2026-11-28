@@ -263,34 +263,39 @@ def get_value_eafp(d, key, default=None):
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
-<summary><strong>Q: `except:`와 `except Exception:`의 차이는 무엇인가요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>except:</code>와 <code>except Exception:</code>의 차이는 무엇인가요?</strong></summary>
 
 `except:` (인자 없음)은 **모든 예외**를 잡습니다. 심지어 `SystemExit`, `KeyboardInterrupt`, `GeneratorExit` 같은 특수 예외도 잡아서 프로그램 종료를 방해할 수 있습니다. `except Exception:`은 `Exception`의 서브클래스만 잡아서 위 세 가지 특수 예외는 통과시킵니다. 따라서 대부분의 경우 `except Exception:`을 사용해야 합니다. 정말로 모든 예외를 잡아야 하는 경우는 극히 드뭅니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: finally 블록에서 예외가 발생하면 어떻게 되나요?</strong></summary>
 
 finally 블록의 예외는 **이전 예외를 대체**합니다. 즉, try 블록에서 발생한 예외가 finally 블록의 예외로 덮어써집니다. 이는 디버깅을 어렵게 만들 수 있으므로, finally 블록에서는 예외가 발생하지 않도록 주의해야 합니다. finally 블록에서 리소스 정리와 같은 안전한 작업만 수행하고, 예외가 발생할 수 있는 코드는 try 블록 밖에 두는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: assert는 예외 처리에 사용해도 되나요?</strong></summary>
 
 `assert`는 **디버깅 용도**로만 사용해야 합니다. `python -O`(최적화) 모드에서 assert는 완전히 제거됩니다. 따라서 입력 검증이나 중요한 비즈니스 로직 검증에는 `if condition: raise ValueError(...)`를 사용하세요. assert는 절대 발생하지 않아야 하는 조건(내부 불변식)을 테스트하는 용도로 적합합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 예외를 너무 많이 사용하면 성능에 문제가 있나요?</strong></summary>
 
 네, 예외 발생은 성능 비용이 큽니다. 예외가 발생하면 PVM이 스택 트레이스를 구성하고, 각 프레임의 로컬 변수를 캡처하고, 예외 핸들러를 탐색해야 합니다. 정상 경로에서 예외가 자주 발생한다면 LBYL 패턴을 고려하세요. 하지만 예외가 드물게 발생하는 경우(1% 미만)라면 EAFP가 더 깔끔하고 빠릅니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 내 예외 클래스는 어디에 정의해야 하나요?</strong></summary>
 
 관련 모듈의 최상위 레벨에 정의하거나, `exceptions.py` 모듈로 분리하는 것이 일반적입니다. 패키지의 `__init__.py`에서 임포트하여 사용자에게 공개 API로 제공하면 편리합니다. 예외 클래스 계층은 깊게 만들지 말고, 보통 2~3단계 깊이가 적당합니다.
+
 </details>
 
 ---

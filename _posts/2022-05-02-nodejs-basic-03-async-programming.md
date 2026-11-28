@@ -295,8 +295,6 @@ Promise.resolve().then(() => {
 // → setTimeout 10000개 완료까지 수십 사이클 필요
 ```
 
-기존의 설명에 더 자세한 내용을 추가하겠습니다. 계속해서 프로미스 체이닝, async/await 섹션을 보강하겠습니다.
-
 ### 프로미스 체이닝 — 각 단계의 실행 타이밍
 
 ```javascript
@@ -660,13 +658,16 @@ main();
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: await를 남용하면 성능이 나빠지나요?</strong></summary>
+
 네. 위에서 본 것처럼 `await`를 순차적으로 사용하면 각 작업이 완료될 때까지 기다리므로 시간이 더 걸립니다. 독립적인 작업은 `Promise.all`로 병렬 처리해야 합니다. 한 번 await할 때마다 JavaScript 엔진은 현재 함수의 실행을 일시 중단하고 이벤트 루프로 제어권을 반환합니다. 이 과정에는 약 0.1~0.3μs의 컨텍스트 전환 비용이 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 콜백을 프로미스로 변환할 수 있나요?</strong></summary>
+
 네. `util.promisify()`를 사용하면 됩니다.
 
 ```javascript
@@ -678,15 +679,19 @@ const data = await readFile('file.txt', 'utf8');
 ```
 
 `util.promisify()`는 콜백 기반 함수를 감싸서 새 프로미스 기반 함수를 반환합니다. 내부적으로는 콜백이 호출될 때 `resolve(value)` 또는 `reject(error)`를 호출합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: async 함수 내부에서 await 없이 반환하면 어떻게 되나요?</strong></summary>
+
 프로미스가 자동으로 래핑됩니다. `async function() { return 5; }`는 `Promise.resolve(5)`를 반환합니다. 이미 프로미스라면 그대로 반환됩니다. 단, 반환값이 **thenable**(`.then` 메서드를 가진 객체)이면 프로미스로 변환됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: process.nextTick과 Promise.then 중 어느 것이 먼저 실행되나요?</strong></summary>
+
 `process.nextTick()`이 `Promise.then()`보다 먼저 실행됩니다. Node.js의 마이크로태스크 큐는 두 단계로 구성됩니다:
 
 ```javascript
@@ -705,11 +710,14 @@ console.log('4. 동기 끝');
 ```
 
 이 순서는 Node.js가 이벤트 루프 각 단계 사이마다 `nextTick` 큐를 먼저 처리한 후, 마이크로태스크 큐를 처리하기 때문입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Node.js에서 await를 Promise.all 없이 사용하면 어떤 문제가 생기나요?</strong></summary>
+
 `await`를 순차적으로 사용하면 각 비동기 작업이 이전 작업이 완료될 때까지 기다리므로 총 실행 시간이 모든 작업 시간의 합이 됩니다. 예를 들어 각각 1초가 걸리는 3개의 독립적인 API 호출을 `await`로 순차 처리하면 3초가 걸리지만, `Promise.all`로 병렬 처리하면 1초로 줄어듭니다. 독립적인 작업은 항상 `Promise.all`을 사용하는 것이 좋습니다.
+
 </details>
 
 ## 요약

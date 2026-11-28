@@ -12,7 +12,6 @@ Rust는 예외 대신 타입 시스템을 통한 에러 처리를 제공하여 �
 
 > **핵심 정리** · `Result<T, E>`는 성공 또는 실패를 표현하며 `?` 연산자로 에러를 전파합니다. `Option<T>`는 값이 있거나 없음을 표현합니다. `unwrap`과 `expect`는 패닉을 일으키며 프로토타이핑에 사용됩니다. 커스텀 에러 타입은 `std::error::Error`를 구현합니다. 체이닝으로 함수형 에러 처리가 가능합니다.
 
-
 ## 수업 목표
 
 - Result와 Option의 차이를 이해합니다.
@@ -22,7 +21,7 @@ Rust는 예외 대신 타입 시스템을 통한 에러 처리를 제공하여 �
 - 체이닝으로 함수형 에러 처리를 할 수 있습니다.
 - panic과 복구 가능/불가능 에러를 이해합니다.
 
-## Result<T, E>
+## Result&lt;T, E&gt;
 
 ```rust
 use std::fs::File;
@@ -75,7 +74,7 @@ fn main() {
 
 `map`은 성공 시 값을 변환합니다. `and_then`은 성공 시 다른 `Result`를 반환하는 함수를 체이닝합니다. `or_else`는 실패 시 대체 `Result`를 반환합니다.
 
-## Option<T>
+## Option&lt;T&gt;
 
 ```rust
 fn find_user(id: u32) -> Option<String> {
@@ -276,46 +275,49 @@ fn main() {
 
 `catch_unwind`는 패닉을 캐치하여 복구할 수 있습니다. 하지만 일반적으로 패닉은 복구하지 않고 프로그램을 종료하는 것이 좋습니다. 주로 테스트나 특수한 경우에 사용됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Rust에 예외가 없는 이유는 무엇인가요?</strong></summary>
 
 예외는 제어 흐름을 혼란스럽게 하고 에러 처리를 강제하지 않습니다. Rust는 타입 시스템을 통한 에러 처리로 컴파일 타임에 에러를 처리하도록 강제합니다. 이는 다음 이유로 안전합니다: (1) **명시성**: 에러를 처리하지 않으면 컴파일 에러가 발생합니다. (2) **타입 안전**: `Result`와 `Option`으로 에러를 타입으로 표현합니다. (3) **함수형**: 체이닝으로 함수형 에러 처리가 가능합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Result와 Option 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Result<T, E>`는 작업이 성공하거나 실패할 때 사용합니다. 예: 파일 읽기, 네트워크 요청, 파싱. `Option<T>`는 값이 있거나 없음을 표현할 때 사용합니다. 예: 데이터베이스 조회 결과, 선택적 매개변수. `Result`는 에러 정보가 필요하고, `Option`은 단순히 값의 존재 여부만 중요할 때 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: unwrap과 expect는 언제 사용해야 하나요?</strong></summary>
 
 `unwrap`과 `expect`는 프로토타이핑, 테스트, 예제 코드에 사용합니다. 프로덕션 코드에서는 피해야 합니다. 대신 `match`, `?` 연산자, 체이닝 메서드를 사용하여 명시적으로 에러를 처리해야 합니다. `unwrap`은 에러가 절대 발생하지 않음을 확신할 때만 사용합니다(예: 하드코딩된 값).
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: ? 연산자는 어떻게 동작하나요?</strong></summary>
 
 `?` 연산자는 `Result`를 반환하는 함수에서만 사용할 수 있습니다. 내부적으로 다음과 같이 동작합니다: `match result { Ok(v) => v, Err(e) => return Err(e.into()), }`. `Ok`면 값을 추출하고, `Err`면 즉시 함수에서 에러를 반환합니다. `.into()`로 에러를 자동 변환합니다. 예외와 유사하지만 타입 안전하고 명시적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 언제 panic을 사용해야 하나요?</strong></summary>
 
 `panic!`은 복구 불가능한 에러에 사용합니다. 예: 논리적 불가능한 상태, 메모리 부족, 보안 위반. 복구 가능한 에러는 `Result`를 사용해야 합니다. `panic!`은 프로그램을 종료하므로 신중하게 사용해야 합니다. 라이브러리 코드에서는 `panic!`을 피하고 `Result`를 반환하는 것이 좋습니다.
-</details>
 
+</details>
 
 ## 요약
 
 | 개념 | 설명 | 특징 |
 |------|------|------|
-| **Result<T, E>** | 성공/실패 표현 | Ok(T), Err(E) |
-| **Option<T>** | 값 있음/없음 표현 | Some(T), None |
+| **Result&lt;T, E&gt;** | 성공/실패 표현 | Ok(T), Err(E) |
+| **Option&lt;T&gt;** | 값 있음/없음 표현 | Some(T), None |
 | **? 연산자** | 에러 전파 | Result 함수에서 사용 |
 | **unwrap** | 값 추출, 실패 시 패닉 | 프로토타이핑용 |
 | **expect** | 메시지와 함께 패닉 | 디버깅용 |
@@ -323,7 +325,6 @@ fn main() {
 | **From 트레이트** | 에러 자동 변환 | ? 연산자와 함께 |
 | **panic!** | 복구 불가능 에러 | 프로그램 종료 |
 | **catch_unwind** | 패닉 캐치 | 특수한 경우에만 |
-
 
 ## 다음 수업
 

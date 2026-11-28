@@ -12,7 +12,6 @@ ASP.NET Core는 크로스 플랫폼 고성능 웹 프레임워크로 현대적 �
 
 > **핵심 정리** · ASP.NET Core는 MVC와 Web API를 지원합니다. 미들웨어는 HTTP 파이프라인에 로깅, 인증을 추가합니다. 라우팅은 URL을 컨트롤러에 매핑합니다. Startup에서 서비스와 미들웨어를 구성합니다. RESTful 서비스를 구축할 수 있습니다.
 
-
 ## 수업 목표
 
 - ASP.NET Core의 구조를 이해합니다.
@@ -340,39 +339,42 @@ public ActionResult<Person> Post(Person person)
 
 `[Required]`, `[StringLength]`, `[Range]` 등의 데이터 주석으로 유효성 검사를 수행합니다. `ModelState.IsValid`로 검사 결과를 확인합니다. `BadRequest`로 유효성 검사 실패를 반환합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> MVC와 Web API 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 MVC는 웹 페이지를 렌더링할 때 사용합니다. HTML 뷰를 반환하며 사용자 인터페이스에 적합합니다. Web API는 RESTful 서비스를 구축할 때 사용합니다. JSON/XML 데이터를 반환하며 SPA, 모바일 앱에 적합합니다. 두 패턴을 혼합할 수도 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 미들웨어 순서는 왜 중요한가요?</strong></summary>
 
 미들웨어 순서는 요청 파이프라인의 실행 순서를 결정합니다. 예: 인증 미들웨어는 엔드포인트 미들웨어 앞에 있어야 합니다. 순서가 잘못되면 보안 문제나 예상치 못한 동작이 발생할 수 있습니다. 순서를 신중하게 구성해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 특성 기반 라우팅과 규칙 기반 라우팅 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 특성 기반 라우팅은 컨트롤러와 액션에 직접 라우트를 지정합니다. 규칙 기반 라우팅은 중앙에서 라우트를 구성합니다. 특성 기반이 더 명확하며 규칙 기반은 중앙화에 유리합니다. 혼합해서 사용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Scoped 서비스는 언제 사용해야 하나요?</strong></summary>
 
 `Scoped` 서비스는 HTTP 요청 범위에서 같은 인스턴스를 사용할 때 사용합니다. 데이터베이스 컨텍스트, 사용자 세션 등에 적합합니다. 요청 간에 상태를 공유해야 할 때 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> IActionResult를 반환하는 이유는 무엇인가요?</strong></summary>
 
 `IActionResult`는 다양한 HTTP 응답 타입을 반환할 수 있습니다. `Ok`, `NotFound`, `BadRequest`, `Created` 등을 사용하여 적절한 HTTP 상태 코드를 반환할 수 있습니다. 유연한 응답 처리를 제공합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -389,7 +391,6 @@ MVC는 웹 페이지를 렌더링할 때 사용합니다. HTML 뷰를 반환하�
 | **유효성 검사** | 데이터 주석 | ModelState |
 | **IActionResult** | HTTP 응답 | Ok, NotFound 등 |
 | **Program.cs** | 호스트 구성 | Build 메서드 |
-
 
 ## 다음 수업
 

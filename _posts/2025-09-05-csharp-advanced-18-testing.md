@@ -12,7 +12,6 @@ C#의 테스트 프레임워크는 단위 테스트와 통합 테스트를 지�
 
 > **핵심 정리** · 단위 테스트는 개별 메서드를 테스트합니다. xUnit, NUnit, MSTest 프레임워크를 사용합니다. 통합 테스트는 컴포넌트 통합을 테스트합니다. Moq로 모의 객체를 생성합니다. 테스트 더블로 데이터 집합을 반복합니다. 테스트 필터로 특정 테스트만 실행합니다.
 
-
 ## 수업 목표
 
 - 단위 테스트를 작성할 수 있습니다.
@@ -326,39 +325,42 @@ public class Calculator
 
 예외 테스트는 `Assert.Throws` 또는 `Should().Throw()`로 수행합니다. 예외 타입과 메시지를 검증할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> xUnit, NUnit, MSTest 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 xUnit은 .NET 표준이며 ASP.NET Core 팀이 사용합니다. NUnit은 더 많은 기능을 제공합니다. MSTest는 Visual Studio에 통합되어 있습니다. 팀 표준을 따르는 것이 좋습니다. 대부분의 경우 xUnit이 충분합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 단위 테스트와 통합 테스트 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 단위 테스트는 개별 메서드/클래스를 테스트합니다. 빠르고 격리되어야 합니다. 통합 테스트는 컴포넌트 통합을 테스트합니다. 느리지만 실제 환경에 가깝습니다. 두 가지 모두 필요하며 비율을 잘 조절해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Moq는 언제 사용해야 하나요?</strong></summary>
 
 Moq는 의존성을 격리할 때 사용합니다. 외부 서비스, 데이터베이스, 파일 시스템 등을 모의할 때 유용합니다. 단위 테스트에서 필수적입니다. 실제 구현을 사용하면 테스트가 느려지고 불안정해집니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 테스트 더블은 언제 사용해야 하나요?</strong></summary>
 
 테스트 더블은 여러 데이터 집합으로 테스트를 반복할 때 사용합니다. 경계 값, 다양한 입력을 테스트할 때 유용합니다. `[InlineData]`는 간단한 데이터에, `[MemberData]`는 복잡한 데이터에 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> AAA 패턴은 왜 중요한가요?</strong></summary>
 
 AAA(Arrange-Act-Assert) 패턴은 테스트를 구조화합니다. Arrange는 테스트 설정, Act는 테스트 실행, Assert는 결과 검증입니다. 가독성을 높이고 테스트를 이해하기 쉽게 만듭니다. 모든 테스트에 적용하는 것이 좋습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -367,7 +369,7 @@ AAA(Arrange-Act-Assert) 패턴은 테스트를 구조화합니다. Arrange는 �
 | **단위 테스트** | 개별 메서드 테스트 | 빠르고 격리 |
 | **통합 테스트** | 컴포넌트 통합 테스트 | 실제 환경 |
 | **xUnit** | .NET 표준 프레임워크 | [Fact], [Theory] |
-| **Moq** | 모의 객체 생성 | Mock<T> |
+| **Moq** | 모의 객체 생성 | Mock&lt;T&gt; |
 | **WebApplicationFactory** | 통합 테스트 팩토리 | ASP.NET Core |
 | **테스트 더블** | 데이터 집합 반복 | [InlineData] |
 | **테스트 필터** | 특정 테스트 실행 | [Trait] |
@@ -376,7 +378,6 @@ AAA(Arrange-Act-Assert) 패턴은 테스트를 구조화합니다. Arrange는 �
 | **비동기 테스트** | async Task 반환 | await 필요 |
 | **예외 테스트** | 예외 검증 | Throws() |
 
-
 ## 다음 수업
 
-다음 글에서는 C# 고급 — 성능 최적화, 프로파일러, 메모리 최적화, Span<T>, Memory<T>를 배웁니다.
+다음 글에서는 C# 고급 — 성능 최적화, 프로파일러, 메모리 최적화, Span&lt;T&gt;, Memory&lt;T&gt;를 배웁니다.

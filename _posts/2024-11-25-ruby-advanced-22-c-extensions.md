@@ -71,34 +71,39 @@ create_makefile('my_extension/my_extension')
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: C 확장과 FFI의 차이는 무엇인가요?</strong></summary>
 
 C 확장(C extension)은 `ruby.h` 헤더를 직접 사용하므로, MRI의 내부 C API에 접근할 수 있습니다(Ruby 객체 생성, 메서드 호출, GC 제어). Ruby 버전에 따라 API가 변경될 수 있어 유지보수가 필요합니다. FFI(Foreign Function Interface)는 `ffi` Gem을 사용하여 공유 라이브러리(.so/.dll)의 함수를 동적으로 호출합니다. Ruby 버전에 독립적이지만, Ruby 객체를 직접 생성할 수 없고 GVL 제어가 어렵습니다. 간단한 라이브러리 바인딩은 FFI로, 복잡한 Ruby 통합은 C 확장으로 개발합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: rb_thread_call_without_gvl은 어떻게 동작하나요?</strong></summary>
 
 `rb_thread_call_without_gvl(func, data, ubf, ubf_data)`는 C 함수 `func`가 실행되는 동안 GVL(Global VM Lock)을 해제합니다. 이 기간 동안 다른 Ruby 스레드가 실행될 수 있습니다. `ubf`(unblock function)는 중단 함수로, 메인 스레드에서 이 함수를 중단해야 할 때 호출됩니다. `func`가 종료되면 GVL을 다시 획득하고 결과를 반환합니다. 이미지 처리, 암호화, 파일 I/O 등 CPU/블로킹 작업이 길어질 때 사용합니다. `rb_thread_call_with_gvl`은 GVL을 다시 획득합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: C 확장에서 Ruby 객체의 참조를 보호하는 방법은 무엇인가요?</strong></summary>
 
 C 변수에 저장된 Ruby 객체 참조는 GC가 추적하지 않으므로, GC가 발생하면 객체가 해제될 수 있습니다. `rb_gc_register_address(&value)`로 C 변수를 GC 루트로 등록합니다. 등록된 주소는 GC가 객체를 해제하지 못하게 보호합니다. 더 이상 필요 없으면 `rb_gc_unregister_address(&value)`로 등록을 해제합니다. 또는 `DATA_WRAP_STRUCT`와 `rb_data_object_alloc`을 사용하여 C 구조체를 Ruby 객체와 연결하고, 마크 함수에서 `rb_gc_mark`으로 참조되는 Ruby 객체를 표시할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: rb_scan_args는 어떻게 사용하나요?</strong></summary>
 
 `rb_scan_args(argc, argv, format, ...)`는 Ruby 메서드 인자를 C 변수로 변환합니다. 형식 문자열: `"3"` — 3개의 필수 인자. `"11"` — 1개의 필수 + 1개의 선택 인자(선택 인자는 `Qnil`일 수 있음). `"1*"` — 1개의 필수 + 나머지 배열. `"1:"` — 1개의 필수 + 키워드 해시. `"01"` — 0개 또는 1개의 선택 인자. 예: `rb_scan_args(argc, argv, "12", &a, &b, &c)`는 1개의 필수 + 2개의 선택 인자를 처리합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: C 확장에서 Ruby 블록을 yield하려면 어떻게 하나요?</strong></summary>
 
 `rb_yield(value)`로 C 코드에서 Ruby 블록을 호출할 수 있습니다. `rb_block_given_p()`로 블록이 전달되었는지 확인합니다. `rb_yield_values(n, v1, v2, ...)`로 여러 인자를 블록에 전달합니다. `rb_iterate`로 이터레이터를 등록할 수 있습니다. `rb_protect(func, data, &error)`로 예외를 보호하고, `rb_errinfo()`로 예외 정보를 확인합니다. C 확장에서 발생한 Ruby 예외는 자동으로 Ruby 스택으로 전파됩니다.
+
 </details>
 
 ---

@@ -12,7 +12,6 @@ Kotlin의 람다와 함수형 프로그래밍은 간결하고 표현력이 풍�
 
 > **핵심 정리** · 람다는 익명 함수입니다. 고차 함수는 함수를 매개변수로 받거나 반환합니다. 함수 합성은 여러 함수를 체이닝합니다. 커링은 다중 인자를 단일 인자로 변환합니다. 부분 적용은 일부 인자를 미리 설정합니다. 불변성과 순수 함수를 권장합니다.
 
-
 ## 수업 목표
 
 - 람다 심화를 이해합니다.
@@ -248,39 +247,42 @@ println(personObjects)  // [Person(name=Alice, age=null), ...]
 
 함수 참조는 함수를 값으로 전달합니다. `::functionName` 형식입니다. 확장 함수, 생성자도 참조할 수 있습니다. 고차 함수에 전달할 때 유용합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 순수 함수와 불순수 함수 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 순수 함수를 우선 사용해야 합니다. 부작용이 없으며 테스트 가능성이 높습니다. 불순수 함수는 I/O, 상태 변경이 필요할 때만 사용합니다. 함수형 프로그래밍에서는 순수 함수를 권장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 커링과 부분 적용 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 커링은 다중 인자를 단일 인자로 변환할 때 사용합니다. 부분 적용은 일부 인자를 미리 설정할 때 사용합니다. 커링은 더 일반적이며 부분 적용은 특정 상황에 사용됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 함수 합성은 언제 사용해야 하나요?</strong></summary>
 
 함수 합성은 여러 함수를 체이닝할 때 사용합니다. 데이터 파이프라인, 변환 체인에 유용합니다. 코드 재사용성을 높이며 가독성이 좋습니다. 복잡한 변환 로직에 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 메모이제이션은 언제 사용해야 하나요?</strong></summary>
 
 메모이제이션은 비용 있는 계산에 사용합니다. 반복 계산을 방지하여 성능을 향상합니다. 순수 함수에 적합합니다. 재귀, 동적 프로그래밍에 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 불변성은 왜 중요한가요?</strong></summary>
 
 불변성은 스레드 안전성을 높이며 버그를 줄입니다. 상태 변경을 추적하기 쉽습니다. 함수형 프로그래밍에서는 필수적입니다. `val`을 우선 사용해야 합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -298,7 +300,6 @@ println(personObjects)  // [Person(name=Alice, age=null), ...]
 | **함수 참조** | ::functionName | 고차 함수 전달 |
 | **compose** | 오른쪽→왼쪽 | f(g(x)) |
 | **andThen** | 왼쪽→오른쪽 | g(f(x)) |
-
 
 ## 다음 수업
 

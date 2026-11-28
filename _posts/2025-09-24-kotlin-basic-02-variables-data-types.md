@@ -12,7 +12,6 @@ Kotlin의 변수와 데이터 타입 시스템은 간결하고 안전하며 표�
 
 > **핵심 정리** · `val`은 읽기 전용, `var`는 변경 가능입니다. 널 안전성은 `String` vs `String?`로 구분합니다. 타입 추론을 지원합니다. 기본 타입은 박싱 없이 최적화됩니다. 문자열은 불변이며 템플릿을 지원합니다. 배열은 `Array<T>`와 기본 타입 배열을 제공합니다.
 
-
 ## 수업 목표
 
 - val과 var를 이해합니다.
@@ -289,39 +288,42 @@ val difference = immutableSet.difference(setOf(2, 3, 4))  // [1]
 
 `setOf`는 불변 세트, `mutableSetOf`는 변경 가능 세트입니다. 중복을 자동으로 제거합니다. `union`, `intersect`, `difference`로 집합 연산을 수행합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> val과 var 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `val`을 우선 사용해야 합니다. 불변성은 스레드 안전성을 높이며 버그를 줄입니다. 상태 변경이 필요할 때만 `var`를 사용합니다. 함수형 프로그래밍 원칙을 따르는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 널 안전성은 왜 중요한가요?</strong></summary>
 
 널 안전성은 널 포인터 예외를 컴파일 타임에 방지합니다. 런타임 오류를 줄이며 코드 안정성을 높입니다. Java에서 가장 흔한 오류 중 하나인 NPE를 방지합니다. 안전한 코드를 작성하는 데 필수적입니다.
+
 </details>
 
-<details>
-<summary><strong>Q> Array<T>와 IntArray 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q> Array&lt;T&gt;와 IntArray 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `IntArray` 등 기본 타입 배열을 사용해야 합니다. 박싱 오버헤드가 없어 성능이 좋습니다. `Array<T>`는 객체 배열에 사용합니다. 성능이 중요한 경우 기본 타입 배열을 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> listOf와 mutableListOf 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `listOf`를 우선 사용해야 합니다. 불변 리스트는 스레드 안전하며 예상치 못한 변경을 방지합니다. 변경이 필요할 때만 `mutableListOf`를 사용합니다. 불변성을 우선시하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 문자열 템플릿은 언제 사용해야 하나요?</strong></summary>
 
 문자열 템플릿은 문자열에 변수나 표현식을 포함할 때 사용합니다. 문자열 연결보다 가독성이 좋습니다. 복잡한 문자열 구성에 유용합니다. `+` 연산자 대신 문자열 템플릿을 사용하는 것이 좋습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -337,13 +339,12 @@ val difference = immutableSet.difference(setOf(2, 3, 4))  // [1]
 | **타입 추론** | 자동 타입 결정 | 간결한 코드 |
 | **기본 타입** | Int, Long, Double | 박싱 없음 |
 | **문자열** | 불변 | 템플릿 지원 |
-| **Array<T>** | 일반 배열 | 객체 박싱 |
+| **Array&lt;T&gt;** | 일반 배열 | 객체 박싱 |
 | **IntArray** | 기본 타입 배열 | 박싱 없음 |
 | **listOf** | 불변 리스트 | 변경 불가 |
 | **mutableListOf** | 변경 가능 리스트 | add/remove |
 | **mapOf** | 불변 맵 | 키-값 쌍 |
 | **setOf** | 불변 세트 | 중복 제거 |
-
 
 ## 다음 수업
 

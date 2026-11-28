@@ -156,19 +156,25 @@ console.log(text);  // "Hello from WASM!"
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: JavaScript에서 WASM 함수를 호출할 때 왜 12.5ns나 걸리나요?</strong></summary>
+
 JavaScript 함수 호출은 약 1~2ns인 반면, WASM 함수 호출은 약 12.5ns가 걸립니다. 이 차이는 **컨텍스트 전환 비용** 때문입니다. JavaScript 엔진(V8)은 현재 실행 중인 JavaScript 코드를 일시 중단하고, WASM 가상 머신으로 제어권을 넘깁니다. 이 과정에서 타입 변환(i32 ↔ Number), 스택 프레임 전환, 메모리 경계 검증 등이 발생합니다. 다만 12.5ns는 여전히 매우 빠른 속도로, 초당 약 8,000만 번의 호출이 가능합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM 메모리에 직접 접근하는 것과 함수 호출 중 어떤 방식이 더 빠른가요?</strong></summary>
+
 메모리 직접 접근이 가장 빠릅니다(약 0.5ns). 하지만 메모리 직접 접근은 포인터(메모리 오프셋)를 알고 있어야 하고, 바이너리 레벨에서 데이터를 읽고 써야 하므로 코드가 복잡해집니다. 함수 호출 방식(12.5ns)은 약 25배 느리지만 타입 변환과 검증을 자동으로 처리해줍니다. **일반적인 규칙**: 1KB 미만의 데이터는 함수 호출로 충분하고, 그 이상의 대량 데이터는 메모리 공유를 고려하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: wasm-bindgen과 wasm-pack은 어떤 역할을 하나요?</strong></summary>
-**wasm-bindgen**은 Rust와 JavaScript 간의 고수준 바인딩을 자동 생성해주는 도구입니다. Rust의 문자열(String), 구조체(struct), 벡터(Vec<T>) 등을 JavaScript의 문자열, 객체, 배열로 자동 변환해줍니다. **wasm-pack**은 wasm-bindgen 기반 프로젝트를 빌드/패키징/배포하는 올인원 도구입니다. `wasm-pack build` 한 명령으로 최적화된 WASM 번들과 TypeScript 타입 정의 파일까지 생성합니다.
+
+**wasm-bindgen**은 Rust와 JavaScript 간의 고수준 바인딩을 자동 생성해주는 도구입니다. Rust의 문자열(String), 구조체(struct), 벡터(Vec&lt;T&gt;) 등을 JavaScript의 문자열, 객체, 배열로 자동 변환해줍니다. **wasm-pack**은 wasm-bindgen 기반 프로젝트를 빌드/패키징/배포하는 올인원 도구입니다. `wasm-pack build` 한 명령으로 최적화된 WASM 번들과 TypeScript 타입 정의 파일까지 생성합니다.
+
 </details>
 
 ---
@@ -336,7 +342,7 @@ console.log(p1.distance(p2));  // 5
 console.log(fibonacci(30));    // 832040
 ```
 
-> **🔬 깊이 있는 설명 — wasm-bindgen의 내부 동작:** wasm-bindgen은 Rust의 고수준 타입(String, struct, Vec<T>)을 WASM의 저수준 타입(i32, f64, 메모리 포인터)으로 변환하는 **글루 코드(Glue Code)** 를 자동 생성합니다. 예를 들어 `String`을 반환하는 Rust 함수는 내부적으로 다음과 같이 변환됩니다: (1) Rust에서 문자열을 WASM 메모리의 특정 위치에 기록, (2) 메모리 포인터와 길이를 i32 2개로 반환, (3) JavaScript 글루 코드가 이 포인터와 길이로 `TextDecoder`를 호출하여 JavaScript 문자열 생성. 이 과정이 wasm-bindgen에 의해 완전히 자동화됩니다.
+> **🔬 깊이 있는 설명 — wasm-bindgen의 내부 동작:** wasm-bindgen은 Rust의 고수준 타입(String, struct, Vec&lt;T&gt;)을 WASM의 저수준 타입(i32, f64, 메모리 포인터)으로 변환하는 **글루 코드(Glue Code)** 를 자동 생성합니다. 예를 들어 `String`을 반환하는 Rust 함수는 내부적으로 다음과 같이 변환됩니다: (1) Rust에서 문자열을 WASM 메모리의 특정 위치에 기록, (2) 메모리 포인터와 길이를 i32 2개로 반환, (3) JavaScript 글루 코드가 이 포인터와 길이로 `TextDecoder`를 호출하여 JavaScript 문자열 생성. 이 과정이 wasm-bindgen에 의해 완전히 자동화됩니다.
 
 #### wasm-bindgen이 생성하는 것들
 

@@ -12,7 +12,6 @@ Kotlin의 리플렉션은 런타임에 타입 정보를 검사하고 동적으�
 
 > **핵심 정리** · 리플렉션은 런타임 타입 검사를 제공합니다. `KClass`로 클래스 정보를 얻습니다. `KProperty`로 프로퍼티 정보를 얻습니다. 어노테이션으로 메타데이터를 추가합니다. `call()`로 동적으로 메서드를 호출합니다. `KCallable`로 함수, 프로퍼티, 생성자를 표현합니다.
 
-
 ## 수업 목표
 
 - 리플렉션의 개념과 사용법을 이해합니다.
@@ -196,39 +195,42 @@ println(reflectionAccess)
 
 리플렉션은 성능 오버헤드가 있습니다. 직접 접근보다 느립니다. 핫 경로에서는 피하고 캐싱을 사용하여 최적화해야 합니다. 필요할 때만 사용해야 합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 리플렉션은 언제 사용해야 하나요?</strong></summary>
 
 리플렉션은 다음 경우에 사용합니다: (1) 런타임에 타입 정보가 필요할 때 (2) 플러그인 시스템 (3) DI 컨테이너 (4) ORM (5) 직렬화. 하지만 성능 오버헤드가 있으므로 핫 경로에서는 피해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> KClass와 javaClass 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `KClass`를 우선 사용해야 합니다. Kotlin 전용 리플렉션 정보를 제공합니다. `javaClass`는 Java 리플렉션에 사용합니다. Kotlin 코드에서는 `KClass`를 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 어노테이션은 언제 사용해야 하나요?</strong></summary>
 
 어노테이션은 메타데이터가 필요할 때 사용합니다. 직렬화 제어, ORM 매핑, 단위 테스트, 보안, 로깅 등. 컴파일러와 런타임이 메타데이터를 읽어 동작을 제어합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 동적 호출은 언제 사용해야 하나요?</strong></summary>
 
 동적 호출은 런타임에 메서드를 결정할 때 사용합니다. 플러그인 시스템, 동적 프록시 등에 유용합니다. 성능 오버헤드가 있으므로 신중하게 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 리플렉션 성능을 어떻게 최적화하나요?</strong></summary>
 
 리플렉션 최적화 방법: (1) 캐싱: `KClass`, `KProperty`를 캐시 (2) 필요할 때만 사용 (3) 직접 접근 우선 (4) 코드 생성 사용. 핫 경로에서는 직접 접근을 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -246,7 +248,6 @@ println(reflectionAccess)
 | **getMethod** | Java 메서드 찾기 | invoke() |
 | **사용 사례** | 직렬화, DI, ORM | 동적 코드 |
 | **성능 오버헤드** | 느림 | 캐싱으로 최적화 |
-
 
 ## 다음 수업
 

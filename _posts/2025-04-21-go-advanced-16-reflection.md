@@ -65,34 +65,39 @@ func main() {
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 리플렉션은 언제 사용해야 하나요?</strong></summary>
 
 리플렉션은 다음과 같은 경우에 사용합니다: (1) **JSON/XML 직렬화** — `encoding/json`이 구조체 필드와 태그를 읽어 동적으로 직렬화. (2) **ORM** — 데이터베이스 테이블과 구조체를 매핑. (3) **의존성 주입 프레임워크** — 동적 타입 검사. (4) **테스트 도구** — 테스트 더블 생성. (5) **설정 파일 바인딩** — 환경 변수나 설정 파일을 구조체에 바인딩. 리플렉션은 강력하지만 성능 비용이 크고 타입 안전성이 떨어지므로, 꼭 필요한 경우에만 사용하고 가능하면 제네릭(Go 1.18+)으로 대체하는 것이 좋습니다. "리플렉션은 프레임워크나 라이브러리 개발에 사용하고, 애플리케이션 코드에서는 피하라"가 Go의 관례입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 리플렉션 성능 최적화는 어떻게 하나요?</strong></summary>
 
 리플렉션 호출은 일반 호출보다 10~100배 느립니다. 최적화 방법: (1) **캐싱** — `reflect.Type`, `reflect.Method`, `StructField` 등을 한 번 조회하고 재사용합니다. (2) **인터페이스로 우회** — 가능하면 타입별로 인터페이스를 구현하게 하고, 리플렉션 대신 인터페이스 메서드를 호출합니다. (3) **핫 경로 회피** — 성능이 중요한 코드 경로에서는 리플렉션을 피합니다. (4) **go:linkname** — 극한의 최적화가 필요하면 `unsafe` 패키지와 함께 사용합니다(권장하지 않음). 실제로는 리플렉션 결과를 캐싱하는 것만으로도 성능 문제의 80%를 해결할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 구조체 태그는 어떻게 읽나요?</strong></summary>
 
 `reflect.Type.Field(i).Tag.Get("json")`으로 특정 태그 값을 읽습니다. 예: `field.Tag.Get("validate")`는 `required`를 반환합니다. `field.Tag.Lookup("json")`은 태그 존재 여부를 함께 반환합니다(값이 빈 문자열일 때 유용). 태그 값은 공백으로 구분된 `key:"value"` 쌍입니다: `json:"name" validate:"required"`. `Get()`은 키가 없으면 빈 문자열을, `Lookup()`은 (value, bool)을 반환합니다. JSON 태그는 `json:"field_name,omitempty"`처럼 옵션(comma-separated)도 포함할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: reflect.Value.Set()으로 값을 변경하려면 어떻게 해야 하나요?</strong></summary>
 
 `Set()`으로 값을 변경하려면 **변경 가능한(settable)** Value여야 합니다. 기본적으로 `reflect.ValueOf(u)`는 복사본이므로 변경할 수 없습니다. 변경하려면: (1) 포인터를 전달: `v := reflect.ValueOf(&u).Elem()` (2) `v.Field(0).SetString("Bob")`으로 필드 변경. `Elem()`으로 포인터 역참조를 해야 원본에 접근할 수 있습니다. `CanSet()` 메서드로 변경 가능 여부를 확인할 수 있습니다. 슬라이스나 맵의 요소는 직접 변경 가능합니다: `v.Index(0).SetInt(100)`. 구조체의 unexported(소문자) 필드는 리플렉션으로도 변경할 수 없습니다(panic 발생).
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: reflect.DeepEqual의 동작 방식은 무엇인가요?</strong></summary>
 
 `reflect.DeepEqual(a, b)`는 a와 b를 **구조적 동등성**(structural equality)으로 비교합니다. 일반 `==` 연산자는 비교 불가능한 타입(슬라이스, 맵, 구조체)도 DeepEqual로 비교할 수 있습니다. 내부적으로 각 요소를 순회하며 재귀적으로 비교합니다: (1) 기본 타입은 값 비교 (2) 슬라이스는 길이와 각 요소 비교 (3) 맵은 모든 키-값 쌍 비교 (4) 구조체는 모든 필드 비교 (5) 포인터는 가리키는 값 비교. 단점: 리플렉션 기반이므로 느리고, 순환 참조(cyclic reference)가 있으면 스택 오버플로우가 발생합니다. 성능이 중요하면 직접 비교 함수를 작성하는 것이 좋습니다.
+
 </details>
 
 ## 요약

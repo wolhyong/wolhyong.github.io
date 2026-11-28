@@ -12,7 +12,6 @@ Rust의 제어문은 표현식으로 값을 반환할 수 있으며, 패턴 매�
 
 > **핵심 정리** · if/else는 표현식으로 값을 반환하며 불리언 조건을 사용합니다. match는 모든 경우를 exhaustive하게 처리하도록 강제합니다. loop는 무한 루프로 break로 탈출하며 레이블로 중첩 루프를 제어합니다. for는 이터레이터 기반으로 컬렉션을 순회합니다.
 
-
 ## 수업 목표
 
 - if/else 조건문의 표현식으로서의 동작을 이해합니다.
@@ -228,39 +227,42 @@ fn main() {
 
 `if let`은 단일 패턴 매칭을 간소화하는 구문 설탕입니다. `while let`은 패턴이 매칭되는 동안 반복합니다. `match`의 간단한 경우에 사용됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: if 조건에 불리언이 아닌 값을 사용할 수 없나요?</strong></summary>
 
 아니요, Rust는 조건식이 반드시 `bool` 타입이어야 합니다. C나 JavaScript와 달리 0, 빈 문자열, null 등이 자동으로 `false`로 변환되지 않습니다. 이는 명시성을 높이고 실수를 방지하기 위함입니다. `if number { ... }` 같은 코드는 컴파일 에러가 발생하며, `if number != 0 { ... }`로 명시적으로 작성해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: match가 왜 exhaustive해야 하나요?</strong></summary>
 
 `match`는 모든 가능한 경우를 처리하도록 강제하여 런타임 패닉을 방지합니다. 예를 들어 `enum`의 모든 변형을 처리하지 않으면 컴파일 에러가 발생합니다. 이는 컴파일 타임에 누락된 경우를 발견하게 하여 버그를 조기에 방지합니다. `_` 와일드카드로 나머지 경우를 처리할 수 있지만, 명시적으로 모든 경우를 처리하는 것이 더 안전합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: loop와 while 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `loop`는 무한 루프가 필요할 때 사용합니다. `break`로 명시적으로 탈출하며, 루프 내에서 복잡한 조건으로 탈출할 때 유용합니다. `while`은 조건식이 `false`가 될 때까지 반복할 때 사용합니다. 대부분의 경우 `for`가 더 선호되는데, 이는 이터레이터 기반으로 더 안전하고 표현력이 높기 때문입니다. `for`는 인덱스 오버플로우를 방지하고 이터레이터 체이닝이 가능합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: for 루프에서 인덱스가 필요할 때 어떻게 하나요?</strong></summary>
 
 `.iter().enumerate()`를 사용합니다. 이는 `(index, value)` 튜플의 이터레이터를 반환합니다. 인덱스가 0부터 시작합니다. 또는 `.iter().enumerate().rev()`로 역순으로 순회할 수도 있습니다. 인덱스만 필요하면 `.len()`과 범위를 사용할 수도 있지만, `enumerate`가 더 관용적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: if let과 match 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `if let`은 단일 패턴만 매칭할 때 사용합니다. 코드가 더 간결해집니다. `match`는 여러 패턴을 매칭하거나 모든 경우를 처리해야 할 때 사용합니다. `if let Some(x) = value { ... }`는 `match value { Some(x) => { ... }, _ => () }`와 동일하지만 더 간결합니다. `if let`은 `_` 패턴을 처리할 필요가 없을 때 유용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -273,7 +275,6 @@ fn main() {
 | **while** | 조건 기반 반복 | 조건이 true인 동안 반복 |
 | **if let** | 단일 패턴 매칭 | match의 간소화된 형태 |
 | **while let** | 반복 패턴 매칭 | 패턴이 매칭되는 동안 반복 |
-
 
 ## 다음 수업
 

@@ -553,28 +553,32 @@ require('dotenv').config();
 
 ## 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>JWT를 localStorage에 저장해도 되나요?</strong></summary>
 
 **httpOnly 쿠키에 저장하는 것이 더 안전합니다.** localStorage는 JavaScript로 접근 가능하므로 XSS 공격에 토큰이 탈취될 수 있습니다. 반면 httpOnly 쿠키는 JavaScript에서 접근 자체가 차단됩니다. 다만 CSRF 공격에 취약해지므로 `SameSite=Strict` 옵션을 함께 설정해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>액세스 토큰의 만료 시간은 얼마가 적당한가요?</strong></summary>
 
 **15분에서 1시간 사이**가 적당합니다. 너무 짧으면 리프레시 요청이 너무 많아지고, 너무 길면 탈취 시 피해가 커집니다. 리프레시 토큰은 7일에서 30일 사이로 설정하고, 재로그인 없이 자동으로 갱신하는 **Silent Refresh** 패턴을 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>OAuth2와 JWT의 관계는 무엇인가요?</strong></summary>
 
 OAuth2는 **인증 프로토콜**이고, JWT는 **토큰 형식**입니다. OAuth2의 액세스 토큰으로 JWT를 사용할 수 있습니다. 예를 들어 Google OAuth2는 JWT 형식의 ID 토큰을 발급합니다. OAuth2는 "제3자 앱이 사용자 데이터에 접근하는 것"을 허가하는 프로토콜이며, JWT는 그 토큰의 한 형식입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>bcrypt 외에 다른 해싱 알고리즘은 무엇이 있나요?</strong></summary>
 
 **argon2**가 bcrypt의 차세대 알고리즘으로 권장됩니다. Argon2는 메모리 사용량도 설정할 수 있어 GPU/ASIC 공격에 더 강력합니다. 다만 Node.js에서는 `argon2` 패키지가 네이티브 빌드가 필요하므로, 일단 bcrypt로 시작하고 필요시 argon2로 마이그레이션하는 것을 권장합니다.
+
 </details>
 
 ---

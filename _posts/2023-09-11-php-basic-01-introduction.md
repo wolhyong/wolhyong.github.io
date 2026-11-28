@@ -39,34 +39,39 @@ echo 'Hello, $name!';   // 작은따옴표: Hello, $name! (보간 없음)
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP는 어떻게 웹 서버에서 실행되나요?</strong></summary>
 
 PHP는 세 가지 방식으로 실행됩니다: 1) **Apache 모듈(mod_php)**: Apache 프로세스 내에서 PHP가 직접 실행. 2) **PHP-FPM(FastCGI Process Manager)**: 별도 PHP 프로세스가 요청을 처리(Nginx와 함께 주로 사용). 3) **CLI(Command Line Interface)**: 터미널에서 직접 실행. 웹 요청이 들어오면 SAPI가 PHP 파일을 로딩하고, Zend Engine이 컴파일과 실행을 수행한 후 결과를 웹 서버로 반환합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: <?php와 <?=의 차이는 무엇인가요?</strong></summary>
 
 `<?php`는 정식 오픈 태그로 항상 사용 가능합니다. `<?=`(short echo tag)는 `<?php echo`의 축약형으로 PHP 5.4+에서 항상 사용 가능합니다. `<?`(short open tag)는 `short_open_tag` 설정이 필요하고 권장되지 않습니다. `<?=`은 템플릿에서 값을 출력할 때 많이 사용됩니다: `<?= $user->name ?>`.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: echo와 print의 차이는 무엇인가요?</strong></summary>
 
 **echo**는 언어 구조(함수가 아님)로, 반환값이 없고 콤마로 여러 인자를 출력할 수 있습니다: `echo "Hello", " ", "World";`. **print**는 항상 1을 반환하므로 표현식에서 사용 가능합니다. 대부분의 경우 echo가 약간 더 빠르고 더 자주 사용됩니다. `print_r()`과 `var_dump()`는 배열/객체의 구조를 출력하는 함수입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP와 HTML은 어떻게 혼용되나요?</strong></summary>
 
 PHP 파일 내에서 PHP 코드와 HTML을 자유롭게 혼용할 수 있습니다. `<?php ?>` 태그 밖의 모든 내용은 그대로 HTML로 출력됩니다. 제어문과 함께 혼용할 때는 콜론 문법(`:`, `endforeach`, `endif`)이 유용합니다. 대규모 프로젝트에서는 템플릿 엔진(Twig, Blade)을 사용하여 PHP와 HTML을 분리하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP 8의 주요 새 기능은 무엇인가요?</strong></summary>
 
 PHP 8.x의 주요 기능: 1) **JIT(Just-In-Time) 컴파일**: OPcode를 네이티브 코드로 컴파일하여 성능 향상. 2) **Named Arguments**: `array_fill(start_index: 0, num: 5, value: 0)`. 3) **Attributes(애너테이션)**: `#[Route("/api/users")]`. 4) **Union Types**: `int|string $value`. 5) **Match Expression**: switch의 개선된 버전. 6) **Nullsafe Operator**: `$user?->address?->city`. 7) **Enum**(PHP 8.1). 8) **Readonly Properties**(PHP 8.1).
+
 </details>
 
 ---

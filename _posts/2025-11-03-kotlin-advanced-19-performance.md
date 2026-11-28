@@ -12,7 +12,6 @@ Kotlin의 성능 최적화는 메모리 관리, 코루틴 최적화, 컬렉션 �
 
 > **핵심 정리** · 객체 생성을 줄여 메모리를 최적화합니다. 프로파일링으로 병목을 찾습니다. `Dispatchers.IO`, `Dispatchers.Default`로 코루틴을 최적화합니다. 시퀀스로 지연 평가를 활용합니다. `inline`으로 람다 오버헤드를 줄입니다. `tailrec`로 꼬리 재귀를 최적화합니다.
 
-
 ## 수업 목표
 
 - 메모리 관리를 이해합니다.
@@ -261,39 +260,42 @@ class LRUCache<K, V>(private val capacity: Int) {
 
 메모이제이션으로 반복 계산을 방지합니다. 캐싱으로 성능을 향상합니다. LRU 캐시로 메모리 사용을 제어합니다. 순수 함수에 적합합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 시퀀스와 리스트 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 리스트를 우선 사용해야 합니다. 즉시 평가되며 대부분의 경우 충분합니다. 시퀀스는 대용량 데이터 처리에 사용합니다. 지연 평가로 성능을 최적화합니다. 체이닝이 많을 때 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 코루틴 최적화는 언제 필요한가요?</strong></summary>
 
 코루틴 최적화는 다음 경우에 필요합니다: (1) 많은 코루틴 사용 (2) I/O 작업 많음 (3) CPU 작업 많음. 적절한 Dispatcher를 사용하고 구조화된 동시성을 유지해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 인라인 함수는 언제 사용해야 하나요?</strong></summary>
 
 인라인 함수는 람다 오버헤드를 줄여야 할 때 사용합니다. 핫 경로에서 사용합니다. 과도한 사용은 코드 크기를 증가시킵니다. 성능이 중요한 고차 함수에 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 메모이제이션은 언제 사용해야 하나요?</strong></summary>
 
 메모이제이션은 비용 있는 계산에 사용합니다. 반복 계산을 방지하여 성능을 향상합니다. 순수 함수에 적합합니다. 재귀, 동적 프로그래밍에 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 프로파일링은 언제 수행해야 하나요?</strong></summary>
 
 프로파일링은 성능 문제가 있을 때 수행합니다. 개발 중 정기적으로 수행하는 것이 좋습니다. 병목을 찾아 최적화의 우선순위를 결정합니다. 실제 환경에서 수행하는 것이 좋습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -312,7 +314,6 @@ class LRUCache<K, V>(private val capacity: Int) {
 | **초기 용량** | 재할당 줄이기 | ArrayList(1000) |
 | **구조화된 동시성** | 취소 관리 | coroutineScope |
 | **isActive** | 취소 확인 | 코루틴 |
-
 
 ## 다음 수업
 

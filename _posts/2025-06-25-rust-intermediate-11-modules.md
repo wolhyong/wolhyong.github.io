@@ -12,7 +12,6 @@ Rust의 모듈 시스템은 코드를 조직화하고 캡슐화하여 유지보�
 
 > **핵심 정리** · 패키지는 `Cargo.toml`로 정의되며 크레이트를 포함합니다. `mod`로 모듈을 정의하며 파일 시스템과 매핑됩니다. `pub`로 가시성을 제어하며 기본적으로 비공개입니다. `use`로 경로를 단축합니다. Rust의 가시성 규칙은 캡슐화를 강제합니다.
 
-
 ## 수업 목표
 
 - 패키지, 크레이트, 모듈의 차이를 이해합니다.
@@ -288,39 +287,42 @@ fn main() {
 
 외부 패키지는 `Cargo.toml`의 `[dependencies]`에 추가합니다. `cargo build`로 다운로드하고 컴파일합니다. `use`로 경로를 단축하여 사용합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 패키지와 크레이트의 차이는 무엇인가요?</strong></summary>
 
 패키지는 `Cargo.toml`로 정의되며 빌드, 테스트, 공유를 위한 기능을 제공합니다. 하나 이상의 크레이트를 포함합니다. 크레이트는 모듈 트리로 컴파일되는 단위입니다. 라이브러리 크레이트(`lib.rs`)는 재사용 가능한 코드를 제공하고, 바이너리 크레이트(`main.rs`)는 실행 가능한 프로그램을 생성합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> mod.rs와 파일명 모듈 중 어떤 것을 사용해야 하나요?</strong></summary>
 
 Rust 2018 에디션부터는 파일명 모듈을 선호합니다. `front_of_house.rs`는 `front_of_house/mod.rs`와 동일합니다. 하지만 하위 모듈이 있는 경우에는 `mod.rs`가 필요합니다: `front_of_house/hosting.rs`와 `front_of_house/serving.rs`가 있으면 `front_of_house/mod.rs`가 필요합니다. 파일명 모듈이 더 간결하고 관용적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 왜 Rust는 기본적으로 비공개인가요?</strong></summary>
 
 Rust는 캡슐화를 강제하여 내부 구현을 숨깁니다. 이는 다음 이유로 안전합니다: (1) **유지보수**: 내부 구현을 변경해도 사용자 코드에 영향을 주지 않습니다. (2) **안전성**: 불안전한 코드를 숨길 수 있습니다. (3) **명시성**: 공개 항목을 명시적으로 지정하여 API를 명확히 합니다. `pub`로 필요한 항목만 공개합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> use와 extern crate의 차이는 무엇인가요?</strong></summary>
 
 `extern crate`는 Rust 2015 에디션에서 외부 크레이트를 링크할 때 사용했습니다. Rust 2018 에디션부터는 `extern crate`가 필요 없으며 `Cargo.toml`에 의존성을 추가하면 자동으로 링크됩니다. `use`는 경로를 단축하는 데 사용됩니다. 현재는 `use`만 사용하면 됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> glob import(*)는 언제 사용해야 하나요?</strong></summary>
 
 glob import는 테스트 코드나 prelude에서 사용합니다. 프로덕션 코드에서는 피하는 것이 좋습니다: (1) **명확성**: 어떤 항목이 가져와졌는지 명확하지 않습니다. (2) **충돌**: 이름 충돌이 발생할 수 있습니다. (3) **컴파일 시간**: 불필요한 항목을 가져올 수 있습니다. 명시적으로 필요한 항목만 `use`하는 것이 좋습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -335,7 +337,6 @@ glob import는 테스트 코드나 prelude에서 사용합니다. 프로덕션 �
 | **상대 경로** | self, super | 현재/상위 모듈 |
 | **pub(crate)** | 크레이트 내 공개 | 세밀한 제어 |
 | **pub(super)** | 상위 모듈 공개 | 세밀한 제어 |
-
 
 ## 다음 수업
 

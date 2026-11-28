@@ -64,34 +64,39 @@ opcache.jit_buffer_size = 100M
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: OPcache의 validate_timestamps를 프로덕션에서 0으로 설정해야 하는 이유는 무엇인가요?</strong></summary>
 
 `opcache.validate_timestamps = 0`은 OPcache가 **파일 변경을 전혀 확인하지 않도록** 합니다. 배포 시에는 캐시를 수동으로 초기화합니다: `opcache_reset()` 또는 PHP-FPM 재시작. 이 설정의 장점: 불필요한 파일 stat() 호출 제거(성능 향상), 예측 가능한 캐시 상태(파일 업데이트 중 타이밍 이슈 방지). 단점: 배포 시 캐시 초기화가 필요합니다. 일반적인 배포 파이프라인에서는 새 디렉토리에 배포하고 심볼릭 링크를 전환한 후 PHP-FPM을 graceful reload(`SIGUSR2`)하여 OPcache를 초기화합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP-FPM의 pm 모드(dynamic/static/ondemand)는 어떻게 선택하나요?</strong></summary>
 
 **`pm = dynamic`**(권장): 워커 수를 자동 조절합니다. `pm.max_children`(최대), `pm.start_servers`(시작), `pm.min/max_spare_servers`(유휴 워커 범위)를 설정합니다. 트래픽이 변동하는 대부분의 사이트에 적합합니다. **`pm = static`**: 고정된 워커 수를 유지합니다. 트래픽이 안정적이거나 서버 리소스가 충분할 때 최고 성능을 냅니다. **`pm = ondemand`**: 요청이 있을 때만 워커를 생성합니다(유휴 워커 없음). 메모리가 제한된 저사양 서버나 트래픽이 매우 적은 사이트에 적합합니다. `pm.max_children`은 서버 메모리 / 각 워커의 평균 메모리 사용량으로 계산하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP 8.0+의 JIT(Just-In-Time) 컴파일은 어떻게 동작하나요?</strong></summary>
 
 PHP 8.0의 JIT은 **OPcache의 확장**으로, OPcode를 네이티브 CPU 명령어(기계어)로 컴파일합니다. `opcache.jit = tracing`과 `opcache.jit_buffer_size = 100M`으로 활성화합니다. JIT 모드: **`tracing`**(권장) — 자주 실행되는 Hot Loop를 감지하여 해당 경로(trace)만 네이티브 코드로 컴파일(실행 시간의 90% 이상을 차지하는 10% 코드 최적화). **`function`** — 모든 함수를 JIT 컴파일. 벤치마크에 따라 CPU 집약적 작업에서는 2~8배 성능 향상이 있지만, 일반적인 웹 요청(I/O 바운드)에서는 체감 효과가 적습니다. Laravel 같은 프레임워크에서는 5~15% 정도의 성능 향상이 보고됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP 애플리케이션의 주요 성능 병목 지점은 어디인가요?</strong></summary>
 
 PHP 애플리케이션의 성능 병목은 주로: 1) **데이터베이스 쿼리**(N+1 문제, 느린 쿼리) — 가장 흔한 원인. 2) **외부 API 호출** — 네트워크 지연, 큐(Queue)로 비동기 처리 필요. 3) **파일 I/O** — 세션 파일 저장, 로그 기록. 4) **세션 처리** — 파일 기반 세션은 확장에 불리, Redis로 대체. 5) **템플릿 컴파일** — Blade/Twig 캐싱으로 해결. 6) **PHP 자체** — CPU 바운드 작업(이미지 처리, 암호화). 프로파일링 도구(Blackfire, Xdebug + KCacheGrind)로 실제 병목을 식별하고, OPcache, 캐싱(Redis), 큐(Queue), DB 인덱싱 순으로 최적화하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: CI/CD 파이프라인에서 PHP 프로젝트는 어떻게 테스트하나요?</strong></summary>
 
 GitHub Actions 예시: 1) **코드 품질**: PHP CS Fixer(스타일), PHPStan/Psalm(정적 분석, level max). 2) **단위 테스트**: PHPUnit, PCOV 커버리지(최소 80%). 3) **통합 테스트**: Docker Compose로 MySQL/Redis 컨테이너 실행, Pest PHP로 HTTP 테스트. 4) **보안 검사**: Composer 의존성 취약점(`composer audit`). 5) **배포**: Deployer(PHP 배포 도구) 또는 rsync/SSH. `composer install --no-dev --optimize-autoloader`로 프로덕션 의존성만 설치하고, `artisan optimize:clear && artisan optimize`로 캐시를 초기화/재생성합니다.
+
 </details>
 
 ---

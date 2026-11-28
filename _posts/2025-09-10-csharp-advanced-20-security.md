@@ -12,7 +12,6 @@ C#의 보안 시스템은 암호화, 인증, 권한 부여 등 다양한 보안 
 
 > **핵심 정리** · 암호화는 Aes, RSA, SHA256을 사용합니다. ASP.NET Core Identity로 인증을 지원합니다. `[Authorize]`로 권한 부여를 제공합니다. HTTPS로 TLS/SSL을 구성합니다. `IDataProtector`로 데이터를 보호합니다. SQL 인젝션, XSS, CSRF를 방지합니다.
 
-
 ## 수업 목표
 
 - 암호화를 이해하고 사용할 수 있습니다.
@@ -434,39 +433,42 @@ bool success = CryptographicOperations.FixedTimeEquals(
 
 SQL 인젝션은 EF Core를 사용하여 방지합니다. XSS는 Razor가 자동으로 인코딩합니다. CSRF는 `[ValidateAntiForgeryToken]`로 방지합니다. 입력 검증으로 데이터 유효성을 보장합니다. `FixedTimeEquals`로 타이밍 공격을 방지합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 대칭 암호화와 비대칭 암호화 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 대칭 암호화는 대량 데이터 암호화에 사용합니다. 빠르지만 키 관리가 중요합니다. 비대칭 암호화는 키 교환, 디지털 서명에 사용합니다. 느리지만 키 관리가 쉽습니다. 하이브리드 방식으로 두 가지를 결합합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> SHA256과 PBKDF2 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `SHA256`은 일반 해싱에 사용합니다. 데이터 무결성 검증에 적합합니다. `PBKDF2`는 비밀번호 해싱에 사용합니다. 솔트와 반복으로 레인보우 테이블 공격을 방지합니다. 비밀번호에는 반드시 `PBKDF2`, `Argon2` 등을 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> JWT와 세션 기반 인증 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 JWT는 상태 비저장 인증에 적합합니다. 마이크로서비스, SPA에 유용합니다. 세션 기반은 상태 저장 인증에 적합합니다. 전통적인 웹 애플리케이션에 유용합니다. 요구사항에 따라 선택합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> HTTPS는 왜 필수인가요?</strong></summary>
 
 HTTPS는 통신을 암호화하여 중간자 공격을 방지합니다. 민감 데이터 보호에 필수적입니다. SEO, 브라우저 경고, 규정 준수에도 중요합니다. 모든 웹 애플리케이션에서 HTTPS를 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> FixedTimeEquals는 언제 사용해야 하나요?</strong></summary>
 
 `FixedTimeEquals`는 암호, 토큰 비교에 사용합니다. 타이밍 공격을 방지합니다. 일반 비교 연산자(`==`)는 타이밍 정보를 노출할 수 있습니다. 보안 민감한 비교에 필수적입니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -485,7 +487,6 @@ HTTPS는 통신을 암호화하여 중간자 공격을 방지합니다. 민감 �
 | **XSS 방지** | Razor 자동 인코딩 | 입력 인코딩 |
 | **CSRF 방지** | ValidateAntiForgeryToken | 토큰 검증 |
 | **FixedTimeEquals** | 타이밍 공격 방지 | 안전한 비교 |
-
 
 ## 다음 수업
 

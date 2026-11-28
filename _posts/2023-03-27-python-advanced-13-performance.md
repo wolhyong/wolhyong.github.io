@@ -214,34 +214,39 @@ def sum_squares_python(n):
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Python은 왜 느린가요? 주요 병목은 무엇인가요?</strong></summary>
 
 Python이 느린 주요 원인: 1) **동적 타입 검사** — 모든 연산마다 타입 확인, 2) **박싱/언박싱** — int/float가 Python 객체로 래핑, 3) **GIL** — CPU 병렬 처리 제한, 4) **바이트코드 인터프리터** — 네이티브 코드보다 오버헤드. 일반적으로 Python은 C보다 10~100배 느리지만, Numpy/Pandas/ Cython으로 병목 부분을 C 레벨로 내리면 극복 가능합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 프로파일링 없이 최적화해도 되나요?</strong></summary>
 
 **절대 안 됩니다!** "측정 없이 최적화하지 마라"는 소프트웨어 공학의 황금률입니다. 직관으로 예측한 병목은 실제와 다른 경우가 90%입니다. 항상 cProfile이나 py-spy로 측정하고, 가장 시간을 많이 소비하는 부분(top 3)에 집중하세요. 병목이 전체 시간의 80%를 차지하는 부분을 찾으면, 그 부분만 C 레벨로 최적화해도 전체 성능이 5배 향상됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 멀티스레딩과 멀티프로세싱 중 어떤 것을 선택해야 하나요?</strong></summary>
 
 **CPU 바운드 작업**(계산 위주) → 멀티프로세싱(GIL 우회). **I/O 바운드 작업**(파일/네트워크/DB) → 멀티스레딩 또는 asyncio. 혼합 작업 → 멀티프로세싱 + asyncio 조합. 멀티프로세싱은 메모리 사용량이 높고 IPC 오버헤드가 있지만, CPU 코어를 완전히 활용할 수 있습니다.
+
 </details>
 
-<details>
-<summary><strong>Q: `__slots__`를 항상 사용해야 하나요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>__slots__</code>를 항상 사용해야 하나요?</strong></summary>
 
 아니요. `__slots__`는 동적 속성 할당을 막고, 상속이 복잡해집니다. 수천~수백만 개의 인스턴스를 생성하는 데이터 클래스(게임 개체, 과학 계산)에만 사용하세요. 일반적인 애플리케이션 클래스에서는 `__dict__`의 유연성이 더 중요합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 리스트 컴프리헨션이 항상 더 빠른가요?</strong></summary>
 
 일반적으로 **네**, 리스트 컴프리헨션은 for 루프보다 1.5~2배 빠릅니다. 이유는 for 루프처럼 `.append()` 메서드 조회를 반복하지 않고, C 레벨에서 리스트를 미리 할당하기 때문입니다. 하지만 너무 복잡한 컴프리헨션은 가독성을 해치므로, 간단한 변환에만 사용하세요.
+
 </details>
 
 ---

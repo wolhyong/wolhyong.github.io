@@ -399,22 +399,25 @@ jobs:
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Alpine 이미지와 일반 Node 이미지의 차이는?</strong></summary>
 
 Alpine 이미지는 **약 120MB**로 일반 Node 이미지(~350MB)보다 훨씬 가볍습니다. Alpine은 musl libc 기반이고, 일반 Node 이미지는 glibc 기반입니다. 대부분의 Node.js 앱에서는 차이가 없지만, 일부 네이티브 모듈(bcrypt, sharp, puppeteer)은 glibc에 의존하는 바이너리를 포함할 수 있습니다. 이런 경우 Alpine용 빌드 도구를 추가 설치해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>docker compose down -v를 하면 데이터가 모두 삭제되나요?</strong></summary>
 
 네, `-v` 플래그는 **모든 볼륨을 완전 삭제**합니다. MySQL이나 MongoDB 데이터 디렉토리가 통째로 사라지므로, 프로덕션에서는 절대 `docker compose down -v`를 실행하지 마세요. 볼륨을 정리해야 한다면 수동으로 특정 볼륨만 선택적으로 삭제하는 것이 안전합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>멀티 스테이지 빌드가 항상 좋은가요?</strong></summary>
 
 아니요. 빌드 단계가 복잡하고 최종 이미지 크기가 중요하지 않은 소규모 프로젝트(예: 단일 서버 내부 서비스)에서는 오버헤드일 수 있습니다. 하지만 Docker Hub나 컨테이너 레지스트리에 푸시해야 하거나(네트워크 전송 비용), 수백 대의 서버에 배포해야 한다면(디스크 공간, 다운로드 시간) 멀티 스테이지 빌드로 이미지 크기를 최소화하는 것이 중요합니다.
+
 </details>
 
 ## 요약

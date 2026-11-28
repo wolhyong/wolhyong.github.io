@@ -240,24 +240,32 @@ void mat4_mul_simd(mat4* result, const mat4* a, const mat4* b) {
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM SIMD가 네이티브 CPU의 AVX/SSE만큼 빠른가요?</strong></summary>
+
 WASM SIMD는 128비트 레지스터만 사용하므로, Intel/AMD CPU의 256비트 AVX2나 512비트 AVX-512보다 레지스터 폭이 좁습니다. 따라서 WASM SIMD는 SSE(128비트)와 성능이 비슷하며, AVX2의 약 50~60% 성능입니다. 단, 이 차이는 CPU 아키텍처 의존적이며, WASM SIMD는 모든 플랫폼에서 동일하게 동작한다는 장점이 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 어떤 브라우저가 WASM SIMD를 지원하나요?</strong></summary>
+
 Chrome 91+ (2021년), Firefox 89+, Edge 91+, Safari 16.4+ (2023년)에서 지원합니다. Safari는 가장 늦게 지원을 추가했습니다. 모바일 브라우저에서는 Chrome Android 91+, Safari iOS 16.4+에서 지원합니다. Node.js 20+에서도 `--experimental-wasm-simd` 플래그로 활성화할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: C 컴파일러가 자동으로 SIMD를 생성하게 하려면 어떻게 해야 하나요?</strong></summary>
+
 Emscripten에서 `-O3 -msimd128` 플래그를 사용하면 컴파일러가 루프를 자동 벡터화합니다. 자동 벡터화가 성공하려면: (1) 루프 반복 횟수가 컴파일타임에 알려져 있어야 함, (2) 루프 내에 조건 분기가 없어야 함, (3) 포인터가 겹치지 않음(noalias)을 보장해야 함 (C99의 `restrict` 키워드 사용). 자동 벡터화가 실패하면 `wasm_simd128.h`의 intrinsics를 직접 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: SIMD를 사용할 때 메모리 정렬이 중요한 이유는 무엇인가요?</strong></summary>
+
 SIMD의 `v128.load` 명령어는 16바이트 정렬된 메모리 주소에서 가장 빠릅니다. 정렬되지 않은 주소에서 로드하면 일부 CPU(ARM)에서는 트랩이 발생하거나, x86에서는 성능이 약 2배 저하됩니다. C에서 `aligned_alloc(16, size)` 또는 `__attribute__((aligned(16)))`로 16바이트 정렬을 보장하세요. WASM intrinsics 중 `wasm_v128_load`(정렬)와 `wasm_v128_load_unaligned`(비정렬)을 상황에 맞게 선택하세요.
+
 </details>
 
 ---

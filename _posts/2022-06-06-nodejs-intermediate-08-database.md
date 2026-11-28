@@ -557,16 +557,17 @@ for (const user of users) {
 
 ## 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>SQLite로 개발하고 나중에 PostgreSQL로 전환하는 것이 쉬운가요?</strong></summary>
 
 Prisma를 사용하면 데이터 소스 설정만 변경하면 됩니다. SQLite → PostgreSQL 전환 시 주의할 점:
 - SQLite는 `AUTOINCREMENT`이고 PostgreSQL은 `SERIAL` 또는 `IDENTITY` — Prisma가 자동 처리
 - SQLite는 `DATETIME` 타입(문자열 저장), PostgreSQL은 `TIMESTAMP` — Prisma가 자동 변환
 - SQLite는 동시 쓰기가 제한적이므로, 전환 후 부하 테스트 필수
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>ORM을 사용하면 성능이 항상 느린가요?</strong></summary>
 
 **꼭 그렇지는 않습니다.** 잘 작성된 ORM 쿼리는 Raw SQL과 5~10% 정도의 성능 차이만 있습니다. 문제는 **ORM이 생성하는 쿼리를 개발자가 모르는 상태**에서 발생합니다. Prisma는 `logging: ['query']` 옵션으로 생성된 SQL을 모두 확인할 수 있습니다:
@@ -574,9 +575,10 @@ Prisma를 사용하면 데이터 소스 설정만 변경하면 됩니다. SQLite
 const prisma = new PrismaClient({ log: ['query', 'info', 'warn', 'error'] });
 // 콘솔에 모든 SQL이 출력됨
 ```
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>커넥션 풀 크기는 어떻게 결정하나요?</strong></summary>
 
 공식: **`connectionLimit = (CPU 코어 수 × 2) + 디스크 I/O 오버헤드`**
@@ -587,9 +589,10 @@ const prisma = new PrismaClient({ log: ['query', 'info', 'warn', 'error'] });
 - 16코어 서버: connectionLimit 40~60
 
 너무 크게 설정하면 MySQL이 "너무 많은 연결" 오류를 반환할 수 있습니다. 실제 트래픽을 측정하면서 조정하는 것이 가장 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>SQLite는 프로덕션에 절대 사용할 수 없나요?</strong></summary>
 
 동시 쓰기가 거의 없는 애플리케이션에서는 프로덕션 사용이 가능합니다. 예를 들어:
@@ -599,6 +602,7 @@ const prisma = new PrismaClient({ log: ['query', 'info', 'warn', 'error'] });
 - **Electron/데스크톱 앱** (로컬 저장소)
 
 동시 쓰기가 초당 10회 이상이면 MySQL/PostgreSQL로 전환하는 것이 좋습니다.
+
 </details>
 
 ---

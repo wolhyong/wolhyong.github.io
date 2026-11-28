@@ -12,7 +12,6 @@ Rust는 Graydon Hoare가 2006년부터 개발을 시작하여 Mozilla에서 2010
 
 > **핵심 정리** · Rust 컴파일러(rustc)는 소스 코드를 lexing → parsing → HIR → MIR → LLVM IR → 네이티브 코드 순서로 AOT 컴파일합니다. 소유권(Ownership) 시스템이 컴파일 타임에 메모리 안전성을 보장하여 가비지 컬렉터 없이도 메모리 누수와 댕글링 포인터를 방지합니다. cargo는 빌드, 테스트, 의존성 관리를 통합하는 도구입니다.
 
-
 ## 수업 목표
 
 - Rust의 탄생 배경과 설계 철학을 이해합니다.
@@ -95,39 +94,42 @@ edition = "2021"
 
 `Cargo.lock`은 각 의존성의 정확한 버전을 기록하여 재현 가능한 빌드(reproducible build)를 보장합니다. Rust는 Semantic Versioning을 따르며, `^1.0.0` 표기는 1.0.0 이상 2.0.0 미만의 호환 가능한 버전을 의미합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Rust와 C의 주요 차이점은 무엇인가요?</strong></summary>
 
 Rust와 C는 모두 시스템 프로그래밍 언어이지만 메모리 안전성에서 근본적인 차이가 있습니다: (1) **메모리 안전성**: Rust는 소유권 시스템으로 컴파일 타임에 메모리 안전성을 보장합니다. C는 수동 메모리 관리로 버퍼 오버플로우, 댕글링 포인터, 이중 해제 등의 버그가 발생할 수 있습니다. (2) **메모리 관리**: Rust는 소유권과 대여 규칙으로 명시적인 메모리 해제 없이도 안전하게 메모리를 관리합니다. C는 `malloc/free`를 수동으로 호출해야 합니다. (3) **동시성**: Rust는 타입 시스템 수준에서 데이터 레이스를 컴파일 타임에 방지합니다. C는 스레드 안전성을 프로그래머가 수동으로 보장해야 합니다. (4) **추상화 비용**: Rust의 Zero-cost abstractions 원칙으로 고수준 추상화도 C와 동일한 성능을 보장합니다. (5) **에코시스템**: Rust는 cargo와 crates.io로 통합된 패키지 관리 시스템을 제공합니다. C는 다양한 패키지 매니저가 존재하지만 표준이 없습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Rust의 소유권(Ownership)이란 무엇인가요?</strong></summary>
 
 소유권은 Rust의 핵심 메모리 관리 메커니즘입니다. 각 값은 소유자(owner)라고 불리는 변수를 정확히 하나 가집니다. 소유자가 스코프를 벗어나면 값은 자동으로 해제(dropped)됩니다. 이 규칙은 다음과 같습니다: (1) 각 값은 소유자가 정확히 하나입니다. (2) 소유자가 스코프를 벗어나면 값은 해제됩니다. (3) 소유권은 이동(move)될 수 있습니다. 예를 들어 `let s1 = String::from("hello"); let s2 = s1;`에서 `s1`의 소유권이 `s2`로 이동하므로 `s1`은 더 이상 유효하지 않습니다. 이 규칙은 컴파일 타임에 적용되어 런타임 오버헤드 없이 메모리 안전성을 보장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Rust가 가비지 컬렉터가 없는데 어떻게 메모리를 관리하나요?</strong></summary>
 
 Rust는 소유권 시스템과 대여(Borrowing) 규칙으로 컴파일 타임에 메모리 수명을 추적합니다. 값이 스코프를 벗어날 때 컴파일러는 자동으로 `drop` 코드를 삽입하여 메모리를 해제합니다. 이는 RAII(Resource Acquisition Is Initialization) 패턴의 일반화입니다. 예를 들어 `let s = String::from("hello");`는 힙에 문자열 데이터를 할당하고, `s`가 스코프를 벗어날 때 `drop(s)`가 호출되어 메모리가 해제됩니다. 가비지 컬렉터와 달리 런타임 오버헤드가 없고, 수동 메모리 관리와 달리 해제를 잊을 위험이 없습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: cargo와 npm, pip의 차이는 무엇인가요?</strong></summary>
 
 cargo는 Rust 전용 패키지 매니저이자 빌드 시스템입니다. npm(Node.js), pip(Python)과 비교할 때: (1) **통합성**: cargo는 빌드, 테스트, 문서 생성, 의존성 관리를 하나의 도구로 통합했습니다. npm/pip는 빌드 시스템이 별도로 필요할 수 있습니다. (2) **성능**: cargo는 Rust로 작성되어 매우 빠릅니다. (3) **재현 가능성**: `Cargo.lock` 파일으로 의존성 버전을 정확히 고정합니다. npm의 `package-lock.json`, pip의 `pip freeze`와 유사합니다. (4) **워크스페이스**: cargo는 멀티 패키지 프로젝트(워크스페이스)를 네이티브하게 지원합니다. (5) **컴파일 타임 의존성**: Rust는 컴파일 타임에 의존성을 링크하므로 런타임 의존성이 없습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Rust의 Zero-cost abstractions 원칙은 무엇인가요?</strong></summary>
 
 Zero-cost abstractions은 "사용하지 않는 추상화에 대한 비용을 지불하지 않는다"는 Rust의 핵심 원칙입니다. Bjarne Stroustrup(C++ 창시자)의 말에서 유래했습니다. 고수준 추상화(반복자, 클로저, 패턴 매칭 등)를 사용해도 컴파일러가 최적화를 통해 수동으로 작성한 저수준 코드와 동일한 기계어를 생성합니다. 예를 들어 반복자 체인 `iter().map().filter().collect()`는 루프 최적화(loop fusion)로 단일 루프로 컴파일될 수 있습니다. 이는 Rust가 LLVM 최적화를 활용하기 때문에 가능합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -138,7 +140,6 @@ Zero-cost abstractions은 "사용하지 않는 추상화에 대한 비용을 지
 | **대여(Borrowing)** | 참조 규칙 | 컴파일 타임에 댕글링 포인터, 데이터 레이스 방지 |
 | **cargo** | 빌드 및 패키지 매니저 | Cargo.toml로 의존성 관리, 통합 도구 체인 |
 | **Zero-cost** | 추상화 비용 없음 | LLVM 최적화로 고수준 코드를 저수준으로 변환 |
-
 
 ## 다음 수업
 

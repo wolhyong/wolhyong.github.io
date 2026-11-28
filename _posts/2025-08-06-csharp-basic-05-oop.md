@@ -12,7 +12,6 @@ C#은 완벽한 객체지향 프로그래밍 언어로 캡슐화, 상속, 다형
 
 > **핵심 정리** · `class`로 클래스를 정의하며 `new`로 객체를 생성합니다. 생성자는 객체 초기화를 담당하며 매개변수, 기본, 정적 생성자가 있습니다. 소멸자는 리소스 정리를 수행합니다. `this`는 현재 인스턴스를 참조합니다. 접근 제어자로 가시성을 제어합니다. 프로퍼티로 getter/setter를 캡슐화합니다.
 
-
 ## 수업 목표
 
 - 클래스와 객체의 개념을 이해합니다.
@@ -421,39 +420,42 @@ class Program
 
 `static` 멤버는 클래스에 속하며 인스턴스 없이 접근할 수 있습니다. 모든 인스턴스가 공유합니다. 유틸리티 메서드, 상수, 팩토리 메서드에 사용됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 클래스와 struct의 차이는 무엇인가요?</strong></summary>
 
 class는 참조 타입으로 힙에 할당되며 상속을 지원합니다. struct는 값 타입으로 스택에 할당되며 상속을 지원하지 않습니다. class는 크고 복잡한 데이터에 적합하고 struct는 작고 단순한 데이터에 적합합니다. class는 참조 비용이 있고 struct는 복사 비용이 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 소멸서는 언제 사용해야 하나요?</strong></summary>
 
 소멸서는 비관리 리소스를 해제할 때 사용합니다. 하지만 비결정적이므로 `IDisposable`을 구현하고 `Dispose()`를 명시적으로 호출하는 것이 좋습니다. `using` 문으로 자동으로 `Dispose()`를 호출합니다. 소멸서는 최후의 수단으로 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> this 키워드는 언제 사용해야 하나요?</strong></summary>
 
 `this`는 다음 경우에 사용합니다: (1) 필드와 매개변수 이름이 같을 때 구분 (2) 메서드 체이닝을 위해 `this` 반환 (3) 인덱서에서 현재 인스턴스 참조. 불필요한 사용은 피해야 하며 명확성을 높이는 데 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 프로퍼티와 필드 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 프로퍼티를 사용하는 것이 좋습니다: (1) 캡슐화 제공 (2) 유효성 검사 가능 (3) 데이터 바인딩 지원. 필드는 private으로 유지하고 프로퍼티로 노출합니다. 자동 구현 프로퍼티로 간소화할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 정적 멤버는 언제 사용해야 하나요?</strong></summary>
 
 정적 멤버는 다음 경우에 사용합니다: (1) 인스턴스 상태와 무관한 동작 (2) 모든 인스턴스가 공유하는 데이터 (3) 유틸리티 메서드. 인스턴스 상태에 의존하지 않는 로직에 적합합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -470,7 +472,6 @@ class는 참조 타입으로 힙에 할당되며 상속을 지원합니다. stru
 | **정적 멤버** | 클래스 소속 | 인스턴스 없이 접근 |
 | **IDisposable** | 명시적 리소스 해제 | Dispose 패턴 |
 | **using** | 자동 Dispose | 범위 종료 시 호출 |
-
 
 ## 다음 수업
 

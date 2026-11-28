@@ -12,7 +12,6 @@ Ktor는 Kotlin으로 작성된 경량화된 비동기 웹 프레임워크로 코
 
 > **핵심 정리** · `embeddedServer`로 HTTP 서버를 시작합니다. `routing` 플러그인으로 URL을 핸들러에 매핑합니다. `ContentNegotiation`으로 콘텐트 협상을 수행합니다. 플러그인으로 기능을 모듈화합니다. 코루틴을 기반으로 비동기 처리를 제공합니다. 유연하고 확장 가능합니다.
 
-
 ## 수업 목표
 
 - Ktor의 구조를 이해합니다.
@@ -339,39 +338,42 @@ routing {
 
 `WebSockets` 플러그인으로 WebSocket을 지원합니다. `webSocket`으로 WebSocket 라우트를 정의합니다. `send`, `incoming`으로 메시지를 주고받습니다. 실시간 통신에 사용됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Ktor와 Spring Boot 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 Ktor는 경량화된 마이크로서비스에 적합합니다. 코루틴 기반으로 비동기 처리가 우수합니다. Spring Boot는 엔터프라이즈 애플리케이션에 적합합니다. 풍부한 생태계와 DI를 제공합니다. 프로젝트 요구사항에 따라 선택합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Netty와 CIO 엔진 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 Netty를 우선 사용해야 합니다. 높은 성능과 확장성을 제공합니다. CIO는 간단한 애플리케이션에 적합합니다. 대부분의 경우 Netty를 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> ContentNegotiation은 언제 사용해야 하나요?</strong></summary>
 
 `ContentNegotiation`은 RESTful API에 사용합니다. JSON, XML 등의 콘텐트 타입을 자동으로 변환합니다. 클라이언트와 서버 간의 콘텐트 협상을 간소화합니다. 웹 API에 필수적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 플러그인은 언제 사용해야 하나요?</strong></summary>
 
 플러그인은 기능을 모듈화할 때 사용합니다. 로깅, 인증, 세션 등을 플러그인으로 구현합니다. 재사용 가능한 컴포넌트를 만들 수 있습니다. Ktor의 핵심 개념입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> routing은 언제 사용해야 하나요?</strong></summary>
 
 `routing`은 URL 패턴을 핸들러에 매핑할 때 사용합니다. RESTful API, 웹 페이지 등에 사용됩니다. 모든 HTTP 요청을 처리하는 데 필수적입니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -390,7 +392,6 @@ Netty를 우선 사용해야 합니다. 높은 성능과 확장성을 제공합�
 | **Netty** | 엔진 | 고성능 |
 | **CIO** | 엔진 | 간단함 |
 | **call.parameters** | 경로 매개변수 | {id} |
-
 
 ## 다음 수업
 

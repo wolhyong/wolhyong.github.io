@@ -12,7 +12,6 @@ Kotlin의 코루틴은 비동기 프로그래밍을 간단하게 만들며 스�
 
 > **핵심 정리** · 코루틴은 비동기 프로그래밍을 간단하게 만듭니다. `suspend` 함수로 비동기 작업을 표현합니다. `async`/`await`로 코루틴을 시작하고 결과를 기다립니다. `CoroutineScope`로 수명 주기를 관리합니다. `Job`으로 코루틴을 제어합니다. `Dispatcher`로 스레드를 지정합니다.
 
-
 ## 수업 목표
 
 - 코루틴의 개념과 사용법을 이해합니다.
@@ -287,39 +286,42 @@ fun main() = runBlocking {
 
 `SupervisorJob`은 자식 실패 시 부모 취소를 방지합니다. 독립적인 작업에 유용합니다. 자식 코루틴의 실패가 다른 자식에 영향을 주지 않습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 코루틴과 스레드 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 코루틴을 사용해야 합니다. 스레드보다 가볍고 효율적입니다. 비동기 작업에 적합합니다. 스레드는 CPU 바운드 작업에만 사용합니다. 대부분의 경우 코루틴이 더 좋은 선택입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> launch와 async 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `launch`는 결과가 필요 없을 때 사용합니다. `async`는 결과가 필요할 때 사용합니다. `launch`는 `Job`을, `async`는 `Deferred`를 반환합니다. 결과가 필요하면 `async`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Dispatcher는 언제 사용해야 하나요?</strong></summary>
 
 `Dispatcher`는 스레드 지정이 필요할 때 사용합니다. UI 작업은 `Main`, I/O 작업은 `IO`, CPU 작업은 `Default`를 사용합니다. 기본적으로 `Default`가 사용됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> coroutineScope와 CoroutineScope 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `coroutineScope`는 suspend 함수 내에서 사용합니다. 구조화된 동시성을 구현합니다. `CoroutineScope`는 일반 함수에서 사용합니다. 수명 주기를 명시적으로 관리합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> SupervisorJob은 언제 사용해야 하나요?</strong></summary>
 
 `SupervisorJob`은 독립적인 작업에 사용합니다. 자식 실패 시 다른 자식에 영향을 주지 않습니다. UI 구성 요소 등에 유용합니다. 일반적인 동시성에는 필요하지 않습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -337,7 +339,6 @@ fun main() = runBlocking {
 | **isActive** | 취소 확인 | 취소 시 false |
 | **SupervisorJob** | 자식 독립성 | 부모 취소 방지 |
 | **runBlocking** | 메인 블로킹 | 테스트용 |
-
 
 ## 다음 수업
 

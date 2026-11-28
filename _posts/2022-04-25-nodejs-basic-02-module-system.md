@@ -513,23 +513,30 @@ const lodash = require('lodash'); // require 함수 직접 사용
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: package.json의 "type": "module"이 무슨 역할을 하나요?</strong></summary>
+
 프로젝트의 모든 .js 파일을 ES Modules로 처리하도록 지정합니다. 설정하지 않으면 기본값은 CommonJS입니다. .cjs와 .mjs 확장자는 이 설정보다 우선합니다. 즉, `"type": "module"`이어도 `.cjs` 파일은 항상 CommonJS로 처리됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: require와 import를 함께 사용할 수 있나요?</strong></summary>
+
 같은 파일 내에서는 불가능합니다. CommonJS 파일(`require`)과 ESM 파일(`import`)은 프로젝트 단위로 통일하는 것이 좋습니다. 전환이 필요하다면 `createRequire()`를 사용해 ESM 파일 내에서 CJS 모듈을 불러올 수 있습니다. 반대로 CJS에서 ESM을 불러오려면 동적 `import()`를 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 모듈 캐싱이 테스트에 방해가 되는데 어떻게 해야 하나요?</strong></summary>
+
 `jest` 같은 테스트 프레임워크는 자동으로 모듈 캐시를 초기화합니다. 수동으로는 `delete require.cache[key]`를 사용할 수 있습니다. 단, 캐시 초기화 후에도 모듈 내부의 클로저 변수 상태가 완전히 초기화되지 않을 수 있으므로, 테스트 환경에서는 각 테스트 케이스마다 모듈이 새로 로딩되도록 `beforeEach`에서 캐시를 초기화하는 패턴을 권장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Tree Shaking이 항상 효과적인가요?</strong></summary>
+
 아니요. Tree Shaking은 다음 조건에서만 효과적입니다:
 1. ESM 문법 사용 (`import`/`export`)
 2. 번들러가 정적 분석 가능한 구조 (동적 import 경로 금지)
@@ -538,11 +545,14 @@ const lodash = require('lodash'); // require 함수 직접 사용
 5. CSS, 폴리필 등 사이드 이펙트가 있는 모듈은 별도 예외 처리
 
 실제 프로젝트에서는 번들 크기를 **30~60%** 감소시킬 수 있지만, 라이브러리가 CJS로만 제공되는 경우 효과가 제한적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: CommonJS에서 ESM으로 마이그레이션하는 가장 안전한 방법은?</strong></summary>
+
 단계적 마이그레이션이 가장 안전합니다: (1) 새 파일은 `.mjs` 확장자로 ESM 작성, (2) `createRequire()`로 기존 CJS 모듈을 ESM에서 import, (3) 기존 CJS 파일은 동적 `import()`로 ESM 호출, (4) 모든 파일이 ESM으로 전환되면 `"type": "module"` 설정. 이 방법은 프로젝트를 중단하지 않고 점진적으로 전환할 수 있습니다.
+
 </details>
 
 ## 요약

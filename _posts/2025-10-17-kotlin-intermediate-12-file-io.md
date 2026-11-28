@@ -12,7 +12,6 @@ Kotlin의 파일 I/O 시스템은 Java의 표준 라이브러리를 활용하며
 
 > **핵심 정리** · `File` 클래스는 파일 작업을 제공합니다. `BufferedReader`/`Writer`는 텍스트 I/O를 제공합니다. `use` 함수로 자동 리소스 해제를 지원합니다. `Serializable`로 직렬화를 지원합니다. `kotlinx.serialization`으로 JSON 직렬화를 수행합니다. `Path`로 경로 조작을 지원합니다.
 
-
 ## 수업 목표
 
 - File 클래스를 이해합니다.
@@ -272,39 +271,42 @@ println("읽기: $canRead, 쓰기: $canWrite, 실행: $canExecute")
 
 파일 속성을 확인할 수 있습니다. `length`, `lastModified`, `isFile`, `isDirectory`, `isHidden`, `canRead`, `canWrite`, `canExecute` 등의 메서드를 제공합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> File과 Path 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `File`은 파일 작업에 사용합니다. `Path`는 경로 조작에 사용합니다. 파일 작업에는 `File`을, 경로 조작에는 `Path`를 사용합니다. 두 가지를 함께 사용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> BufferedReader와 FileReader 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `BufferedReader`를 사용해야 합니다. 버퍼링으로 성능이 향상됩니다. `FileReader`는 직접 읽기에 사용됩니다. 대부분의 경우 `BufferedReader`를 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> kotlinx.serialization은 언제 사용해야 하나요?</strong></summary>
 
 `kotlinx.serialization`은 JSON 직렬화에 사용합니다. 타입 안전하며 간결합니다. Gson, Jackson 등의 Java 라이브러리도 사용할 수 있습니다. Kotlin 전용 라이브러리를 우선 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> use 함수는 언제 사용해야 하나요?</strong></summary>
 
 `use` 함수는 `AutoCloseable`을 구현한 객체에 사용합니다. 파일, 스트림, 데이터베이스 연결 등. 더 간결하고 자동으로 `close()`를 호출합니다. 대부분의 경우 `use` 함수를 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 비동기 파일 I/O는 언제 사용해야 하나요?</strong></summary>
 
 비동기 파일 I/O는 UI 애플리케이션이나 서버 애플리케이션에서 사용합니다. 스레드를 블로킹하지 않고 파일 I/O를 수행할 수 있습니다. 대용량 파일 처리에 유용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -322,7 +324,6 @@ println("읽기: $canRead, 쓰기: $canWrite, 실행: $canExecute")
 | **withContext(Dispatchers.IO)** | 비동기 I/O | 코루틴 |
 | **length** | 파일 크기 | 바이트 |
 | **lastModified** | 수정일 | 타임스탬프 |
-
 
 ## 다음 수업
 

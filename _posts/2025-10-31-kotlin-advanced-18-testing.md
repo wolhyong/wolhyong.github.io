@@ -12,7 +12,6 @@ Kotlin의 테스트 시스템은 JUnit, MockK, Kotest 등의 라이브러리를 
 
 > **핵심 정리** · `JUnit`은 표준 테스트 프레임워크입니다. `MockK`는 Kotlin 전용 모킹 라이브러리입니다. `Kotest`는 Kotlin 전용 테스트 프레임워크입니다. 단위 테스트는 개별 함수/클래스를 테스트합니다. 통합 테스트는 여러 컴포넌트를 테스트합니다. 테스트 더블로 의존성을 격리합니다.
 
-
 ## 수업 목표
 
 - JUnit을 이해하고 사용할 수 있습니다.
@@ -353,39 +352,42 @@ every { repository.getById(1) } returns User(1, "Wolhyong")
 
 테스트 더블은 의존성을 격리합니다. `Stub`은 고정 응답을 반환합니다. `Mock`은 호출을 검증합니다. `Fake`는 실제 구현을 제공합니다. `Spy`는 부분적으로 모의합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> JUnit과 Kotest 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `JUnit`을 우선 사용해야 합니다. 표준 프레임워크로 널리 사용됩니다. `Kotest`는 Kotlin 전용 DSL을 원할 때 사용합니다. 팀 선호도에 따라 선택합니다. 두 가지를 함께 사용할 수도 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> MockK와 Mockito 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `MockK`를 사용해야 합니다. Kotlin 전용으로 간결하고 표현력이 풍부합니다. `Mockito`는 Java 라이브러리로 Kotlin에서도 사용할 수 있습니다. Kotlin 코드에서는 `MockK`를 우선 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 단위 테스트와 통합 테스트 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 단위 테스트를 우선 사용해야 합니다. 빠르고 격리된 테스트를 제공합니다. 통합 테스트는 시스템 통합을 확인할 때 사용합니다. 피라미드 테스트 전략을 따르는 것이 좋습니다. 단위 테스트 70%, 통합 테스트 20%, E2E 테스트 10%.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 테스트 더블은 언제 사용해야 하나요?</strong></summary>
 
 테스트 더블은 의존성을 격리할 때 사용합니다. 외부 서비스, 데이터베이스 등에 사용합니다. 테스트 속도를 높이고 안정성을 제공합니다. 모든 테스트에 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 테스트 커버리지는 어느 정도여야 하나요?</strong></summary>
 
 테스트 커버리지는 80% 이상을 목표로 해야 합니다. 하지만 커버리지만으로는 충분하지 않습니다. 중요한 로직은 100% 커버리지를 목표로 합니다. 품질 있는 테스트가 더 중요합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -404,7 +406,6 @@ every { repository.getById(1) } returns User(1, "Wolhyong")
 | **@AfterEach** | 테스트 후 정리 | JUnit |
 | **verify** | 호출 검증 | MockK |
 | **assertThrows** | 예외 검증 | JUnit |
-
 
 ## 다음 수업
 

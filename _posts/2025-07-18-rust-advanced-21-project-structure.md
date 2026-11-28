@@ -12,7 +12,6 @@ Rust 프로젝트 구조는 대규모 프로젝트를 관리하고 유지보수�
 
 > **핵심 정리** · 워크스페이스는 여러 패키지를 단일 프로젝트로 관리합니다. `build.rs`로 컴파일 전 코드를 생성합니다. CI/CD로 자동화된 파이프라인을 구축합니다. 표준 레이아웃을 따르고 `/internal`로 외부 노출을 차단합니다. 모범 사례로 멀티 크레이트 프로젝트를 구성합니다.
 
-
 ## 수업 목표
 
 - 워크스페이스를 구성하고 사용할 수 있습니다.
@@ -359,39 +358,42 @@ cargo make ci
 
 `cargo-make`는 크로스 플랫폼 빌드 스크립트를 제공합니다. Makefile보다 Rust 친화적이며 Cargo와 통합됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 워크스페이스는 언제 사용해야 하나요?</strong></summary>
 
 워크스페이스는 여러 관련 패키지를 개발할 때 사용합니다. 예: 모노레포, 라이브러리와 바이너리 분리, 멀티 크레이트 프로젝트. 의존성을 공유하고 단일 빌드로 관리할 수 있습니다. 단일 패키지 프로젝트에서는 필요하지 않습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> build.rs는 언제 사용해야 하나요?</strong></summary>
 
 `build.rs`는 다음 경우에 사용합니다: (1) 컴파일 타임 코드 생성 (2) C 라이브러리 링크 (3) 컴파일러 플래그 설정 (4) 환경 감지. 대부분의 경우 필요하지 않으며, 과도한 사용은 컴파일 시간을 느리게 할 수 있습니다. FFI나 코드 생성이 필요할 때 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> /internal 패키지는 왜 필요한가요?</strong></summary>
 
 `/internal` 패키지는 외부 노출을 차단하여 공개 API를 명확히 합니다. 내부 구현을 숨기고 API 안정성을 보장합니다. Rust 커뮤니티 규칙으로, 사용자는 `internal` 패키지를 사용하지 않아야 함을 알게 됩니다. 대규모 프로젝트에서 유지보수성을 높입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> CI/CD는 어떻게 설정하나요?</strong></summary>
 
 CI/CD 설정 방법: (1) GitHub Actions 또는 GitLab CI 선택 (2) 테스트, 린트, 빌드 작업 정의 (3) 캐시로 빌드 시간 최적화 (4) 태그 푸시 시 릴리스 자동화. GitHub Actions는 Rust 툴체인을 쉽게 설정할 수 있는 액션을 제공합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 표준 레이아웃을 따라야 하는 이유는 무엇인가요?</strong></summary>
 
 표준 레이아웃을 따르면 다음 이점이 있습니다: (1) 다른 Rust 개발자가 쉽게 이해 (2) 도구가 올바르게 동작 (3) 모범 사례 따르기. `src/`, `tests/`, `benches/`, `examples/` 디렉토리는 Cargo가 자동으로 인식합니다. 프로젝트 일관성을 높입니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -408,7 +410,6 @@ CI/CD 설정 방법: (1) GitHub Actions 또는 GitLab CI 선택 (2) 테스트, �
 | **cc** | C 코드 컴파일 | FFI 링크 |
 | **bindgen** | C 바인딩 생성 | 자동 래퍼 |
 
+## 시리즈를 마치며
 
-## Rust 수업 완료
-
-Rust 기초부터 고급까지 21개 수업을 완료했습니다. 이제 C# 수업을 생성하겠습니다.
+소유권과 빌림에서 시작해 매크로, 비동기, 웹, 데이터베이스, 프로젝트 구조까지 21개 글로 정리했습니다. 다음 시리즈에서는 C#으로 넘어가 객체지향 설계와 .NET 생태계를 살펴봅니다.

@@ -253,34 +253,39 @@ Go에서 **모든 것은 값으로 전달**(pass by value)됩니다. 포인터�
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Go에서 포인터 연산이 금지된 이유는 무엇인가요?</strong></summary>
 
 Go는 **메모리 안전성(memory safety)**을 위해 포인터 연산(pointer arithmetic)을 금지합니다. C에서 포인터 연산은 버퍼 오버플로우, 댕글링 포인터, 세그멘테이션 폴트 등 심각한 메모리 버그의 주요 원인이었습니다. Go의 `unsafe.Pointer`와 `uintptr`을 사용하면 `unsafe` 패키지로 포인터 연산이 가능하지만, 이는 신중하게 사용해야 합니다. Go의 디자인 철학은 \"안전한 기본값 + 명시적 unsafe 탈출구\"입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: interface{}에 값을 할당하면 항상 힙 할당이 발생하나요?</strong></summary>
 
 네, 구체적 타입을 `interface{}`에 할당하면 **박싱(boxing)**이 발생하여 힙 할당이 일어납니다. `var v interface{} = 42`는 정수 `42`를 힙에 할당하고 `eface{type: *int, data: &42}` 구조체를 생성합니다. 이는 `reflect` 패키지나 `fmt.Printf("%v", x)` 등의 사용에서도 발생합니다. 성능이 중요한 코드에서는 불필요한 인터페이스 변환을 피하는 것이 좋습니다. Go 1.18+의 제네릭은 컴파일 타임에 구체적 타입으로 인스턴스화되므로 박싱이 발생하지 않습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: escape analysis 결과를 어떻게 확인하나요?</strong></summary>
 
 `go build -gcflags='-m'` 플래그로 확인합니다. `-m` 레벨을 여러 번 사용하면 더 자세한 정보를 볼 수 있습니다: `-gcflags='-m -m -m'`. 출력 예: `./main.go:14:6: moved to heap: x`는 `x`가 힙으로 escape했음을 의미합니다. `./main.go:10:6: stackAlloc x does not escape`는 스택에 할당되었음을 의미합니다. 이 정보를 바탕으로 핫 경로(hot path)에서 힙 할당을 최소화하도록 코드를 최적화할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: GC 튜닝은 언제 필요한가요?</strong></summary>
 
 GC 튜닝은 다음과 같은 상황에서 필요합니다: (1) **GC CPU 오버헤드가 15% 이상일 때** — `GODEBUG=gctrace=1`로 GC CPU 사용량 확인 (2) **STW 시간이 10ms 이상일 때** — Go 1.19+에서는 드물지만, 힙이 매우 크면(수백 GB) 발생 가능 (3) **처리량(latency)이 민감한 서비스** — GC pause로 인한 지연 시간이 문제될 때. 튜닝 방법: `GOGC`를 높여 GC 빈도 감소, `runtime.GOMAXPROCS` 조정, 힙 할당을 줄이는 코드 최적화. 대부분의 Go 애플리케이션은 기본 설정으로 충분합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 스택과 힙 중 어디에 할당되는지가 왜 중요한가요?</strong></summary>
 
 **스택 할당**은 함수 호출 시 포인터 조정(SP 증가)만으로 할당되고, 함수 종료 시(SP 복원) 자동 해제되므로 거의 무료입니다. **힙 할당**은 GC의 관리 대상이 되어 추가 비용이 발생합니다: 할당 자체의 오버헤드 + GC의 Mark/Sweep 비용 + 메모리 단편화. 하지만 스택은 크기가 제한되어 있고(고루틴당 2KB~1GB), 큰 데이터나 함수를 escape하는 데이터는 힙에 할당되어야 합니다. Go의 escape analysis는 최적의 선택을 자동으로 찾아주므로, 개발자는 일반적으로 신경 쓸 필요가 없습니다. 단, 성능이 중요한 코드에서는 heap escape를 최소화하는 것이 좋습니다.
+
 </details>
 
 ## 요약

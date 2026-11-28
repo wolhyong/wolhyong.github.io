@@ -12,12 +12,11 @@ C#의 성능 최적화는 프로파일링, 메모리 관리, 비동기 최적화
 
 > **핵심 정리** · 프로파일러로 병목 지점을 식별합니다. 박싱/언박싱을 방지하고 구조체를 사용합니다. `Span<T>`와 `Memory<T>`로 안전한 메모리 슬라이스를 제공합니다. `ArrayPool<T>`로 배열 재사용을 제공합니다. `ConfigureAwait(false)`와 `ValueTask`로 비동기 오버헤드를 줄입니다.
 
-
 ## 수업 목표
 
 - 프로파일러를 사용할 수 있습니다.
 - 메모리 최적화 기법을 이해합니다.
-- Span<T>와 Memory<T>를 이해합니다.
+- Span&lt;T&gt;와 Memory&lt;T&gt;를 이해합니다.
 - 배열 풀링을 이해합니다.
 - 비동기 최적화를 이해합니다.
 - JIT 최적화를 이해합니다.
@@ -73,7 +72,7 @@ public class LargeClass
 
 박싱/언박싱을 방지하여 성능을 향상합니다. 작은 데이터는 구조체를 사용하고 큰 데이터는 클래스를 사용합니다. 구조체는 스택에 할당되며 복사 비용이 적습니다.
 
-## Span<T>
+## Span&lt;T&gt;
 
 ```csharp
 using System;
@@ -101,7 +100,7 @@ class Program
 
 `Span<T>`는 안전한 메모리 슬라이스를 제공합니다. unsafe 코드 없이 메모리를 조작할 수 있습니다. 스택 할당을 지원하며 GC 압력을 줄입니다. `AsSpan()`, `Slice()`로 슬라이스를 생성합니다.
 
-## Memory<T>
+## Memory&lt;T&gt;
 
 ```csharp
 using System;
@@ -126,7 +125,7 @@ class Program
 
 `Memory<T>`는 비동기 작업에 적합한 메모리 슬라이스입니다. `Span<T>`는 스택에 할당되어 비동기에 사용할 수 없습니다. `Memory<T>`는 힙에 할당되어 비동기에 사용할 수 있습니다. `Span` 속성으로 `Span<T>`로 변환할 수 있습니다.
 
-## ArrayPool<T>
+## ArrayPool&lt;T&gt;
 
 ```csharp
 using System;
@@ -289,39 +288,42 @@ class Program
 
 컬렉션 용량을 지정하여 재할당을 방지합니다. `CollectionsMarshal.AsSpan`으로 컬렉션을 `Span<T>`로 변환합니다. 대용량 컬렉션에 유용합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
-<summary><strong>Q> Span<T>는 언제 사용해야 하나요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q> Span&lt;T&gt;는 언제 사용해야 하나요?</strong></summary>
 
 `Span<T>`는 메모리 슬라이스가 필요할 때 사용합니다. 문자열 파싱, 버퍼 처리, 고성능 알고리즘에 유용합니다. 스택 할당을 지원하며 GC 압력을 줄입니다. 비동기에는 사용할 수 없습니다.
+
 </details>
 
-<details>
-<summary><strong>Q> ArrayPool<T>는 언제 사용해야 하나요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q> ArrayPool&lt;T&gt;는 언제 사용해야 하나요?</strong></summary>
 
 `ArrayPool<T>`는 대용량 배열을 자주 생성/해제할 때 사용합니다. 이미지 처리, 버퍼링, 임시 배열에 유용합니다. GC 압력을 줄이며 성능을 향상합니다. 반드시 `Return`으로 반환해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> ConfigureAwait(false)는 언제 사용해야 하나요?</strong></summary>
 
 `ConfigureAwait(false)`는 라이브러리 코드에서 사용합니다. 컨텍스트 캡처를 방지하여 성능을 향상합니다. UI 애플리케이션에서는 기본 동작을 유지해야 합니다. 데드락 방지에도 사용됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> ValueTask는 언제 사용해야 하나요?</strong></summary>
 
 `ValueTask<T>`는 동기 완료 가능성이 높을 때 사용합니다. 캐시된 결과, 빠른 연산에 유용합니다. 항상 비동기인 작업에는 `Task<T>`를 사용합니다. 라이브러리 코드에서 고려해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> NGEN은 언제 사용해야 하나요?</strong></summary>
 
 NGEN은 시작 시간이 중요한 데스크톱 애플리케이션에 사용합니다. JIT 컴파일 오버헤드를 방지합니다. 서버 애플리케이션에는 덜 중요합니다. .NET Core/Rust는 CrossGen2를 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -330,16 +332,15 @@ NGEN은 시작 시간이 중요한 데스크톱 애플리케이션에 사용합�
 | **프로파일러** | 병목 식별 | dotnet-trace |
 | **박싱 방지** | 값 타입 사용 | 성능 향상 |
 | **구조체** | 스택 할당 | 작은 데이터 |
-| **Span<T>** | 메모리 슬라이스 | 스택 할당 |
-| **Memory<T>** | 비동기 슬라이스 | 힙 할당 |
-| **ArrayPool<T>** | 배열 재사용 | Rent/Return |
+| **Span&lt;T&gt;** | 메모리 슬라이스 | 스택 할당 |
+| **Memory&lt;T&gt;** | 비동기 슬라이스 | 힙 할당 |
+| **ArrayPool&lt;T&gt;** | 배열 재사용 | Rent/Return |
 | **ConfigureAwait(false)** | 컨텍스트 방지 | 라이브러리 |
 | **ValueTask** | 동기 완료 최적화 | Task 오버헤드 방지 |
 | **MethodImpl** | JIT 최적화 제어 | 인라이닝 |
 | **NGEN** | AOT 컴파일 | 시작 시간 개선 |
 | **StringBuilder** | 문자열 연결 최적화 | 재할당 방지 |
 | **CollectionsMarshal** | 컬렉션 Span 변환 | AsSpan |
-
 
 ## 다음 수업
 

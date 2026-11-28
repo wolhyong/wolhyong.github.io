@@ -415,34 +415,39 @@ print(f.__code__.co_argcount)  # 2 (인자 수)
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 함수 안에서 전역 변수를 수정하려면 어떻게 하나요?</strong></summary>
 
 `global` 키워드를 사용합니다. `global x`를 함수 내에서 선언하면, 이후 `x`에 할당하는 값이 전역 변수에 적용됩니다. 선언하지 않으면 할당 시 로컬 변수로 간주되어 `UnboundLocalError`가 발생하거나 의도치 않게 새 로컬 변수가 생성됩니다.
+
 </details>
 
-<details>
-<summary><strong>Q: `*args`와 `**kwargs`는 언제 사용하나요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>*args</code>와 <code>**kwargs</code>는 언제 사용하나요?</strong></summary>
 
 `*args`는 가변 개수의 위치 인자를 튜플로 수집합니다. `**kwargs`는 가변 개수의 키워드 인자를 딕셔너리로 수집합니다. 주로 함수 래퍼(wrapper), 데코레이터, 상속 시 부모 클래스 메서드 호출 등 인자를 그대로 전달해야 할 때 사용합니다. 또한 API 클라이언트처럼 다양한 옵션을 받아야 하는 함수에 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 클로저는 메모리를 어떻게 관리하나요?</strong></summary>
 
 클로저가 캡처한 변수는 `cell` 객체에 저장됩니다. 외부 함수가 종료되어도 cell 객체는 클로저 함수가 func_closure 속성으로 참조를 유지하므로 GC되지 않습니다. 클로저가 더 이상 필요 없으면(func_closure 참조가 모두 해제되면) cell 객체와 그 내용도 함께 GC됩니다. 클로저가 큰 데이터를 참조하면 불필요하게 메모리를 점유할 수 있으므로 주의해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 람다와 def 중 어떤 것이 더 빠른가요?</strong></summary>
 
 둘의 성능 차이는 거의 없습니다. 둘 다 동일한 PyFunctionObject로 변환되고 동일한 바이트코드 실행 경로를 따릅니다. 미미한 차이는 람다는 `__name__` 설정(\<lambda\>)과 docstring 처리에서 발생하지만, 1000만 번 호출 기준으로 1~2% 미만입니다. 따라서 성능보다 **가독성**을 기준으로 선택하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 함수의 기본 인자가 가변 객체일 때 위험한 이유는?</strong></summary>
 
 함수의 기본 인자는 **함수 정의 시점에 한 번만 평가**되어 `func_defaults` 튜플에 저장됩니다. 따라서 가변 객체(리스트, 딕셔너리 등)를 기본 인자로 사용하면, 모든 함수 호출이 **같은 객체**를 공유하게 됩니다. 한 호출에서 객체를 수정하면 다음 호출에 영향이 갑니다. 안전한 패턴은 기본값으로 `None`을 사용하고 함수 내부에서 새 객체를 생성하는 것입니다.
+
 </details>
 
 ---

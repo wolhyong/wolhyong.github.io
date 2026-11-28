@@ -57,34 +57,39 @@ $lines = file('data.txt');  // 배열로 반환
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: file_get_contents와 fopen+fread의 차이는 무엇인가요?</strong></summary>
 
 `file_get_contents()`는 내부적으로 같은 fopen/fread/fclose를 호출하지만, **전체 파일을 한 번에 메모리에 로드**합니다. 간편하지만 대용량 파일(수백 MB)은 메모리 부족을 일으킬 수 있습니다. `fopen()` + `fread()` 청크 읽기는 **메모리를 제어**할 수 있습니다. PHP 8.1+에서 `file_get_contents()`의 `$offset`과 `$length` 파라미터로 파일의 일부만 읽을 수 있어 유연성이 향상되었습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: flock()은 NFS에서도 동작하나요?</strong></summary>
 
 **NFS(Network File System)에서는 flock()이 제대로 동작하지 않을 수 있습니다**. NFS 버전과 구현에 따라 다르지만, 일반적으로 NFS는 lockd(NFS 잠금 데몬)를 통해 잠금을 관리하지만 PHP의 flock()이 이를 항상 올바르게 매핑하지는 않습니다. 네트워크 파일 시스템에서는 데이터베이스 기반 잠금이나 Redis 분산 잠금(Redlock) 같은 대안을 사용하는 것이 안전합니다. 동일 서버의 로컬 파일 시스템에서는 완전히 신뢰할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: SplFileObject의 장점은 무엇인가요?</strong></summary>
 
 `SplFileObject`는 객체 지향 인터페이스로 파일을 처리합니다: `foreach ($file as $line)` 순회, `fgetcsv()` 내장(CSV 파싱에 인용부호/이스케이프 자동 처리), `seek()`로 임의 위치 이동, `current()/key()`로 Iterator 인터페이스 지원. 대용량 CSV 파일 처리 시 `SplFileObject`의 `setFlags(SplFileObject::READ_CSV)`로 메모리 효율적인 행 단위 CSV 파싱이 가능합니다. 배열보다 직관적이고 일관된 인터페이스를 제공합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP 스트림 래퍼(stream wrapper)란 무엇인가요?</strong></summary>
 
 스트림 래퍼는 파일 시스템뿐만 아니라 다양한 프로토콜을 **일관된 fopen/fread/fwrite 인터페이스**로 사용할 수 있게 합니다. 내장 래퍼: `file://`(로컬 파일, 기본), `http://`/`https://`(HTTP 요청), `ftp://`(FTP), `php://`(PHP 내부 I/O — stdin/stdout/stderr, memory/temp), `data://`(인라인 데이터), `compress.zlib://`(압축 파일). `stream_wrapper_register()`로 사용자 정의 래퍼를 구현할 수 있어 클라우드 스토리지(S3)도 동일한 인터페이스로 접근 가능합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: include/require와 파일 I/O 함수의 차이는 무엇인가요?</strong></summary>
 
 `include`/`require`는 Zend Engine의 **컴파일 단계**에서 동작합니다. 포함된 파일을 PHP 스크립트로 파싱하고 실행합니다. `fopen`/`file_get_contents`는 **런타임 I/O**로 파일을 데이터로 읽을 뿐 PHP 코드로 실행하지 않습니다. `include`는 파일을 PHP OPcode로 컴파일하여 `op_array`에 추가하고, `file_get_contents`는 단순히 문자열을 반환합니다. 설정 파일에는 `include`(설정을 PHP 코드로 실행)나 `parse_ini_file()`(INI 형식 파싱)을 사용하세요.
+
 </details>
 
 ---

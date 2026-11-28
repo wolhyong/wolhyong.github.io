@@ -12,7 +12,6 @@ Rust의 unsafe 코드는 컴파일러의 보장을 비활성화하며 개발자�
 
 > **핵심 정리** · `unsafe` 키워드는 Rust의 보장을 비활성화합니다. 원시 포인터 `*const T`와 `*mut T`는 빌림 규칙이 없습니다. `extern "C"`로 C 함수를 호출하며 FFI로 다른 언어와 상호작용합니다. `asm!` 매크로로 인라인 어셈블리를 작성할 수 있습니다. unsafe 코드는 안전한 인터페이스로 캡슐화해야 합니다.
 
-
 ## 수업 목표
 
 - unsafe 키워드의 5가지 사용 사례를 이해합니다.
@@ -291,39 +290,42 @@ fn main() {
 
 unsafe 코드는 안전한 래퍼로 캡슐화해야 합니다. 래퍼는 불변성을 검사하고 unsafe 작업을 수행합니다. 사용자는 안전한 인터페이스만 사용하면 됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> unsafe 코드는 언제 사용해야 하나요?</strong></summary>
 
 unsafe 코드는 다음 경우에 사용합니다: (1) 저수준 하드웨어 접근 (2) C 라이브러리와 상호작용 (3) 성능 최적화 (4) Rust의 보장이 너무 엄격할 때. 대부분의 경우 safe Rust로 충분합니다. unsafe는 최후의 수단으로 사용해야 하며, 안전한 래퍼로 캡슐화해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 원시 포인터는 언제 사용해야 하나요?</strong></summary>
 
 원시 포인터는 다음 경우에 사용합니다: (1) C 라이브러리와 상호작용 (2) 포인터 연산이 필요할 때 (3) Rust의 빌림 규칙이 너무 엄격할 때. 대부분의 경우 참조가 더 안전합니다. 원시 포인터는 unsafe 블록 내에서만 역참조할 수 있으며, 개발자가 안전성을 보장해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> FFI 호출 시 주의할 점은 무엇인가요?</strong></summary>
 
 FFI 호출 시 다음을 주의해야 합니다: (1) C 함수의 불변성을 이해해야 함 (2) 메모리 관리를 명확히 해야 함 (3) 타입 호환성을 확인해야 함 (4) 패닉이 FFI 경계를 넘지 않도록 해야 함. C 코드에서 Rust 메모리를 해제하면 정의되지 않은 동작이 발생할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> unsafe 트레이트는 왜 필요한가요?</strong></summary>
 
 unsafe 트레이트는 구현자가 특정 불변성을 유지해야 함을 나타냅니다. 예: `Send`는 타입이 스레드 간 안전하게 이동할 수 있음을 보장해야 합니다. Rust는 자동으로 구현할 수 없으므로 개발자가 수동으로 구현해야 합니다. 잘못 구현하면 데이터 레이스가 발생할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> unsafe 코드를 안전하게 캡슐화하는 방법은 무엇인가요?</strong></summary>
 
 unsafe 코드를 안전하게 캡슐화하는 방법: (1) 불변성을 검사하는 래퍼 함수 제공 (2) unsafe 블록을 최소화 (3) 문서로 불변성 명시 (4) 테스트로 안전성 검증. 사용자는 안전한 인터페이스만 사용하면 unsafe 코드의 존재를 알 필요가 없습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -337,7 +339,6 @@ unsafe 코드를 안전하게 캡슐화하는 방법: (1) 불변성을 검사하
 | **FFI** | 외부 함수 호출 | extern "C" 사용 |
 | **인라인 어셈블리** | asm! 매크로 | 플랫폼 의존적 |
 | **안전한 래퍼** | unsafe 캡슐화 | 불변성 검사 |
-
 
 ## 다음 수업
 

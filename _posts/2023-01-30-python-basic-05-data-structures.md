@@ -337,34 +337,39 @@ counts = Counter("hello world")
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 리스트와 튜플 중 무엇을 선택해야 하나요?</strong></summary>
 
 변경이 필요하면 리스트, 변경되지 않으면 튜플을 사용하세요. 튜플은 리스트보다 메모리를 약 20~30% 적게 사용하고, 생성 속도도 빠릅니다. 또한 튜플은 해시 가능하므로 딕셔너리 키로 사용할 수 있습니다. 함수가 여러 값을 반환할 때도 튜플이 자연스럽습니다. `return x, y`는 사실 튜플을 반환하는 것입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 딕셔너리와 리스트 중 검색이 더 빠른 것은?</strong></summary>
 
 딕셔너리입니다. 딕셔너리의 키 검색은 O(1) (해시 테이블), 리스트의 값 검색은 O(n) (선형 탐색)입니다. 100만 개 요소에서 검색할 때 딕셔너리는 약 0.05μs, 리스트는 약 50ms가 걸립니다. 즉 **딕셔너리가 100만 배 빠릅니다**. 단, 딕셔너리는 리스트보다 메모리를 2~3배 더 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 집합과 리스트 중 멤버십 검사는 무엇이 빠른가요?</strong></summary>
 
 집합입니다. `x in set`은 O(1) (해시 테이블), `x in list`는 O(n) (선형 탐색)입니다. 중복이 없고 순서가 중요하지 않으며 멤버십 검사가 필요한 경우에는 항상 집합을 사용하세요. 단, 집합은 리스트보다 메모리를 약 2배 더 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: for 루프에서 딕셔너리를 수정해도 되나요?</strong></summary>
 
 순회 중인 딕셔너리에 키를 추가/삭제하면 `RuntimeError: dictionary changed size during iteration`이 발생합니다. 딕셔너리를 수정해야 한다면 **키 목록의 복사본**을 순회하세요: `for key in list(d.keys()):` 또는 `for key in list(d):`. 딕셔너리 컴프리헨션을 사용하는 것도 좋은 방법입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: OrderedDict는 여전히 필요한가요?</strong></summary>
 
 Python 3.7부터 일반 딕셔너리도 삽입 순서를 보존합니다. 하지만 `OrderedDict`가 필요한 경우가 있습니다: (1) 순서가 중요한 비교 — `OrderedDict는 == 비교 시 순서도 비교, (2) `move_to_end()` 메서드 — 특정 키를 앞/뒤로 이동, (3) `popitem(last=True/False)` — LIFO/FIFO 동작. 일반적인 용도라면 일반 딕셔너리로 충분합니다.
+
 </details>
 
 ---

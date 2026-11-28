@@ -92,19 +92,25 @@ if (crossOriginIsolated) {
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM에서 직접 스레드(pthread)를 생성할 수 있나요?</strong></summary>
+
 아니요. WASM은 운영체제 스레드 생성 API를 제공하지 않습니다. 스레드(Worker) 생성은 항상 JavaScript의 `new Worker()`를 통해야 합니다. WASM이 담당하는 것은 오직 **공유 메모리 위에서의 원자적 연산(Atomic operations)** 뿐입니다. Emscripten은 C의 `pthread_create()`를 내부적으로 `new Worker()`로 변환하여 C/C++ 개발자에게 투명한 pthread 경험을 제공합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Atomic 연산이 일반 연산보다 얼마나 느린가요?</strong></summary>
+
 Atomic 연산은 일반 연산보다 약 10~50ns 오버헤드가 있습니다. 이는 CPU의 **캐시 일관성 프로토콜(MESI)** 때문입니다. Atomic 연산은 실행 전에 모든 CPU 코어의 해당 캐시 라인을 무효화(Invalidate)하고, 완료될 때까지 다른 코어의 접근을 차단합니다. 이 과정에서 약 50~100 CPU 사이클이 소비됩니다. **권장 사항**: 꼭 필요한 공유 상태에만 Atomic 연산을 사용하고, 대부분의 데이터는 각 스레드의 로컬(private) 메모리에서 처리하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Lock-free 프로그래밍의 실전 적용 사례는 무엇인가요?</strong></summary>
+
 Lock-free는 다음과 같은 상황에서 효과적입니다: (1) **고성능 카운터** — 방문자 수, 요청 수 집계 (CAS 루프로 4스레드에서 거의 선형 확장), (2) **생산자-소비자 큐** — 단일 생산자/단일 소비자(SPSC) 큐에서 CAS로 head/tail 포인터 관리, (3) **참조 카운팅** — 공유 리소스의 수명 관리 (GC 없는 환경). 단, Lock-free 구현은 ABA 문제, 메모리 재사용 문제 등이 있어 검증된 라이브러리 사용을 권장합니다.
+
 </details>
 
 ---

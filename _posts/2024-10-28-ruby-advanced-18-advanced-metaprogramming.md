@@ -89,34 +89,39 @@ trace.disable
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: instance_eval과 class_eval의 차이를 DSL 관점에서 설명해주세요.</strong></summary>
 
 `instance_eval`은 객체의 **싱글톤 컨텍스트**에서 블록을 실행합니다. 블록 내의 `self`는 객체 자신이 됩니다. DSL에서 `instance_eval`을 사용하면 블록 내에서 메서드 호출이 DSL 객체의 메서드로 직접 전달됩니다(RSpec, Sinatra 스타일). `class_eval`은 **클래스 컨텍스트**에서 블록을 실행하여 인스턴스 메서드를 정의합니다. Active Record의 `validates :name, presence: true`는 `class_eval`을 통해 클래스 수준 DSL을 구현합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: TracePoint의 성능 영향은 어느 정도인가요?</strong></summary>
 
 TracePoint가 활성화되면 VM의 모든 이벤트(메서드 호출/반환, 라인 실행 등)가 후킹되어, 코드 실행 속도가 10~100배 느려질 수 있습니다. 특히 `:line` 이벤트는 매 라인마다 발생하므로 가장 큰 오버헤드가 있습니다. 프로덕션에서 TracePoint를 사용해야 한다면, 최소한의 이벤트만 활성화하고 꼭 필요한 코드 영역에서만 활성화하는 것이 좋습니다. 디버깅/프로파일링 목적으로만 사용하는 것이 일반적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: const_missing은 어떻게 자동 로딩을 구현하나요?</strong></summary>
 
 `Module#const_missing`은 정의되지 않은 상수가 참조될 때 호출됩니다. Rails의 Zeitwerk는 이 방식을 사용합니다. 예를 들어 `User` 상수가 참조되면 `const_missing`이 호출되고, Zeitwerk는 `app/models/user.rb` 파일을 로드합니다. 로드 후 다시 `const_get(:User)`를 시도합니다. `autoload` 메서드는 `Module#autoload`로 상수-파일 매핑을 등록하여, 상수가 처음 참조될 때 파일을 로드합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: inherited 훅은 언제 호출되나요?</strong></summary>
 
 `inherited`는 클래스가 서브클래싱될 때 호출됩니다: `class Child < Parent; end`. `ActiveRecord::Base`의 `inherited` 훅은 서브클래스의 테이블명, 컬럼 정보를 자동으로 설정합니다. `included`는 모듈이 `include`될 때, `extended`는 `extend`될 때, `method_added`는 새 메서드가 정의될 때 호출됩니다. 이러한 훅들은 ORM, 테스팅 프레임워크, 직렬화 라이브러리 등에서 광범위하게 사용됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: method_removed와 undef_method의 차이는 무엇인가요?</strong></summary>
 
 `method_removed`는 `remove_method`로 메서드가 제거될 때 호출됩니다. `undef_method`는 메서드를 완전히 삭제하여(상속된 메서드도 차단) 호출 시 NoMethodError가 발생하게 합니다. `remove_method`는 해당 클래스에서 직접 정의한 메서드만 제거하고, 상속된 메서드는 제거되지 않습니다. `undef_method`는 상속 체인 전체에서 해당 이름의 메서드를 차단합니다. `method_undefined` 훅은 `undef_method` 호출 시 발생합니다.
+
 </details>
 
 ---

@@ -527,22 +527,25 @@ io.adapter(createAdapter(pubClient, subClient));
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Socket.IO와 기본 WebSocket의 차이는 무엇인가요?</strong></summary>
 
 Socket.IO는 WebSocket 위에 다음과 같은 기능을 추가한 라이브러리입니다: 자동 재연결, HTTP Long Polling 폴백(WebSocket이 차단된 환경), 방(Room)과 네임스페이스, 이벤트 기반 메시징, ACK(확인 응답), 바이너리 지원. 순수 WebSocket은 더 가볍고 빠르지만, 이러한 기능을 직접 구현해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Socket.IO 서버를 여러 대로 확장하려면 어떻게 하나요?</strong></summary>
 
 Redis 어댑터를 사용하면 됩니다. 각 서버 인스턴스가 Redis Pub/Sub을 통해 이벤트를 공유합니다. 이 때 각 서버 인스턴스의 방(Room) 정보는 Redis에 저장되지 않고 **서버 로컬 메모리**에만 저장되므로, 특정 방의 클라이언트가 여러 서버에 분산되어 있어도 올바르게 이벤트가 전달됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Socket.IO는 얼마나 많은 동시 연결을 처리할 수 있나요?</strong></summary>
 
 서버 사양에 따라 다르지만, **단일 서버로 약 10,000~20,000개의 동시 연결**을 처리할 수 있습니다. 그 이상은 Redis 어댑터로 수평 확장해야 합니다. 연결 수보다 더 중요한 것은 **메시지 처리량**입니다. 모든 연결이 초당 10개의 메시지를 보내면 10,000 연결 기준으로 초당 100,000개의 메시지를 처리해야 합니다.
+
 </details>
 
 ---

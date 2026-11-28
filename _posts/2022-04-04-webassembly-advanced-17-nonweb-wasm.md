@@ -166,19 +166,25 @@ const plugin2 = await createPlugin(
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASM을 블록체인 스마트 컨트랙트에 사용할 수 있나요?</strong></summary>
+
 네, 가능합니다. Ethereum 2.0은 eWASM(Ethereum-flavored WebAssembly)을 채택하여 EVM(Ethereum Virtual Machine)을 대체할 계획입니다. eWASM은 EVM보다 (1) 컴파일이 2배 빠르고, (2) 다양한 언어(Rust, C, C++)로 컨트랙트 작성 가능, (3) 네이티브에 가까운 실행 속도를 제공합니다. Polkadot(Substrate), Cosmos, EOS, NEAR 등 다른 블록체인도 WASM 기반 스마트 컨트랙트를 사용합니다. WASM의 **결정적(Deterministic) 실행** 특성(동일한 입력 → 동일한 출력)이 블록체인 컨센서스에 이상적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 게임 엔진에서 WASM을 스크립팅 언어로 사용할 수 있나요?</strong></summary>
+
 네, 이미 사용되고 있습니다. Minecraft Bedrock Edition은 Add-on 시스템에서 WASM을 사용합니다. Unity는 WebGL 빌드 타겟에서 WASM을 사용하고, Unreal Engine도 HTML5 타겟에서 WASM을 지원합니다. 게임 스크립팅에서 WASM의 장점: (1) Lua보다 3~10배 빠른 실행 속도, (2) Rust로 작성된 모드는 메모리 안전성 보장, (3) 호스트 게임 엔진과의 격리로 크래시 방지. 단점: (1) Lua/C#보다 빌드 체인이 복잡함, (2) 핫 리로딩 지원이 제한적.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 데이터 파이프라인에서 WASM UDF가 Python UDF보다 나은 점은 무엇인가요?</strong></summary>
+
 WASM UDF(User Defined Function)는 데이터 파이프라인(예: Apache Spark, Flink, Kafka)에서 다음과 같은 이점이 있습니다: (1) **성능**: WASM UDF는 Python UDF보다 10~50배 빠름 (Python GIL 없음, JIT 컴파일), (2) **메모리**: Python UDF는 대량 데이터 처리 시 메모리 사용량이 2~5배 높음 (객체 오버헤드), (3) **의존성**: Python UDF는 모든 노드에 동일한 패키지 설치 필요, WASM UDF는 단일 바이너리만 배포. (4) **버전 관리**: Python UDF는 패키지 버전 충돌이 빈번하지만, WASM UDF는 완전히 격리됨. 단점: 복잡한 비즈니스 로직은 Python이 작성하기 더 쉬움.
+
 </details>
 
 ---

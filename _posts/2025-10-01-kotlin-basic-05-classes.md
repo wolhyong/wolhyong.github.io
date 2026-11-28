@@ -12,7 +12,6 @@ Kotlin의 클래스와 객체 시스템은 간결하고 안전하며 표현력�
 
 > **핵심 정리** · `class`로 클래스를 정의합니다. 프로퍼티는 자동 getter/setter를 생성합니다. 주 생성자는 클래스 헤더에 정의합니다. `open`으로 상속을 허용합니다. 인터페이스는 다중 구현을 지원합니다. `data class`로 데이터 모델을 정의합니다. `object`로 싱글톤을 생성합니다.
 
-
 ## 수업 목표
 
 - 클래스 정의와 사용법을 이해합니다.
@@ -361,39 +360,42 @@ handleResult(Loading)  // 로딩 중
 
 `sealed class`는 봉인 클래스를 정의합니다. 같은 파일 내에서만 서브클래스를 정의할 수 있습니다. `when` 표현식에서 모든 케이스를 처리할 수 있습니다. 상태 머신, 결과 처리에 유용합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 주 생성자와 보조 생성자 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 주 생성자를 우선 사용해야 합니다. 간결하며 프로퍼티를 동시에 정의할 수 있습니다. 보조 생성자는 여러 생성자가 필요할 때 사용합니다. 대부분의 경우 주 생성자로 충분합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> val과 var 프로퍼티 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `val`을 우선 사용해야 합니다. 불변성은 스레드 안전성을 높이며 버그를 줄입니다. 상태 변경이 필요할 때만 `var`를 사용합니다. 함수형 프로그래밍 원칙을 따르는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> data class는 언제 사용해야 하나요?</strong></summary>
 
 `data class`는 데이터 모델에 사용합니다. DTO, VO, 엔티티 등에 적합합니다. 불변 데이터 모델에 특히 유용합니다. 비즈니스 로직이 있는 클래스에는 사용하지 않는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> object와 companion object 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `object`는 싱글톤에 사용합니다. `companion object`는 정적 멤버에 사용합니다. `object`는 독립적인 싱글톤, `companion object`는 클래스와 연결된 정적 멤버입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> sealed class는 언제 사용해야 하나요?</strong></summary>
 
 `sealed class`는 제한된 계층 구조에 사용합니다. 상태 머신, 결과 처리, 이벤트 처리에 유용합니다. `when` 표현식에서 모든 케이스를 처리할 수 있습니다. 타입 안전성을 높입니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -411,7 +413,6 @@ handleResult(Loading)  // 로딩 중
 | **companion object** | 정적 멤버 | Java static |
 | **추상 클래스** | abstract class | 인스턴스화 불가 |
 | **sealed class** | 봉인 클래스 | when 완전성 |
-
 
 ## 다음 수업
 

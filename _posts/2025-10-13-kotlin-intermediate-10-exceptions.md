@@ -12,7 +12,6 @@ Kotlin의 예외 처리는 구조화된 에러 관리를 제공하며 리소스 
 
 > **핵심 정리** · `try-catch-finally`로 예외를 포착하고 처리합니다. `throw`로 예외를 발생시킵니다. 사용자 정의 예외는 `Exception`을 상속하여 정의합니다. `finally` 블록은 항상 실행됩니다. `use` 함수로 자동 리소스 해제를 제공합니다.
 
-
 ## 수업 목표
 
 - try-catch-finally를 사용할 수 있습니다.
@@ -239,39 +238,42 @@ try {
 
 Kotlin은 예외 필터를 직접 지원하지 않지만 `when`과 함께 사용하여 조건부 catch를 구현할 수 있습니다. 여러 예외 타입을 처리할 때 유용합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 예외 처리는 언제 사용해야 하나요?</strong></summary>
 
 예외 처리는 복구 가능한 에러에 사용합니다. 파일 없음, 네트워크 오류, 잘못된 입력 등. 프로그램 로직의 정상적인 흐름이 아닌 예외적인 상황에 사용합니다. 제어 흐름으로 예외를 사용해서는 안 됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> finally는 언제 사용해야 하나요?</strong></summary>
 
 `finally`는 리소스 정리가 필요할 때 사용합니다. 파일 닫기, 데이터베이스 연결 해제, 잠금 해제 등. 예외 발생 여부와 상관없이 실행되어야 하는 코드에 사용합니다. `use` 함수로 대체할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 사용자 정의 예외는 언제 정의해야 하나요?</strong></summary>
 
 사용자 정의 예외는 도메인 특정 에러가 필요할 때 정의합니다. 비즈니스 로직 에러, 애플리케이션 특정 상태 등. 표준 예외로 표현할 수 없는 에러에 사용합니다. `Exception`을 상속하여 정의합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> use 함수는 언제 사용해야 하나요?</strong></summary>
 
 `use` 함수는 `AutoCloseable`을 구현한 객체에 사용합니다. 파일, 데이터베이스 연결, 스트림 등. 더 간결하고 자동으로 `Dispose()`를 호출합니다. 대부분의 경우 `use` 함수를 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Nothing 타입은 언제 사용해야 하나요?</strong></summary>
 
 `Nothing` 타입은 절대 반환하지 않는 함수에 사용합니다. 예외를 발생하거나 무한 루프에 사용됩니다. 컴파일러가 코드 경로를 분석할 때 유용합니다. `fail` 함수 등에 사용됩니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -289,7 +291,6 @@ Kotlin은 예외 필터를 직접 지원하지 않지만 `when`과 함께 사용
 | **조건부 catch** | when 사용 | 여러 예외 타입 |
 | **cause** | 내부 예외 | 원인 추적 |
 | **printStackTrace** | 스택 트레이스 | 디버깅 |
-
 
 ## 다음 수업
 

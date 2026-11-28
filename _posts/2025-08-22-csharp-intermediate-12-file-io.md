@@ -12,7 +12,6 @@ C#의 파일 I/O 시스템은 파일과 디렉토리 작업을 위한 풍부한 
 
 > **핵심 정리** · `Stream`은 바이트 기반 추상화입니다. `StreamReader/Writer`는 텍스트 I/O를 제공합니다. `File`/`Directory` 클래스는 파일/디렉토리 작업을 제공합니다. 직렬화로 객체를 저장합니다. `System.Text.Json`으로 JSON 직렬화를 수행합니다.
 
-
 ## 수업 목표
 
 - Stream을 이해하고 사용할 수 있습니다.
@@ -381,39 +380,42 @@ class Program
 
 비동기 파일 I/O는 `File.WriteAllTextAsync`, `File.ReadAllTextAsync` 등의 메서드를 제공합니다. `StreamWriter`와 `StreamReader`도 비동기 메서드를 지원합니다. UI 스레드를 블로킹하지 않고 파일 I/O를 수행할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Stream과 StreamReader 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Stream`은 바이트 기반 I/O에 사용합니다. 이미지, 바이너리 파일 등. `StreamReader`는 텍스트 기반 I/O에 사용합니다. 텍스트 파일, CSV, JSON 등. 인코딩 처리가 필요하면 `StreamReader`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> File 클래스와 FileStream 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `File` 클래스는 간단한 파일 작업에 사용합니다. 전체 읽기/쓰기, 존재 확인 등. `FileStream`은 더 세밀한 제어가 필요할 때 사용합니다. 버퍼링, 파일 모드, 공유 모드 등. 대부분의 경우 `File` 클래스로 충분합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> BinaryFormatter는 왜 권장되지 않나요?</strong></summary>
 
 `BinaryFormatter`는 보안 문제가 있습니다. 역직렬화 시 임의 코드 실행이 가능합니다. .NET Core 이후에서는 기본적으로 제공되지 않습니다. 대신 `System.Text.Json`, `protobuf`, `MessagePack` 등을 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Path.Combine은 왜 사용해야 하나요?</strong></summary>
 
 `Path.Combine`은 플랫폼 독립적인 경로 조작을 제공합니다. Windows와 Linux의 경로 구분자(`\` vs `/`)를 자동으로 처리합니다. 하드코딩된 경로 구분자 대신 사용해야 합니다. 크로스 플랫폼 호환성을 보장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 비동기 파일 I/O는 언제 사용해야 하나요?</strong></summary>
 
 비동기 파일 I/O는 UI 애플리케이션이나 서버 애플리케이션에서 사용합니다. 스레드를 블로킹하지 않고 파일 I/O를 수행할 수 있습니다. 대용량 파일 처리에 유용합니다. `async`/`await` 패턴과 통합됩니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -429,7 +431,6 @@ class Program
 | **BinaryFormatter** | 바이너리 직렬화 | 보안 문제 |
 | **System.Text.Json** | JSON 직렬화 | 권장 방식 |
 | **비동기 I/O** | async 메서드 | 블로킹 없음 |
-
 
 ## 다음 수업
 

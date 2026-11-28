@@ -12,7 +12,6 @@ C#의 예외 처리는 구조화된 에러 관리를 제공하며 리소스 정�
 
 > **핵심 정리** · `try-catch-finally`로 예외를 포착하고 처리합니다. `throw`로 예외를 발생시킵니다. 사용자 정의 예외는 `Exception`을 상속하여 정의합니다. 예외 필터(`when`)로 조건부 catch를 지원합니다. `using` 문으로 자동 리소스 해제를 제공합니다.
 
-
 ## 수업 목표
 
 - try-catch-finally를 사용할 수 있습니다.
@@ -373,39 +372,42 @@ class Program
 
 `ArgumentNullException`은 null 인자를 검사할 때 사용합니다. `nameof(input)`으로 매개변수 이름을 자동으로 가져옵니다. `ArgumentException`은 일반적인 인자 유효성 검사에 사용됩니다. 표준 예외를 사용하여 일관성을 유지합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 예외 처리는 언제 사용해야 하나요?</strong></summary>
 
 예외 처리는 복구 가능한 에러에 사용합니다. 파일 없음, 네트워크 오류, 잘못된 입력 등. 프로그램 로직의 정상적인 흐름이 아닌 예외적인 상황에 사용합니다. 제어 흐름으로 예외를 사용해서는 안 됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> finally는 언제 사용해야 하나요?</strong></summary>
 
 `finally`는 리소스 정리가 필요할 때 사용합니다. 파일 닫기, 데이터베이스 연결 해제, 잠금 해제 등. 예외 발생 여부와 상관없이 실행되어야 하는 코드에 사용합니다. `using` 문으로 대체할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 사용자 정의 예외는 언제 정의해야 하나요?</strong></summary>
 
 사용자 정의 예외는 도메인 특정 에러가 필요할 때 정의합니다. 비즈니스 로직 에러, 애플리케이션 특정 상태 등. 표준 예외로 표현할 수 없는 에러에 사용합니다. `Exception`을 상속하여 정의합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 예외 필터는 왜 유용한가요?</strong></summary>
 
 예외 필터는 조건부 catch를 지원하여 더 세밀한 예외 처리가 가능합니다. 여러 catch 블록을 중첩하지 않고 조건을 추가할 수 있습니다. 로깅, 재시 로직 등에 유용합니다. C# 6.0부터 지원됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> using 문과 finally 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `using` 문은 `IDisposable`을 구현한 객체에 사용합니다. 더 간결하고 자동으로 `Dispose()`를 호출합니다. `finally`는 더 복잡한 정리 로직이 필요할 때 사용합니다. 대부분의 경우 `using` 문을 사용하는 것이 좋습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -422,7 +424,6 @@ class Program
 | **다시 throw** | throw | 스택 트레이스 보존 |
 | **ArgumentNullException** | null 인자 | nameof() |
 | **ArgumentException** | 잘못된 인자 | 유효성 검사 |
-
 
 ## 다음 수업
 

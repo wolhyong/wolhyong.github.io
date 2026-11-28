@@ -12,7 +12,6 @@ C#의 타입 시스템은 값 타입과 참조 타입으로 구분되며 메모�
 
 > **핵심 정리** · 값 타입은 스택에 값을 저장하며 int, float, bool, struct가 포함됩니다. 참조 타입은 힙에 객체를 저장하며 string, class, array가 포함됩니다. 박싱은 값 타입을 참조 타입으로 변환합니다. nullable은 값 타입에 null을 허용합니다. var는 타입 추론을 제공합니다.
 
-
 ## 수업 목표
 
 - 값 타입과 참조 타입의 차이를 이해합니다.
@@ -273,39 +272,42 @@ int jaggedValue = jagged[0][0];
 
 배열은 고정 크기의 컬렉션입니다. 단일 차원, 다차원, 가변 배열(jagged array)을 지원합니다. 인덱스로 요소에 접근합니다. 배열은 참조 타입이므로 힙에 할당됩니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 값 타입과 참조 타입 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 값 타입은 작고 단순한 데이터에 적합합니다: 좌표, 색상, 숫자. 스택 할당으로 빠르고 복사 비용이 적습니다. 참조 타입은 크고 복잡한 데이터에 적합합니다: 객체, 컬렉션, 문자열. 힙 할당이 필요하지만 유연하고 공유가 쉽습니다. 일반적으로 struct는 작은 데이터에, class는 큰 데이터에 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 박싱은 왜 피해야 하나요?</strong></summary>
 
 박싱은 성능 오버헤드를 유발합니다: (1) 힙 할당 (2) 값 복사 (3) 캐스트 검사. 반복적인 박싱/언박싱은 성능을 크게 저하합니다. 제네릭을 사용하여 박싱을 피할 수 있습니다: `List<int>` 대신 `ArrayList`를 사용하면 박싱이 발생합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> nullable 타입은 언제 사용해야 하나요?</strong></summary>
 
 nullable 타입은 값이 없음을 표현해야 할 때 사용합니다: 데이터베이스의 NULL 값, 선택적 매개변수, 계산 실패. `int?`는 0과 NULL을 구별할 수 있습니다. `bool?`는 true, false, null 세 가지 상태를 표현할 수 있습니다. 데이터베이스와 상호작용할 때 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> var는 언제 사용해야 하나요?</strong></summary>
 
 `var`는 타입이 명확할 때 사용합니다: `var person = new Person();`, `var list = new List<int>();`. 타입이 불명확하거나 가독성이 중요할 때는 명시적 타입을 사용합니다: `int count = GetCount();`. 팀 규칙을 따르는 것이 좋습니다. 일관성이 중요합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> string은 왜 불변인가요?</strong></summary>
 
 `string`이 불변인 이유: (1) **스레드 안전**: 불변이면 동시 접근이 안전합니다. (2) **해싱**: 불변이면 해시 코드가 일관됩니다. (3) **보안**: 문자열이 수정되지 않음을 보장합니다. 문자열 수정이 필요하면 `StringBuilder`를 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -320,7 +322,6 @@ nullable 타입은 값이 없음을 표현해야 할 때 사용합니다: 데이
 | **통합 타입 시스템** | 모든 타입은 object | 박싱 가능 |
 | **string** | 불변 문자열 | 힙 할당 |
 | **배열** | 고정 크기 컬렉션 | 참조 타입 |
-
 
 ## 다음 수업
 

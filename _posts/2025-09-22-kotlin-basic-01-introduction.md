@@ -12,7 +12,6 @@ Kotlin은 JetBrains가 설계한 현대적 프로그래밍 언어로 간결하�
 
 > **핵심 정리** · Kotlin은 JVM, Android, Native, JS를 지원합니다. 널 안전성, 확장 함수, 데이터 클래스, 코루틴을 제공합니다. Java와 100% 상호 운용 가능합니다. 간결하고 표현력이 풍부하며 안전합니다. Android 개발의 공식 언어입니다.
 
-
 ## 수업 목표
 
 - Kotlin의 철학과 설계 목표를 이해합니다.
@@ -211,39 +210,42 @@ val kotlinList = list.toList()
 
 Kotlin은 Java와 100% 상호 운용 가능합니다. Java 라이브러리를 Kotlin에서 사용할 수 있으며 Kotlin 코드를 Java에서 호출할 수 있습니다. 기존 Java 프로젝트에 점진적으로 도입할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Kotlin과 Java 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 Kotlin을 사용해야 합니다. 더 간결하고 안전하며 표현력이 풍부합니다. Android 개발에는 Kotlin이 필수적입니다. 기존 Java 프로젝트는 점진적으로 Kotlin으로 마이그레이션할 수 있습니다. 새 프로젝트는 Kotlin으로 시작하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 널 안전성은 왜 중요한가요?</strong></summary>
 
 널 안전성은 널 포인터 예외를 컴파일 타임에 방지합니다. 런타임 오류를 줄이며 코드 안정성을 높입니다. Java에서 가장 흔한 오류 중 하나인 NPE를 방지합니다. 안전한 코드를 작성하는 데 필수적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> val과 var 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `val`을 우선 사용해야 합니다. 불변성은 스레드 안전성을 높이며 버그를 줄입니다. 상태 변경이 필요할 때만 `var`를 사용합니다. 함수형 프로그래밍 원칙을 따르는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 코루틴은 언제 사용해야 하나요?</strong></summary>
 
 코루틴은 비동기 작업에 사용합니다. 네트워크 요청, 데이터베이스 쿼리, 파일 I/O 등. 스레드보다 가볍고 효율적입니다. 콜백 지옥을 피하며 동기 코드처럼 작성할 수 있습니다. Android 개발에 필수적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Kotlin Multiplatform은 언제 사용해야 하나요?</strong></summary>
 
 Kotlin Multiplatform은 여러 플랫폼에서 코드를 공유할 때 사용합니다. Android, iOS, Web, Desktop에서 공통 로직을 공유합니다. 비즈니스 로직 재사용에 유용합니다. 플랫폼별 코드는 분리해야 합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -261,7 +263,6 @@ Kotlin Multiplatform은 여러 플랫폼에서 코드를 공유할 때 사용합
 | **확장 함수** | 기능 확장 | 상속 없음 |
 | **코루틴** | 비동기 프로그래밍 | 가벼운 스레드 |
 | **Java 상호 운용** | 100% 호환 | 점진적 마이그레이션 |
-
 
 ## 다음 수업
 

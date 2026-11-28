@@ -12,7 +12,6 @@ C#은 Microsoft가 개발한 현대적 객체지향 프로그래밍 언어로 .N
 
 > **핵심 정리** · C#은 Anders Hejlsberg가 2000년에 개발한 객체지향 언어입니다. 소스 코드는 IL로 컴파일되며 JIT가 네이티브 코드로 변환합니다. CLR이 메모리 관리와 예외 처리를 담당합니다. NuGet으로 의존성을 관리하며 BCL이 풍부한 라이브러리를 제공합니다.
 
-
 ## 수업 목표
 
 - C#의 탄생 배경과 설계 철학을 이해합니다.
@@ -205,39 +204,42 @@ class Program
 
 BCL은 풍부한 표준 라이브러리를 제공합니다. `System.Collections.Generic`은 제네릭 컬렉션을, `System.Linq`는 LINQ를, `System.IO`는 파일 I/O를, `System.Threading.Tasks`는 비동기 작업을 제공합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> C#과 Java의 차이는 무엇인가요?</strong></summary>
 
 C#과 Java는 유사하지만 차이가 있습니다: (1) **플랫폼**: C#은 .NET, Java는 JVM. (2) **언어 기능**: C#은 더 많은 기능을 제공(프로퍼티, 이벤트, LINQ, async/await). (3) **생태계**: C#은 Microsoft 생태계, Java는 더 광범위한 생태계. (4) **성능**: C#은 더 나은 성능 최적화를 제공할 수 있습니다. (5) **진화 속도**: C#은 더 빠르게 진화합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> .NET과 .NET Framework의 차이는 무엇인가요?</strong></summary>
 
 .NET Framework는 Windows 전용이며 더 이상 개발되지 않습니다. .NET(이전 .NET Core)은 크로스 플랫폼이며 오픈 소스입니다. .NET 5+는 통합 플랫폼으로 Windows, Linux, macOS에서 실행됩니다. 새 프로젝트는 .NET을 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> JIT 컴파일은 왜 사용하나요?</strong></summary>
 
 JIT 컴파일은 런타임에 IL을 네이티브 코드로 변환합니다. 이는 다음 이점이 있습니다: (1) 플랫폼 독립성: IL은 플랫폼에 독립적입니다. (2) 최적화: 런타임 정보를 활용한 최적화가 가능합니다. (3) 코드 크기: IL은 네이티브 코드보다 작습니다. 단점은 시작 시간이 느릴 수 있습니다(AOT 컴파일로 해결).
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 가비지 컬렉터는 언제 실행되나요?</strong></summary>
 
 GC는 다음 조건에서 실행됩니다: (1) 힙 메모리가 부족할 때 (2) `GC.Collect()`로 명시적 호출 시 (3) 시스템 메모리 부족 시. 개발자는 GC 실행 시점을 제어할 수 없으며, `GC.Collect()`는 일반적으로 사용하지 않습니다. GC는 자동으로 최적화됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> nullable 참조 타입은 무엇인가요?</summary></summary>
 
 nullable 참조 타입은 참조 타입이 null일 수 있음을 명시적으로 표현합니다. `string?`는 null 가능한 문자열, `string`은 null 불가능한 문자열입니다. 컴파일러가 null 참조 가능성을 경고하여 `NullReferenceException`을 방지합니다. C# 8.0부터 도입되었습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -252,7 +254,6 @@ nullable 참조 타입은 참조 타입이 null일 수 있음을 명시적으로
 | **NuGet** | 패키지 매니저 | 의존성 관리 |
 | **BCL** | 기본 클래스 라이브러리 | 풍부한 표준 라이브러리 |
 | **.NET CLI** | 명령줄 도구 | dotnet 명령 |
-
 
 ## 다음 수업
 

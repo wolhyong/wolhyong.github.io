@@ -59,34 +59,39 @@ public class UserDAO {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Statement와 PreparedStatement 중 어떤 것을 사용해야 하나요?</strong></summary>
 
 **PreparedStatement**를 항상 사용하세요. 1) **SQL Injection 방지**: 바인딩된 파라미터가 SQL로 해석되지 않습니다. 2) **성능**: DBMS가 SQL을 미리 컴파일하고 실행 계획을 캐싱합니다. 3) **가독성**: 문자열 연결보다 파라미터 플레이스홀더(?)가 깔끔합니다. Statement는 동적 SQL이 정말 필요할 때만 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Connection Pool을 사용해야 하는 이유는 무엇인가요?</strong></summary>
 
 데이터베이스 연결(TCP 소켓 + 인증 + 세션)은 생성 비용이 매우 큽니다(일반적으로 20~50ms). 매 요청마다 새 연결을 생성하면 성능이 심각하게 저하됩니다. Connection Pool(HikariCP, Tomcat CP)은 **미리 연결을 생성해두고 재사용**하여 연결 생성 비용을 없앱니다. 동시 요청 수에 맞춰 풀 크기를 조정해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 트랜잭션 격리 수준은 어떻게 선택하나요?</strong></summary>
 
 **READ_COMMITTED**가 대부분의 애플리케이션에 적합한 기본값입니다. **SERIALIZABLE**은 데이터 정합성이 가장 높지만 동시성이 낮습니다. **REPEATABLE_READ**는 MySQL InnoDB의 기본값입니다. **READ_UNCOMMITTED**는 성능이 가장 좋지만 dirty read가 발생합니다. 격리 수준이 높을수록 락 범위가 증가하여 데드락 가능성도 높아집니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: ResultSet을 닫지 않으면 어떤 문제가 발생하나요?</strong></summary>
 
 ResultSet, Statement, Connection은 **명시적으로 닫지 않으면** 리소스 누수가 발생합니다. 데이터베이스 커서가 닫히지 않아 서버 메모리가 고갈되고, 결국 데이터베이스 연결 한계에 도달합니다. **try-with-resources**를 사용하여 모든 JDBC 리소스를 자동으로 닫으세요. `ResultSet`은 `Statement`가 닫힐 때 함께 닫히지만, 명시적으로 닫는 것이 안전합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Batch Insert를 어떻게 최적화하나요?</strong></summary>
 
 `PreparedStatement.addBatch()`와 `executeBatch()`를 사용하세요. 100~1000개 단위로 배치를 나누어 전송합니다. `rewriteBatchedInserts=true`(MySQL) 옵션을 추가하면 여러 INSERT 문이 하나의 SQL로 최적화됩니다. JDBC URL에 `?rewriteBatchedStatements=true`를 추가하세요. 배치 처리는 개별 INSERT보다 10~50배 빠를 수 있습니다.
+
 </details>
 
 ---

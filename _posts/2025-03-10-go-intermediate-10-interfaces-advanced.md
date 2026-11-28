@@ -76,34 +76,39 @@ func main() {
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 인터페이스의 nil 검사가 예상대로 동작하지 않는 이유는 무엇인가요?</strong></summary>
 
 인터페이스는 `(type, value)` 쌍으로, `nil`이려면 **둘 다 nil**이어야 합니다. `var s Stringer = (*User)(nil)`을 할당하면 `type`은 `*User`, `value`는 `nil`이므로 `s == nil`은 `false`입니다. 이는 함수가 `*User` 타입의 nil을 반환할 때 자주 발생하는 함정입니다: `func find() Stringer { var u *User = nil; return u }` — 반환값은 nil이 아닌 `(*User, nil)` 인터페이스입니다. 해결: 항상 `var s Stringer`를 명시적으로 nil로 선언하거나, 반환값을 `(Stringer, error)` 패턴으로 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 단일 메서드 인터페이스의 장점은 무엇인가요?</strong></summary>
 
 Go의 단일 메서드 인터페이스(io.Reader, io.Writer, http.Handler)는 인터페이스 분리 원칙(ISP)을 완벽히 따릅니다. 장점: (1) **조합성** — 여러 인터페이스를 조합하여 새로운 인터페이스를 만들 수 있음 (`ReadWriter`는 `Reader + Writer`). (2) **테스트 용이성** — 목(mock) 객체를 만들기 쉬움 (3) **데코레이터 패턴** — `bufio.NewReader(r io.Reader)`처럼 기존 구현을 감싸서 기능을 확장. (4) **유연성** — 함수가 필요한 기능의 최소 인터페이스만 받으면, 다양한 구현체를 수용할 수 있음. 대규모 인터페이스보다 여러 개의 작은 인터페이스가 Go의 철학에 더 적합합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 인터페이스를 사용한 의존성 주입의 일반적인 패턴은 무엇인가요?</strong></summary>
 
 Go에서 의존성 주입은 보통 생성자 함수 패턴을 사용합니다: `func NewService(db Database, logger Logger, cache Cache) *Service`. 인터페이스를 파라미터로 받으면 테스트 시 목(mock) 구현체를 주입할 수 있습니다. Wire(Google) 같은 DI 프레임워크도 있지만, Go 커뮤니티는 명시적 DI를 선호합니다. 구조체 임베딩과 인터페이스 조합으로 유연한 아키텍처를 만들 수 있습니다. 중요한 점은 "인터페이스는 소비자(호출자)가 정의한다"는 Go의 철학으로, 인터페이스는 사용하는 쪽에서 정의하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 인터페이스 분리 원칙과 Go의 관계는 무엇인가요?</strong></summary>
 
 인터페이스 분리 원칙(Interface Segregation Principle, ISP)은 "클라이언트는 자신이 사용하지 않는 메서드에 의존하면 안 된다"는 원칙입니다. Go의 인터페이스는 **암시적 구현**(implicit implementation)과 **덕 타이핑** 덕분에 ISP를 자연스럽게 따릅니다. 큰 인터페이스를 미리 정의할 필요 없이, 필요한 메서드만 있는 작은 인터페이스를 각 사용처에서 정의할 수 있습니다. `io.Reader`(Read 메서드 하나)가 대표적인 예입니다. Go에서는 "interface should be as small as possible"이 원칙입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: itab이 캐싱되는 방식은 어떻게 되나요?</strong></summary>
 
 `itab`은 `(interface_type, concrete_type)` 쌍에 대해 한 번 생성되면 전역 itab 테이블에 캐싱됩니다. 캐시는 해시 테이블로 구현되어 O(1) 조회가 가능합니다. 따라서 처음 인터페이스 변환 시 itab 생성 비용이 들지만, 이후에는 캐시된 itab을 재사용하여 거의 무료입니다. `itab`에는 인터페이스의 각 메서드에 대한 함수 포인터가 저장되어 있어, 인터페이스 메서드 호출 시 itab에서 직접 함수 주소를 찾아 호출합니다. 이는 리플렉션(reflect)보다 훨씬 빠릅니다.
+
 </details>
 
 ## 요약

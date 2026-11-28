@@ -64,34 +64,39 @@ $admin = User::createAdmin('Bob');
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP에서 인터페이스와 추상 클래스의 차이는 무엇인가요?</strong></summary>
 
 **인터페이스**는 메서드 시그니처만 정의하고 구현은 없습니다. 다중 상속이 가능하며(클래스 하나가 여러 인터페이스 구현), 프로퍼티를 가질 수 없습니다(PHP 8.4+에서 상수는 가능). **추상 클래스**는 구현된 메서드와 구현되지 않은 추상 메서드를 모두 가질 수 있습니다. 단일 상속만 가능하고, 프로퍼티를 가질 수 있습니다. 행동 규약(contract)은 인터페이스로, 기본 구현을 제공하는 템플릿은 추상 클래스로 정의하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 트레이트의 메서드 충돌은 어떻게 해결하나요?</strong></summary>
 
 트레이트에서 동일한 메서드명이 충돌하면 `insteadof`와 `as` 연산자로 해결합니다: `use TraitA, TraitB { TraitA::method insteadof TraitB; TraitB::method as aliasedMethod; }`. `insteadof`는 우선순위를 지정하고, `as`는 별칭을 만들어 접근을 허용합니다. 트레이트는 컴파일 타임에 클래스로 복사(Copy)되므로 런타임 성능 영향이 거의 없습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 의존성 주입(DI)이 필요한 이유는 무엇인가요?</strong></summary>
 
 의존성 주입은 **결합도를 낮추고 테스트 용이성을 높입니다**. `new` 키워드로 객체를 직접 생성하면 클래스 간 강한 결합이 생겨 테스트에서 목(mock) 객체로 대체할 수 없습니다. DI 컨테이너는 생성자의 타입 힌트를 ReflectionClass로 분석하여 자동으로 의존성을 주입합니다. 프레임워크(Laravel, Symfony)의 DI 컨테이너는 서비스 등록, 자동 와이어링, 싱글톤 관리까지 제공합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP 8의 enum은 어떻게 동작하나요?</strong></summary>
 
 PHP 8.1+의 `enum`은 클래스와 유사하게 구현되지만, 제한된 인스턴스 집합을 가집니다. **Pure enum**은 상수 기반으로 동작하고, **Backed enum**은 int/string 값을 가집니다. 내부적으로 enum은 `UnitEnum`/`BackedEnum` 인터페이스를 구현하는 특별한 클래스로 컴파일됩니다. `tryFrom()`으로 안전하게 값을 매핑하고, `from()`은 잘못된 값에 ValueError를 던집니다. switch/match와 함께 사용하면 완전성 검사가 가능합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: readonly 프로퍼티(PHP 8.1+)의 동작 방식은 무엇인가요?</strong></summary>
 
 `readonly` 프로퍼티는 선언된 클래스의 `__construct()` 내에서만 한 번 설정할 수 있습니다. 이후에는 읽기만 가능하고 쓰기는 불가능합니다. 내부적으로 `zend_property_info`의 플래그에 `ZEND_ACC_READONLY`가 설정됩니다. 할당 시도 시 엔진 레벨에서 예외가 발생하므로, getter 없이 `$user->name`으로 안전하게 읽을 수 있습니다. PHP 8.2+에서는 `readonly` 클래스도 선언 가능합니다(모든 프로퍼티가 자동 readonly).
+
 </details>
 
 ---

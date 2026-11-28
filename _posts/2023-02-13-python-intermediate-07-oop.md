@@ -87,7 +87,6 @@ class MyClass:
     def method(self):
         return self.x
 
-
 # 내부적으로 이렇게 실행됨:
 MyClass = type('MyClass', (object,), {'x': 10, 'method': lambda self: self.x})
 ```
@@ -352,7 +351,6 @@ obj = OldWay(10)
 obj.set_value(20)      # 메서드 호출 — 덜 직관적
 print(obj.get_value()) # 20
 
-
 # @property를 사용한 경우
 class NewWay:
     def __init__(self, value):
@@ -421,34 +419,39 @@ super()는 두 개의 인자를 받습니다:
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
-<summary><strong>Q: `__init__`과 `__new__`의 차이는 무엇인가요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>__init__</code>과 <code>__new__</code>의 차이는 무엇인가요?</strong></summary>
 
 `__new__`는 **클래스 메서드**로, 새 인스턴스를 생성하여 반환합니다. `__init__`은 **인스턴스 메서드**로, 생성된 인스턴스를 초기화합니다. 즉 `__new__`가 객체를 만들고, `__init__`이 그 객체를 설정합니다. 불변 객체(int, str, tuple)의 서브클래스를 만들 때 `__new__`를 오버라이드해야 합니다. 일반적인 사용에서는 `__init__`만 구현하면 됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 다중 상속을 사용해도 되나요?</strong></summary>
 
 Python은 다중 상속을 지원하지만, 신중하게 사용해야 합니다. MRO가 복잡해지고 예기치 않은 동작이 발생할 수 있습니다. 다중 상속보다 **Mixin** 패턴(특정 기능을 추가하는 작은 클래스)이나 **컴포지션**(has-a 관계)을 우선 고려하세요. 다중 상속이 필요한 경우 다이아몬드 상속 구조에서 MRO의 C3 선형화가 올바른 순서로 메서드를 호출하는지 확인해야 합니다.
+
 </details>
 
-<details>
-<summary><strong>Q: `@staticmethod`와 `@classmethod`의 차이는 무엇인가요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>@staticmethod</code>와 <code>@classmethod</code>의 차이는 무엇인가요?</strong></summary>
 
 `@classmethod`는 자동으로 클래스(cls)를 첫 인자로 받습니다. 클래스 변수에 접근하거나, 대체 생성자를 만들 때 사용합니다. `@staticmethod`는 self나 cls를 받지 않는 일반 함수입니다. 클래스 이름 공간에 있을 뿐 객체나 클래스와 상호작용하지 않습니다. `@classmethod`는 상속 시 올바른 클래스가 전달되므로 더 유연합니다.
+
 </details>
 
-<details>
-<summary><strong>Q: `__slots__`은 무엇이고 왜 사용하나요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: <code>__slots__</code>은 무엇이고 왜 사용하나요?</strong></summary>
 
 `__slots__`은 클래스의 인스턴스가 가질 수 있는 속성을 제한합니다. `__dict__` 대신 고정된 크기의 배열을 사용하므로 **메모리를 50~70% 절약**하고 속성 접근 속도도 약 10% 향상됩니다. 수백만 개의 인스턴스를 생성하는 데이터 클래스에 유용합니다. 단, `__slots__`에 없는 속성은 동적으로 추가할 수 없고, 다중 상속에서 충돌이 발생할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 매직 메서드를 모두 구현해야 하나요?</strong></summary>
 
 아니요. 필요한 것만 구현하면 됩니다. `__repr__`은 디버깅에 유용하므로 거의 항상 구현하는 것이 좋습니다. `__str__`은 `print()`에서 사용됩니다. 연산자가 필요할 때만 `__add__`, `__eq__` 등을 구현하면 됩니다. `functools.total_ordering` 데코레이터를 사용하면 `__eq__`와 `__lt__`만으로 나머지 비교 연산자를 자동 생성할 수 있습니다.
+
 </details>
 
 ---

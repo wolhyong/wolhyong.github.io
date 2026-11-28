@@ -12,7 +12,6 @@ Rust의 비동기 프로그래밍은 제로-cost 추상화로 높은 성능과 �
 
 > **핵심 정리** · `Future` 트레이트는 비동기 연산을 표현하며 `poll` 메서드로 진행 상태를 확인합니다. `async/await`는 비동기 코드를 동기 코드처럼 작성하게 합니다. `Tokio`는 비동기 런타임으로 태스크 스케줄링과 I/O를 제공합니다. 비동기 I/O는 논블로킹으로 스레드를 효율적으로 사용합니다.
 
-
 ## 수업 목표
 
 - Future 트레이트의 동작을 이해합니다.
@@ -322,39 +321,42 @@ async fn main() {
 
 `?` 연산자는 비동기 함수에서도 에러를 전파합니다. 비동기 체이닝에서 에러 처리를 간소화합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> async/await는 스레드와 어떻게 다른가요?</strong></summary>
 
 `async/await`는 스레드 기반이 아닌 이벤트 루프 기반입니다. 단일 스레드에서 수천 개의 동시 작업을 처리할 수 있습니다. 스레드는 OS 스레드로 비용이 높지만, 태스크는 가볍습니다. I/O 바운드 작업에 매우 효율적이지만 CPU 바운드 작업에는 스레드 풀이 필요할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Tokio는 왜 필요한가요?</strong></summary>
 
 Tokio는 비동기 런타임으로 태스크 스케줄링, 타이머, I/O를 제공합니다. `async` 함수는 런타임 없이 실행할 수 없습니다. Tokio는 가장 인기 있는 런타임으로 생태계가 풍부합니다. 다른 런타임도 있지만 Tokio를 사용하는 것이 일반적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 비동기 코드는 언제 사용해야 하나요?</strong></summary>
 
 비동기 코드는 I/O 바운드 작업에 적합합니다: 네트워크 요청, 파일 I/O, 데이터베이스 쿼리. CPU 바운드 작업에는 스레드 풀이 더 적합할 수 있습니다. 동시성이 높고 대기 시간이 긴 작업에 비동기 코드를 사용하면 스레드를 효율적으로 사용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> async 함수는 언제 실행되나요?</strong></summary>
 
 `async` 함수가 호출되면 `Future`가 즉시 반환되지만 실제 실행은 런타임에서 폴링될 때 시작됩니다. 첫 번째 `.await`에서 실제 실행이 시작됩니다. 런타임이 없으면 `Future`는 절대 실행되지 않습니다. `#[tokio::main]` 또는 런타임 설정이 필요합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> select!는 어떻게 동작하나요?</strong></summary>
 
 `select!`는 여러 비동기 작업을 동시에 기다리며 먼저 완료되는 것을 반환합니다. 내부적으로 각 작업을 폴링하고 완료된 작업을 선택합니다. 채널 수신, 타이머, 여러 Future를 동시에 기다릴 때 사용됩니다. 런타임에 따라 구현이 다를 수 있습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -368,7 +370,6 @@ Tokio는 비동기 런타임으로 태스크 스케줄링, 타이머, I/O를 제
 | **타이머** | 비동기 대기 | sleep, interval |
 | **join!** | 동시 실행 | 모두 완료 대기 |
 | **select!** | 첫 완료 대기 | 여러 작업 중 선택 |
-
 
 ## 다음 수업
 

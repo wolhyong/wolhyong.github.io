@@ -12,7 +12,6 @@ C# LINQ의 고급 기능은 복잡한 데이터 처리를 간결하고 가독성
 
 > **핵심 정리** · 쿼리 식은 SQL과 유사한 문법을 제공합니다. `GroupBy`로 그룹화하고 `Join`으로 조인을 수행합니다. `Aggregate`로 집계를 수행합니다. `Take`, `Skip`로 파티션을 수행합니다. `SelectMany`로 중첩 컬렉션을 평탄화합니다. 지연 실행으로 성능을 최적화합니다.
 
-
 ## 수업 목표
 
 - 쿼리 식을 이해하고 사용할 수 있습니다.
@@ -381,39 +380,42 @@ class Program
 
 쿼리 합성은 여러 LINQ 연산을 체이닝하는 것입니다. 각 연산은 지연 실행되며 최종적으로 최적화된 쿼리가 생성됩니다. 가독성과 성능을 모두 제공합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 쿼리 식과 메서드 구문 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 쿼리 식은 복잡한 쿼리(조인, 그룹화)에 더 가독성이 좋습니다. 메서드 구문은 간단한 쿼리에 더 간결합니다. 기능적으로 동일하며 선호에 따라 선택합니다. 혼합해서 사용할 수도 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 지연 실행은 왜 중요한가요?</strong></summary>
 
 지연 실행은 다음 이점이 있습니다: (1) 성능 최적화: 필요할 때만 실행 (2) 쿼리 조합: 여러 쿼리를 하나로 최적화 (3) 무한 시퀀스: 무한 시퀀스를 표현 가능. 즉시 실행이 필요하면 `ToList`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> SelectMany는 언제 사용해야 하나요?</strong></summary>
 
 `SelectMany`는 중첩 컬렉션을 평탄화할 때 사용합니다. 예: `List<List<int>>`를 `List<int>`로 변환. 관계형 데이터 조인 후 평탄화에도 사용됩니다. `Select`는 1:1 변환, `SelectMany`는 1:N 변환에 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Join과 GroupJoin의 차이는 무엇인가요?</strong></summary>
 
 `Join`은 내부 조인으로 일치하는 요소만 반환합니다. `GroupJoin`은 왼쪽 요소에 해당하는 오른쪽 요소 그룹을 반환합니다. `GroupJoin` + `SelectMany`로 왼쪽 조인을 구현할 수 있습니다. SQL의 INNER JOIN과 LEFT JOIN과 유사합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> LINQ 성능을 어떻게 최적화하나요?</strong></summary>
 
 LINQ 최적화 방법: (1) 지연 실행 활용 (2) 쿼리 합성 (3) 인덱스 활용 (4) 필요한 데이터만 선택 (5) 즉시 실행 최소화. 대용량 데이터 처리에 특히 중요합니다. `AsParallel`로 병렬 처리도 고려할 수 있습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -431,7 +433,6 @@ LINQ 최적화 방법: (1) 지연 실행 활용 (2) 쿼리 합성 (3) 인덱스 
 | **지연 실행** | 필요 시 실행 | 성능 최적화 |
 | **즉시 실행** | ToList, ToArray | 강제 실행 |
 | **쿼리 합성** | 체이닝 | 최적화 |
-
 
 ## 다음 수업
 

@@ -53,34 +53,39 @@ public class Dog extends Animal {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 추상 클래스와 인터페이스 중 어떤 것을 선택해야 하나요?</strong></summary>
 
 **공통 상태(필드)**가 있고 관련 클래스들의 기본 구현을 제공하려면 **추상 클래스**를 선택하세요. **완전한 추상화**(다중 상속)가 필요하거나 전혀 다른 클래스들이 같은 계약을 구현해야 한다면 **인터페이스**를 선택하세요. Java 8+에서는 인터페이스에 `default` 메서드로 기본 구현을 제공할 수 있어 차이가 좁아졌습니다. 일반적으로는 인터페이스를 우선 고려하는 것이 유연성에서 유리합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: instanceof 사용이 안전하지 않은 이유는 무엇인가요?</strong></summary>
 
 과도한 `instanceof` 사용은 **다형성의 이점을 무력화**하고, OCP(개방-폐쇄 원칙)를 위반합니다. 새로운 서브클래스가 추가될 때마다 모든 instanceof 코드를 수정해야 합니다. `instanceof`가 자주 필요하다면, 메서드 오버라이딩이나 방문자 패턴으로 구조를 개선할 수 있습니다. Java 16+의 `Pattern Matching for instanceof`는 타입 검사와 캐스팅을 결합하여 더 안전한 사용을 가능하게 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: super()는 왜 생성자의 첫 줄에만 와야 하나요?</strong></summary>
 
 부모 클래스의 초기화가 **자식 클래스 초기화보다 먼저** 완료되어야 하기 때문입니다. 자식 클래스가 부모의 필드나 메서드에 접근할 때, 부모 객체가 완전히 초기화되지 않은 상태면 오류가 발생합니다. 만약 `super()`가 첫 줄이 아니라면, 자식의 필드가 부모보다 먼저 초기화되는 역전 현상이 발생할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 상속보다 컴포지션(composition)이 더 좋은 이유는 무엇인가요?</strong></summary>
 
 상속은 **캡슐화를 깨고**(부모의 내부 구현에 의존), **강한 결합**을 만듭니다. 컴포지션은 "has-a" 관계로 **약한 결합**과 **높은 유연성**을 제공합니다. "is-a" 관계가 명확하고 부모의 구현이 안정적일 때만 상속을 사용하세요. 대부분의 경우 `private` 필드로 포함시키고 필요한 메서드만 위임하는 컴포지션이 더 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Java는 왜 다중 상속을 지원하지 않나요?</strong></summary>
 
 **다이아몬드 문제** 때문입니다. 두 부모 클래스가 같은 메서드를 가질 때, 자식이 어떤 부모의 메서드를 상속받을지 모호해집니다. C++은 가상 상속으로 해결하지만 복잡성이 증가합니다. Java는 인터페이스(Java 8+ default 메서드)로 다중 상속의 이점을 제공하면서, 명시적 재정의를 통해 모호성을 해결합니다.
+
 </details>
 
 ---

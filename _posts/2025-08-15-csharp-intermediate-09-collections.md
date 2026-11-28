@@ -12,13 +12,12 @@ C#의 컬렉션과 LINQ는 데이터 처리를 위한 강력하고 타입 안전
 
 > **핵심 정리** · `List<T>`는 동적 배열입니다. `Dictionary<TKey, TValue>`는 키-값 쌍을 저장합니다. `HashSet<T>`는 중복 없는 집합입니다. `Queue<T>`는 FIFO 큐입니다. `Stack<T>`는 LIFO 스택입니다. LINQ는 통합 쿼리 언어로 컬렉션을 쿼리합니다. 지연 실행으로 성능을 최적화합니다.
 
-
 ## 수업 목표
 
-- List<T>의 사용법을 이해합니다.
-- Dictionary<TKey, TValue>의 사용법을 이해합니다.
-- HashSet<T>의 사용법을 이해합니다.
-- Queue<T>와 Stack<T>를 이해합니다.
+- List&lt;T&gt;의 사용법을 이해합니다.
+- Dictionary&lt;TKey, TValue&gt;의 사용법을 이해합니다.
+- HashSet&lt;T&gt;의 사용법을 이해합니다.
+- Queue&lt;T&gt;와 Stack&lt;T&gt;를 이해합니다.
 - LINQ 메서드 구문을 이해합니다.
 - LINQ 쿼리 구문을 이해합니다.
 - 지연 실행을 이해합니다.
@@ -404,56 +403,58 @@ class Program
 
 LINQ는 지연 실행을 지원합니다. 쿼리를 정의할 때 즉시 실행되지 않으며 실제로 결과가 필요할 때 실행됩니다. `ToList`, `ToArray`, `Count` 등의 메서드는 즉시 실행을 강제합니다. 지연 실행은 성능 최적화와 쿼리 조합에 유용합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> List와 배열 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `List<T>`는 동적 크기가 필요할 때 사용합니다. 크기가 런타임에 변경될 수 있으며 `Add`, `Remove` 등의 메서드를 제공합니다. 배열은 고정 크기가 필요할 때 사용합니다. 더 빠르지만 크기가 고정됩니다. 대부분의 경우 `List<T>`를 사용하는 것이 편리합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Dictionary와 List 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Dictionary<TKey, TValue>`는 키-값 쌍이 필요할 때 사용합니다. 키로 빠르게 값을 조회할 수 있습니다. `List<T>`는 순서가 중요하거나 인덱스로 접근할 때 사용합니다. 키 조회가 필요하면 `Dictionary`, 순서가 필요하면 `List`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> LINQ 메서드 구문과 쿼리 구문 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 메서드 구문은 체이닝에 적합하며 간단한 쿼리에 좋습니다. 쿼리 구문은 복잡한 쿼리(조인, 그룹화)에 더 가독성이 좋습니다. 기능적으로 동일하며 선호에 따라 선택합니다. 혼합해서 사용할 수도 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 지연 실행은 왜 중요한가요?</strong></summary>
 
 지연 실행은 다음 이점이 있습니다: (1) 성능 최적화: 필요할 때만 실행 (2) 쿼리 조합: 여러 쿼리를 하나로 최적화 (3) 무한 시퀀스: 무한 시퀀스를 표현 가능. 즉시 실행이 필요하면 `ToList`, `ToArray`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> HashSet과 List 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `HashSet<T>`는 중복을 방지하고 멤버십 테스트가 필요할 때 사용합니다. `List<T>`는 순서가 중요하거나 중복을 허용할 때 사용합니다. 중복을 방지하려면 `HashSet`, 순서를 유지하려면 `List`를 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
 | 개념 | 설명 | 특징 |
 |------|------|------|
-| **List<T>** | 동적 배열 | Add, Remove, LINQ |
-| **Dictionary<K,V>** | 키-값 쌍 | O(1) 조회 |
-| **HashSet<T>** | 중복 없는 집합 | Union, Intersect |
-| **Queue<T>** | FIFO 큐 | Enqueue, Dequeue |
-| **Stack<T>** | LIFO 스택 | Push, Pop |
+| **List&lt;T&gt;** | 동적 배열 | Add, Remove, LINQ |
+| **Dictionary&lt;K,V&gt;** | 키-값 쌍 | O(1) 조회 |
+| **HashSet&lt;T&gt;** | 중복 없는 집합 | Union, Intersect |
+| **Queue&lt;T&gt;** | FIFO 큐 | Enqueue, Dequeue |
+| **Stack&lt;T&gt;** | LIFO 스택 | Push, Pop |
 | **LINQ** | 통합 쿼리 언어 | 메서드/쿼리 구문 |
 | **Where** | 필터링 | 조건 만족 |
 | **Select** | 변환 | 프로젝션 |
 | **OrderBy** | 정렬 | 순서 변경 |
 | **GroupBy** | 그룹화 | 집계 |
 | **지연 실행** | 필요 시 실행 | 성능 최적화 |
-
 
 ## 다음 수업
 

@@ -452,24 +452,32 @@ print(x == 42)  # 권장
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
-<summary><strong>Q: Python에서 `is`와 `==`의 차이는 무엇인가요?</strong></summary>
+<details markdown="1">
+<summary><strong>Q: Python에서 <code>is</code>와 <code>==</code>의 차이는 무엇인가요?</strong></summary>
+
 `is`는 객체의 **메모리 주소(정체성)**를 비교하고, `==`는 객체의 **값(동등성)**을 비교합니다. `a is b`는 `id(a) == id(b)`와 같습니다. 정수처럼 작은 불변 객체는 CPython이 재사용하지만, 큰 객체나 가변 객체는 각각 다른 주소를 가집니다. None 체크에는 항상 `is`를 사용하는 것이 관용구입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 문자열 연결에는 왜 join을 사용하라고 하나요?</strong></summary>
+
 파이썬에서 `+`로 문자열을 연결하면 매번 **새 문자열 객체**가 생성되고 기존 문자열이 모두 복사됩니다. 100,000개의 문자열을 `+`로 연결하면 약 5,000ms가 걸리지만, `"".join(list)`는 한 번에 메모리를 할당하고 복사하여 약 10ms만 걸립니다. O(n) vs O(n²)의 차이입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 리스트와 튜플의 성능 차이는 얼마나 되나요?</strong></summary>
+
 튜플은 **불변**이므로 생성 후 메모리가 고정되고 크기가 더 작습니다(리스트의 50~70%). 접근 속도는 비슷하지만, 튜플은 딕셔너리 키로 사용할 수 있고 해시 가능합니다. 반면 리스트는 가변적이어서 추가 메모리(over-allocation)를 미리 확보합니다. 100만 개 요소 기준으로 튜플이 약 30% 적은 메모리를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Python의 작은 정수 캐싱 범위는 왜 -5부터 256인가요?</strong></summary>
+
 이 범위는 Python이 가장 자주 사용하는 정수 값들입니다. ASCII 문자(0-127), 바이트 값(0-255), 그리고 작은 음수(-5에서 0)를 포함합니다. CPython 소스코드에서 `_PyLong_Init()` 함수가 시작 시 이 범위의 정수 262개를 미리 생성합니다. 257 이상의 정수는 리터럴이라도 일반적으로 매번 새 객체를 생성합니다.
+
 </details>
 
 ---

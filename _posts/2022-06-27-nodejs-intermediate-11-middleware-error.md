@@ -511,7 +511,7 @@ process.on('unhandledRejection', (reason) => {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>미들웨어 순서가 정말 그렇게 중요한가요?</strong></summary>
 
 **매우 중요합니다.** Express는 미들웨어가 등록된 순서대로 실행됩니다. 가장 흔한 실수:
@@ -531,18 +531,21 @@ process.on('unhandledRejection', (reason) => {
 8. 404 처리기
 9. 글로벌 에러 처리기 (마지막!)
 ```
+
 </details>
 
-<details>
-<summary><strong>`process.exit(1)`을 호출하면 안전한가요?</strong></summary>
+<details markdown="1">
+<summary><strong><code>process.exit(1)</code>을 호출하면 안전한가요?</strong></summary>
 
 프로그래머 버그(프로그래밍 버그)의 경우에만 호출해야 합니다. 운영 에러는 예외입니다. `process.exit(1)`을 호출한 후에는 **프로세스 매니저(PM2, Docker, Kubernetes)**가 자동으로 프로세스를 재시작합니다. 단, `process.exit(1)` 전에는 반드시 Graceful Shutdown을 수행해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>모든 에러를 AppError로 처리해야 하나요?</strong></summary>
 
 AppError는 **예측 가능한 에러**를 처리하기 위한 것입니다. 예측 불가능한 에러(null 참조, 타입 에러)는 글로벌 에러 핸들러가 `isOperational = false`로 처리합니다. 모든 에러를 AppError로 만들려고 하면 오히려 코드가 복잡해집니다. **예측 가능한 에러만** AppError로 처리하고, 나머지는 글로벌 핸들러에 맡기세요.
+
 </details>
 
 ---

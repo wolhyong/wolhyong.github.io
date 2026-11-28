@@ -454,22 +454,24 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 ## 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>REST API에서 모든 응답을 200 OK로 통일해도 되나요?</strong></summary>
 
 기술적으로는 가능하지만 **강력히 권장하지 않습니다**. 상태 코드는 클라이언트가 응답을 어떻게 처리할지 결정하는 첫 번째 신호입니다. 201 Created는 "리소스가 생성되었음", 204 No Content는 "삭제 성공"을 즉시 알려줍니다. 상태 코드를 정확히 사용하면 클라이언트 코드가 더 간결해지고 오류 처리도 명확해집니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>HATEOAS를 꼭 구현해야 하나요?</strong></summary>
 
 엄밀한 REST(로이 필딩의 원본 논문 기준)에서는 HATEOAS가 필수입니다. 그러나 실무에서는 **API 버저닝과 문서화**가 더 중요하게 여겨집니다. 대부분의 API는 "RESTful"이지만 완전한 REST(Level 3)까지 도달하지는 않습니다. 필요한 수준:
 - Level 1 (리소스 기반): 기본
 - Level 2 (HTTP 메서드 + 상태 코드): 대부분의 API가 여기
 - Level 3 (HATEOAS): 바람직하지만 선택
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>API 버저닝은 어떻게 해야 하나요?</strong></summary>
 
 가장 널리 사용되는 방식은 **URL 경로 기반 버저닝**입니다:
@@ -482,9 +484,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 Accept: application/vnd.api.v1+json
 ```
 URL 방식이 직관적이고 캐싱이 쉬워 실무에서 더 많이 사용됩니다. 버전은 **하위 호환성을 깨는 변경**이 있을 때만 올려야 합니다. 새로운 필드를 추가하는 것은 버전을 올리지 않아도 됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>API 응답에 어떤 필드를 포함해야 하나요?</strong></summary>
 
 최소한 다음 세 가지를 포함하는 것을 권장합니다:
@@ -492,6 +495,7 @@ URL 방식이 직관적이고 캐싱이 쉬워 실무에서 더 많이 사용됩
 2. **data**: 실제 응답 데이터
 3. **error**: 오류 발생 시 오류 정보
 4. **pagination**: 목록 조회 시 페이지 정보 (선택)
+
 </details>
 
 ---

@@ -658,22 +658,25 @@ app.listen(PORT, () => {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Helmet만 사용하면 모든 보안 문제가 해결되나요?</strong></summary>
 
 아니요. Helmet은 HTTP 헤더 보안만 담당합니다. SQL Injection, XSS, CSRF, 인증/인가 취약점 등 다른 공격 벡터는 별도로 방어해야 합니다. Helmet은 전체 보안 전략의 첫 번째 방어선(HTTP 헤더)일 뿐이며, 나머지 방어선(입력 검증, 출력 이스케이프, 접근 제어, 암호화)은 모두 직접 구현해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Salt rounds를 너무 높게 설정하면 어떻게 되나요?</strong></summary>
 
 응답 시간이 증가합니다. rounds=14면 로그인 요청 하나에 500ms가 소요되어, 100명이 동시 로그인하면 50초가 걸립니다. rounds=12가 보안과 성능의 최적 균형점입니다. rounds=10은 추천하지 않습니다. GPU 기반 Brute Force 공격(예: Hashcat)으로 rounds=10을 초당 수백만 회까지 시도할 수 있기 때문입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>JWT는 어디에 저장해야 하나요?</strong></summary>
 
 가장 안전한 방법은 **httpOnly, Secure, SameSite 쿠키**에 저장하는 것입니다. localStorage에 저장하면 XSS 공격 하나로 모든 토큰이 탈취됩니다. 다만 쿠키에 저장하면 CSRF 방어가 필요하므로, SameSite=Strict 설정으로 CSRF를 함께 방어하는 것이 좋습니다.
+
 </details>
 
 ## 요약

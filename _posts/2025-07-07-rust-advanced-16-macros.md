@@ -12,7 +12,6 @@ Rust의 매크로 시스템은 컴파일 타임에 코드를 생성하여 런타
 
 > **핵심 정리** · 선언형 매크로는 `macro_rules!`로 패턴 매칭 기반 코드 생성을 수행합니다. 절차형 매크로는 `TokenStream`을 조작하여 코드를 생성합니다. derive 매크로는 `#[derive]` 속성으로 트레이트 구현을 자동화합니다. 매크로는 컴파일 타임에 확장되어 런타임 오버헤드가 없습니다.
 
-
 ## 수업 목표
 
 - 선언형 매크로를 정의하고 사용할 수 있습니다.
@@ -278,39 +277,42 @@ struct Person {
 
 `serde`의 derive 매크로는 구조체에 직렬화/역직렬화 코드를 자동으로 생성합니다. 수백 줄의 코드를 한 줄로 대체할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 선언형 매크로와 절차형 매크로의 차이는 무엇인가요?</strong></summary>
 
 선언형 매크로는 `macro_rules!`로 패턴 매칭 기반 코드 생성을 수행합니다. 간단한 경우에 적합하며 추가 의존성이 필요 없습니다. 절차형 매크로는 함수처럼 입력을 처리하여 코드를 생성합니다. 더 강력한 파싱 기능을 제공하지만 `syn`, `quote` 등의 의존성이 필요합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 매크로는 언제 사용해야 하나요?</strong></summary>
 
 매크로는 다음 경우에 사용합니다: (1) 반복적인 코드를 줄일 때 (2) 도메인 특화 언어(DSL)을 만들 때 (3) 컴파일 타임 검사가 필요할 때 (4) 제네릭으로 표현할 수 없을 때. 과도한 사용은 코드를 읽기 어렵게 만들 수 있으므로 신중하게 사용해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> derive 매크로는 어떻게 구현하나요?</strong></summary>
 
 derive 매크로는 `#[proc_macro_derive]` 속성으로 구현합니다. `DeriveInput`을 파싱하여 구조체 정보를 얻고, `quote!`로 트레이트 구현 코드를 생성합니다. `proc-macro` 크레이트 타입이 필요하며 별도 패키지로 배포하는 것이 일반적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 매크로의 성능 영향은 무엇인가요?</strong></summary>
 
 매크로는 컴파일 타임에 확장되므로 런타임 성능에 영향이 없습니다. 하지만 컴파일 시간이 증가할 수 있습니다. 복잡한 매크로는 컴파일을 느리게 할 수 있으므로 필요한 경우에만 사용해야 합니다. 매크로 확장 결과는 캐시될 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 매크로 디버깅은 어떻게 하나요?</strong></summary>
 
 매크로 디버깅 방법: (1) `cargo expand`로 매크로 확장 결과 확인 (2) `stringify!`로 AST 출력 (3) `eprintln!`로 디버깅 정보 출력 (4) 단위 테스트로 매크로 동작 검증. `cargo expand`는 매크로가 어떻게 확장되는지 확인하는 데 유용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -324,7 +326,6 @@ derive 매크로는 `#[proc_macro_derive]` 속성으로 구현합니다. `Derive
 | **syn** | 파싱 라이브러리 | AST 파싱 |
 | **quote** | 코드 생성 | TokenStream 생성 |
 | **메타 프로그래밍** | 코드 생성 코드 | 반복 제거 |
-
 
 ## 다음 수업
 

@@ -12,7 +12,6 @@ Rust는 메모리 안전한 동시성을 타입 시스템 수준에서 보장하
 
 > **핵심 정리** · `thread::spawn`으로 스레드를 생성하며 `move`로 소유권을 이동합니다. 채널로 메시지 전달을 안전하게 수행합니다. `Mutex`와 `Arc`로 공유 상태를 안전하게 관리합니다. `Atomic` 타입으로 락 없는 동시성을 구현합니다. Rust는 데이터 레이스를 컴파일 타임에 방지합니다.
 
-
 ## 수업 목표
 
 - 스레드 생성과 join을 이해합니다.
@@ -339,39 +338,42 @@ unsafe impl<T: Sync> Sync for MyStruct<T> {}
 
 `Send` 트레이트는 타입이 스레드 간 소유권 이동이 가능함을 나타냅니다. `Sync` 트레이트는 타입의 참조가 스레드 간 안전하게 공유될 수 있음을 나타냅니다. 대부분의 타입은 자동으로 구현됩니다. `Rc<T>`는 `Send`가 아니므로 스레드 간 공유가 불가능합니다. `Arc<T>`는 `Send`와 `Sync`를 구현합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 메시지 전달과 공유 상태 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 메시지 전달은 "통신으로 메모리 공유를 피하라(do not communicate by sharing memory; instead, share memory by communicating)" 철학을 따릅니다. 스레드 간 독립성이 높고 단순한 통신이 필요할 때 사용합니다. 공유 상태는 복잡한 동기화가 필요하거나 성능이 중요할 때 사용합니다. Rust는 두 패턴 모두를 안전하게 지원합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Mutex와 RwLock 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Mutex`는 단일 스레드만 접근을 허용하며 간단한 경우에 사용합니다. `RwLock`은 여러 읽기 또는 단일 쓰기를 허용하며 읽기가 많은 작업에 유용합니다. `RwLock`은 더 복잡하고 오버헤드가 있습니다. 대부분의 경우 `Mutex`로 충분합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Arc와 Rc 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Arc<T>`는 스레드 간 안전한 공유가 필요할 때 사용합니다. `Rc<T>`는 단일 스레드에서만 사용할 수 있습니다. 스레드를 사용하지 않으면 `Rc`가 더 빠릅니다. 스레드를 사용하면 반드시 `Arc`를 사용해야 합니다. `Arc`는 원자적 연산으로 인해 약간의 오버헤드가 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Atomic 타입은 언제 사용해야 하나요?</strong></summary>
 
 `Atomic` 타입은 락 없는 동시성이 필요할 때 사용합니다. 단순한 카운터, 플래그, 포인터 등에 유용합니다. 복잡한 동기화에는 `Mutex`가 더 적합합니다. `Atomic`은 락 오버헤드가 없으므로 고성능이 필요한 경우에 사용합니다. 하지만 메모리 순서를 이해해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 데드락은 어떻게 방지하나요?</strong></summary>
 
 데드락 방지 방법: (1) 락 획득 순서를 일관되게 유지 (2) 락 범위를 최소화 (3) `try_lock`로 타임아웃 사용 (4) 락 계층 구조 유지. Rust는 `MutexGuard`가 드롭되면 자동으로 락을 해제하므로 실수로 락을 유지할 위험이 줄어듭니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -386,7 +388,6 @@ unsafe impl<T: Sync> Sync for MyStruct<T> {}
 | **Atomic** | 원자적 연산 | 락 없는 동시성 |
 | **Send** | 소유권 이동 가능 | 스레드 간 전송 |
 | **Sync** | 참조 공유 가능 | 스레드 간 공유 |
-
 
 ## 다음 수업
 

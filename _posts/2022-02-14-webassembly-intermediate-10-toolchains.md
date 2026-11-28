@@ -209,19 +209,25 @@ wasm-pack build --target bundler # Webpack/Rollup 번들러용
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Emscripten과 wasm-pack 중 어떤 것을 선택해야 하나요?</strong></summary>
+
 새 프로젝트라면 **wasm-pack(Rust)**을 권장합니다. Rust는 메모리 안전성이 보장되고(댕글링 포인터, 버퍼 오버플로우 방지), wasm-bindgen이 타입 변환을 자동화해주며, Cargo의 의존성 관리가 훨씬 편리합니다. Emscripten은 다음과 같은 경우에 적합합니다: (1) 기존 C/C++ 코드베이스(게임 엔진, ffmpeg 등)를 WASM으로 포팅할 때, (2) OpenGL/WebGL/SDL 등 그래픽 API가 필요할 때, (3) C++ 표준 라이브러리를 광범위하게 사용할 때.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: wasm-pack build의 target 옵션(web/nodejs/bundler) 차이는 무엇인가요?</strong></summary>
+
 `--target web`은 ES modules 형태로 생성하며 브라우저에서 직접 `<script type="module">`으로 사용할 수 있습니다. `--target nodejs`는 CommonJS 형태로 Node.js의 require()로 사용할 수 있습니다. `--target bundler`는 Webpack/Rollup/Vite 같은 번들러가 최적화할 수 있는 형태로 생성하며, 트리 쉐이킹(Tree Shaking)이 가능합니다. **권장**: 새 프로젝트에는 `--target web`을 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WABT는 어떤 도구인가요?</strong></summary>
+
 **WABT(WebAssembly Binary Toolkit)**는 WASM 바이너리와 WAT 텍스트 포맷을 상호 변환하는 도구 모음입니다. 주요 도구: `wasm2wat` (바이너리 → 텍스트), `wat2wasm` (텍스트 → 바이너리), `wasm-objdump` (바이너리 상세 분석), `wasm-validate` (유효성 검사). 디버깅, 교육, 바이너리 분석에 필수적입니다.
+
 </details>
 
 ---

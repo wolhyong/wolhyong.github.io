@@ -209,19 +209,25 @@ node --experimental-wasi-unstable-preview1 ./myapp.wasm
 
 ### 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASI에서 네트워크 소켓을 사용할 수 있나요?</strong></summary>
+
 WASI preview1에서는 네트워크 소켓이 **공식적으로 지원되지 않습니다**. 하지만 Wasmtime, Wasmer 등 대부분의 WASI 런타임은 자체 확장 API로 소켓을 지원합니다. WASI preview2(진행 중)에서는 `wasi-poll`, `wasi-io`, `wasi-tcp`, `wasi-udp` 등 네트워크 API가 표준화될 예정입니다. 지금 당장 소켓이 필요하다면, 런타임별 확장 API를 사용하거나 HTTP 요청을 위해 wasi-outbound-http 같은 실험적 API를 활용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Wasmtime, Wasmer, Node.js 중 어떤 WASI 런타임을 선택해야 하나요?</strong></summary>
+
 **Wasmtime**(Mozilla/Wasmtime 프로젝트)은 가장 성숙하고 표준에 충실한 런타임으로, 프로덕션 환경에 권장합니다. **Wasmer**는 패키지 관리(WAPM)와 다양한 언어 바인딩을 제공하여 개발자 경험이 좋습니다. **Node.js**의 WASI 지원은 실험적이며 제한적입니다. **선택 기준**: 서버/엣지 → Wasmtime, CLI 도구/개발 → Wasmer, Node.js 생태계 통합 → Node.js
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: WASI가 Docker/컨테이너보다 더 안전한가요?</strong></summary>
+
 네, 보안 측면에서 WASI는 Docker보다 **구조적으로 더 안전합니다**. Docker 컨테이너는 호스트 OS의 커널을 공유하므로, 커널 취약점(CVE)이 발견되면 컨테이너 탈출이 가능합니다(예: CVE-2022-0185). 반면 WASI에서 WASM 모듈은 Capability 기반으로 작동하므로, 부여되지 않은 권한의 리소스에는 **접근 자체가 구조적으로 불가능**합니다. 단, WASM의 실행 속도는 네이티브의 80~95%로 Docker(네이티브의 95~99%)보다 약간 느립니다. **적합한 사용처**: 보안이 중요한 엣지 컴퓨팅(Fastly Compute@Edge, Cloudflare Workers), 플러그인 시스템(Enarx), IoT 디바이스.
+
 </details>
 
 ---

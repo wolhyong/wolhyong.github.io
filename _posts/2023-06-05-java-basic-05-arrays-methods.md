@@ -43,34 +43,39 @@ System.out.println(scores[scores.length - 1]);  // 마지막 요소: 88
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 배열의 length는 메서드인가요, 필드인가요?</strong></summary>
 
 **필드**입니다. `length`는 JVM이 배열 객체 생성 시 설정하는 고정 필드로, 메서드 호출이 아니므로 괄호가 없습니다. JVM은 배열 타입의 객체에 대해 `arraylength`라는 별도의 바이트코드 명령어로 `length` 값을 읽습니다. String의 `length()`는 메서드(문자 수 계산)이고, 배열의 `length`는 필드(고정 길이)입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 배열을 복사하는 가장 효율적인 방법은 무엇인가요?</strong></summary>
 
 **`System.arraycopy()`**가 가장 빠릅니다. 네이티브 코드(C/C++)로 구현되어 JNI 레벨에서 메모리 블록을 직접 복사합니다. `Arrays.copyOf()`도 내부에서 `System.arraycopy()`를 호출합니다. `for` 루프로 복사하는 것보다 3~5배 빠릅니다. `clone()`은 얕은 복사를 수행합니다. 객체 배열의 깊은 복사는 직접 구현해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 메서드 오버로딩과 오버라이딩의 차이는 무엇인가요?</strong></summary>
 
 **오버로딩(Overloading)**은 같은 이름의 메서드를 매개변수 타입/개수로 구분하는 **컴파일 타임 다형성**(정적 바인딩)입니다. **오버라이딩(Overriding)**은 상속받은 메서드를 재정의하는 **런타임 다형성**(동적 바인딩)입니다. 오버로딩은 호출할 메서드가 컴파일 타임에 결정되고, 오버라이딩은 런타임에 객체의 실제 타입에 따라 결정됩니다. 오버로딩은 반환 타입만 다른 것은 허용되지 않습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 가변 인자(varargs)는 내부적으로 어떻게 동작하나요?</strong></summary>
 
 `void method(String... args)`는 컴파일러에 의해 `void method(String[] args)`로 변환됩니다. 호출 시 전달된 인자들은 컴파일러가 새 배열을 생성하여 담습니다. 따라서 가변 인자는 메서드의 **마지막 매개변수**여야 하며, 오버로딩 시 배열 타입과 충돌할 수 있습니다. 성능이 중요한 경우 가변 인자 사용을 최소화하세요(매 호출마다 새 배열 생성).
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 배열을 출력하면 이상한 값이 나오는 이유는 무엇인가요?</strong></summary>
 
 `System.out.println(array)`는 배열 내용이 아니라 **객체의 toString()** 결과를 출력합니다. 배열의 toString()은 `[I@1a2b3c` 같은 형식으로, 타입(`[I` = int 배열)과 해시코드(@ 뒤)를 표시합니다. 배열 내용을 보려면 `Arrays.toString(intArray)`(1차원) 또는 `Arrays.deepToString(multiArray)`(다차원)을 사용해야 합니다.
+
 </details>
 
 ---

@@ -43,34 +43,39 @@ System.out.println(multiply.calculate(3, 4)); // 12
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 람다와 익명 클래스의 차이는 무엇인가요?</strong></summary>
 
 람다는 `invokedynamic`으로 컴파일되어 **익명 클래스보다 성능이 좋고** 바이트코드 크기도 작습니다. 익명 클래스는 컴파일 시마다 별도의 `.class` 파일이 생성되지만, 람다는 `LambdaMetafactory`가 런타임에 동적으로 생성합니다. 또한 람다는 `this`가 람다를 정의한 외부 클래스를 가리키지만, 익명 클래스에서 `this`는 익명 클래스 자신을 가리킵니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 스트림에서 중간 연산이 실행되지 않는 이유는 무엇인가요?</strong></summary>
 
 스트림은 **lazy evaluation**을 사용하기 때문입니다. `filter()`, `map()`, `sorted()` 같은 중간 연산은 **파이프라인을 구성만 하고 실제 실행은 하지 않습니다**. `collect()`, `forEach()`, `count()` 같은 **최종 연산**이 호출될 때 모든 중간 연산이 한 번에 실행됩니다. 이를 통해 각 요소를 한 번만 처리하고, 불필요한 연산(예: takeWhile에서 조건 불만족 시 중단)을 건너뛸 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: parallelStream()을 사용하면 항상 더 빠른가요?</strong></summary>
 
 **아니요.** 병렬 스트림이 효과적이려면: 1) 데이터 크기가 충분히 클 것(수천 개 이상), 2) CPU 바운드 작업일 것(I/O 바운드는 오히려 느림), 3) 공유 가변 상태가 없을 것, 4) 순서가 중요하지 않을 것. 작은 데이터셋이나 순서가 중요한 작업에서는 오히려 병렬 처리 오버헤드로 인해 순차 스트림이 더 빠릅니다. `ForkJoinPool.commonPool()`을 사용하므로 다른 병렬 작업과 영향을 주고받을 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Optional을 사용할 때 자주 하는 실수는 무엇인가요?</strong></summary>
 
 1) **`Optional.get()`을 null 체크 없이 호출** → NoSuchElementException. 2) **필드 타입으로 Optional 사용** → Serializable하지 않고 성능 오버헤드. 3) **메서드 인자로 Optional 사용** → 과도한 Optional 래핑. 4) **isPresent()-get() 패턴** → `ifPresent()`, `orElse()`, `orElseThrow()`로 대체. 5) **기본 타입 Optional 무시** → `OptionalInt`, `OptionalLong`, `OptionalDouble` 사용.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 메서드 참조와 람다 중 어떤 것이 더 좋은가요?</strong></summary>
 
 가능하면 **메서드 참조**가 더 간결하고 가독성이 좋습니다. 바이트코드 레벨에서도 메서드 참조가 람다보다 약간 더 효율적일 수 있습니다. `list.stream().map(String::toUpperCase)`가 `list.stream().map(s -> s.toUpperCase())`보다 명확합니다. 단, 람다가 더 짧거나 메서드 참조가 오히려 복잡해 보인다면 람다를 사용하세요.
+
 </details>
 
 ---

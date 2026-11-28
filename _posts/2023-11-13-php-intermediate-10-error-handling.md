@@ -58,34 +58,39 @@ function divide(int $a, int $b): float
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP 7+의 Error 클래스와 Exception 클래스의 차이는 무엇인가요?</strong></summary>
 
 `Error`는 **Zend Engine 레벨의 치명적 오류**를 나타냅니다: TypeError(타입 불일치), ParseError(구문 오류), AssertionError(assert 실패), DivisionByZeroError(0으로 나누기). `Exception`은 **애플리케이션 레벨의 예외**입니다: RuntimeException, LogicException, InvalidArgumentException 등. 둘 다 `Throwable` 인터페이스를 구현하지만, Error는 복구가 어렵고 Exception은 catch로 복구할 수 있습니다. `catch (Throwable $e)`로 둘 다 잡을 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: set_error_handler()의 반환값에 따라 에러 처리 방식이 어떻게 달라지나요?</strong></summary>
 
 `set_error_handler()` 콜백이 `true`를 반환하면 PHP는 **해당 에러를 처리된 것으로 간주**하고 실행을 계속합니다. `false`를 반환하면(또는 핸들러가 설정되지 않은 경우) PHP의 **기본 에러 핸들러**가 실행됩니다. 커스텀 핸들러에서 `return false;`로 특정 에러만 기본 처리에 위임할 수 있습니다. `error_reporting()` 수준과 관계없이 핸들러는 호출되지만, `@` 연산자(에러 제어)로 숨겨진 에러는 `error_reporting()`이 0으로 설정되어 핸들러에 전달되지 않습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PSR-3 로그 레벨은 어떻게 사용하나요?</strong></summary>
 
 PSR-3은 8개 로그 레벨을 정의합니다: **DEBUG**(상세 디버그 정보), **INFO**(일반 정보 — 사용자 로그인 등), **NOTICE**(정상이지만 중요한 상태), **WARNING**(오류는 아니지만 주의 필요), **ERROR**(복구 가능한 오류), **CRITICAL**(복구 불가능한 상태 — 시스템 다운), **ALERT**(즉시 조치 필요), **EMERGENCY**(전체 시스템 사용 불가). Monolog는 `$log->pushHandler(new StreamHandler('app.log', Logger::WARNING))`로 특정 레벨 이상만 기록하도록 필터링할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP에서 @ 연산자(에러 제어 연산자)를 사용해야 하나요?</strong></summary>
 
 **`@` 연산자 사용은 권장되지 않습니다**. `@`는 해당 표현식의 에러 리포트를 일시적으로 `error_reporting(0)`으로 설정합니다. 성능 저하가 있고(표현식 전/후로 error_reporting을 변경), 실제 에러를 숨겨 디버깅을 어렵게 만듭니다. 대신 적절한 조건 검사로 에러를 방지하거나(`file_exists()`로 확인 후 `fopen()`), try/catch로 명시적 처리하세요. `@`는 `fopen()`의 실패 처리 같은 제한된 상황에서만 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: display_errors와 error_reporting의 차이는 무엇인가요?</strong></summary>
 
 `error_reporting`은 **PHP가 어떤 수준의 에러를 감지할지** 지정합니다(비트 마스크). 예: `error_reporting(E_ALL)`은 모든 에러를 감지합니다. `display_errors`는 감지된 에러를 **화면에 출력할지** 결정합니다. 프로덕션에서는 `display_errors = Off`로 설정하고 `log_errors = On`으로 파일에 기록해야 합니다. 개발 환경에서는 `display_errors = On`으로 즉시 확인할 수 있습니다. 두 설정은 독립적이므로, 감지는 하되 화면 출력은 하지 않을 수 있습니다.
+
 </details>
 
 ---

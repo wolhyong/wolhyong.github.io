@@ -109,34 +109,39 @@ Fiber는 사용자 공간(user-space)에서 동작하는 경량 실행 단위입
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Thread, Fiber, Ractor 중 어떤 것을 선택해야 하나요?</strong></summary>
 
 I/O 바운드 작업(파일 읽기, HTTP 요청, DB 쿼리)에는 **Thread**가 적합합니다(GVL이 I/O 중 해제되어 효율적). 경량 동시성이 필요하고 명시적 제어권 전환이 가능한 구조에는 **Fiber**가 적합합니다(수천 개의 Fiber를 단일 스레드에서 실행 가능). CPU 바운드 작업(계산, 데이터 처리)에서는 **Ractor**만이 진정한 병렬 처리를 제공합니다(GVL 없음). Fiber Scheduler는 Thread와 유사한 API로 Fiber를 자동 관리합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Ractor는 어떻게 메시지를 전달하나요?</strong></summary>
 
 Ractor는 공유 상태 대신 메시지 전달(message passing)을 사용합니다. `ractor.send(data)`로 메시지를 보내고, `ractor.receive`로 메시지를 받습니다. 전달되는 데이터는 **deep copy**(Marshal.dump → Marshal.load)되므로, 원본 객체와 복사본이 분리됩니다. `Ractor.receive_if { |msg| msg.is_a?(Integer) }`로 조건부 수신이 가능합니다. 특수 객체(`Ractor::Unsafe`)를 사용하면 공유 상태를 허용할 수 있지만, 데이터 경합의 위험이 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Thread의 GVL은 어떻게 확인할 수 있나요?</strong></summary>
 
 `Thread#backtrace`로 각 스레드의 호출 스택을 확인할 수 있습니다. GVL 대기 중인 스레드는 `ruby_thread_has_gvl_p()`로 GVL 보유 여부를 확인할 수 있습니다. `STDERR.puts Thread.current.status`로 스레드 상태(run, sleep, aborting 등)를 출력할 수 있습니다. C 확장에서 `rb_thread_call_without_gvl()`을 호출하여 GVL 없이 C 코드를 실행할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Fiber Scheduler를 직접 구현할 수 있나요?</strong></summary>
 
 네, `Fiber::Scheduler` 인터페이스를 구현하여 커스텀 스케줄러를 만들 수 있습니다. 주요 메서드: `block(blocker, timeout)` — Fiber가 블로킹될 때 호출, `unblock(blocker, fiber)` — 블로킹 해제 시 호출, `kernel_sleep(duration)` — sleep 호출 시, `io_wait(io, events)` — I/O 대기 시, `address_resolve(hostname)` — DNS 조회 시. Async gem, Polyphony gem 등이 커스텀 스케줄러를 제공합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Ruby 3.3+의 Ractor 성능은 어떤가요?</strong></summary>
 
 Ruby 3.3+에서 Ractor는 CPU 바운드 작업에서 스레드 수에 비례하여 선형적인 성능 향상을 보여줍니다. 8코어 CPU에서 8개의 Ractor를 사용하면 단일 스레드 대비 약 6~7배의 성능 향상을 기대할 수 있습니다. 메시지 전달 오버헤드(Marshal 직렬화)는 미미합니다(작은 데이터의 경우 1μs 미만). 단, Ractor 간 객체 공유가 필요한 `Ractor::Unsafe` 사용 시 성능이 저하됩니다.
+
 </details>
 
 ---

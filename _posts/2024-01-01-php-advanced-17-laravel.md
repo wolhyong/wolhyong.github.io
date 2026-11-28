@@ -70,34 +70,39 @@ foreach ($posts as $post) {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Eloquent의 N+1 문제는 무엇인가요?</strong></summary>
 
 N+1 문제는 관계 데이터를 lazy loading으로 조회할 때 발생합니다. 예: `$posts = Post::all()`(1번 쿼리) → `foreach ($posts as $post) { echo $post->author->name; }`(각 Post마다 1번씩, N번 쿼리) = **총 N+1번 쿼리**. 해결법: `$posts = Post::with('author')->get()`(eager loading) → `SELECT * FROM posts`(1번) + `SELECT * FROM users WHERE id IN (1, 2, 3, ...)`(1번) = **총 2번 쿼리**. `with()`는 내부적으로 `WHERE IN` 절을 생성하여 관계 데이터를 한 번에 로드합니다. `lazy()`, `cursor()`로 청크 단위로도 해결 가능합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 서비스 컨테이너의 bind, singleton, instance의 차이는 무엇인가요?</strong></summary>
 
 `$app->bind(Interface::class, Concrete::class)` — 요청할 때마다 **새 인스턴스**를 생성합니다(의존성 해결마다 `new Concrete()`). `$app->singleton(Service::class)` — **한 번만 생성**되고 이후에는 동일 인스턴스를 반환합니다(애플리케이션 전체에서 공유). `$app->instance('foo', $existingObject)` — **이미 존재하는 객체**를 컨테이너에 등록합니다(테스트에서 mock 주입에 유용). 또한 `$app->scoped()`(PHP 8.0+의 scoped singleton, 요청 단위 싱글톤)도 있습니다. 대부분의 서비스는 `singleton`으로 등록하는 것이 성능상 유리합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Laravel의 서비스 프로바이더는 무엇을 하나요?</strong></summary>
 
 서비스 프로바이더는 **Laravel 부트스트래핑의 핵심**입니다. `register()` 메서드에서 서비스 컨테이너에 바인딩을 등록하고(인터페이스-구현체 매핑), `boot()` 메서드에서 이벤트 리스너, 라우트, 블레이드 지시어, 미들웨어 별칭을 등록합니다. `register()`는 **모든 프로바이더가 등록된 후**에 실행(user/app/Providers/config/app.php의 providers 배열 순서). 주요 내장 프로바이더: `EventServiceProvider`(이벤트/리스너 매핑), `RouteServiceProvider`(라우트 로딩), `AuthServiceProvider`(인증 가드). 사용자 정의 프로바이더는 `php artisan make:provider`로 생성합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Laravel의 이벤트 시스템은 어떻게 동작하나요?</strong></summary>
 
 Laravel 이벤트 시스템은 옵저버 패턴을 구현합니다: 1) `EventServiceProvider`의 `$listen` 배열에 `'App\Events\UserRegistered' => [App\Listeners\SendWelcomeEmail::class]`로 매핑합니다. 2) `event(new UserRegistered($user))`가 호출되면 `Illuminate\Events\Dispatcher`가 `dispatch()` 메서드에서 이벤트에 등록된 모든 리스너를 찾습니다. 3) 각 리스너의 `handle($event)` 메서드가 호출됩니다. 4) 리스너가 `ShouldQueue` 인터페이스를 구현하면 큐(Queue)에 푸시되어 비동기로 실행됩니다(내부적으로 `Illuminate\Bus\Queueable` trait 사용). 이벤트는 애플리케이션의 결합도를 낮추는 핵심 패턴입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Facade와 helper 함수의 차이는 무엇인가요?</strong></summary>
 
 **Facade**는 서비스 컨테이너의 서비스에 정적 인터페이스를 제공합니다: `Cache::get('key')`는 실제로 `app('cache')->get('key')`를 호출합니다(Facade::__callStatic()). **Helper 함수**는 전역 함수로 더 간결합니다: `cache('key')`는 `app('cache')->get('key')`와 동일합니다. Facade는 IDE 자동완성이 좋지만(`@method` 어노테이션), helper 함수는 더 짧고 타입 힌트에 의존하지 않습니다. Laravel은 `config()`, `view()`, `redirect()`, `response()`, `event()`, `dispatch()` 등 많은 helper 함수를 제공합니다. 두 방식 모두 서비스 컨테이너를 통해 동일한 서비스 인스턴스에 접근합니다.
+
 </details>
 
 ---

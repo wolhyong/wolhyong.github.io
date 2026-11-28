@@ -60,34 +60,39 @@ $result = match ($grade) {
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: foreach에서 &$value를 사용할 때 주의할 점은 무엇인가요?</strong></summary>
 
 `foreach ($array as &$value)`는 배열 요소의 참조를 순회합니다. **루프 종료 후 `$value`가 마지막 요소의 참조를 계속 유지**하므로, 이후 `$value`를 사용하면 의도치 않게 배열의 마지막 요소가 수정될 수 있습니다. 반드시 `unset($value)`로 참조를 해제해야 합니다. PHP 8.0+에서도 이 문제는 해결되지 않았으므로 주의가 필요합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 함수에서 값을 반환할 때 참조를 사용해야 하나요?</strong></summary>
 
 PHP에서는 대부분의 경우 **참조 반환이 필요하지 않습니다**. PHP는 Copy-on-Write로 메모리를 최적화하므로, 값을 반환해도 실제 복사는 수정 시에만 발생합니다. 참조 반환은 배열의 특정 요소를 직접 수정해야 하는 드문 경우에만 사용하세요. 객체는 항상 참조로 전달되므로(객체 식별자), 별도 참조가 필요 없습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: global 키워드의 동작 방식은 무엇인가요?</strong></summary>
 
 `global $var`는 `$GLOBALS['var']`의 **참조**를 현재 스코프로 가져옵니다. 즉, `$var = $GLOBALS['var']`가 아니라 `$var = &$GLOBALS['var']`처럼 동작합니다. 따라서 함수 내에서 `$var`를 변경하면 전역 변수도 변경됩니다. `$GLOBALS`는 모든 전역 변수를 담는 연관 배열로, `global` 선언 없이도 접근할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 익명 함수에서 외부 변수를 사용하려면 어떻게 해야 하나요?</strong></summary>
 
 익명 함수(Closure)에서 외부 변수를 사용하려면 `use` 키워드로 캡처해야 합니다. `$factor = 2; $multiply = function($n) use ($factor) { return $n * $factor; };`. 기본적으로 값으로 캡처되지만, `use (&$factor)`로 참조 캡처도 가능합니다. PHP 7.4+의 화살표 함수(`fn($n) => $n * $factor`)는 자동으로 외부 변수를 값으로 캡처합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: PHP 8의 match 표현식과 switch의 차이는 무엇인가요?</strong></summary>
 
 1) **match는 표현식**(값 반환), switch는 문장. 2) **match는 엄격한 비교**(===), switch는 느슨한 비교(==). 3) **match는 하나의 분기만 실행**(break 불필요), switch는 fall-through(break 필요). 4) **match는 모든 경우를 처리해야 함**(처리되지 않은 경우 UnhandledMatchError). 가독성과 안전성에서 `match`가 `switch`보다 우수합니다.
+
 </details>
 
 ---

@@ -12,7 +12,6 @@ Go의 제어문은 if/for/switch 세 가지 키워드로 구성됩니다. 반복
 
 > **핵심 정리** · Go의 if는 조건에 괄호가 없고 중괄호가 필수입니다. 조건절에서 짧은 변수 선언이 가능하며, 그 변수의 스코프는 if-else 블록으로 제한됩니다. for는 Go의 유일한 반복문으로, C의 for / while / infinite / range의 네 가지 형태를 모두 for 하나로 표현합니다. switch는 break가 없어도 자동 탈출하며, case에 여러 조건을 콤마로 나열할 수 있습니다.
 
-
 ## 수업 목표
 
 - if 조건문의 Go에 고유한 문법을 이해합니다.
@@ -202,39 +201,42 @@ func main() {
 
 Go의 `switch`는 C와 달리 각 `case`가 끝나면 **자동으로 break**됩니다. C처럼 다음 case로 넘어가지 않으므로, break를 일일이 적을 필요가 없습니다. `switch { case score >= 90: ... }`처럼 조건식을 직접 사용할 수 있어 if-else 체인을 대체합니다. `case time.Saturday, time.Sunday:`는 여러 조건을 콤마로 나열하여 **OR 조건**을 표현합니다. `switch n := 7; n % 2`는 조건절에 변수 선언을 포함한 형태입니다. `value.(type)`은 **type switch**로, 인터페이스 값의 실제 타입에 따라 분기합니다. `fallthrough`는 명시적으로 다음 case를 실행하도록 지시합니다. 단, `fallthrough`는 조건을 다시 평가하지 않고 다음 case의 본문을 무조건 실행합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Go에서 while과 do-while이 없는 이유는 무엇인가요?</strong></summary>
 
 Go는 **단순함(simplicity)**을 핵심 설계 원칙으로 삼습니다. while과 do-while은 for의 변형에 불과하므로, for 하나로 모든 반복 패턴을 표현할 수 있습니다. `for condition { body }`는 while과 동일하고, `for { body; if !condition { break } }`는 do-while 패턴을 구현할 수 있습니다. 하나의 키워드로 4가지 형태(for, while, infinite, range)를 표현함으로써 언어 명세가 단순해지고, 개발자는 한 가지 키워드만 익히면 됩니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: for range의 내부 동작은 어떻게 되나요?</strong></summary>
 
 `for i, v := range slice`는 컴파일러에 의해 다음과 같은 C 유사 코드로 변환됩니다: `for i := 0; i < len(slice); i++ { v = slice[i]; ... }`. range는 순회를 시작하기 전에 컬렉션의 길이를 한 번만 평가(copy)합니다. 따라서 range 중에 슬라이스에 요소를 추가해도 순회 범위는 변하지 않습니다. 맵의 range 순서는 **무작위**입니다(Go 1.0부터 의도적으로 랜덤화됨). `for i, v := range str`에서 문자열을 순회하면 바이트 단위가 아니라 **rune(유니코드 코드 포인트)** 단위로 순회합니다. 채널의 range는 채널이 닫힐(close) 때까지 값을 계속 수신합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: switch에서 fallthrough를 사용해야 할 때는 언제인가요?</strong></summary>
 
 `fallthrough`는 Go에서 드물게 사용됩니다. 주로 숫자 범위가 겹치는 경우나 일부 case에서만 공통 로직이 필요한 경우에 사용합니다. 예를 들어 요금 계산에서 `case 1: base = 1000; fallthrough; case 2: total = base + 500` 같은 패턴입니다. 하지만 대부분의 경우 fallthrough보다는 case 조건을 명시적으로 나열하거나(`,`로 구분), 공통 코드를 함수로 추출하는 것이 더 명확합니다. Go 커뮤니티에서는 fallthrough 사용을 권장하지 않습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: if 조건절에서 선언한 변수의 스코프는 어떻게 되나요?</strong></summary>
 
 `if n := rand.Intn(100); n >= 50`에서 선언된 `n`의 스코프는 **if-else 블록 전체**입니다. `else` 블록에서도 `n`에 접근할 수 있지만, if-else 블록 밖에서는 접근할 수 없습니다. 이는 변수의 의도치 않은 사용을 방지하는 Go의 안전한 설계입니다. C++의 if-init 문법(C++17)과 유사하지만, Go가 8년 먼저 도입했습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: break에 레이블을 붙일 수 있나요?</strong></summary>
 
 네, Go는 레이블과 함께 `break`와 `continue`를 사용할 수 있습니다. 이는 중첩 루프에서 바깥 루프를 한 번에 탈출할 때 유용합니다: `outer: for i := 0; i < 3; i++ { for j := 0; j < 3; j++ { if i*j > 2 { break outer } } }`. `break outer`는 `outer` 레이블이 붙은 바깥 for 루프를 완전히 종료합니다. `continue outer`는 바깥 루프의 다음 반복으로 이동합니다. 레이블은 함수 스코프 내에서 고유해야 하며, 함수 호출 간 경계를 넘을 수 없습니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -248,7 +250,6 @@ Go는 **단순함(simplicity)**을 핵심 설계 원칙으로 삼습니다. whil
 | **for (range)** | 컬렉션 순회 | `for i, v := range slice { }` |
 | **switch** | 다중 분기 | `switch { case x > 0: ... }` |
 | **break/continue** | 루프 제어 | `break`, `continue`, `break outer` |
-
 
 ## 다음 수업
 

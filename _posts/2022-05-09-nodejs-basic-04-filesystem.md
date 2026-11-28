@@ -760,34 +760,39 @@ path.resolve('foo', 'bar'):
   → 상대 경로는 현재 작업 디렉토리를 기준으로 절대 경로로 변환
 ```
 
-<details>
+<details markdown="1">
 <summary><strong>fs.promises와 callback 기반 fs 중 무엇을 써야 하나요?</strong></summary>
 
 **fs.promises를 권장합니다.** async/await과 함께 사용하면 코드가 더 읽기 쉽고, 에러 처리도 try/catch로 일관되게 할 수 있습니다. 콜백 기반 API는 레거시 코드에서나 필요할 때 사용하세요. 성능 차이는 10% 내외로 실무에서 무시할 수 있는 수준입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>readFile과 createReadStream의 차이는?</strong></summary>
 
 `readFile`은 파일 전체를 메모리에 로드합니다. 수백 MB 이하의 작은 파일에 적합합니다. `createReadStream`은 파일을 청크 단위로 읽어 메모리를 절약합니다. 대용량 파일(수백 MB ~ GB)을 처리할 때는 스트림을 사용해야 합니다. 1GB 파일 기준 `readFile`은 약 1GB RAM을 사용하지만, 스트림은 약 20MB만 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>파일이 없을 때 발생하는 ENOENT 에러 처리 방법은?</strong></summary>
 
 try/catch로 `ENOENT` 에러 코드를 확인하거나, `fs.access()`로 사전에 파일 존재 여부를 확인할 수 있습니다. `fs.access()`는 경합 조건(race condition)이 있을 수 있으므로, 실패 시 적절히 대처하는 try/catch 방식이 더 안전합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>스트림의 highWaterMark는 어떻게 설정해야 하나요?</strong></summary>
 
 highWaterMark는 내부 버퍼의 최대 크기를 결정합니다. SSD 환경에서는 64KB(기본값)가 적당하고, 느린 HDD나 네트워크 스토리지 환경에서는 256KB~1MB로 늘리는 것이 좋습니다. 너무 작으면 CPU 사용률이 증가하고, 너무 크면 메모리 사용량이 증가합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>fs.watch보다 chokidar를 사용해야 하나요?</strong></summary>
 
 멀티 플랫폼 프로덕션 환경에서는 **chokidar** 사용을 권장합니다. `fs.watch()`는 플랫폼별로 동작이 다르고, macOS에서 일부 이벤트를 놓치는 버그가 보고되었습니다. chokidar는 이러한 문제를 해결하고 추가 기능(glob 패턴, 폴링 폴백 등)을 제공합니다.
+
 </details>
 
 ## 요약

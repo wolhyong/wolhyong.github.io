@@ -12,7 +12,6 @@ Go의 메서드는 타입에 동작을 연결하고, 인터페이스는 메서�
 
 > **핵심 정리** · 메서드는 `func (r Type) Method() { }` 형태로 타입에 함수를 연결합니다. 포인터 리시버는 원본을 수정하고, 값 리시버는 복사본으로 동작합니다. 인터페이스는 `runtime.iface{tab *itab, data unsafe.Pointer}` 구조체로 구현됩니다. 명시적 implements 없이 메서드 집합만으로 타입이 인터페이스를 만족하는지 컴파일 타임에 검사하는 덕 타이핑(duck typing)을 사용합니다.
 
-
 ## 수업 목표
 
 - 값 리시버와 포인터 리시버의 차이를 이해합니다.
@@ -286,39 +285,42 @@ func main() {
 
 인터페이스를 활용한 **의존성 주입(Dependency Injection)**은 Go에서 코드의 유연성과 테스트 용이성을 높이는 핵심 패턴입니다. `Service`는 구체적인 `ConsoleLogger`에 의존하지 않고 `Logger` 인터페이스에만 의존합니다. 따라서 로거 구현체를 쉽게 교체하거나 데코레이터 패턴으로 확장할 수 있습니다. 테스트 시에는 `MockLogger`를 주입하여 로그 출력을 검증할 수 있습니다. 이 패턴은 HTTP 핸들러, 데이터베이스 접근, 메시지 큐 등 모든 계층에서 사용됩니다. Go 표준 라이브러리의 `io.Reader`, `io.Writer`, `http.Handler` 등이 대표적인 예입니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 값 리시버와 포인터 리시버 중 어떤 것을 선택해야 하나요?</strong></summary>
 
 Go의 공식 가이드라인: (1) 메서드가 리시버를 수정해야 하면 **포인터 리시버** (2) 큰 구조체(수십 바이트 이상)면 **포인터 리시버** (3) 일관성을 위해 같은 타입의 모든 메서드는 같은 리시버 타입을 사용 (4) 기본 타입(int, string 등), 슬라이스, 맵은 보통 값 리시버. 작은 구조체(4개 필드 이하)는 값 리시버가 더 효율적일 수 있습니다. 중요한 것은 **일관성**입니다. 같은 타입의 메서드가 값과 포인터 리시버를 혼용하면 혼란을 줄 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 인터페이스의 내부 구조(iface)는 어떻게 되나요?</strong></summary>
 
 인터페이스 값은 내부적으로 `runtime.iface` 구조체로 표현됩니다: `type iface struct { tab *itab; data unsafe.Pointer }`. `tab`은 `itab`(interface table) 구조체로, 인터페이스 타입 메타데이터와 구체적 타입의 메서드 주소를 담고 있습니다. `data`는 실제 값에 대한 포인터입니다. `itab`은 `(interface_type, concrete_type)` 쌍에 대해 한 번 생성되어 캐싱되므로, 반복적인 타입 단언이 효율적입니다. 빈 인터페이스는 `eface` 구조체(`type *_type`, `data unsafe.Pointer`)로 더 가볍습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 인터페이스는 nil 체크를 어떻게 해야 하나요?</strong></summary>
 
 인터페이스는 내부적으로 `(type, value)` 쌍으로, 인터페이스가 `nil`이려면 **둘 다 nil**이어야 합니다. `var s Shape = (*Rectangle)(nil)`은 `type`은 `*Rectangle`이고 `value`는 `nil`이므로, `s == nil`은 `false`입니다. 인터페이스의 nil을 올바르게 체크하려면 리플렉션이나 타입 단언을 사용해야 합니다: `reflect.ValueOf(s).IsNil()`. 또는 인터페이스에 nil 값을 할당하지 않도록 함수의 반환값을 명시적으로 `nil`로 반환하는 것이 좋습니다. 이 문제는 Go에서 가장 흔한 실수 중 하나입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Go 1.18 제네릭과 인터페이스의 관계는 무엇인가요?</strong></summary>
 
 Go 1.18+의 제네릭은 인터페이스를 **타입 제약(type constraint)**으로 사용합니다. `func Sum[T Number](values []T) T`에서 `Number`는 인터페이스입니다. 인터페이스는 이제 메서드뿐만 아니라 타입 집합(type set)도 지정할 수 있습니다: `type Number interface { ~int | ~float64 }`. `~`는 해당 타입의 별칭(underlying type)도 포함합니다. 제네릭은 컴파일 타임에 구체적 타입으로 인스턴스화(monomorphization)되고, 인터페이스는 런타임에 동적 디스패치를 사용합니다. 제네릭은 서로 다른 구체적 타입에 대해 컴파일 타임 타입 안전성을 제공하고, 인터페이스는 런타임 다형성을 제공합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 인터페이스와 구체적 타입 중 어떤 것을 파라미터로 사용해야 하나요?</strong></summary>
 
 가이드라인: **(1) 가능한 한 인터페이스를 받고, 구체적 타입을 반환하라** — "Be liberal in what you accept, conservative in what you produce". 함수가 입력으로 인터페이스를 받으면 다양한 구현체를 수용할 수 있습니다. 함수가 구체적 타입을 반환하면 호출자가 인터페이스로 변환할지 결정할 수 있습니다. (2) 함수가 값의 메서드만 필요하면 인터페이스를 사용하고, 필드에 접근해야 하면 구체적 타입을 사용합니다. (3) 불필요한 인터페이스는 오히려 추상화의 비용(간접 참조, 메모리 할당)을 증가시킵니다. **인터페이스가 필요할 때만 정의**하는 것이 Go의 철학입니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -331,7 +333,6 @@ Go 1.18+의 제네릭은 인터페이스를 **타입 제약(type constraint)**�
 | **빈 인터페이스** | 모든 타입 허용 | eface{type *_type, data unsafe.Pointer} |
 | **타입 단언** | 구체적 타입 추출 | v.(T) / value, ok := v.(T) |
 | **타입 스위치** | 타입 기반 분기 | switch v := x.(type) |
-
 
 ## 다음 수업
 

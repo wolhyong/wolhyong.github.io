@@ -12,7 +12,6 @@ Kotlin의 아키텍처와 디자인 패턴은 테스트 가능하고 유지보�
 
 > **핵심 정리** · 클린 아키텍처는 도메인 중심 설계입니다. `MVVM`은 UI 로직을 분리합니다. `MVI`는 단방향 데이터 흐름을 제공합니다. `Singleton`, `Factory`, `Strategy` 등의 디자인 패턴을 사용합니다. `SOLID` 원칙을 따릅니다. 의존성 역전을 적용합니다.
 
-
 ## 수업 목표
 
 - 클린 아키텍처를 이해합니다.
@@ -431,39 +430,42 @@ class UserViewModel @Inject constructor(
 
 의존성 주입은 의존성을 외부에서 주입합니다. `Hilt`는 안드로이드용 DI 컨테이너입니다. `@Module`, `@Provides`로 의존성을 제공합니다. `@Inject`로 의존성을 주입받습니다. 테스트 가능성을 높입니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> MVVM과 MVI 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `MVVM`을 우선 사용해야 합니다. 간단하고 널리 사용됩니다. `MVI`는 복잡한 상태 관리가 필요할 때 사용합니다. 단방향 데이터 흐름이 필요할 때 유용합니다. 프로젝트 요구사항에 따라 선택합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 클린 아키텍처는 언제 사용해야 하나요?</strong></summary>
 
 클린 아키텍처는 대형 프로젝트에 사용합니다. 도메인 중심 설계가 필요할 때 유용합니다. 테스트 가능성과 유지보수성을 높입니다. 소규모 프로젝트에는 과도할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Singleton 패턴은 언제 사용해야 하나요?</strong></summary>
 
 `Singleton` 패턴은 전역 인스턴스가 필요할 때 사용합니다. 데이터베이스 연결, 설정 등에 사용됩니다. 스레드 안전성을 고려해야 합니다. 과도한 사용은 테스트를 어렵게 만듭니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Repository 패턴은 언제 사용해야 하나요?</strong></summary>
 
 `Repository` 패턴은 데이터 접근이 필요할 때 사용합니다. 여러 데이터 소스를 통합할 때 유용합니다. 캐싱, 동기화 등을 처리합니다. 데이터 계층을 추상화합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> SOLID 원칙은 왜 중요한가요?</strong></summary>
 
 `SOLID` 원칙은 유지보수 가능한 코드를 작성하는 데 필수적입니다. 결합도를 줄이고 응집도를 높입니다. 테스트 가능성을 높입니다. 리팩토링을 쉽게 만듭니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -485,7 +487,6 @@ class UserViewModel @Inject constructor(
 | **DIP** | 의존성 역전 원칙 | 추상화 의존 |
 | **의존성 주입** | 외부 주입 | Hilt |
 
+## 시리즈를 마치며
 
-## 다음 수업
-
-Kotlin 수업이 모두 완료되었습니다. 다음은 카테고리 페이지를 생성하겠습니다.
+Kotlin 기본 문법부터 코루틴, 안드로이드, Ktor, 테스트, 성능, 아키텍처까지 21개 글로 정리했습니다. 실제 프로젝트에서는 필요한 부분부터 골라 적용하고, 막히는 지점이 생기면 해당 글로 돌아와 다시 읽는 편이 효율적입니다.

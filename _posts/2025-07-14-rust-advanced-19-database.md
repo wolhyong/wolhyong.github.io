@@ -12,7 +12,6 @@ Rust의 데이터베이스 생태계는 타입 안전성과 성능을 동시에 
 
 > **핵심 정리** · SQLx는 컴파일 타임 쿼리 검사를 제공하는 비동기 SQL 라이브러리입니다. Diesel은 타입 안전한 쿼리 빌더 ORM입니다. 연결 풀로 성능을 최적화합니다. 트랜잭션으로 원자성을 보장합니다. 마이그레이션으로 스키마를 버전 관리합니다.
 
-
 ## 수업 목표
 
 - SQLx로 비동기 쿼리를 실행할 수 있습니다.
@@ -335,39 +334,42 @@ async fn get_user(pool: &PgPool, id: i32) -> Result<User, AppError> {
 
 데이터베이스 에러는 `sqlx::Error`로 표현됩니다. `From` 트레이트를 구현하여 커스텀 에러 타입으로 변환할 수 있습니다. `?` 연산자로 에러를 전파합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> SQLx와 Diesel 중 어떤 것을 사용해야 하나요?</strong></summary>
 
 SQLx는 SQL을 직접 작성하며 컴파일 타임 쿼리 검사를 제공합니다. SQL에 익숙하거나 복잡한 쿼리가 필요할 때 적합합니다. Diesel은 타입 안전한 쿼리 빌더를 제공하며 컴파일 타임에 SQL을 생성합니다. Rust 친화적이고 타입 안전성이 높습니다. SQL 선호도면 SQLx, Rust 친화적이면 Diesel을 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 연결 풀은 왜 필요한가요?</strong></summary>
 
 연결 풀은 데이터베이스 연결을 재사용하여 성능을 최적화합니다. 연결 생성은 비용이 높으며 연결 풀은 연결을 재사용하여 오버헤드를 줄입니다. 최대 연결 수를 설정하여 데이터베이스 부하를 제어할 수 있습니다. 비동기 웹 애플리케이션에서 필수적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 트랜잭션은 언제 사용해야 하나요?</strong></summary>
 
 트랜잭션은 여러 쿼리를 원자적으로 실행해야 할 때 사용합니다. 예: 송금, 주문 처리, 데이터 일관성이 필요한 작업. 모든 쿼리가 성공하면 커밋, 하나라도 실패하면 롤백됩니다. 데이터 무결성을 보장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 마이그레이션은 어떻게 관리하나요?</summary></summary>
 
 마이그레이션은 `migrations/` 디렉토리에 `up.sql`과 `down.sql` 파일로 저장합니다. `diesel migration run` 또는 SQLx의 `Migrator::run()`으로 실행합니다. 버전 관리 시스템으로 어떤 마이그레이션이 적용되었는지 추적합니다. 롤백도 지원합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 컴파일 타임 쿼리 검사는 어떻게 동작하나요?</strong></summary>
 
 SQLx는 `sqlx::query!` 매크로를 컴파일할 때 데이터베이스에 연결하여 쿼리를 실행하고 결과 타입을 추론합니다. `DATABASE_URL` 환경 변수로 데이터베이스 연결을 설정해야 합니다. 컴파일 타임에 SQL 타입과 Rust 타입을 검사하여 타입 안전성을 보장합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -381,7 +383,6 @@ SQLx는 `sqlx::query!` 매크로를 컴파일할 때 데이터베이스에 연�
 | **query!** | 타입 안전 쿼리 | 컴파일 타임 검사 |
 | **PgPool** | PostgreSQL 연결 풀 | 비동기 지원 |
 | **에러 처리** | sqlx::Error | 커스텀 에러 변환 |
-
 
 ## 다음 수업
 

@@ -253,34 +253,39 @@ Go의 제네릭은 **Monomorphization**(단형화) 방식으로 구현됩니다.
 
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Go 제네릭과 Java 제네릭의 차이는 무엇인가요?</strong></summary>
 
 가장 큰 차이는 **구현 방식**입니다. Go는 **Monomorphization**으로 컴파일 타임에 각 타입별로 별도 함수를 생성하여 런타임 오버헤드가 없습니다. Java는 **Type Erasure**로 컴파일 타임에만 타입 정보를 사용하고, 런타임에는 `Object`로 변환되어 박싱/언박싱 오버헤드가 발생합니다. Go의 제네릭은 기본 타입(int, float64 등)도 오버헤드 없이 사용할 수 있습니다. 또한 Go의 타입 제약은 인터페이스를 기반으로 하여 더 유연하고 타입 안전합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 제네릭 함수와 인터페이스 파라미터 중 어떤 것을 선택해야 하나요?</strong></summary>
 
 제네릭은 **컴파일 타임**에 타입이 결정되고 monomorphization으로 각 타입별 코드가 생성됩니다. 인터페이스는 **런타임**에 동적 디스패치(iface 호출)가 발생합니다. 선택 기준: (1) 같은 타입의 값이 여러 개 필요하거나(예: `T a, b T`), 타입 간 관계가 중요하면 제네릭. (2) 단일 값만 필요하고 다양한 타입을 받아야 하면 인터페이스. (3) 성능이 중요하고 여러 타입을 처리해야 하면 제네릭(추가 간접 참조 없음). Go의 관례는 **인터페이스로 시작하고, 제네릭이 명확히 더 나을 때만 제네릭을 사용**하는 것입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 제네릭 타입의 메서드에 추가 타입 파라미터를 가질 수 있나요?</strong></summary>
 
 아니요, Go 제네릭은 **메서드에 추가 타입 파라미터를 허용하지 않습니다**. `func (s *Stack[T]) Convert[U any]() U`는 컴파일 오류입니다. 이유는 Go의 단순성(simplicity) 철학에 있습니다. 메서드 타입 파라미터는 컴파일러 구현과 타입 추론을 크게 복잡하게 만듭니다. 대신 **일반 함수를 사용**하여 타입 파라미터를 추가할 수 있습니다: `func ConvertStack[T, U any](s *Stack[T], fn func(T) U) *Stack[U]`.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: ~int와 int의 차이는 무엇인가요?</strong></summary>
 
 `~int`는 **underlying type**(기반 타입)이 `int`인 모든 타입을 허용합니다. 즉, `int` 자체와 `type MyInt int` 같은 별칭 타입도 포함됩니다. `int`만 쓰면 정확히 `int` 타입만 허용하고 `MyInt`는 허용하지 않습니다. 일반적으로 제네릭 제약에서는 `~`를 붙이는 것이 더 유연합니다. 예를 들어 `Sum[T ~int | ~float64]`는 `int`, `float64`, 그리고 이들의 별칭 타입 모두를 지원합니다. `~`는 Go 1.18에서 타입 집합과 함께 도입된 새로운 문법입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 제네릭과 빈 인터페이스(any) 중 어떤 것이 더 효율적인가요?</strong></summary>
 
 제네릭이 훨씬 효율적입니다. `any`(`interface{}`)는 값을 박싱하여 힙에 할당하고, iface/eface 구조체를 통해 간접 참조(indirection)가 발생합니다. 제네릭은 monomorphization으로 각 타입별로 직접 코드가 생성되므로 박싱, 간접 참조, GC 부담이 없습니다. 예를 들어 `func Process[T any](v T)`는 `T`가 `int`일 때 정수를 직접 스택에 전달하지만, `func Process(v any)`는 정수를 힙에 박싱하고 eface 포인터를 전달합니다. 성능이 중요한 라이브러리 코드에서는 제네릭을 우선 고려하세요.
+
 </details>
 
 ## 요약

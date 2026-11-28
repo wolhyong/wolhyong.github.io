@@ -12,7 +12,6 @@ Entity Framework Core는 C# 객체와 데이터베이스를 매핑하는 ORM으�
 
 > **핵심 정리** · EF Core는 ORM으로 객체와 테이블을 매핑합니다. `DbContext`는 데이터베이스 컨텍스트입니다. `DbSet<TEntity>`로 엔티티를 노출합니다. LINQ to SQL로 쿼리를 SQL로 변환합니다. 마이그레이션으로 스키마를 버전 관리합니다. `ChangeTracker`로 변경 추적을 수행합니다.
 
-
 ## 수업 목표
 
 - Entity Framework Core를 이해합니다.
@@ -319,46 +318,49 @@ public IActionResult GetChanges()
 
 `ChangeTracker`는 엔티티의 변경을 추적합니다. `Entries`로 모든 추적된 엔티티를 가져옵니다. `State`로 변경 상태를 확인할 수 있습니다. `Unchanged`, `Added`, `Modified`, `Deleted` 상태가 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> EF Core와 ADO.NET 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 EF Core는 ORM으로 객체 지향 데이터베이스 접근을 제공합니다. 대부분의 경우 EF Core를 사용하는 것이 좋습니다. ADO.NET은 성능이 중요하거나 SQL을 직접 제어해야 할 때 사용합니다. EF Core는 생산성을 높이고 ADO.NET은 성능을 높입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 마이그레이션은 언제 사용해야 하나요?</strong></summary>
 
 마이그레이션은 데이터베이스 스키마를 버전 관리할 때 사용합니다. 스키마 변경이 필요할 때마다 마이그레이션을 생성하고 적용합니다. 팀 협업 환경에서 스키마 일관성을 유지하는 데 필수적입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> LINQ to SQL과 일반 LINQ의 차이는 무엇인가요?</strong></summary>
 
 LINQ to SQL은 LINQ 쿼리리를 SQL로 변환하여 데이터베이스에서 실행합니다. 일반 LINQ는 메모리 컬렉션에서 실행됩니다. EF Core의 LINQ는 LINQ to SQL입니다. `AsEnumerable`로 메모리로 가져온 후 일반 LINQ를 사용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> ChangeTracker는 언게 유지되나요?</strong></summary>
 
 `ChangeTracker`는 컨텍스트 수명 동안 변경을 추적합니다. `Scoped` 컨텍스트는 HTTP 요청 동안 추적합니다. 너무 많은 엔티티를 추적하면 메모리 사용량이 증가합니다. `AsNoTracking`으로 추적을 비활성화할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> AsNoTracking은 언제 사용해야 하나요?</strong></summary>
 
 `AsNoTracking`은 읽기 전용 쿼리리에 사용합니다. 변경 추적을 비활성화하여 성능을 향상합니다. 쓰기가 필요 없는 조회에 사용합니다. `AsNoTracking` 엔티티는 수정할 수 없습니다.
-</details>
 
+</details>
 
 ## 요약
 
 | 개념 | 설명 | 특징 |
 |------|------|------|
 | **EF Core** | ORM | 객체-테이블 매핑 |
-| **DbContext** | 데이터베이스 컨텍스트 | DbSet<TEntity> |
+| **DbContext** | 데이터베이스 컨텍스트 | DbSet&lt;TEntity&gt; |
 | **DbSet** | 엔티티 노출 | CRUD 메서드 |
 | **모델** | 데이터베이스 테이블 | 데이터 주석 |
 | **마이그레이션** | 스키마 버전 관리 | Add-Migration |
@@ -368,7 +370,6 @@ LINQ to SQL은 LINQ 쿼리리를 SQL로 변환하여 데이터베이스에서 �
 | **AsNoTracking** | 추적 비활성 | 읽기 전용 |
 | **SaveChangesAsync** | 변경 저장 | 비동기 저장 |
 | **SQL Server** | 데이터베이스 제공자 | UseSqlServer |
-
 
 ## 다음 수업
 

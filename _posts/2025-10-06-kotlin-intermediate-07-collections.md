@@ -12,7 +12,6 @@ Kotlin의 컬렉션 시스템은 풍부한 API를 제공하며 함수형 프로�
 
 > **핵심 정리** · `listOf`로 불변 리스트, `mutableListOf`로 가변 리스트를 생성합니다. `setOf`로 불변 세트, `mutableSetOf`로 가변 세트를 생성합니다. `mapOf`로 불변 맵, `mutableMapOf`로 가변 맵을 생성합니다. 시퀀스는 지연 평가 컬렉션입니다. `map`, `filter`, `reduce` 등의 함수를 제공합니다. 불변 컬렉션은 스레드 안전합니다.
 
-
 ## 수업 목표
 
 - List를 이해하고 사용할 수 있습니다.
@@ -348,39 +347,42 @@ println(sortedMap)  // {a=1, b=2}
 
 다양한 컬렉션 생성 함수를 제공합니다. `emptyList`, `listOf`, `mutableListOf`, `arrayListOf` 등이 있습니다. `hashSetOf`, `linkedSetOf`, `sortedSetOf`로 다른 구현을 선택할 수 있습니다. `hashMapOf`, `linkedMapOf`, `sortedMapOf`로 다른 맵 구현을 선택할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> List와 Sequence 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `List`를 우선 사용해야 합니다. 즉시 평가되며 대부분의 경우 충분합니다. `Sequence`는 대용량 데이터 처리에 사용합니다. 지연 평가로 성능을 최적화합니다. 체이닝이 많을 때 유용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 불변 컬렉션과 가변 컬렉션 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 불변 컬렉션을 우선 사용해야 합니다. 스레드 안전하며 예상치 못한 변경을 방지합니다. 변경이 필요할 때만 가변 컬렉션을 사용합니다. 불변성을 우선시하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> reduce와 fold 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `reduce`는 초기값 없이 첫 요소를 초기값으로 사용합니다. `fold`는 초기값을 명시합니다. 컬렉션이 비어있을 수 있으면 `fold`를 사용해야 합니다. 초기값이 필요하면 `fold`를 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> map과 flatMap 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `map`은 1:1 변환에 사용합니다. `flatMap`은 1:N 변환에 사용합니다. 중첩 컬렉션을 평탄화할 때 유용합니다. 변환 결과가 컬렉션이면 `flatMap`을 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Set과 List 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Set`은 중복을 방지할 때 사용합니다. 멤버십 테스트에 유용합니다. `List`는 순서가 중요할 때 사용합니다. 인덱스 접근이 필요할 때 사용합니다. 중복이 허용되면 `List`를 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -400,7 +402,6 @@ println(sortedMap)  // {a=1, b=2}
 | **flatMap** | 평탄화 | 1:N 변환 |
 | **불변 컬렉션** | 스레드 안전 | 변경 불가 |
 | **가변 컬렉션** | 변경 가능 | 유연성 |
-
 
 ## 다음 수업
 

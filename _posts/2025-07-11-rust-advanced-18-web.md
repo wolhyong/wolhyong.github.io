@@ -12,7 +12,6 @@ Rust의 웹 프레임워크는 타입 안전성과 고성능을 동시에 제공
 
 > **핵심 정리** · Actix-web은 액터 모델 기반 고성능 웹 프레임워크입니다. Axum은 Tokio 기반 현대적 프레임워크로 타입 안전한 라우팅을 제공합니다. 핸들러는 요청을 처리하고 응답을 반환합니다. 미들웨어는 로깅, 인증 등을 추가합니다. AppState로 데이터베이스 풀 등을 공유합니다.
 
-
 ## 수업 목표
 
 - Actix-web과 Axum의 차이를 이해합니다.
@@ -369,39 +368,42 @@ async fn main() -> std::io::Result<()> {
 
 `web::Data<T>`로 데이터베이스 풀 등을 공유합니다. `sqlx`는 컴파일 타임 쿼리 검사를 제공하는 비동기 SQL 라이브러리입니다. 연결 풀을 사용하여 효율적으로 데이터베이스 연결을 관리합니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Actix-web과 Axum 중 어떤 것을 사용해야 하나요?</strong></summary>
 
 Actix-web은 액터 모델 기반으로 성능이 뛰어나며 생태계가 성숙했습니다. Axum은 Tokio 기반으로 타입 안전성이 높고 현대적입니다. Actix-web은 더 많은 기능을 제공하지만 Axum은 더 간결하고 타입 안전합니다. Rust 웹 개발 경험이 없다면 Axum을 시작하고, 성능이 중요하면 Actix-web을 고려합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 왜 Rust 웹 프레임워크는 비동기인가요?</strong></summary>
 
 웹 애플리케이션은 I/O 바운드 작업이 많습니다. 비동기 모델은 단일 스레드로 수천 개의 동시 연결을 처리할 수 있어 효율적입니다. 스레드 기반 모델은 스레드 생성 비용이 높고 컨텍스트 스위칭 오버헤드가 있습니다. Rust의 비동기 모델은 제로-cost 추상화로 동기 코드와 동일한 성능을 보장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 상태 관리는 어떻게 구현하나요?</summary></summary>
 
 상태는 `AppState` 구조체에 정의하고 라우터에 추가합니다. Actix-web은 `web::Data<T>`, Axum은 `with_state()`와 `State<T>` 추출器를 사용합니다. `Clone`을 구현해야 하며 `Arc`로 공유 상태를 관리합니다. 데이터베이스 풀, 설정, 캐시 등을 공유할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> 미들웨어는 어떻게 작성하나요?</summary></summary>
 
 미들웨어는 `Transform` 트레이트를 구현하여 작성합니다. 요청 전후에 로직을 추가할 수 있습니다. 로깅, 인증, CORS, 압축 등에 사용됩니다. Actix-web과 Axum은 다른 미들웨어 API를 제공하지만 개념은 유사합니다. 간단한 미들웨어는 프레임워크가 제공하는 내장 미들웨어를 사용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> JSON 직렬화는 어떻게 처리하나요?</summary></summary>
 
 `serde`와 `serde_json`을 사용하여 JSON 직렬화/역직렬화를 처리합니다. 구조체에 `#[derive(Serialize, Deserialize)]` 속성을 추가하면 자동으로 구현됩니다. `web::Json<T>`(Actix-web) 또는 `Json<T>`(Axum) 추출器로 자동 파싱됩니다. 타입 안전하고 빠릅니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -416,7 +418,6 @@ Actix-web은 액터 모델 기반으로 성능이 뛰어나며 생태계가 성�
 | **상태 관리** | 데이터 공유 | AppState, Arc |
 | **에러 처리** | ResponseError 트레이트 | 커스텀 에러 |
 | **JSON** | serde로 직렬화 | 자동 파싱 |
-
 
 ## 다음 수업
 

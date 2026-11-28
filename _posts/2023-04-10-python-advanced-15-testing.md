@@ -46,34 +46,39 @@ class TestCalculator:
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: pytest와 unittest 중 어떤 것을 선택해야 하나요?</strong></summary>
 
 **pytest**를 권장합니다. pytest는 더 간결한 문법(assert 한 줄), 자동 fixture 관리, 강력한 플러그인 시스템, 더 상세한 에러 메시지를 제공합니다. unittest는 표준 라이브러리이므로 별도 설치가 필요 없고, JUnit 스타일에 익숙한 팀에 적합합니다. 대부분의 새 프로젝트는 pytest를 선택합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Mock 객체는 어떻게 동작하나요?</strong></summary>
 
 Mock 객체는 모든 속성 접근과 메서드 호출을 가로채서 새로운 Mock을 반환합니다. `assert_called_with()`로 호출 인자를 검증하고, `side_effect`로 예외를 발생시키거나, `return_value`로 반환값을 설정할 수 있습니다. `patch()`는 컨텍스트 관리자로 사용하여 특정 범위에서만 Mock을 적용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 테스트 커버리지는 100%가 목표인가요?</strong></summary>
 
 **아니요.** 100% 커버리지는 오히려 해롭습니다. 단순 getter/setter, 외부 라이브러리 호출, 죽은 코드까지 테스트하면 유지보수 비용만 증가합니다. 핵심 비즈니스 로직에 집중하고, 중요한 분기(if-else, 예외 처리)를 우선 테스트하세요. 일반적으로 70~80% 커버리지가 실용적인 목표입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: TDD를 꼭 해야 하나요?</strong></summary>
 
 TDD는 강력한 방법론이지만 모든 상황에 적합하지는 않습니다. 탐색적 프로그래밍(프로토타입, 데이터 분석)에는 TDD가 오히려 방해가 됩니다. 하지만 안정성이 중요한 비즈니스 로직, API, 라이브러리 코드에는 TDD가 큰 도움이 됩니다. 중요한 것은 **테스트를 아예 작성하지 않는 것**이 최악이라는 점입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 통합 테스트와 단위 테스트의 비율은 어떻게 되나요?</strong></summary>
 
 **테스트 피라미드**에 따르면: 단위 테스트 70%, 통합 테스트 20%, E2E 테스트 10%가 이상적입니다. 단위 테스트는 빠르고(ms 단위) 신뢰할 수 있으며, 문제 발생 시 정확히 어디가 잘못되었는지 알려줍니다. E2E 테스트는 느리고(초~분 단위) 불안정하지만, 실제 사용자 시나리오를 검증합니다.
+
 </details>
 
 ---

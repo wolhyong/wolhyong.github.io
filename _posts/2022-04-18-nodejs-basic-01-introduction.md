@@ -455,29 +455,39 @@ node app.js
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Node.js는 백엔드 전용인가요?</strong></summary>
+
 아니요. Node.js는 CLI 도구(npm, eslint), 데스크톱 앱(Electron 기반), IoT 기기 등 다양한 환경에서 사용됩니다. 백엔드가 가장 일반적인 용도이지만, 제한은 없습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 싱글 스레드인데 어떻게 많은 요청을 처리하나요?</strong></summary>
+
 이벤트 루프가 비동기 I/O를 관리하기 때문입니다. 파일 읽기, 네트워크 요청, 데이터베이스 쿼리 등 **대기 시간이 발생하는 작업**은 libuv의 스레드 풀(기본 4개)이나 OS 커널에 위임됩니다. JavaScript 코드를 실행하는 메인 스레드는 쉬지 않고 이벤트를 처리합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Python이나 Java와 비교해서 어떤가요?</strong></summary>
+
 Node.js는 **I/O 집약적 작업**에 특화되어 있습니다. 채팅 서버, API 게이트웨이, 실시간 애플리케이션에 강점이 있습니다. 반면 CPU 집약적인 작업(이미지 처리, 복잡한 계산)에는 Python이나 Java가 더 적합할 수 있습니다. Worker Threads를 사용하면 CPU 작업도 처리할 수 있지만, 설계가 더 복잡해집니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Node.js의 콜백 지옥은 어떻게 해결하나요?</strong></summary>
+
 Node.js의 콜백 지옥(Callback Hell)은 Promise와 async/await로 해결할 수 있습니다. 2015년 ES6에서 Promise가 도입된 이후, Node.js 코드는 훨씬 더 읽기 쉬워졌습니다. 2022년 현재 대부분의 Node.js 라이브러리는 Promise 기반 API를 제공합니다. 콜백 기반 라이브러리는 `util.promisify()`로 Promise로 변환할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Node.js는 멀티코어 CPU를 활용할 수 있나요?</strong></summary>
+
 네, 가능합니다. Node.js의 메인 스레드는 싱글 스레드이지만, `cluster` 모듈을 사용하면 여러 CPU 코어에 워커 프로세스를 생성할 수 있습니다. 또한 `worker_threads` 모듈로 CPU 집약적인 작업을 별도 스레드에서 처리할 수 있습니다. 실제 프로덕션에서는 PM2 같은 프로세스 매니저가 클러스터 모드를 자동으로 관리해줍니다.
+
 </details>
 
 ## 요약

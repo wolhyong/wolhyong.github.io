@@ -12,7 +12,6 @@ Kotlin은 안드로이드 개발의 공식 언어이며 Jetpack 라이브러리�
 
 > **핵심 정리** · `Activity`는 단일 화면을 나타냅니다. `Fragment`는 재사용 가능한 UI 컴포넌트입니다. `ViewModel`은 UI 데이터를 보관합니다. `LiveData`는 관찰 가능한 데이터 홀더입니다. `Jetpack Compose`는 선언형 UI 프레임워크입니다. 생명주기 인식 컴포넌트를 제공합니다.
 
-
 ## 수업 목표
 
 - Activity를 이해하고 사용할 수 있습니다.
@@ -262,39 +261,42 @@ class MyViewModel @Inject constructor(
 
 `Hilt`는 안드로이드용 DI 컨테이너입니다. `@Module`로 모듈을 정의합니다. `@Provides`로 의존성을 제공합니다. `@Inject`로 의존성을 주입받습니다. 의존성 주입을 간단하게 구현할 수 있습니다.
 
-
 ## 사람들이 자주 묻는 질문
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Activity와 Fragment 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Activity`는 단일 화면에 사용합니다. `Fragment`는 재사용 가능한 UI 컴포넌트에 사용합니다. 모듈화된 UI를 구축할 때 `Fragment`를 사용합니다. 대형 애플리케이션에서는 `Fragment`를 우선 사용합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> ViewModel은 언제 사용해야 하나요?</strong></summary>
 
 `ViewModel`은 UI 관련 데이터에 사용합니다. 화면 회전 시 데이터를 유지해야 할 때 사용합니다. 비즈니스 로직을 분리할 때 사용합니다. 모든 UI 데이터는 `ViewModel`에 저장해야 합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> LiveData와 State 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `LiveData`는 XML 기반 UI에 사용합니다. `State`는 Compose에 사용합니다. `LiveData`는 관찰 가능한 데이터 홀더입니다. `State`는 Compose의 상태 관리에 최적화되어 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Jetpack Compose와 XML 중 언제 어떤 것을 사용해야 하나요?</strong></summary>
 
 `Jetpack Compose`를 우선 사용해야 합니다. 선언형 UI로 코드로 UI를 작성할 수 있습니다. XML은 기존 프로젝트에 사용합니다. 새 프로젝트는 `Compose`를 사용하는 것이 좋습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q> Room은 언제 사용해야 하나요?</strong></summary>
 
 `Room`은 로컬 데이터베이스에 사용합니다. 오프라인 데이터 저장에 적합합니다. SQLite를 직접 사용하는 것보다 간단합니다. 캐시, 사용자 설정 등에 사용합니다.
-</details>
 
+</details>
 
 ## 요약
 
@@ -313,7 +315,6 @@ class MyViewModel @Inject constructor(
 | **Hilt** | DI 컨테이너 | 의존성 주입 |
 | **onCreate** | 생명주기 시작 | 초기화 |
 | **onDestroy** | 생명주기 종료 | 정리 |
-
 
 ## 다음 수업
 

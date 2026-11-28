@@ -56,34 +56,39 @@ Base.metadata.create_all(engine)
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: ORM과 raw SQL 중 어떤 것을 사용해야 하나요?</strong></summary>
 
 **ORM**은 생산성과 유지보수성에서 유리합니다: 객체 지향 코드, 자동 매핑, 마이그레이션, 관계 로딩. **Raw SQL**은 복잡한 쿼리(다중 조인, 윈도우 함수, 계층적 쿼리)에서 성능과 제어력이 좋습니다. SQLAlchemy Core는 중간 지점으로, ORM 수준의 추상화 없이도 SQL 표현식을 Python으로 작성할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: N+1 쿼리 문제를 어떻게 방지하나요?</strong></summary>
 
 N+1 문제는 부모 쿼리(1) 후 각 자식에 대한 추가 쿼리(N)가 발생하는 문제입니다. `joinedload()`(JOIN으로 한 번에 로딩)나 `selectinload()`(IN 쿼리로 한 번에 로딩)을 사용하세요. SQLAlchemy의 `echo=True` 옵션으로 실제 실행되는 SQL을 확인하면서 개발하면 N+1을 쉽게 발견할 수 있습니다. FastAPI/Flask에서는 `relationship`의 `lazy="selectin"` 기본값도 고려할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 세션은 어떻게 관리해야 하나요?</strong></summary>
 
 세션은 **요청당 하나**를 생성하고, 요청이 완료되면 닫는 것이 표준 패턴입니다. FastAPI에서는 `Depends()`로, Flask에서는 `@app.teardown_appcontext`로 세션을 관리합니다. 세션은 스레드 안전하지 않으므로 여러 스레드에서 공유하면 안 됩니다. `scoped_session`으로 스레드-로컬 세션을 안전하게 사용할 수 있습니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: Alembic 마이그레이션을 자동화해야 하나요?</strong></summary>
 
 `alembic revision --autogenerate`는 모델과 실제 DB 스키마를 비교하여 마이그레이션을 자동 생성합니다. 하지만 자동 감지가 완벽하지 않으므로, 생성된 마이그레이션을 항상 검토하고 수동으로 수정해야 합니다(특히 컬럼명 변경, 데이터 마이그레이션). 프로덕션에서는 `alembic upgrade head`로 안전하게 적용하되, 먼저 백업을 수행하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: SQLAlchemy Core와 ORM을 혼용해도 되나요?</strong></summary>
 
 네, 같은 엔진과 연결에서 Core와 ORM을 혼용할 수 있습니다. 복잡한 리포트 쿼리는 Core로, CRUD 작업은 ORM으로 작성하는 것이 일반적입니다. `session.execute(text("SELECT ..."))`로 raw SQL도 실행할 수 있습니다. Core의 결과를 ORM 객체로 변환할 수도 있고, ORM 객체를 Core 표현식에 사용할 수도 있습니다.
+
 </details>
 
 ---

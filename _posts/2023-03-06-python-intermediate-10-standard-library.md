@@ -371,34 +371,39 @@ seed()의 중요성:
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>Q: itertools와 일반 루프 중 어떤 것이 더 빠른가요?</strong></summary>
 
 itertools 함수는 C 레벨에서 구현되어 순수 Python 루프보다 **10~100배 빠릅니다**. 또한 lazy 평가로 메모리 사용량이 O(1)입니다. itertools로 표현할 수 있는 작업은 itertools를 사용하는 것이 거의 항상 더 좋습니다. 특히 `chain`, `product`, `combinations` 같은 함수는 직접 구현하기 복잡한 알고리즘을 효율적으로 처리합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: deque를 스택으로 사용해도 되나요?</strong></summary>
 
 네, deque는 스택으로도 사용할 수 있습니다. `append()`와 `pop()`(오른쪽)은 O(1)입니다. 리스트도 스택으로 사용할 수 있지만(`append()`와 `pop()`은 O(1)), deque는 양쪽 끝 모두 O(1)입니다. 그러나 리스트가 CPU 캐시 지역성에서 유리하므로, 단순한 스택 용도로는 리스트를 권장합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: datetime.timezone과 pytz의 차이는 무엇인가요?</strong></summary>
 
 Python 3.9+에서는 `zoneinfo` 모듈이 표준 라이브러리에 포함되어 IANA 시간대 데이터베이스를 직접 사용할 수 있습니다. `datetime.timezone`은 고정 오프셋(예: UTC+9)에만 사용할 수 있습니다. `pytz`는 써드파티 라이브러리로, DST(일광절약시간) 기록이 있는 복잡한 시간대를 지원합니다. Python 3.9+에서는 `zoneinfo`를 권장하고, 그 이전 버전에서는 `pytz`를 사용하세요.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 정규표현식이 너무 느린데 어떻게 최적화하나요?</strong></summary>
 
 1. **컴파일**: `re.compile()`로 패턴을 미리 컴파일하세요. 2. **원시 문자열**: 백슬래시 해석을 피하려면 `r"..."`를 사용하세요. 3. **구체적인 패턴**: `.*`보다 `[^,]*`가 더 효율적입니다. 4. **백트래킹 최소화**: `(a+)+b` 같은 중첩 수량자는 피하세요. 5. **문자열 메서드 우선**: 간단한 작업은 `str.find()`, `str.startswith()`, `str.split()`이 더 빠릅니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Q: 난수 시드를 설정해야 하나요?</strong></summary>
 
 **재현 가능성**이 필요한 경우(디버깅, 테스트, 게임 시드) 시드를 설정하세요. 보안 관련(비밀번호, 토큰)에는 `secrets` 모듈을 사용해야 합니다. 시드를 설정하지 않으면 `os.urandom(2500)`으로 624바이트 상태를 초기화하여 사실상 예측 불가능한 난수를 생성합니다. 머신러닝 실험에서는 시드 고정이 결과 재현에 필수적입니다.
+
 </details>
 
 ---

@@ -594,13 +594,14 @@ notifier.sendDeploymentNotification({
 
 ## 사람들이 자주 묻는 질문 (People Also Ask)
 
-<details>
+<details markdown="1">
 <summary><strong>CI/CD가 꼭 필요한가요?</strong></summary>
 
 소규모 개인 프로젝트라면 필수는 아니지만, 팀 프로젝트나 프로덕션 서비스에는 반드시 필요합니다. CI/CD가 없으면 빌드, 테스트, 배포를 수동으로 해야 하고, 사람의 실수가 발생할 가능성이 **약 3~5배** 높아집니다(DORA 리포트 기준). GitHub Actions는 퍼블릭 저장소에 **무료**이므로 작은 프로젝트부터 적용해보는 것을 추천합니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>모니터링 도구는 무엇을 선택해야 하나요?</strong></summary>
 
 초기에는 **Sentry** (에러 트래킹)와 **PM2 monit** (서버 상태)만으로도 충분합니다. 서비스가 성장하면 Prometheus + Grafana (메트릭)와 ELK (로깅)를 추가하고, 더 나아가 Datadog이나 New Relic 같은 유료 APM 솔루션을 고려할 수 있습니다. 단계별 비용을 고려하면 다음과 같습니다:
@@ -610,15 +611,17 @@ notifier.sendDeploymentNotification({
 | 시작 | Sentry (무료) + PM2 monit | $0 | 일일 요청 < 10만 |
 | 성장 | + Prometheus + Grafana | $0 (자체 호스팅) | 일일 요청 < 100만 |
 | 확장 | + Datadog 또는 New Relic | $100~500 | 일일 요청 > 100만 |
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>무중단 배포는 모든 서비스에 필요한가요?</strong></summary>
 
 트래픽이 적은 서비스나 내부 도구라면 짧은 다운타임을 감수하고 단순 재시작으로도 충분합니다. 하지만 사용자가 많은 서비스라면 Blue-Green이나 롤링 배포를 도입하는 것이 좋습니다. SLA(Service Level Agreement)가 99.9% 이상인 서비스는 연간 다운타임이 **8.76시간 이하**로 제한되므로, 무중단 배포가 사실상 필수입니다.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Docker 없이 배포해도 되나요?</strong></summary>
 
 가능하지만 권장하지 않습니다. Docker 없이 배포하면 "내 컴퓨터에서는 잘 되는데..." 문제가 자주 발생합니다. Docker를 사용하면:
@@ -626,6 +629,7 @@ notifier.sendDeploymentNotification({
 - Node.js 버전 관리가 **자동화**됨
 - **롤백**이 `docker compose up -d app-v1` 한 줄
 - **확장**이 `docker compose up -d --scale app=5` 한 줄
+
 </details>
 
 ## 요약
