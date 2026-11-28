@@ -352,36 +352,12 @@ if (!PostCard) {
 
 다음 글에서는 Web Components 2부 — Shadow DOM과 스타일 캡슐화를 다룹니다.
 
+---
 
-## 실전 예제로 이해하기
+## 주의할 점
 
-HTML의 Web Components 1부 개념을 실제 웹 페이지에서 어떻게 활용하는지 예제 코드를 통해 알아보겠습니다. 기본 문법을 익힌 후에 실제 프로젝트에서 자주 마주치는 패턴을 함께 살펴보면 학습 효과가 훨씬 높아집니다.
-
-아래 코드는 Web Components 1부을 실제 HTML 문서 내에서 사용한 예시입니다. 각 요소가 페이지에서 어떤 역할을 수행하는지 주석과 함께 확인해 보세요.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Components 1부 실전 예제</title>
-</head>
-<body>
-  <!-- 실전 예제 코드는 수업별로 적절히 변경 필요 -->
-  <p>Web Components 1부에 대한 실습을 진행합니다.</p>
-</body>
-</html>
-```
-
-## 자주 하는 실수와 주의점
-
-초보자들이 Web Components 1부을 다룰 때 가장 흔히 하는 실수는 닫는 태그를 빼먹거나 속성값을 따옴표로 감싸지 않는 것입니다. HTML은 오류에 관대한 편이지만, 이런 실수는 레이아웃이 깨지거나 스타일이 정상적으로 적용되지 않는 원인이 됩니다. 반드시 모든 태그가 올바르게 열고 닫혔는지, 속성값은 따옴표로 감쌌는지 확인하는 습관을 들이는 것이 좋습니다.
-
-## 브라우저 동작 방식
-
-브라우저는 HTML 문서를 위에서 아래로 읽으며 DOM(Document Object Model) 트리를 생성합니다. Web Components 1부 요소가 DOM 트리에서 어떻게 해석되고 배치되는지 이해하면 더 체계적인 마크업을 작성할 수 있습니다. 개발자 도구(F12)의 Elements 패널을 열어 실제 DOM 구조를 확인하는 습관을 추천합니다.
-
-## 실전 활용 팁
-
-실무에서는 Web Components 1부을 단독으로 사용하기보다는 CSS와 JavaScript와 함께 조합하여 사용합니다. 시맨틱한 마크업은 검색 엔진 최적화(SEO)와 웹 접근성 향상에 직접적인 도움을 줍니다. 또한 W3C validator를 통해 HTML 문법을 검증하면 크로스 브라우징 이슈를 줄일 수 있습니다.
+- 커스텀 엘리먼트 이름에는 하이픈이 반드시 들어가야 합니다(`<tech-badge>`). 한 번 등록한 이름은 다시 정의할 수 없습니다.
+- 생성자에서는 `super()`를 먼저 호출하고, 속성이나 자식 요소를 다루는 일은 `connectedCallback`부터 합니다. 생성자 시점에는 아직 DOM에 붙지 않았습니다.
+- `attributeChangedCallback`은 `static observedAttributes`에 적은 속성에만 호출됩니다.
+- 정의되기 전 태그는 빈 인라인 요소로 보입니다. `:not(:defined) { visibility: hidden }`으로 깜빡임을 줄입니다.
+- `customElements.define`은 모듈이 한 번만 실행되도록 `type="module"` 스크립트에서 호출합니다.

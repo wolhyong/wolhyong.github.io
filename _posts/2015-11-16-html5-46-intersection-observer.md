@@ -256,36 +256,13 @@ IntersectionObserver는 브라우저가 최적 타이밍에 비동기로 콜백�
 
 다음 글에서는 WebRTC 기초 — 브라우저 간 P2P 통신을 다룹니다.
 
+---
 
-## 실전 예제로 이해하기
+## 주의할 점
 
-HTML의 Intersection Observer 개념을 실제 웹 페이지에서 어떻게 활용하는지 예제 코드를 통해 알아보겠습니다. 기본 문법을 익힌 후에 실제 프로젝트에서 자주 마주치는 패턴을 함께 살펴보면 학습 효과가 훨씬 높아집니다.
-
-아래 코드는 Intersection Observer을 실제 HTML 문서 내에서 사용한 예시입니다. 각 요소가 페이지에서 어떤 역할을 수행하는지 주석과 함께 확인해 보세요.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intersection Observer 실전 예제</title>
-</head>
-<body>
-  <!-- 실전 예제 코드는 수업별로 적절히 변경 필요 -->
-  <p>Intersection Observer에 대한 실습을 진행합니다.</p>
-</body>
-</html>
-```
-
-## 자주 하는 실수와 주의점
-
-초보자들이 Intersection Observer을 다룰 때 가장 흔히 하는 실수는 닫는 태그를 빼먹거나 속성값을 따옴표로 감싸지 않는 것입니다. HTML은 오류에 관대한 편이지만, 이런 실수는 레이아웃이 깨지거나 스타일이 정상적으로 적용되지 않는 원인이 됩니다. 반드시 모든 태그가 올바르게 열고 닫혔는지, 속성값은 따옴표로 감쌌는지 확인하는 습관을 들이는 것이 좋습니다.
-
-## 브라우저 동작 방식
-
-브라우저는 HTML 문서를 위에서 아래로 읽으며 DOM(Document Object Model) 트리를 생성합니다. Intersection Observer 요소가 DOM 트리에서 어떻게 해석되고 배치되는지 이해하면 더 체계적인 마크업을 작성할 수 있습니다. 개발자 도구(F12)의 Elements 패널을 열어 실제 DOM 구조를 확인하는 습관을 추천합니다.
-
-## 실전 활용 팁
-
-실무에서는 Intersection Observer을 단독으로 사용하기보다는 CSS와 JavaScript와 함께 조합하여 사용합니다. 시맨틱한 마크업은 검색 엔진 최적화(SEO)와 웹 접근성 향상에 직접적인 도움을 줍니다. 또한 W3C validator를 통해 HTML 문법을 검증하면 크로스 브라우징 이슈를 줄일 수 있습니다.
+- 콜백은 메인 스레드에서 실행됩니다. 콜백 안에서 무거운 작업을 하면 스크롤이 끊깁니다.
+- 관찰이 끝난 요소는 `unobserve()`로 해제합니다. 해제하지 않으면 계속 콜백이 불립니다.
+- `rootMargin`은 관찰 대상이 아니라 root(기본은 뷰포트)의 경계를 기준으로 넓힙니다.
+- `threshold`에 배열을 주면 교차 비율이 바뀔 때마다 콜백이 불립니다. 같은 상태가 여러 번 들어오는 경우를 대비합니다.
+- 처음부터 화면 밖에 있는 요소의 초기 상태를 CSS에 반영하지 않으면 애니메이션이 시작되지 않습니다.
+- 지연 로딩만 필요하다면 이미지의 `loading="lazy"`가 더 간단합니다.

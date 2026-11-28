@@ -249,36 +249,12 @@ async function refreshCache(slug) {
 
 다음 글에서는 Geolocation API — 사용자 위치 가져오기를 다룹니다.
 
+---
 
-## 실전 예제로 이해하기
+## 주의할 점
 
-HTML의 IndexedDB 사용법 개념을 실제 웹 페이지에서 어떻게 활용하는지 예제 코드를 통해 알아보겠습니다. 기본 문법을 익힌 후에 실제 프로젝트에서 자주 마주치는 패턴을 함께 살펴보면 학습 효과가 훨씬 높아집니다.
-
-아래 코드는 IndexedDB 사용법을 실제 HTML 문서 내에서 사용한 예시입니다. 각 요소가 페이지에서 어떤 역할을 수행하는지 주석과 함께 확인해 보세요.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IndexedDB 사용법 실전 예제</title>
-</head>
-<body>
-  <!-- 실전 예제 코드는 수업별로 적절히 변경 필요 -->
-  <p>IndexedDB 사용법에 대한 실습을 진행합니다.</p>
-</body>
-</html>
-```
-
-## 자주 하는 실수와 주의점
-
-초보자들이 IndexedDB 사용법을 다룰 때 가장 흔히 하는 실수는 닫는 태그를 빼먹거나 속성값을 따옴표로 감싸지 않는 것입니다. HTML은 오류에 관대한 편이지만, 이런 실수는 레이아웃이 깨지거나 스타일이 정상적으로 적용되지 않는 원인이 됩니다. 반드시 모든 태그가 올바르게 열고 닫혔는지, 속성값은 따옴표로 감쌌는지 확인하는 습관을 들이는 것이 좋습니다.
-
-## 브라우저 동작 방식
-
-브라우저는 HTML 문서를 위에서 아래로 읽으며 DOM(Document Object Model) 트리를 생성합니다. IndexedDB 사용법 요소가 DOM 트리에서 어떻게 해석되고 배치되는지 이해하면 더 체계적인 마크업을 작성할 수 있습니다. 개발자 도구(F12)의 Elements 패널을 열어 실제 DOM 구조를 확인하는 습관을 추천합니다.
-
-## 실전 활용 팁
-
-실무에서는 IndexedDB 사용법을 단독으로 사용하기보다는 CSS와 JavaScript와 함께 조합하여 사용합니다. 시맨틱한 마크업은 검색 엔진 최적화(SEO)와 웹 접근성 향상에 직접적인 도움을 줍니다. 또한 W3C validator를 통해 HTML 문법을 검증하면 크로스 브라우징 이슈를 줄일 수 있습니다.
+- IndexedDB의 모든 요청은 비동기입니다. 결과는 `onsuccess`나 `await`로 받습니다.
+- 트랜잭션은 대기 중인 요청이 끝나면 자동으로 커밋됩니다. `await` 사이에 다른 비동기 작업을 끼우면 `TransactionInactiveError`가 납니다.
+- 스키마 변경은 `onupgradeneeded`에서만 합니다. 버전을 올리지 않고 저장소를 추가하면 반영되지 않습니다.
+- Safari는 저장 공간이 부족하면 오래된 IndexedDB 데이터를 지울 수 있습니다. 중요한 데이터는 서버와 동기화합니다.
+- 콜백이 깊어지면 `idb` 같은 라이브러리를 쓰는 편이 읽기 쉽습니다.

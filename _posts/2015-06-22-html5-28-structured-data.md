@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "웹 접근성(a11y) 기초와 ARIA 속성 입문 — 스크린 리더 대응 방법"
-description: "웹 접근성(a11y)과 ARIA 속성은 어떻게 적용하나요? ARIA role, aria-label, aria-hidden, aria-expanded, aria-live 속성의 올바른 사용법, 키보드 탐색 지원, 색상 대비 체크리스트까지 바로 적용할 수 있는 내용을 소개합니다."
+description: "웹 접근성(a11y)과 ARIA 속성은 어떻게 적용하나요? ARIA role, aria-label, aria-hidden, aria-expanded, aria-live의 올바른 사용법과 키보드 탐색 지원, 색상 대비 점검 방법을 정리했습니다."
 date: 2015-06-22 00:00:00 +0900
 category: html
 level: intermediate

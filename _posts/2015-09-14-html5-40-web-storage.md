@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "PWA 시작하기 — Web App Manifest로 앱처럼 설치되는 블로그 만들기"
-description: "PWA로 블로그를 앱처럼 설치하려면 어떻게 해야 하나요? Progressive Web App의 개념과 Web App Manifest 파일 작성법, name·icons·display·start_url·theme_color 설정, 설치 프롬프트 제어까지 예제와 함께 설명합니다."
+description: "PWA로 블로그를 앱처럼 설치하려면 어떻게 해야 하나요? Web App Manifest 작성법, name·icons·display·start_url·theme_color 설정, 설치 프롬프트 제어를 예제와 함께 설명합니다."
 date: 2015-09-14 00:00:00 +0900
 category: html
 level: advanced
@@ -284,36 +284,12 @@ Chrome DevTools → Lighthouse 탭에서 PWA 점수를 확인할 수 있습니�
 
 다음 글에서는 Service Worker — 오프라인 캐싱과 백그라운드 동기화를 다룹니다.
 
+---
 
-## 실전 예제로 이해하기
+## 주의할 점
 
-HTML의 PWA 시작하기 개념을 실제 웹 페이지에서 어떻게 활용하는지 예제 코드를 통해 알아보겠습니다. 기본 문법을 익힌 후에 실제 프로젝트에서 자주 마주치는 패턴을 함께 살펴보면 학습 효과가 훨씬 높아집니다.
-
-아래 코드는 PWA 시작하기을 실제 HTML 문서 내에서 사용한 예시입니다. 각 요소가 페이지에서 어떤 역할을 수행하는지 주석과 함께 확인해 보세요.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PWA 시작하기 실전 예제</title>
-</head>
-<body>
-  <!-- 실전 예제 코드는 수업별로 적절히 변경 필요 -->
-  <p>PWA 시작하기에 대한 실습을 진행합니다.</p>
-</body>
-</html>
-```
-
-## 자주 하는 실수와 주의점
-
-초보자들이 PWA 시작하기을 다룰 때 가장 흔히 하는 실수는 닫는 태그를 빼먹거나 속성값을 따옴표로 감싸지 않는 것입니다. HTML은 오류에 관대한 편이지만, 이런 실수는 레이아웃이 깨지거나 스타일이 정상적으로 적용되지 않는 원인이 됩니다. 반드시 모든 태그가 올바르게 열고 닫혔는지, 속성값은 따옴표로 감쌌는지 확인하는 습관을 들이는 것이 좋습니다.
-
-## 브라우저 동작 방식
-
-브라우저는 HTML 문서를 위에서 아래로 읽으며 DOM(Document Object Model) 트리를 생성합니다. PWA 시작하기 요소가 DOM 트리에서 어떻게 해석되고 배치되는지 이해하면 더 체계적인 마크업을 작성할 수 있습니다. 개발자 도구(F12)의 Elements 패널을 열어 실제 DOM 구조를 확인하는 습관을 추천합니다.
-
-## 실전 활용 팁
-
-실무에서는 PWA 시작하기을 단독으로 사용하기보다는 CSS와 JavaScript와 함께 조합하여 사용합니다. 시맨틱한 마크업은 검색 엔진 최적화(SEO)와 웹 접근성 향상에 직접적인 도움을 줍니다. 또한 W3C validator를 통해 HTML 문법을 검증하면 크로스 브라우징 이슈를 줄일 수 있습니다.
+- 설치는 HTTPS에서만 동작합니다(localhost는 예외).
+- `start_url`과 `scope`가 서비스 워커의 범위와 맞아야 설치된 앱이 제대로 열립니다. 하위 경로에 배포한다면 `start_url`도 그 경로로 적습니다.
+- 아이콘은 192×192와 512×512를 넣고, 안드로이드의 원형 마스크를 위해 `purpose: "maskable"` 아이콘을 따로 준비합니다.
+- `beforeinstallprompt` 이벤트는 한 번만 잡히므로 변수에 보관했다가 사용자 동작(버튼 클릭)에서 `prompt()`를 호출합니다.
+- 설치 여부는 `display-mode: standalone` 미디어 쿼리나 iOS의 `navigator.standalone`으로 확인합니다.

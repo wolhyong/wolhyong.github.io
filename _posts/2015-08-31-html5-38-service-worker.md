@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Web Components 2부 — Shadow DOM으로 컴포넌트 스타일 캡슐화하기"
-description: "Shadow DOM으로 스타일을 캡슐화하는 방법은? attachShadow로 Shadow Root를 생성하는 법, open/closed 모드 차이, :host와 ::slotted 가상 선택자, CSS 변수로 외부에서 스타일을 제어하는 방법, 카드 컴포넌트 예제까지 다룹니다."
+description: "Shadow DOM으로 스타일을 캡슐화하는 방법은? attachShadow로 Shadow Root를 만드는 법, open/closed 모드 차이, :host와 ::slotted 선택자, CSS 변수로 테마를 넘기는 방법, 카드 컴포넌트 예제를 다룹니다."
 date: 2015-08-31 00:00:00 +0900
 category: html
 level: advanced
@@ -389,36 +389,12 @@ Shadow DOM의 캡슐화를 테스트하려면, 전역 CSS에 `p { color: red !im
 
 다음 글에서는 Web Components 3부 — HTML Templates와 Slot 심화를 다룹니다.
 
+---
 
-## 실전 예제로 이해하기
+## 주의할 점
 
-HTML의 Web Components 2부 개념을 실제 웹 페이지에서 어떻게 활용하는지 예제 코드를 통해 알아보겠습니다. 기본 문법을 익힌 후에 실제 프로젝트에서 자주 마주치는 패턴을 함께 살펴보면 학습 효과가 훨씬 높아집니다.
-
-아래 코드는 Web Components 2부을 실제 HTML 문서 내에서 사용한 예시입니다. 각 요소가 페이지에서 어떤 역할을 수행하는지 주석과 함께 확인해 보세요.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Components 2부 실전 예제</title>
-</head>
-<body>
-  <!-- 실전 예제 코드는 수업별로 적절히 변경 필요 -->
-  <p>Web Components 2부에 대한 실습을 진행합니다.</p>
-</body>
-</html>
-```
-
-## 자주 하는 실수와 주의점
-
-초보자들이 Web Components 2부을 다룰 때 가장 흔히 하는 실수는 닫는 태그를 빼먹거나 속성값을 따옴표로 감싸지 않는 것입니다. HTML은 오류에 관대한 편이지만, 이런 실수는 레이아웃이 깨지거나 스타일이 정상적으로 적용되지 않는 원인이 됩니다. 반드시 모든 태그가 올바르게 열고 닫혔는지, 속성값은 따옴표로 감쌌는지 확인하는 습관을 들이는 것이 좋습니다.
-
-## 브라우저 동작 방식
-
-브라우저는 HTML 문서를 위에서 아래로 읽으며 DOM(Document Object Model) 트리를 생성합니다. Web Components 2부 요소가 DOM 트리에서 어떻게 해석되고 배치되는지 이해하면 더 체계적인 마크업을 작성할 수 있습니다. 개발자 도구(F12)의 Elements 패널을 열어 실제 DOM 구조를 확인하는 습관을 추천합니다.
-
-## 실전 활용 팁
-
-실무에서는 Web Components 2부을 단독으로 사용하기보다는 CSS와 JavaScript와 함께 조합하여 사용합니다. 시맨틱한 마크업은 검색 엔진 최적화(SEO)와 웹 접근성 향상에 직접적인 도움을 줍니다. 또한 W3C validator를 통해 HTML 문법을 검증하면 크로스 브라우징 이슈를 줄일 수 있습니다.
+- `mode: "closed"`로 만든 shadow root는 `attachShadow()`가 돌려준 참조를 잃으면 다시 접근할 수 없습니다. 외부에서 제어해야 하면 `open`을 씁니다.
+- 바깥 CSS는 Shadow DOM 안으로 들어가지 않습니다. 색이나 글꼴처럼 상속되는 속성만 안쪽으로 전달됩니다.
+- `::slotted()`은 슬롯에 직접 들어온 최상위 요소에만 적용되고 그 자식에는 닿지 않습니다.
+- 슬롯에 넣은 요소는 light DOM에 있으므로 `this.querySelector`가 아니라 `slot.assignedElements()`로 찾습니다.
+- 폼과 함께 쓰려면 form-associated custom element로 등록해야 값이 전송됩니다.

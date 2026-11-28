@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Web Components 3부 — template, slot 심화와 완성된 컴포넌트 패턴"
-description: "Web Components에서 template과 slot을 어떻게 활용하나요? HTML template 태그를 Shadow DOM과 결합하는 방법, slot 이벤트(slotchange), ES 모듈로 컴포넌트 분리, Form-Associated Custom Elements까지 다룹니다."
+description: "Web Components에서 template과 slot을 어떻게 활용하나요? template을 Shadow DOM과 결합하는 방법, slotchange 이벤트, ES 모듈로 컴포넌트 분리, Form-Associated Custom Elements까지 다룹니다."
 date: 2015-09-07 00:00:00 +0900
 category: html
 level: advanced
@@ -273,36 +273,12 @@ export { default as AlertBox } from './alert-box/alert-box.js';
 
 다음 글에서는 PWA 시작하기 — Web App Manifest 설정을 다룹니다.
 
+---
 
-## 실전 예제로 이해하기
+## 주의할 점
 
-HTML의 Web Components 3부 개념을 실제 웹 페이지에서 어떻게 활용하는지 예제 코드를 통해 알아보겠습니다. 기본 문법을 익힌 후에 실제 프로젝트에서 자주 마주치는 패턴을 함께 살펴보면 학습 효과가 훨씬 높아집니다.
-
-아래 코드는 Web Components 3부을 실제 HTML 문서 내에서 사용한 예시입니다. 각 요소가 페이지에서 어떤 역할을 수행하는지 주석과 함께 확인해 보세요.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Components 3부 실전 예제</title>
-</head>
-<body>
-  <!-- 실전 예제 코드는 수업별로 적절히 변경 필요 -->
-  <p>Web Components 3부에 대한 실습을 진행합니다.</p>
-</body>
-</html>
-```
-
-## 자주 하는 실수와 주의점
-
-초보자들이 Web Components 3부을 다룰 때 가장 흔히 하는 실수는 닫는 태그를 빼먹거나 속성값을 따옴표로 감싸지 않는 것입니다. HTML은 오류에 관대한 편이지만, 이런 실수는 레이아웃이 깨지거나 스타일이 정상적으로 적용되지 않는 원인이 됩니다. 반드시 모든 태그가 올바르게 열고 닫혔는지, 속성값은 따옴표로 감쌌는지 확인하는 습관을 들이는 것이 좋습니다.
-
-## 브라우저 동작 방식
-
-브라우저는 HTML 문서를 위에서 아래로 읽으며 DOM(Document Object Model) 트리를 생성합니다. Web Components 3부 요소가 DOM 트리에서 어떻게 해석되고 배치되는지 이해하면 더 체계적인 마크업을 작성할 수 있습니다. 개발자 도구(F12)의 Elements 패널을 열어 실제 DOM 구조를 확인하는 습관을 추천합니다.
-
-## 실전 활용 팁
-
-실무에서는 Web Components 3부을 단독으로 사용하기보다는 CSS와 JavaScript와 함께 조합하여 사용합니다. 시맨틱한 마크업은 검색 엔진 최적화(SEO)와 웹 접근성 향상에 직접적인 도움을 줍니다. 또한 W3C validator를 통해 HTML 문법을 검증하면 크로스 브라우징 이슈를 줄일 수 있습니다.
+- `slotchange`는 슬롯 내용이 바뀔 때만 발생합니다. 처음 렌더링될 때는 발생하지 않을 수 있으므로 초기 처리와 이벤트 처리를 나눠 둡니다.
+- 컴포넌트를 ES 모듈로 나누면 `<script type="module">`로 불러야 하고, `file://`로 열면 CORS 오류가 납니다. 로컬 서버를 띄워 확인합니다.
+- 스타일을 여러 컴포넌트가 공유하려면 `adoptedStyleSheets`에 `CSSStyleSheet`를 담아 넘깁니다.
+- 폼 값을 다루는 컴포넌트는 `ElementInternals`로 form-associated 등록을 해야 합니다. `<input>`을 감싸기만 하면 폼 전송에 포함되지 않습니다.
+- 같은 이름의 커스텀 엘리먼트를 두 번 정의하면 `NotSupportedError`가 납니다. 번들에서 중복 로드되는지 확인합니다.

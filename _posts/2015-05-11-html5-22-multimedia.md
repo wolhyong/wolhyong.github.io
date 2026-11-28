@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "HTML5 폼 유효성 검사 — required, pattern, min, max, step 속성"
-description: "HTML5 폼 유효성 검사를 JavaScript 없이 구현하는 방법은? required, pattern, min, max, minlength, maxlength, step, novalidate 속성 사용법과 :valid/:invalid CSS 가상 클래스 활용법도 다룹니다."
+description: "HTML5 폼 유효성 검사를 JavaScript 없이 구현하는 방법은? required, pattern, min, max, minlength, step, novalidate 속성과 :valid/:invalid CSS 활용을 예제로 설명합니다."
 date: 2015-05-11 00:00:00 +0900
 category: html
 level: intermediate
@@ -313,36 +313,13 @@ HTML 속성과 JavaScript를 함께 쓰면 더 세밀한 제어가 가능합니�
 
 다음 글에서는 HTML5 멀티미디어 태그 — video, audio, source, track을 다룹니다.
 
+---
 
-## 실전 예제로 이해하기
+## 주의할 점
 
-HTML의 HTML5 폼 유효성 검사 개념을 실제 웹 페이지에서 어떻게 활용하는지 예제 코드를 통해 알아보겠습니다. 기본 문법을 익힌 후에 실제 프로젝트에서 자주 마주치는 패턴을 함께 살펴보면 학습 효과가 훨씬 높아집니다.
-
-아래 코드는 HTML5 폼 유효성 검사을 실제 HTML 문서 내에서 사용한 예시입니다. 각 요소가 페이지에서 어떤 역할을 수행하는지 주석과 함께 확인해 보세요.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML5 폼 유효성 검사 실전 예제</title>
-</head>
-<body>
-  <!-- 실전 예제 코드는 수업별로 적절히 변경 필요 -->
-  <p>HTML5 폼 유효성 검사에 대한 실습을 진행합니다.</p>
-</body>
-</html>
-```
-
-## 자주 하는 실수와 주의점
-
-초보자들이 HTML5 폼 유효성 검사을 다룰 때 가장 흔히 하는 실수는 닫는 태그를 빼먹거나 속성값을 따옴표로 감싸지 않는 것입니다. HTML은 오류에 관대한 편이지만, 이런 실수는 레이아웃이 깨지거나 스타일이 정상적으로 적용되지 않는 원인이 됩니다. 반드시 모든 태그가 올바르게 열고 닫혔는지, 속성값은 따옴표로 감쌌는지 확인하는 습관을 들이는 것이 좋습니다.
-
-## 브라우저 동작 방식
-
-브라우저는 HTML 문서를 위에서 아래로 읽으며 DOM(Document Object Model) 트리를 생성합니다. HTML5 폼 유효성 검사 요소가 DOM 트리에서 어떻게 해석되고 배치되는지 이해하면 더 체계적인 마크업을 작성할 수 있습니다. 개발자 도구(F12)의 Elements 패널을 열어 실제 DOM 구조를 확인하는 습관을 추천합니다.
-
-## 실전 활용 팁
-
-실무에서는 HTML5 폼 유효성 검사을 단독으로 사용하기보다는 CSS와 JavaScript와 함께 조합하여 사용합니다. 시맨틱한 마크업은 검색 엔진 최적화(SEO)와 웹 접근성 향상에 직접적인 도움을 줍니다. 또한 W3C validator를 통해 HTML 문법을 검증하면 크로스 브라우징 이슈를 줄일 수 있습니다.
+- 브라우저 검증은 사용자 편의를 위한 장치입니다. 개발자 도구로 속성을 지우면 그만이므로 서버에서 같은 규칙을 다시 검사합니다.
+- `pattern`은 값 전체와 일치해야 합니다. 앞뒤에 `^`와 `$`를 자동으로 붙여 검사하므로 직접 넣을 필요는 없지만, 문법이 JavaScript `RegExp`와 조금 다릅니다.
+- `:invalid`는 페이지가 열린 직후 빈 필수 입력에도 적용됩니다. 그래서 빨간 테두리가 처음부터 보이는 일이 생깁니다. 최신 브라우저에서는 `:user-invalid`를 쓰거나 `novalidate`를 두고 직접 검증합니다.
+- `setCustomValidity("...")`로 넣은 메시지는 값을 고쳐도 자동으로 지워지지 않습니다. 검증 로직에서 `setCustomValidity("")`로 다시 비워야 합니다.
+- `min`/`max`는 숫자와 날짜 타입에서만 동작합니다. `type="text"`에 붙이면 아무 효과가 없습니다.
+- `step`을 지정하지 않으면 `type="number"`는 정수 단위로 검사합니다. 소수를 받으려면 `step="0.01"`처럼 명시합니다.
