@@ -135,7 +135,7 @@ div.card>img+h2+p  →  div.card 안에 img, h2, p 생성
 | `Alt + Shift + ↑/↓` | 줄 복사 |
 | `Ctrl + D` | 같은 단어 순차 선택 |
 | `Ctrl + Shift + P` | 명령어 팔레트 |
-| `Ctrl` + 백틱(`) | 터미널 열기/닫기 |
+| `Ctrl` + 백틱 | 터미널 열기/닫기 |
 | `Ctrl + B` | 사이드바 토글 |
 | `Ctrl + Z` | 실행 취소 |
 | `Shift + Alt + F` | 문서 전체 포맷팅 |
