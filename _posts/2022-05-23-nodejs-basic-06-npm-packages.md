@@ -489,7 +489,7 @@ pnpm: node_modules 구조 (하드 링크)
 
 </details>
 
-# 요약
+## 요약
 
 - **npm init**으로 프로젝트 시작, **package.json**이 설정 파일
 - **npm install**은 7단계(해석 → 트리 구성 → 중복 제거 → 다운로드 → 압축 해제 → 빌드 → lock 업데이트)로 동작
