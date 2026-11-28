@@ -76,7 +76,7 @@ HTML에서 특별한 의미를 가지는 문자들이 있습니다. 이런 문�
 | `&` | `&amp;` | Ampersand | 엔티티 시작 기호 |
 | `"` | `&quot;` | Quotation Mark | 큰따옴표 |
 | `'` | `&apos;` | Apostrophe | 작은따옴표 |
-| ` ` | `&nbsp;` | Non-Breaking Space | 줄 바꿈 없는 공백 |
+| (공백) | `&nbsp;` | Non-Breaking Space | 줄 바꿈 없는 공백 |
 | `©` | `&copy;` | Copyright | 저작권 |
 | `®` | `&reg;` | Registered | 등록 상표 |
 | `™` | `&trade;` | Trademark | 상표 |
