@@ -235,7 +235,7 @@ GC는 다음 조건에서 실행됩니다: (1) 힙 메모리가 부족할 때 (2
 </details>
 
 <details markdown="1">
-<summary><strong>Q> nullable 참조 타입은 무엇인가요?</summary></summary>
+<summary><strong>Q> nullable 참조 타입은 무엇인가요?</strong></summary>
 
 nullable 참조 타입은 참조 타입이 null일 수 있음을 명시적으로 표현합니다. `string?`는 null 가능한 문자열, `string`은 null 불가능한 문자열입니다. 컴파일러가 null 참조 가능성을 경고하여 `NullReferenceException`을 방지합니다. C# 8.0부터 도입되었습니다.
 

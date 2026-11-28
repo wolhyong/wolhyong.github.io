@@ -358,7 +358,7 @@ SQLx는 SQL을 직접 작성하며 컴파일 타임 쿼리 검사를 제공합�
 </details>
 
 <details markdown="1">
-<summary><strong>Q> 마이그레이션은 어떻게 관리하나요?</summary></summary>
+<summary><strong>Q> 마이그레이션은 어떻게 관리하나요?</strong></summary>
 
 마이그레이션은 `migrations/` 디렉토리에 `up.sql`과 `down.sql` 파일로 저장합니다. `diesel migration run` 또는 SQLx의 `Migrator::run()`으로 실행합니다. 버전 관리 시스템으로 어떤 마이그레이션이 적용되었는지 추적합니다. 롤백도 지원합니다.
 

@@ -47,7 +47,7 @@ PHP는 세 가지 방식으로 실행됩니다: 1) **Apache 모듈(mod_php)**: A
 </details>
 
 <details markdown="1">
-<summary><strong>Q: <?php와 <?=의 차이는 무엇인가요?</strong></summary>
+<summary><strong>Q: &lt;?php와 &lt;?=의 차이는 무엇인가요?</strong></summary>
 
 `<?php`는 정식 오픈 태그로 항상 사용 가능합니다. `<?=`(short echo tag)는 `<?php echo`의 축약형으로 PHP 5.4+에서 항상 사용 가능합니다. `<?`(short open tag)는 `short_open_tag` 설정이 필요하고 권장되지 않습니다. `<?=`은 템플릿에서 값을 출력할 때 많이 사용됩니다: `<?= $user->name ?>`.
 

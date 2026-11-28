@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rust 웹 프로그래밍 — Actix-web, Axum, HTTP 서버, 핸들러, 미들웨어, 상태 관리"
-description: "Rust의 웹 프로그래밍 생태계를 실무 레벨에서 학습합니다. Actix-web은 고성능 웹 프레임워크로 액터 모델 기반 동시성을 제공하며 핸들러, 라우팅, 미들웨어를 지원합니다. Axum은 Tokio 기반 현대적 웹 프레임워크로 타입 안전한 라우팅과 추출器(extractor)를 제공합니다. HTTP 서버는 TcpListener로 연결을 수락하고 비동기로 요청을 처리합니다. 핸들러는 요청을 처리하고 응답을 반환하며 경로 매개변수, 쿼리 파라미터, JSON 바디를 추출할 수 있습니다. 미들웨어는 요청/응답 처리 파이프라인에 로깅, 인증, CORS 등을 추가합니다. 상태 관리는 AppState로 데이터베이스 풀, 설정 등을 공유합니다."
+description: "Rust의 웹 프로그래밍 생태계를 실무 레벨에서 학습합니다. Actix-web은 고성능 웹 프레임워크로 액터 모델 기반 동시성을 제공하며 핸들러, 라우팅, 미들웨어를 지원합니다. Axum은 Tokio 기반 현대적 웹 프레임워크로 타입 안전한 라우팅과 추출기(extractor)를 제공합니다. HTTP 서버는 TcpListener로 연결을 수락하고 비동기로 요청을 처리합니다. 핸들러는 요청을 처리하고 응답을 반환하며 경로 매개변수, 쿼리 파라미터, JSON 바디를 추출할 수 있습니다. 미들웨어는 요청/응답 처리 파이프라인에 로깅, 인증, CORS 등을 추가합니다. 상태 관리는 AppState로 데이터베이스 풀, 설정 등을 공유합니다."
 date: 2025-07-11 10:00:00 +0900
 category: rust
 tags: [rust, web, actix-web, axum, http-server, middleware, handlers]
@@ -172,9 +172,9 @@ async fn main() {
 }
 ```
 
-Axum은 Tokio 기반 현대적 웹 프레임워크입니다. `Router`로 라우팅을 구성하고 `axum::serve`로 서버를 시작합니다. 타입 안전한 추출器(extractor)를 제공합니다.
+Axum은 Tokio 기반 현대적 웹 프레임워크입니다. `Router`로 라우팅을 구성하고 `axum::serve`로 서버를 시작합니다. 타입 안전한 추출기(extractor)를 제공합니다.
 
-### 추출器
+### 추출기
 
 ```rust
 use axum::{
@@ -198,7 +198,7 @@ async fn user(
 }
 ```
 
-Axum의 추출器는 튜플 패턴으로 여러 추출을 결합할 수 있습니다. `Path<T>`, `Query<T>`, `Json<T>` 등이 제공됩니다. 타입 시스템으로 안전하게 추출됩니다.
+Axum의 추출기는 튜플 패턴으로 여러 추출을 결합할 수 있습니다. `Path<T>`, `Query<T>`, `Json<T>` 등이 제공됩니다. 타입 시스템으로 안전하게 추출됩니다.
 
 ### 상태 관리
 
@@ -235,7 +235,7 @@ async fn main() {
 }
 ```
 
-`with_state()`로 상태를 라우터에 추가합니다. `State<T>` 추출器로 핸들러에서 상태에 접근할 수 있습니다. `Clone`을 구현해야 하며 `Arc`로 공유 상태를 관리합니다.
+`with_state()`로 상태를 라우터에 추가합니다. `State<T>` 추출기로 핸들러에서 상태에 접근할 수 있습니다. `Clone`을 구현해야 하며 `Arc`로 공유 상태를 관리합니다.
 
 ## 미들웨어
 
@@ -385,23 +385,23 @@ Actix-web은 액터 모델 기반으로 성능이 뛰어나며 생태계가 성�
 </details>
 
 <details markdown="1">
-<summary><strong>Q> 상태 관리는 어떻게 구현하나요?</summary></summary>
+<summary><strong>Q> 상태 관리는 어떻게 구현하나요?</strong></summary>
 
-상태는 `AppState` 구조체에 정의하고 라우터에 추가합니다. Actix-web은 `web::Data<T>`, Axum은 `with_state()`와 `State<T>` 추출器를 사용합니다. `Clone`을 구현해야 하며 `Arc`로 공유 상태를 관리합니다. 데이터베이스 풀, 설정, 캐시 등을 공유할 수 있습니다.
+상태는 `AppState` 구조체에 정의하고 라우터에 추가합니다. Actix-web은 `web::Data<T>`, Axum은 `with_state()`와 `State<T>` 추출기를 사용합니다. `Clone`을 구현해야 하며 `Arc`로 공유 상태를 관리합니다. 데이터베이스 풀, 설정, 캐시 등을 공유할 수 있습니다.
 
 </details>
 
 <details markdown="1">
-<summary><strong>Q> 미들웨어는 어떻게 작성하나요?</summary></summary>
+<summary><strong>Q> 미들웨어는 어떻게 작성하나요?</strong></summary>
 
 미들웨어는 `Transform` 트레이트를 구현하여 작성합니다. 요청 전후에 로직을 추가할 수 있습니다. 로깅, 인증, CORS, 압축 등에 사용됩니다. Actix-web과 Axum은 다른 미들웨어 API를 제공하지만 개념은 유사합니다. 간단한 미들웨어는 프레임워크가 제공하는 내장 미들웨어를 사용할 수 있습니다.
 
 </details>
 
 <details markdown="1">
-<summary><strong>Q> JSON 직렬화는 어떻게 처리하나요?</summary></summary>
+<summary><strong>Q> JSON 직렬화는 어떻게 처리하나요?</strong></summary>
 
-`serde`와 `serde_json`을 사용하여 JSON 직렬화/역직렬화를 처리합니다. 구조체에 `#[derive(Serialize, Deserialize)]` 속성을 추가하면 자동으로 구현됩니다. `web::Json<T>`(Actix-web) 또는 `Json<T>`(Axum) 추출器로 자동 파싱됩니다. 타입 안전하고 빠릅니다.
+`serde`와 `serde_json`을 사용하여 JSON 직렬화/역직렬화를 처리합니다. 구조체에 `#[derive(Serialize, Deserialize)]` 속성을 추가하면 자동으로 구현됩니다. `web::Json<T>`(Actix-web) 또는 `Json<T>`(Axum) 추출기로 자동 파싱됩니다. 타입 안전하고 빠릅니다.
 
 </details>
 
@@ -412,8 +412,8 @@ Actix-web은 액터 모델 기반으로 성능이 뛰어나며 생태계가 성�
 | **Actix-web** | 액터 모델 프레임워크 | 고성능, 성숙한 생태계 |
 | **Axum** | Tokio 기반 프레임워크 | 타입 안전, 현대적 |
 | **핸들러** | 요청 처리 함수 | async fn으로 정의 |
-| **라우팅** | 경로 등록 | 경로 매개변터 추출 |
-| **추출器** | 요청 데이터 추출 | 타입 안전 |
+| **라우팅** | 경로 등록 | 경로 매개변수 추출 |
+| **추출기** | 요청 데이터 추출 | 타입 안전 |
 | **미들웨어** | 파이프라인 로직 | 로깅, 인증 등 |
 | **상태 관리** | 데이터 공유 | AppState, Arc |
 | **에러 처리** | ResponseError 트레이트 | 커스텀 에러 |

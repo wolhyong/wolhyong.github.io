@@ -241,7 +241,7 @@ pip install flask 실행 시:
 </details>
 
 <details markdown="1">
-<summary><strong>Q: <code>from module import *</code>을 사용하면 안 되는 이유는?</summary></strong>
+<summary><strong>Q: <code>from module import *</code>을 사용하면 안 되는 이유는?</strong></summary>
 
 네임스페이스를 오염시키고 예기치 않은 이름 충돌을 일으킬 수 있습니다. `*`로 임포트된 이름을 추적하기 어렵고, 모듈이 업데이트되면 새로운 이름이 갑자기 코드에 나타날 수 있습니다. `__all__`로 제어할 수 있지만, 명시적 임포트가 항상 더 좋습니다. `from module import specific_name`처럼 필요한 것만 임포트하세요.
 
