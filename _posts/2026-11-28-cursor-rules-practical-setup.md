@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cursor 규칙 파일, 매번 같은 설명 하지 않게 만드는 법 — .cursorrules에서 .cursor/rules까지"
-description: "Cursor가 채팅마다 다른 코드를 뽑는 건 모델이 나빠서가 아니라 프로젝트 규칙을 넘기지 않았기 때문입니다. 실제로 쓰는 규칙 파일 예시, 파일 범위로 쪼개는 방법, 규칙이 무시될 때 확인할 것, 길어졌을 때 컨텍스트가 뭉개지는 지점까지 짚었습니다."
+description: "Cursor가 채팅마다 다른 코드를 내는 건 규칙을 넘기지 않았기 때문입니다. 실제로 쓰는 규칙 파일 예시, 규칙이 무시될 때 확인할 것, 길어졌을 때 컨텍스트가 뭉개지는 지점까지 짚었습니다."
 date: 2026-11-28 09:30:00 +0900
 category: cursor
 tags: [cursor, cursorrules, ai-coding, dev-workflow, typescript]
@@ -25,12 +25,10 @@ Cursor의 규칙은 시스템 프롬프트에 미리 붙는 텍스트다. 채팅
 
 규칙 소스에서 시작해 적용 여부를 거쳐 모델 컨텍스트 앞단에 붙고, 그 뒤에 내가 연 파일과 대화가 이어진다.
 
-| 종류 | 위치 | 적용 범위 |
-| --- | --- | --- |
-| Project Rules | `.cursor/rules/*.mdc` | 저장소 단위, git으로 공유 |
-| `.cursorrules` (레거시) | 저장소 루트 | 저장소 단위. 아직 읽히지만 deprecated |
-| `AGENTS.md` | 저장소 루트와 하위 폴더 | 저장소 단위, front matter 없는 순수 마크다운 |
-| User Rules | Cursor 설정 | 내 계정의 모든 프로젝트 |
+- **Project Rules** — 저장소의 `.cursor/rules/*.mdc`. git으로 팀과 공유한다.
+- **`.cursorrules`** — 저장소 루트에 두는 예전 방식. 아직 읽히지만 deprecated다.
+- **`AGENTS.md`** — 저장소 루트와 하위 폴더에 두는 순수 마크다운. front matter가 없다.
+- **User Rules** — Cursor 설정에 두고 내 계정의 모든 프로젝트에 적용한다.
 
 `.cursorrules`는 원래 이 용도로 유일한 파일이었고 지금도 루트에 두면 읽힌다. 다만 Cursor 공식 문서와 헬프센터는 이 파일을 레거시로 부르고 `.cursor/rules` 또는 `AGENTS.md`로 옮기라고 안내한다. 공식 문서 기준의 이전 절차는 단순하다.
 
