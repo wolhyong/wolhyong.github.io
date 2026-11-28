@@ -443,7 +443,7 @@ def process_with_progress(filename):
 </details>
 
 <details markdown="1">
-<summary><strong>Q: <code>newline=''</code>을 CSV writer에서 지정하는 이유는?</summary>
+<summary><strong>Q: <code>newline=''</code>을 CSV writer에서 지정하는 이유는?</strong></summary>
 
 `csv.writer`는 내부적으로 줄바꿈을 자체 처리합니다(따옴표 안의 줄바꿈 포함). `newline=''`을 지정하지 않으면, Python이 파일에 쓸 때 `\n`을 OS 기본 줄바꿈(Windows: `\r\n`)으로 변환하여 `\r\r\n`처럼 중복된 줄바꿈이 생길 수 있습니다. `newline=''`은 이 변환을 비활성화하여 CSV writer가 줄바꿈을 직접 제어할 수 있게 합니다.
 

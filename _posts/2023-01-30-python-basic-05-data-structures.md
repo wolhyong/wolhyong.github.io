@@ -368,7 +368,7 @@ counts = Counter("hello world")
 <details markdown="1">
 <summary><strong>Q: OrderedDict는 여전히 필요한가요?</strong></summary>
 
-Python 3.7부터 일반 딕셔너리도 삽입 순서를 보존합니다. 하지만 `OrderedDict`가 필요한 경우가 있습니다: (1) 순서가 중요한 비교 — `OrderedDict는 == 비교 시 순서도 비교, (2) `move_to_end()` 메서드 — 특정 키를 앞/뒤로 이동, (3) `popitem(last=True/False)` — LIFO/FIFO 동작. 일반적인 용도라면 일반 딕셔너리로 충분합니다.
+Python 3.7부터 일반 딕셔너리도 삽입 순서를 보존합니다. 하지만 `OrderedDict`가 필요한 경우가 있습니다: (1) 순서가 중요한 비교 — `OrderedDict`는 == 비교 시 순서도 비교, (2) `move_to_end()` 메서드 — 특정 키를 앞/뒤로 이동, (3) `popitem(last=True/False)` — LIFO/FIFO 동작. 일반적인 용도라면 일반 딕셔너리로 충분합니다.
 
 </details>
 
