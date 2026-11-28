@@ -25,10 +25,10 @@ Cursor의 규칙은 시스템 프롬프트에 미리 붙는 텍스트다. 채팅
 
 규칙 소스에서 시작해 적용 여부를 거쳐 모델 컨텍스트 앞단에 붙고, 그 뒤에 내가 연 파일과 대화가 이어진다.
 
-- **Project Rules** — 저장소의 `.cursor/rules/*.mdc`. git으로 팀과 공유한다.
-- **`.cursorrules`** — 저장소 루트에 두는 예전 방식. 아직 읽히지만 deprecated다.
-- **`AGENTS.md`** — 저장소 루트와 하위 폴더에 두는 순수 마크다운. front matter가 없다.
-- **User Rules** — Cursor 설정에 두고 내 계정의 모든 프로젝트에 적용한다.
+- **Project Rules** — 저장소의 `.cursor/rules/*.mdc`, git으로 팀과 공유한다.
+- **`.cursorrules`** — 저장소 루트에 두는 예전 방식, 아직 읽히지만 deprecated다.
+- **`AGENTS.md`** — 저장소 루트와 하위 폴더에 두는 순수 마크다운, front matter가 없다.
+- **User Rules** — Cursor 설정에서 내 계정의 모든 프로젝트에 적용한다.
 
 `.cursorrules`는 원래 이 용도로 유일한 파일이었고 지금도 루트에 두면 읽힌다. 다만 Cursor 공식 문서와 헬프센터는 이 파일을 레거시로 부르고 `.cursor/rules` 또는 `AGENTS.md`로 옮기라고 안내한다. 공식 문서 기준의 이전 절차는 단순하다.
 
@@ -64,33 +64,39 @@ alwaysApply: true
 ---
 
 # 스택
-- Next.js 15 (App Router), React 19, TypeScript 5.6 strict
-- 스타일: Tailwind CSS 4 유틸리티만. CSS-in-JS, styled-components, emotion 금지
-- 데이터: Supabase(Postgres). 클라이언트는 @supabase/ssr 사용
-- 패키지 매니저: pnpm. package-lock.json, yarn.lock 만들지 말 것
+- Next.js 15 (App Router), React 19, TypeScript strict
+- 스타일: Tailwind CSS 4 유틸리티만
+  CSS-in-JS, styled-components, emotion 금지
+- 데이터: Supabase(Postgres), @supabase/ssr
+- 패키지 매니저: pnpm
+  package-lock.json, yarn.lock 만들지 말 것
 - 날짜: date-fns만 사용. moment, dayjs 금지
 
 # 명령어
-- 개발 서버: pnpm dev
-- 타입 체크: pnpm typecheck
+- dev: pnpm dev
+- 타입: pnpm typecheck
 - 테스트: pnpm vitest run --changed
-- 린트: pnpm lint (자동 수정은 pnpm lint:fix)
+- 린트: pnpm lint (수정은 pnpm lint:fix)
 
 # 구조와 책임
-- src/app: 라우트와 레이아웃만. 데이터 가공 로직 두지 말 것
-- src/components: 표현 컴포넌트. 서버 액션 호출 금지
+- src/app: 라우트와 레이아웃만. 로직 두지 말 것
+- src/components: 표현만. 서버 액션 호출 금지
 - src/lib: 순수 로직, 외부 API 호출, Supabase 쿼리
-- src/lib/http.ts 외부 fetch 직접 호출 금지. httpGet/httpPost 사용
+- fetch 직접 호출 금지. src/lib/http.ts 사용
 
 # 코드 규칙
 - any 금지. 불가피하면 unknown + 타입 가드
-- 컴포넌트는 함수 선언 + named export. default export는 page/layout만
-- 새 의존성 추가 전에 package.json에 이미 있는지 확인하고, 추가하면 이유를 답변에 적을 것
-- 에러는 throw 대신 { code, message } 형태로 반환 (src/lib/errors.ts 참고)
+- 컴포넌트는 함수 선언 + named export
+  default export는 page/layout만
+- 의존성 추가 전에 package.json 확인
+  추가하면 이유를 답변에 적을 것
+- 에러는 throw 대신 { code, message } 반환
+  (src/lib/errors.ts 참고)
 
 # 금지
-- .env*, supabase/migrations 기존 파일 수정 금지. 마이그레이션은 새 파일로만
-- src/lib 하위 로직 변경 시 테스트 없는 커밋 금지
+- .env*, 기존 마이그레이션 파일 수정 금지
+  마이그레이션은 새 파일로만
+- 테스트 없는 src/lib 로직 변경 금지
 - 생성물(.next, out) 수정 금지
 ```
 
@@ -103,10 +109,12 @@ globs: src/app/api/**/*.ts
 alwaysApply: false
 ---
 
-- 모든 라우트는 zod로 입력을 검증하고, 실패 시 400과 { code: "INVALID_INPUT", issues }
-- 성공 응답은 { data } 또는 { error } 형태만 허용. 그 외 키 금지
-- 인증이 필요한 라우트는 src/lib/auth/requireUser.ts를 먼저 통과시킬 것
-- 캐시 헤더는 기본 no-store. 공개 GET만 revalidate 지정
+- 모든 라우트는 zod로 입력을 검증한다
+  실패 시 400과 { code: "INVALID_INPUT", issues }
+- 성공 응답은 { data } 또는 { error }만. 다른 키 금지
+- 인증이 필요한 라우트는 requireUser.ts 먼저 통과
+- 캐시 헤더는 기본 no-store
+  공개 GET만 revalidate 지정
 ```
 
 front matter 세 필드의 관계는 단순하다. `alwaysApply: true`면 다른 값과 상관없이 항상 들어간다. `false`이고 `globs`가 있으면 해당 경로 파일이 컨텍스트에 들어올 때 자동 적용된다. `globs` 없이 `description`만 있으면 에이전트가 설명을 읽고 필요할 때 스스로 가져간다. 셋 다 없으면 채팅에서 `@규칙이름`으로 부를 때만 쓰인다.
